@@ -18,17 +18,15 @@
 
 ```java
     BigInteger e1 = new BigInteger("100000");
-	BigInteger e2 = new BigInteger("10000");
+    BigInteger e2 = new BigInteger("10000");
 
-	System.out.println("덧셈 :" + e1.add(e2));
-	System.out.println("뺄셈 :" + e1.subtract(e2));
-	System.out.println("곱셈 :" + e1.multiply(e2));
-	System.out.println("나눗셈 :" + e1.divide(e2));
-	System.out.println("나머지 :" + e1.remainder(e2));
+    System.out.println("덧셈 :" + e1.add(e2));
+    System.out.println("뺄셈 :" + e1.subtract(e2));
+    System.out.println("곱셈 :" + e1.multiply(e2));
+    System.out.println("나눗셈 :" + e1.divide(e2));
+    System.out.println("나머지 :" + e1.remainder(e2));
 
-	int compare = e1.compareTo(e2); //두 수 비교, 같으면 0 다르면 -1를 반환
-	}
-}
+    int compare = e1.compareTo(e2); //두 수 비교, 같으면 0 다르면 -1를 반환
 ```
 
 <br>
@@ -41,21 +39,19 @@
 
 - 내부적으로 배열을 사용하여 데이터를 저장 -> 데이터 자리수에 제한이 없다
 
-- 모든 연산은 메서드를 호출하여 수행
+- arithmetic(연산), scale manipulation(범위 조정), rounding(반올림), comparison(비교), hashing(해싱), and format conversion(포멧 변경)을 지원
 
 - 계산 속도는 double, float를 사용하는 경우보다 느리지만 정밀한 결과를 보장
 
+
 ```java
-    BigDecimal e1 = new BigDecimal("100000.12345");
-    BigDecimal e2 = new BigDecimal("10000");
-
-    System.out.println("덧셈 :" + e1.add(e2));
-    System.out.println("뺄셈 :" + e1.subtract(e2));
-    System.out.println("곱셈 :" + e1.multiply(e2));
-    System.out.println("나눗셈 :" + e1.divide(e2));
-    System.out.println("나머지 :" + e1.remainder(e2));
-
-    int compare = bigNumber1.compareTo(bigNumber2); //-1
-	}
-}
+    BigDecimal e1 = new BigDecimal("0.33333");
+    
+    int a = e1.intValue(); // 형 변환
+    long b = e1.longValue();
+    float c = e1.floatValue();
+    double d = e1.doubleValue();
+    String e = e1.toString();
+    
+    int compare = bigNumber1.compareTo(bigNumber2); //두 수 비교 : -1
 ```
