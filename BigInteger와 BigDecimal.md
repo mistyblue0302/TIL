@@ -46,7 +46,8 @@
 
 ```java
     BigDecimal e1 = new BigDecimal("0.33333");
-    
+    BigDecimal e2 = new BigDecimal("3.33333");
+     
     int a = e1.intValue(); // 형 변환
     long b = e1.longValue();
     float c = e1.floatValue();
