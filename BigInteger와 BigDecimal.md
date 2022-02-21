@@ -35,24 +35,21 @@
 
 - 실수형 값을 다룰 때 사용
 
-- 자리수 부족 또는 연산에서의 부정확성 문제를 해결
-
-- 내부적으로 배열을 사용하여 데이터를 저장 -> 데이터 자리수에 제한이 없다
-
 - arithmetic(연산), scale manipulation(범위 조정), rounding(반올림), comparison(비교), hashing(해싱), and format conversion(포멧 변경)을 지원
 
 - 계산 속도는 double, float를 사용하는 경우보다 느리지만 정밀한 결과를 보장
 
 
 ```java
-    BigDecimal e1 = new BigDecimal("0.33333");
-    BigDecimal e2 = new BigDecimal("3.33333");
+    BigDecimal e1 = new BigDecimal("123.45");
      
     int a = e1.intValue(); // 형 변환
     long b = e1.longValue();
     float c = e1.floatValue();
     double d = e1.doubleValue();
-    String e = e1.toString();
+    
+    System.out.println(e1.scale()); //2, 소수점 첫째 자리부터 0이아닌 수로 끝나는 자리수
+    System.out.println(e1.precision()); //5, 정밀도. 0이아닌수가 시작하는 위치부터 0이아닌 수로 끝나는 자리수
     
     int compare = bigNumber1.compareTo(bigNumber2); //두 수 비교 : -1
 ```
