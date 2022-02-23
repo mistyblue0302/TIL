@@ -79,7 +79,7 @@ public class B {
 ```
 
 ```java
-> false //각갃 생성자를 사용하여 만들었기 때문
+> false //각각 생성자를 사용하여 만들었기 때문
 > false //오버라이딩 하지 않았으므로 hashcode() 값을 비교
 ```
 
