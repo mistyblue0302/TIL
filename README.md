@@ -9,7 +9,7 @@
   * [import](https://github.com/dilmah0203/TIL/blob/main/Java/import.md)
   * [접근 제어자](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%A0%91%EA%B7%BC%20%EC%A0%9C%EC%96%B4%EC%9E%90.md)
 * [상속](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%83%81%EC%86%8D.md)
-* [Object클래스](https://github.com/dilmah0203/TIL/blob/main/Java/Object%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A2%E1%84%89%E1%85%B3.md)
+* [Object클래스](https://github.com/dilmah0203/TIL/blob/main/Java/Object%ED%81%B4%EB%9E%98%EC%8A%A4.md)
 
 
 
