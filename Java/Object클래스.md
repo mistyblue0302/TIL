@@ -50,7 +50,8 @@ public class Tostring{
 ```
 
 - equals() <br>
-  객체가 같은지 비교하는 메소드이다.
+  객체가 같은지 비교하는 메소드이다. <br>
+  최상위 클래스인 Object에 포함되어 있기 때문에 재정의하여 사용이 가능하다
 
   == <br>
   비교 연산자이다. <br>
@@ -93,7 +94,7 @@ public boolean equals(Object obj){
 
 ```java
 > false
-> true
+> true //다른 객체라도 같은 문자열을 가지고 있다면 같다고 판단
 ```
 
 equals 메소드를 Object 타입으로 매개변수를 받는다. <br>
