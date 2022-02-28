@@ -13,15 +13,15 @@
 
 ```java
 HashMap<Integer,String> map = new HashMap<Integer,String>();//초기값 지정
-    map.put(1,"a");
-    map.put(2,"b");
-    map.put(3,"c");
-    map.get(1); //데이터 추출
-    String val = map.get(2).toString(); //key로 값 가져오기
-    map.remove(1); //key값 1 제거
-    map.clear(); //모든 값 제거
-    System.out.println(map.containsKey(1)); //해당 키:1 가 있는지 확인
-    System.out.println(map.containsValue("a")); // 해당 value :a 가 있는지 확인
+map.put(1,"a");
+map.put(2,"b");
+map.put(3,"c");
+map.get(1); //데이터 추출
+String val = map.get(2).toString(); //key로 값 가져오기
+map.remove(1); //key값 1 제거
+map.clear(); //모든 값 제거
+System.out.println(map.containsKey(1)); //해당 키:1 가 있는지 확인
+System.out.println(map.containsValue("a")); // 해당 value :a 가 있는지 확인
 ```
 
 빅오표기 <br>
