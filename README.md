@@ -2,7 +2,7 @@
 
 
 ## Java
-* [변수](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%B3%80%EC%88%98.md)
+* [변수의 ](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%B3%80%EC%88%98.md)
 * 참조 자료형
   * [Pass by value와 Pass by reference](https://github.com/dilmah0203/TIL/blob/main/Java/Pass%20by%20value%EC%99%80%20Pass%20by%20reference.md)
 * 패키지
