@@ -49,6 +49,31 @@ public class Tostring{
 > 소설 3
 ```
 
+
+<br>
+
+```java
+import java.util.Arrays;
+
+public class arraytest {
+
+  public static void main(String[] args) {
+	int[] array = new int[] {1,2,3,4};
+
+	System.out.println(array.toString());
+	System.out.println(Arrays.toString(array));
+  }
+
+}
+
+```
+
+```java
+> [I@43a25848] //Object.toString()메소드의 값을 출력하는 것이고, 대상 개체의 해쉬코드값을 출력한다
+> [1, 2, 3, 4] //java.util.Araays 패키지를 이용하여 값을 문자열 형태로 리턴
+```
+
+
 - equals() <br>
   객체가 같은지 비교하는 메소드이다. <br>
   최상위 클래스인 Object에 포함되어 있기 때문에 재정의하여 사용이 가능하다
