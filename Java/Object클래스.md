@@ -73,6 +73,7 @@ public class arraytest {
 > [1, 2, 3, 4] //java.util.Araays 패키지를 이용하여 값을 문자열 형태로 리턴
 ```
 
+<br>
 
 - equals() <br>
   객체가 같은지 비교하는 메소드이다. <br>
