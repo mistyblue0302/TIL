@@ -12,7 +12,7 @@
 * [예외](https://github.com/dilmah0203/TIL/blob/main/Java/%E1%84%8B%E1%85%A8%E1%84%8B%E1%85%AC%E1%84%8E%E1%85%A5%E1%84%85%E1%85%B5.md)
 
 ## HTTP
-* [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP%20Method.md)
+* [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20Method.md)
 * 
 ##
 * [BigInteger와 BigDecimal](https://github.com/dilmah0203/TIL/blob/main/BigInteger%EC%99%80%20BigDecimal.md)
