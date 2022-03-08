@@ -45,27 +45,39 @@ public class Main {
 <br>
 
 ```java
-public void callPassByReference(){
-    String a = "a";
-    String b = "b";
-    System.out.println("before PassByReference:"+" a="+a+", b="+b);
-
-    passByReference(a,b);
-    System.out.println("after PassByReference:"+" a="+a+", b="+b);
-
-}
-
-public void passByReference(String a, String b){
-    a = "c";
-    b = "d";
-    System.out.println("In PassByReference"+" a="+a+", b="+b);
-
+public class MemberDTO {
+    public String name;
+    public String phone;
+    public String email;
+    public MemberDTO(String name){
+        this.name=name;
+    }
 }
 ```
 
 ```java
-> before PassByReference: a=a, b=b
-> In PassByReference a=c, b=d
-> after PassByReference: a=a, b=b
+public class Main {
+    public void callPassByReference(){
+        MemberDTO member = new MemberDTO("Lee");
+        System.out.println("before : "+member.name);
+        passByReference(member);
+        System.out.println("after : "+member.name);
+
+    }
+    public void passByReference(MemberDTO member){
+        member.name = "Kim";
+        System.out.println("In : "+member.name);
+    }
+    public static void main(String[] args){
+        Main m = new Main();
+        m.callPassByReference();
+    }
+}
+```
+
+```java
+> before : Lee
+> In : Kim
+> after : Kim
 ```
 
