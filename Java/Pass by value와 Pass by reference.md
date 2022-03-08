@@ -10,28 +10,29 @@
 <br>
 
 ```java
-public void callPassByValue(){
-    int a = 2;
-    int b = 3;
-    System.out.println("before PassByValue"+" a="+a+", b="+b);
+public class Main {
+  public void swap(int x, int y){
+        int temp = x;
+        x = y;
+        y = temp;
+  }
 
-    passByValue(a,b);
-    System.out.println("after PassByValue"+" a="+a+", b="+b);
+  public static void main(String[] args){
+        Main m = new Main();
+        
+        int a = 3;
+        int b = 5;
 
-}
-
-public void passByValue(int a, int b){
-    a = 10;
-    b = 20;
-    System.out.println("In PassByValue"+" a="+a+", b="+b);
-
+        System.out.println("a ="+a+","+"b ="+b);
+        m.swap(a,b);
+        System.out.println("a ="+a+","+"b ="+b);
+  }
 }
 ```
 
 ```java
-> before PassByValue a=2, b=3
-> In PassByValue a=10, b=20
-> after PassByValue a=2, b=3
+> a =3,b =5
+> a =3,b =5
 ```
 
 <br>
