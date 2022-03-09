@@ -74,6 +74,9 @@ String 클래스는 equals()를 재정의 한다. ==를 통해 동일성을 판�
 
 - hashcode() : 동일성 비교
 
+equals()를 override할 때에는 hashcode()도 같이 override해야한다. 왜냐면 equals()비교를 통해 객체가 같아도 주소 값은 같지 않을 수도 있기 때문이다.
+
+
 ```java
 public class Example {
    private int number;
@@ -112,4 +115,3 @@ public class Main {
 }
 ```
 
-equals()를 override할 때에는 hashcode()도 같이 override해야한다. 왜냐면 equals()비교를 통해 객체가 같아도 주소 값은 같지 않을 수도 있기 때문이다.
