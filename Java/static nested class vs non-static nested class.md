@@ -103,6 +103,7 @@ public class Main {
 
 
 참고
+
 https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html
 
 https://www.geeksforgeeks.org/difference-between-static-and-non-static-nested-class-in-java/
