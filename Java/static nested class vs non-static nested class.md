@@ -101,6 +101,13 @@ public class Main {
 
 <br>
 
+**gc**
+
+non-static nested class는 외부 class 멤버에 접근 할 수 있다고 하였다. 즉, 실행동안 외부 class의 모든 객체는 내부 class와 함께 메모리에 있어야 한다. gc는 인스턴스를 수거 하지 못하여 메모리 누수가 생길 수 있다.
+ 
+<br>
+
+
 
 참고
 
