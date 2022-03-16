@@ -36,7 +36,6 @@ public class Ex {
 
     static class StaticNested {
 
-
         void get() {
             System.out.println("x: " + x); //3
             System.out.println("z: " + z); //10
@@ -73,7 +72,6 @@ public class Ex {
     public int z = 10;
 
     class NonNested {
-
 
         void get() {
             System.out.println("x: " + x); //3
