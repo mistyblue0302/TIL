@@ -1,6 +1,6 @@
 # 💡 **static nested class vs non-static nested class**
 
-자바에선 class 안의 또 다른 class를 허용한다. 이러한 class를
+자바에선 class 안의 또 다른 class를 허용하는데 이러한 class를
 nested class(중첩 클래스)라고 한다.
 
 nested class는 non-static과 static으로 나뉜다. 
