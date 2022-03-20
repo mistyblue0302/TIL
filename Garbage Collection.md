@@ -59,8 +59,7 @@ Card Table에는 Old 객체가 Young 객체를 참조할 때마다 정보가 표
 
    G1 GC는 Heap을 Young, Old 영역으로 명확하게 구분짓던 GC와는 달리 물리적으로 구분을 하지 않는다. 고정된 크기가 없기 때문에 메모리 사용에 있어 유연성을 제공한다. 다음 그림처럼 각 영역에 객체를 할당하고 GC를 실행한다. 해당 영역이 꽉 차면 다른 영역에서 객체를 할당하고 GC를 실행하게 된다.
 
-
-![img2](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/images/slide9.png)
+![img2](https://www.google.com/imgres?imgurl=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2463374155F22A9A25&imgrefurl=https%3A%2F%2Fimp51.tistory.com%2Fentry%2FG1-GC-Garbage-First-Garbage-Collector-Tuning&tbnid=Syk9x_GYxXdDAM&vet=12ahUKEwjj9NfB_tT2AhWTAd4KHbs8CKwQMygAegUIARC4AQ..i&docid=9I_rEybELSoVcM&w=354&h=254&q=java%20g1gc%20oracle&ved=2ahUKEwjj9NfB_tT2AhWTAd4KHbs8CKwQMygAegUIARC4AQ)
 
 
 <br>
