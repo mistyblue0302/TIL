@@ -1,6 +1,6 @@
-# 💡 **Garbage Collection(GC)**
+# 💡 **Garbage Collection**
 
-Java로 작성된 프로그램은 JVM에서 실행 되는데, 이 때 사용되는 객체를 자동으로 관리해 주는 것을 GC라고 한다. 
+Java에서는 개발자가 코드로 메모리를 명시적으로 해제하지 않기 때문에 Garbage Collector(GC)가 더 이상 필요 없는 객체를 찾아 지우는 작업을 한다. 
 
 <br>
 
