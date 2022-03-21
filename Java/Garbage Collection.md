@@ -22,8 +22,6 @@ GC는 두 가지 전제 하에 만들어졌다.
 
 생명 주기가 긴 '오래된 객체'를 GC 대상으로 하는 영역으로, 해당 영역에서 발생되는 GC를 Major GC라고 하며 속도가 느리다.
 
-<br>
-
 Old 영역의 객체에서 Young 객체로의 참조는 어떻게 이루어질까? 이러한 경우를 위해 Card Table이 존재한다.
 
 ![img](https://d2.naver.com/content/images/2015/06/helloworld-1329-2.png)
