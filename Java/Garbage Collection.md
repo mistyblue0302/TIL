@@ -1,5 +1,6 @@
 # 💡 **Garbage Collection**
 
+JVM은 Java 프로그램이 수행되는 프로세스를 의미하는데, 이 때 JVM 내에서 메모리 관리를 해주는 것을 Garbage Collector라고 한다. <br>
 Java에서는 개발자가 코드로 메모리를 명시적으로 해제하지 않기 때문에 Garbage Collector가 더 이상 필요 없는 객체를 찾아 지우는 작업을 한다. 
 
 <br>
