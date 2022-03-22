@@ -15,7 +15,7 @@
 * [static nested class vs nested class](https://github.com/dilmah0203/TIL/blob/main/Java/static%20nested%20class%20vs%20non-static%20nested%20class.md)
 * [어노테이션](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.md)
 * [Garbage Collection](https://github.com/dilmah0203/TIL/blob/main/Java/Garbage%20Collection.md)
-* [java.lang패키지](https://github.com/dilmah0203/TIL/blob/main/Java/java.lang%20package.md)
+* [java.lang패키지](https://github.com/dilmah0203/TIL/blob/main/Java/java.lang%20%ED%8C%A8%ED%82%A4%EC%A7%80.md)
 * [Map vs List](https://github.com/dilmah0203/TIL/blob/main/Java/Map%20vs%20List.md)
 
 
