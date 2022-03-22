@@ -17,8 +17,12 @@ Java 패키지 중 유일하게 import 없이 사용가능하다.
 - Character
 - Boolean
 
- Character 클래스를 제외하고는 parse타입()메소드와 valueOf()메소드를 공통적으로 가지고 있다.
+```java
+Integer a = new Integer(1);
+```
+다음과 같이 int형식의 데이터 타입인 숫자 1을 Wrapper 클래스인 Integer의 생성자로 들어가서 하나의 객체를 생성할 수 있다.
 
+<br>
 
  ```java
 public void Example() {
