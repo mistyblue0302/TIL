@@ -1,16 +1,5 @@
 # 💡 **Map vs List**
 
-> Java Collection Framework
->
-> Java에서 기본적인 자료구조를 제공하기 위한 환경
->
-> java.util 패키지에 속해 있다
-
-<br>
-
-![img](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcHhmbr%2FbtqwUDHGMOV%2FusCxTFLWrG0iSkJzqdK8WK%2Fimg.png)
-
-<br>
 
 - **Map**
 
