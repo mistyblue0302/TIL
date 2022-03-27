@@ -63,7 +63,7 @@ contains : O(n)
 
 > capacity = bucket의 수
 >
-> 한 HashMap 객체에 저장된 데이터 수 = load_factor
+> capacity * load factor ==  HashMap에 저장된 데이터의 수
 
 <br>
 
