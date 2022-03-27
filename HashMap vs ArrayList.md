@@ -22,8 +22,6 @@ System.out.println(map.containsKey(1)); //해당 키:1 가 있는지 확인
 System.out.println(map.containsValue("a")); // 해당 value :a 가 있는지 확인
 ```
 
-빅오표기 <br>
-
 put : O(1) <br>
 get : O(1)
 
@@ -48,8 +46,6 @@ list.clear();  //모든 값 제거
 list.set(0, "오렌지"); //데이터 수정
 int index = list.indexOf("apple"); //인덱스 알아내기
 ```
-
-빅오표기 <br>
 
 add : O(1) <br>
 remove : O(n) <br>
