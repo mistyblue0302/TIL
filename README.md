@@ -17,7 +17,7 @@
 * [Garbage Collection](https://github.com/dilmah0203/TIL/blob/main/Java/Garbage%20Collection.md)
 * [java.lang패키지](https://github.com/dilmah0203/TIL/blob/main/Java/java.lang%20%ED%8C%A8%ED%82%A4%EC%A7%80.md)
 * [제네릭](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%A0%9C%EB%84%A4%EB%A6%AD.md)
-* 컬렉션
+* [컬렉션](https://github.com/dilmah0203/TIL/blob/main/Java/Collection.md)
   1. [List](https://github.com/dilmah0203/TIL/blob/main/Java/List.md)
   2. [Stack](https://github.com/dilmah0203/TIL/blob/main/Java/Stack.md)
   3. [Set](https://github.com/dilmah0203/TIL/blob/main/Java/Set.md)
