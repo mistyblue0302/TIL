@@ -17,7 +17,7 @@
 
 **List**
 
-데이터가 순서가 있으며 중복을 허용한다
+데이터가 **순서가 있으며 중복을 허용한다**
 
 **ArrayList**
 
@@ -27,7 +27,7 @@
 
 <br>
 
-ArrayList 객체 선언 시 초기 크기는 10이다. 예를들어 String인 객체를 담는 크기가 30인 ArrayList를 생성할 때에는 다음과 같이 사용한다.
+ArrayList 객체 선언 시 초기 크기는 **10**이다. 예를들어 String인 객체를 담는 크기가 30인 ArrayList를 생성할 때에는 다음과 같이 사용한다.
 
 ```java
 ArrayList<String> list = new ArrayList<String>(30);
