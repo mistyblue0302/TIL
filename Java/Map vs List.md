@@ -18,7 +18,7 @@
 
   - **TreeMap**
 
-    Red-Black 트리 기반 NavigableMap 구현 <br>
+    Red-Black 트리 기반 <br>
     정렬된 순서대로 키와 값을 저장하여 검색이 빠름 <br>
     데이터 탐색 시 O(log N)의 시간이 걸린다. <br>
 
