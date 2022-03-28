@@ -7,11 +7,7 @@
 - 자료형이 같아야한다
 - 크기가 고정되어 있다
 
-이러한 단점을 보완하기 위해 자바에서 자료구조를 제공하며 다음과 같이 분류할 수 있다.
-
-<br>
-
-![img](https://media.vlpt.us/images/rssungjae/post/c50f0388-f6b6-4eff-aecf-2469b14aec87/image.png)
+이러한 단점을 보완하기 위해 List가 생겼다.
 
 <br>
 
