@@ -25,7 +25,7 @@
 ArrayList 객체 선언 시 초기 크기는 **10**이다. 예를들어 String인 객체를 담는 크기가 30인 ArrayList를 생성할 때에는 다음과 같이 사용한다.
 
 ```java
-ArrayList<String> list = new ArrayList<String>(30);
+List<String> list = new ArrayList<String>(30);
 ```
 
 <br>
@@ -33,7 +33,7 @@ ArrayList<String> list = new ArrayList<String>(30);
 list2를 list로 치환할 경우, list2가 list의 값과 주소까지 사용하게 된다.
 
 ```java
- ArrayList<String> list = new ArrayList<String>();
+List<String> list = new ArrayList<String>();
         list.add("A");
 
         ArrayList<String> list2 = list;
