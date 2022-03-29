@@ -33,7 +33,7 @@
 
   - **ArrayList**
 
-  연속적인 메모리 할당으로 LinkedList 보다 검색은 빠르지만 데이터 추가 삭제가 느리다
+    연속적인 메모리 할당으로 LinkedList 보다 검색은 빠르지만 데이터 추가 삭제가 느리다
   
   - **LinkedList**
 
