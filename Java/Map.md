@@ -60,9 +60,5 @@ for (Map.Entry<String, String> data : entry) {
 System.out.println(data);
 }
 ```
-<br>
 
-**HashMap과 TreeMap중 무엇을 사용할지 어떻게 판단할까**
-
-순서가 없고 키와 값에 null을 허용하고 싶을때 HashMap을 사용할 수 있으며, 값만 null을 허용하고 정렬이 필요할 때 TreeMap을 사용할 수 있다.
 
