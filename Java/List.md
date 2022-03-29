@@ -33,14 +33,14 @@ List<String> list = new ArrayList<String>(30);
 list2를 list로 치환할 경우, list2가 list의 값과 주소까지 사용하게 된다.
 
 ```java
-List<String> list = new ArrayList<String>();
-list.add("A");
+ List<String> list = new ArrayList<String>();
+        list.add("A");
 
-ArrayList<String> list2 = list;
-list.add("B");
-for (String data : list2) {
-    System.out.print(data); //A B
-}
+        ArrayList<String> list2 = list;
+        list.add("B");
+        for (String data : list2) {
+            System.out.print(data); //A B
+        }
 ```
 
 <br>
@@ -49,14 +49,14 @@ ArrayList 객체에 있는 데이터를 배열로 뽑아낼 경우 toArray()메�
 
 ```java
 List<String> list = new ArrayList<>();
-list.add("C");
-list.add("D");
-String[] array = new String[0];
-String[] array2 = list.toArray(array);
+        list.add("C");
+        list.add("D");
+        String[] array = new String[0];
+        String[] array2 = list.toArray(array);
 
-for (String data : array2) {
-   System.out.print(data);
-}
+        for (String data : array2) {
+            System.out.print(data);
+        }
 ```
 ArrayList 객체의 크기가 매개변수로 넘어간 배열 객체의 크기보다 클 경우 배열의 모든 값이 null이 된다. 따라서 toArray() 메소드에 크기가 0인 배열을 넘겨주는 것이 좋다.
 
