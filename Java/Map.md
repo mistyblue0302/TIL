@@ -8,7 +8,7 @@ Map은 키(key)와 값(value)으로 이루어져 있다. Map 인터페이스를 
 
 | 기능 | HashMap | HashTable |
 | :--: | :----: | :--------: |
-|  null허용 여부  | O | X |  
+|  키와 값에 null허용 여부  | O | X |  
 |  멀티 쓰레드 안전 여부  | X | O |     
 |  동기화  | X | O |
 
@@ -70,6 +70,9 @@ for (Map.Entry<String, String> data : entry) {
 System.out.println(data);
 }
 ```
+<br>
 
+**HashMap과 TreeMap중 무엇을 사용할지 어떻게 판단할까**
 
+순서가 없고 키와 값에 null을 허용하고 싶을때 HashMap을 사용할 수 있으며, 값만 null을 허용하고 정렬이 필요할 때 TreeMap을 사용할 수 있다.
 
