@@ -4,16 +4,6 @@ Map은 키(key)와 값(value)으로 이루어져 있다. Map 인터페이스를 
 
 <br>
 
-**HashMap과 HashTable**
-
-| 기능 | HashMap | HashTable |
-| :--: | :----: | :--------: |
-|  키와 값에 null허용 여부  | O | X |  
-|  멀티 쓰레드 안전 여부  | X | O |     
-|  동기화  | X | O |
-
-<br>
-
 **HashMap의 생성자**
 
 HaspMap에 객체가 들어가면 hashCode() 메소드 결과 값에 따른 bucket이라는 목록 형태의 바구니가 만들어진다. 서로 다른 키가 저장될 경우, hashCode()의 값이 동일하다면 bucket에 여러 값이 들어갈 수 있다. 따라서 get() 메소드 호출로 hashCode()의 결과를 확인 하고, bucket에 들어간 목록에 데이터가 여러 개일 경우 equals() 메소드를 통하여 동일 값을 찾게 된다.
