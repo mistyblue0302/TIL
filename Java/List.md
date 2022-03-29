@@ -34,13 +34,13 @@ list2를 list로 치환할 경우, list2가 list의 값과 주소까지 사용�
 
 ```java
 List<String> list = new ArrayList<String>();
-        list.add("A");
+list.add("A");
 
-        ArrayList<String> list2 = list;
-        list.add("B");
-        for (String data : list2) {
-            System.out.print(data); //A B
-        }
+ArrayList<String> list2 = list;
+list.add("B");
+for (String data : list2) {
+    System.out.print(data); //A B
+}
 ```
 
 <br>
@@ -48,15 +48,15 @@ List<String> list = new ArrayList<String>();
 ArrayList 객체에 있는 데이터를 배열로 뽑아낼 경우 toArray()메소드를 사용한다. 매개 변수가 없는 toArray() 메소드는 Object 타입 배열로만 리턴을 하기 때문에 제네릭을 사용하여 선언한 ArrayList 객체는 매개변수로 타입을 정해준다.
 
 ```java
-  ArrayList<String> list = new ArrayList<>();
-        list.add("C");
-        list.add("D");
-        String[] array = new String[0];
-        String[] array2 = list.toArray(array);
+List<String> list = new ArrayList<>();
+list.add("C");
+list.add("D");
+String[] array = new String[0];
+String[] array2 = list.toArray(array);
 
-        for (String data : array2) {
-            System.out.print(data);
-        }
+for (String data : array2) {
+   System.out.print(data);
+}
 ```
 ArrayList 객체의 크기가 매개변수로 넘어간 배열 객체의 크기보다 클 경우 배열의 모든 값이 null이 된다. 따라서 toArray() 메소드에 크기가 0인 배열을 넘겨주는 것이 좋다.
 
