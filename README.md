@@ -21,10 +21,9 @@
   1. [List](https://github.com/dilmah0203/TIL/blob/main/Java/List.md)
   2. [Stack](https://github.com/dilmah0203/TIL/blob/main/Java/Stack.md)
   3. [Set](https://github.com/dilmah0203/TIL/blob/main/Java/Set.md)
-  4. [LinkedList](https://github.com/dilmah0203/TIL/blob/main/Java/LinkedList.md)
-  5. [Map](https://github.com/dilmah0203/TIL/blob/main/Java/Map.md)
-  6. [Map vs List](https://github.com/dilmah0203/TIL/blob/main/Java/Map%20vs%20List.md)
-  7. [HashMap vs ArrayList](https://github.com/dilmah0203/TIL/blob/main/HashMap%20vs%20ArrayList.md)
+  4. [Map](https://github.com/dilmah0203/TIL/blob/main/Java/Map.md)
+  5. [Map vs List](https://github.com/dilmah0203/TIL/blob/main/Java/Map%20vs%20List.md)
+  6. [HashMap vs ArrayList](https://github.com/dilmah0203/TIL/blob/main/HashMap%20vs%20ArrayList.md)
 * [쓰레드](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%93%B0%EB%A0%88%EB%93%9C.md)
 
 
