@@ -13,7 +13,7 @@ HaspMap에 객체가 들어가면 hashCode() 메소드 결과 값에 따른 buck
 Collection에서는 해당 위치에 값이 없을 경우 예외가 발생하지만 Map에서는 존재하지 않는 키로 get()을 할 경우 null을 리턴한다. 이미 존재하는 키로 값을 넣을 때에는 새로운 값으로 대치된다.
 
 ```java
-HashMap<String, String> map = new HashMap<String, String>();
+Map<String, String> map = new HashMap<String, String>();
 map.put("A", "a");
 map.put("C", "c");
 System.out.println(map.get("A")); //a
@@ -26,7 +26,7 @@ System.out.println(map.get("B")); //null
 keySet() 메소드를 사용하여 키를 확인할 수 있다. 리턴 타입은 Set이다. 
 
 ```java
-HashMap<String, String> map = new HashMap<String, String>();
+Map<String, String> map = new HashMap<String, String>();
 map.put("A", "a");
 map.put("B", "b");
 map.put("C", "c");
@@ -43,7 +43,7 @@ for (String data : keySet) {
 Set과 Map은 데이터 순서가 중요하지 않은 자료 구조이다. 객체에 담겨 있는 값만 필요할 경우 values() 메소드를 사용할 수 있으며 Collection 타입의 목록으로 리턴한다.
 
 ```java
-HashMap<String, String> map = new HashMap<String, String>();
+Map<String, String> map = new HashMap<String, String>();
 map.put("A", "a");
 map.put("B", "b");
 map.put("C", "c");
