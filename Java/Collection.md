@@ -1,7 +1,8 @@
 # 💡 **Collection**
 
 자바에서는 Collection이라는 자료구조를 제공하며 다음과 같이 분류할 수 있다.
+Collection을 사용함으로써 객체나 데이터들을 효율적으로 관리할 수 있으며 라이브러리 사용으로 인한 시간 감소와 재사용의 이점이 있다.
 
 <br>
 
-![img](https://media.vlpt.us/images/rssungjae/post/c50f0388-f6b6-4eff-aecf-2469b14aec87/image.png)
+![img](https://jobjava00.github.io/assets/image/language/java/basic/collections01.png)
