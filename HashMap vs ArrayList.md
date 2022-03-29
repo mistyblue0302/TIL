@@ -73,22 +73,24 @@ contains : O(n)
 hashCode()와 equals()메소드를 사용하여 key-value 값을 저장할 위치를 결정하고, 마찬가지로 값을 꺼내올때도 사용이 된다.
 
 - put() 메소드 호출 시
+ 
   key의 hashCode() 메소드를 호출하여 Map에 저장되어 있는 값 중에 동일한 key가 있는지 찾는다.
   이 객체는 배열에 저장되어 있고 만약 존재하는 값이면 equals() 메소드를 사용하여 key가 이미 존재하는지 확인한다. 존재할 시 value 값을 덮어 씌워 새로운 키-값으로 저장한다.
   
- -get() 메소드 호출 시
-  key의 hashCode() 메소드를 호출하여 배열에서 값을 찾는다. equals() 메소드로 찾고자 하는 key와 동일한지 확인한다.
+ - get() 메소드 호출 시
+ 
+    key의 hashCode() 메소드를 호출하여 배열에서 값을 찾는다. equals() 메소드로 찾고자 하는 key와 동일한지 확인한다.
 
 
-**HashMap은 어떻게 데이터 접근에 O(1)을 보장할 수 있을까?**
+- **HashMap은 어떻게 데이터 접근에 O(1)을 보장할 수 있을까?**
 
-index를 확실히 알고 있는 배열에 접근하기 때문이다.
-위에서 key를 알맞은 버킷에 저장하기 위해 hashCode를 사용한다고 했는데, 바로 hashCode를 버킷 수로 나눈 나머지를 배열의 index로 사용한다.
+  index를 확실히 알고 있는 배열에 접근하기 때문이다.
+  위에서 key를 알맞은 버킷에 저장하기 위해 hashCode를 사용한다고 했는데, 바로 hashCode를 버킷 수로 나눈 나머  지를 배열의 index로 사용한다.
 
-따라서 HashMap을 생성하게 되면, 나머지는 0~15중 하나가 되며 해당 index에 key-value를 저장할 수 있다.
+  따라서 HashMap을 생성하게 되면, 나머지는 0~15중 하나가 되며 해당 index에 key-value를 저장할 수 있다.
 
-ArrayList와 HashMap은 equals 비교를 통해 원하는 값을 찾아와야 하는 점은 같다. <br>
-ArrayList는 데이터를 찾기 위해 처음부터 끝까지 전체 루프를 돌아야 하지만, HashMap은 key의 해시값을 통해 버킷의 번호를 찾고, 해당 버킷 안에서 몇번의 equals비교로 데이터를 찾을 수 있다.
+  ArrayList와 HashMap은 equals 비교를 통해 원하는 값을 찾아와야 하는 점은 같다. <br>
+  ArrayList는 데이터를 찾기 위해 처음부터 끝까지 전체 루프를 돌아야 하지만, HashMap은 key의 해시값을 통해 버  킷의 번호를 찾고, 해당 버킷 안에서 몇번의 equals비교로 데이터를 찾을 수 있다.
 
 <br>
 
