@@ -6,50 +6,21 @@
   - 해싱(Hasing)을 사용하기 때문에 많은 양의 데이터를 검색하는 데 있어서 뛰어난 성능을 보인다.
   - 매핑으로 인해 삽입, 삭제, 검색이 평균적으로 O(1)인 자료구조이다. 최악의 경우는 O(n) 이 될 수 있다.
 
-<br>
-
-```java
-HashMap<Integer,String> map = new HashMap<Integer,String>();//초기값 지정
-map.put(1,"a");
-map.put(2,"b");
-map.put(3,"c");
-map.get(1); //데이터 추출
-String val = map.get(2).toString(); //key로 값 가져오기
-map.remove(1); //key값 1 제거
-map.clear(); //모든 값 제거
-System.out.println(map.containsKey(1)); //해당 키:1 가 있는지 확인
-System.out.println(map.containsValue("a")); // 해당 value :a 가 있는지 확인
-```
-
-put : O(1) <br>
-get : O(1)
+  put : O(1) <br>
+  get : O(1)
 
 <br>
 
 - **ArrayList**
 
   - List 인터페이스를 상속받은 클래스로 크기가 가변적으로 변하는 선형리스트이다.
-  - 내부구현은 배열로 되어있으며 순차적으로 데이터를 저장하고 인덱스로 내부의 객체를 관리한다.
   - 데이터 추가와 삭제에 유용하지 못하지만, 순차적인 추가와 삭제는 제일 빠르다.
     하지만 대량의 자료를 추가/삭제 하는 경우에 상당한 성능저하를 가져온다.
 
-<br>
-
-```java
-ArrayList<String> list = new ArrayList<String>();
-list.add("apple"); //값 추가
-list.add(null); //null값도 add가능
-list.add(2,"orange"); //index 2에 orange삽입
-list.remove(1);  //index 1 제거
-list.clear();  //모든 값 제거
-list.set(0, "오렌지"); //데이터 수정
-int index = list.indexOf("apple"); //인덱스 알아내기
-```
-
-add : O(1) <br>
-remove : O(n) <br>
-get : O(1) <br>
-contains : O(n)
+  add : O(1) <br>
+  remove : O(n) <br>
+  get : O(1) <br>
+  contains : O(n)
 
 <br>
 
