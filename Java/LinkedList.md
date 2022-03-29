@@ -1,6 +1,0 @@
-# 💡 **LinkedList**
-
-**ArrayList vs LinkedList**
-
-ArrayList는 내부적으로 데이터를 배열에서 관리하며 index가 있고, LinkedList는 각 원소마다 앞, 뒤의 원소 위치 값을 가지고 있다.
-이러한 특징 때문에 데이터 조회나 삽입 삭제 시에 성능의 차이를 발생시킨다.
