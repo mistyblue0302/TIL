@@ -5,4 +5,4 @@ Collection을 사용함으로써 객체나 데이터들을 효율적으로 관�
 
 <br>
 
-![img](https://jobjava00.github.io/assets/image/language/java/basic/collections01.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Collection.png)
