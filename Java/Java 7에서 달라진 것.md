@@ -88,4 +88,4 @@
 
     - AsynchronousFileChannel 및 AsynchronousChannelGroup
 
-      Asynchronous는 비동기 처리를 의미한다. AsynchronousChannelGroup은 비동기적인 처리를 하는 쓰레드 풀을 제공하여 안정적인 비동기 처리가 가능하다.
+      Asynchronous는 비동기 처리를 의미한다. 비동기란 다른 작업이 끝나지 않아도 실행할 수 있는 것을 의미하는데, AsynchronousChannelGroup은 비동기적인 처리를 하는 쓰레드 풀을 제공하여 안정적인 비동기 처리가 가능하다.
