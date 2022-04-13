@@ -57,6 +57,7 @@
     Java 8에서는 java.time 패키지를 만들었다.
 
     이전 : java.util.Date, Calendar
+    
     Java 8 : java.time.LocalDate
 
     Date와 Calendar 클래스는 변할 수 있는 객체로 쓰레드에 안전하지 않았다. LocalDate 클래스는 불변 객체로 쓰레드레 안전하다. 
