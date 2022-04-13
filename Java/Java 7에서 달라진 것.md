@@ -30,7 +30,7 @@
 
   - 각 예외들을 | 로 연결하여 간단히 처리할 수 있다.
 
-  - try-with-resource : try의 소괄호에 close()를 이용해 닫아야 할 필요가 있는 객체를 적어준다. 여러개일 때 ; 으로 구분한다. AutoCloseable을 구현한 객체는 finally 문장에서 별도로 처리할 필요가 없다.
+  - try-with-resource : try의 소괄호에 close()를 이용해 닫아야 할 필요가 있는 객체를 적어준다. Java 7에는 AutoCloseable이라는 인터페이스가 추가되어 객체는 finally 문장에서 별도로 close()를 처리할 필요가 없다.
 
 <br>
 
