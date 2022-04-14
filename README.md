@@ -3,7 +3,6 @@
 ## JSP
 * [웹 프로그래밍 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%9B%B9%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88.md)
 
-
 ## Java
 * [변수의 생명주기](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%B3%80%EC%88%98%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0.md)
 * [Pass by value와 Pass by reference](https://github.com/dilmah0203/TIL/blob/main/Java/Pass%20by%20value%EC%99%80%20Pass%20by%20reference.md)
