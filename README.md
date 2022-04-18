@@ -3,8 +3,7 @@
 ## JSP
 * [웹 프로그래밍 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%9B%B9%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88.md)
 * [JSP 페이지 구성 요소](https://github.com/dilmah0203/TIL/blob/main/JSP/JSP%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%EA%B5%AC%EC%84%B1%20%EC%9A%94%EC%86%8C.md)
-* [request 기본 객체](https://github.com/dilmah0203/TIL/blob/main/JSP/request%20%EA%B8%B0%EB%B3%B8%20%EA%B0%9D%EC%B2%B4.md)
-* [response 기본 객체](https://github.com/dilmah0203/TIL/blob/main/JSP/response%20%EA%B8%B0%EB%B3%B8%20%EA%B0%9D%EC%B2%B4.md)
+
 
 ## Java
 * [변수의 생명주기](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%B3%80%EC%88%98%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0.md)
