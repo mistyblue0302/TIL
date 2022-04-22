@@ -3,7 +3,6 @@
 ## Spring
 * [객체 지향 설계의 5가지 원칙(SOLID)](https://github.com/dilmah0203/TIL/blob/main/Spring/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%20%EC%84%A4%EA%B3%84%EC%9D%98%205%EA%B0%80%EC%A7%80%20%EC%9B%90%EC%B9%99(SOLID).md)
 
-
 ## JSP
 * [웹 프로그래밍 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%9B%B9%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88.md)
 * [JSP 페이지 구성 요소](https://github.com/dilmah0203/TIL/blob/main/JSP/JSP%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%EA%B5%AC%EC%84%B1%20%EC%9A%94%EC%86%8C.md)
