@@ -30,7 +30,7 @@ Object클래스의 equals()메소드는 다음과 같이 구현되어있다.
 
 ```java
 public boolean equals(Object obj) {
-        return (this == obj);
+    return (this == obj);
 }
 ```
 
