@@ -2,6 +2,7 @@
 
 
 ## Spring
+* [자바의 메모리 구조](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%9E%90%EB%B0%94%EC%9D%98%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B5%AC%EC%A1%B0.md)
 * [객체 지향 설계의 5가지 원칙(SOLID)](https://github.com/dilmah0203/TIL/blob/main/Spring/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%20%EC%84%A4%EA%B3%84%EC%9D%98%205%EA%B0%80%EC%A7%80%20%EC%9B%90%EC%B9%99(SOLID).md)
 
 
