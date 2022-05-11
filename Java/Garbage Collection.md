@@ -39,14 +39,14 @@ Young 영역은 Eden, Survivor이라는 2개의 영역으로 나뉜다.
 
 <br>
 
-**GC의 동작 방식**
+## **GC의 동작 방식**
 
-1. **Stop The World**
+### 1. **Stop The World**
 
   GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작업이다. GC를 실행하는 쓰레드를 제외한 모든 쓰레드들의 작업이 중단되며, GC가 완료되면 작업이 재개된다.
 
 
-2. **Mark and Sweep**
+### 2. **Mark and Sweep**
 
 - Mark : 사용중인 메모리와 사용하지 않는 메모리를 식별한다
 
@@ -58,16 +58,16 @@ Young 영역은 Eden, Survivor이라는 2개의 영역으로 나뉜다.
 
 **GC의 종류**
 
-1. **Parallel GC**
+**Parallel GC**
 
   멀티 스레드를 사용하여 GC를 수행한다. 그렇기 때문에 빠르게 객체를 처리할 수 있다.
 
-2. **G1 GC**
+**G1 GC**
 
   G1 GC는 Heap을 Young, Old 영역으로 명확하게 구분짓던 GC와는 달리 물리적으로 구분을 하지 않는다. 고정된 크기가 없기 때문에 메모리 사용에 있어 유연성을 제공한다. 다음 그림처럼 각 영역에 객체를 할당하고 GC를 실행한다. 해당 영역이 꽉 차면 다른 영역에서 객체를 할당하고 GC를 실행하게 된다.
 
 
-![img2](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/images/slide9.png)
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC.png)
 
 
 <br>
