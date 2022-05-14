@@ -69,6 +69,7 @@
 * [JVM 메모리 구조](https://github.com/dilmah0203/TIL/blob/main/JVM%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B5%AC%EC%A1%B0.md)
 * [System.out.println을 사용하면 왜 성능이 좋지 않을까](https://github.com/dilmah0203/TIL/blob/main/System.out.println.md)
 * [프레임워크 vs 라이브러리](https://github.com/dilmah0203/TIL/blob/main/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20vs%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC.md)
+* [디자인 패턴](https://github.com/dilmah0203/TIL/blob/main/%EB%94%94%EC%9E%90%EC%9D%B8%20%ED%8C%A8%ED%84%B4.md)
 
 
 
