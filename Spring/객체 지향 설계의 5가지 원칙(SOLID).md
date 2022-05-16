@@ -36,7 +36,6 @@ SOLID는 아래 5가지 원칙의 앞 머리 알파벳을 따서 부르는 이�
 
 ```java
 public class Book {
-
   private String name;
   private String author;
   private String text;
@@ -58,9 +57,7 @@ isWordInText() 메소드와 printTextToConsole() 메소드는 문자열 포함 �
 
 ```java
 public class BookPrinter {
-
   public void printTextToConsole() {
-
   }
 }
 ```
