@@ -319,7 +319,6 @@ public class CopyMachine implements Copy {
 정의는 위와 같다. 위존성 역전 원칙에 대입하면, 객체는 객체보다 인터페이스에 의존해야 한다는 뜻이다.
 
 
-https://steady-coding.tistory.com/388(https://steady-coding.tistory.com/388)
 
 
 <br>
