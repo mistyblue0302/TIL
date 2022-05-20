@@ -361,3 +361,4 @@ public class CopyMachine implements Copy {
 참고
 
 https://www.baeldung.com/solid-principles(https://www.baeldung.com/solid-principles)
+
