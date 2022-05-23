@@ -17,7 +17,7 @@
 * [JSP 페이지 구성 요소](https://github.com/dilmah0203/TIL/blob/main/JSP/JSP%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%EA%B5%AC%EC%84%B1%20%EC%9A%94%EC%86%8C.md)
 * [쿠키와 세션](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%BF%A0%ED%82%A4%EC%99%80%20%EC%84%B8%EC%85%98.md)
 * [데이터베이스 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%84%9C%EB%B8%94%EB%A6%BF%20%EA%B8%B0%EC%B4%88.md)
-* [서블릿 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%84%9C%EB%B8%94%EB%A6%BF%EA%B8%B0%EC%B4%88.md)
+* [서블릿 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%84%9C%EB%B8%94%EB%A6%BF%20%EA%B8%B0%EC%B4%88.md)
 * [MVC 패턴 구현](https://github.com/dilmah0203/TIL/blob/main/JSP/MVC%20%ED%8C%A8%ED%84%B4%20%EA%B5%AC%ED%98%84.md)
 * [필터](https://github.com/dilmah0203/TIL/blob/main/JSP/%ED%95%84%ED%84%B0.md)
 * [필터 vs 인터셉터](https://github.com/dilmah0203/TIL/blob/main/JSP/%ED%95%84%ED%84%B0%20vs%20%EC%9D%B8%ED%84%B0%EC%85%89%ED%84%B0.md)
