@@ -1,7 +1,8 @@
 # Today I Learned
 
+## 토비의 스프링
 
-## Spring
+## 스프링 입문을 위한 자바 객체 지향의 원리와 이해
 * [자바의 메모리 구조](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%9E%90%EB%B0%94%EC%9D%98%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B5%AC%EC%A1%B0.md)
 * [자바와 객체 지향](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%9E%90%EB%B0%94%EC%99%80%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
 * [객체 지향을 확장하기 위한 키워드](https://github.com/dilmah0203/TIL/blob/main/Spring/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%EC%9D%84%20%ED%99%95%EC%9E%A5%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%9C%20%ED%82%A4%EC%9B%8C%EB%93%9C.md)
