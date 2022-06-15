@@ -2,7 +2,7 @@
 
 ## 토비의 스프링
 * [오브젝트와 의존관계](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80%20%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84.md)
-* 
+* [테스트](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.md)
 
 
 ## 스프링 입문을 위한 자바 객체 지향의 원리와 이해
