@@ -1,4 +1,4 @@
-# 💡 **POST vs PUT**
+## **POST vs PUT**
 
 **멱등성(Idempotence)이란?**
 
