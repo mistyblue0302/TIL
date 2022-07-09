@@ -1,18 +1,14 @@
-# 💡 **RESTful API**
+## **RESTful API**
 
-**API** <br>
+### **API** 
 해당 프로그램을 사용할 수 있도록 기능을 제공하는 인터페이스
 
 API를 사용함으로써 유연성을 높이고 애플리케이션 개발을 간소화하여 시간과 비용을 절약할 수 있다
 
-<br>
-
-**URI** <br>
+### **URI** 
 특정 자원의 위치를 나타내는 유일한 주소
 
-<br>
-
-**REST란?**<br>
+### **REST란?**
 
 > REST(Representational State Transfer)
 >
@@ -20,9 +16,9 @@ API를 사용함으로써 유연성을 높이고 애플리케이션 개발을 �
 >
 > 웹에서 사용하는 여러 리소스를 HTTP URI로 표현하고 리소스에 대한 행위를 HTTP Method를 통해 해당 리소스에 대한 CRUD Operation을 적용하는 것을 의미
 
-<br>
 
-**상태를 전달한다는 것은 무엇일끼?** <br>
+**상태를 전달한다는 것은 무엇일끼?** 
+
 리소스의 정보를 전달하는 것으로, JSON, XML, 일반 텍스트를 통해 데이터를 주고받는 것
 
 **REST 특징**
@@ -31,15 +27,11 @@ API를 사용함으로써 유연성을 높이고 애플리케이션 개발을 �
 2. 무상태
 3. 캐시처리가능
 
-<br>
-
-**RESTful API란?** <br>
+### **RESTful API란?** 
 
 > REST의 특징을 지키면서 API를 제공하는 것을 의미
 >
 > 서버에 REST API로 요청을 보낼 때는 HTTP라는 규약에 따라 신호를 전송한다.(GET,POST,PUT,DELETE, PATCH)
-
-<br>
 
 **RESTful의 목적**
 
@@ -47,14 +39,10 @@ API를 사용함으로써 유연성을 높이고 애플리케이션 개발을 �
 
 - RESTful한 API를 구현하는 근본적인 목적이 성능 향상에 있는 것이 아니라 일관적인 컨벤션을 통한 API의 이해도 및 호환성을 높이는 것이 주 동기
 
-<br>
-
 **RESTful의 구성요소**
 1. HTTP method
 2. URI 데이터 접근
 3. Representation 자원의 표현
-
-<br>
 
 **RESTful API의 자원 표현을 위한 URI 설계 규칙**
 1. 소문자만 사용
