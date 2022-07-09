@@ -75,6 +75,7 @@
 * [RESTful API](https://github.com/dilmah0203/TIL/blob/main/HTTP/RESTful%20API.md)
 * [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20Method.md)
 * [POST vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT.md)
+* [PATCH vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/PATCH%20vs%20PUT.md)
 
 
 ##
