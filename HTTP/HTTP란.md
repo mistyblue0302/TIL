@@ -10,11 +10,11 @@ HTTP는 HTML 문서와 같은 리소스들을 가져올 수 있도록 해주는 
 
 HTTP request 메세지는 크게 3부분으로 구성된다:
 
-- start line
-- headers
-- body
+- Start line
+- Headers
+- Body
 
-1. **start line**
+1. **Start line**
 
 >  GET /search HTTP/1.1
 
@@ -22,7 +22,7 @@ HTTP request 메세지는 크게 3부분으로 구성된다:
 - Request target : request가 전송되는 url
 - HTTP Version : 사용되는 HTTP 버전
 
-2. **headers**
+2. **Headers**
 
    해당 request에 대한 추가 정보(addtional information)를 담고 있는 부분
   
@@ -32,17 +32,17 @@ HTTP request 메세지는 크게 3부분으로 구성된다:
 - Content-Type : 요청이 보내는 메세지 body의 타입. 예를 들어, JSON을 보내면 application/json
 - Content-Length: 메세지 body의 길이
 
-3. **body**
+3. **Body**
 
    reqeust의 실제 메세지/내용으로, body가 없는 request도 있다.
 
 ### **HTTP Response 구조**
 
-- status line
-- headers
-- body
+- Status line
+- Headers
+- Body
 
-1. **status line**
+1. **Status line**
 
 > HTTP/1.1 404 Not Found
 
@@ -50,11 +50,11 @@ HTTP request 메세지는 크게 3부분으로 구성된다:
 - status code: 응답 상태를 나타내는 코드로 숫자로 되어있다.
 - status text: 응답 상태를 간략하게 설명해주는 부분
 
-2. **headers**
+2. **Headers**
 
    response의 headers와 동일한데 response에서만 사용되는 header 값들이 있다.
    예를 들어, User-Agent 대신에 Server 헤더가 사용된다.
    
-3. **body**
+3. **Body**
 
     reqeust의 body와 일반적으로 동일
