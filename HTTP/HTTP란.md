@@ -19,7 +19,7 @@ HTTP request 메세지는 크게 3부분으로 구성된다:
 >  GET /search HTTP/1.1
 
 - HTTP Method : request가 의도한 action을 정의하는 부분으로 GET, POST, PUT, DELETE 등이 있다.
-- Request target : request가 전송되는 URI
+- Request target : request가 전송되는 url
 - HTTP Version : 사용되는 HTTP 버전
 
 2. **headers**
