@@ -2,8 +2,6 @@
 
 > java.math 패키지
 
-<br>
-
 **BigInteger**
 
 - long형을 넘는 범위의 정수형 값을 다룰 때 사용
