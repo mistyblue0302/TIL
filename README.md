@@ -5,6 +5,8 @@
 * [테스트](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.md)
 * [템플릿](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF.md)
 * [예외](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%8B%E1%85%A8%E1%84%8B%E1%85%AC.md)
+* [서비스 추상화]
+  * [사용자 레벨 관리 기능 추가]
 
 
 ## 스프링 입문을 위한 자바 객체 지향의 원리와 이해
