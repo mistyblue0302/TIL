@@ -61,7 +61,7 @@ hashCode()와 equals()메소드를 사용하여 key-value 값을 저장할 위�
   따라서 HashMap을 생성하게 되면, 나머지는 0~15중 하나가 되며 해당 index에 key-value를 저장할 수 있다.
 
   ArrayList와 HashMap은 equals 비교를 통해 원하는 값을 찾아와야 하는 점은 같다. <br>
-  ArrayList는 데이터를 찾기 위해 처음부터 끝까지 전체 루프를 돌아야 하지만, HashMap은 key의 해시값을 통해 버  킷의 번호를 찾고, 해당 버킷 안에서 몇번의 equals비교로 데이터를 찾을 수 있다.
+  ArrayList는 데이터를 찾기 위해 처음부터 끝까지 전체 루프를 돌아야 하지만, HashMap은 key의 해시값을 통해 버킷의 번호를 찾고, 해당 버킷 안에서 몇번의 equals비교로 데이터를 찾을 수 있다.
 
 <br>
 
