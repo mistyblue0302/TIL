@@ -8,7 +8,7 @@ HTTP는 HTML 문서와 같은 리소스들을 가져올 수 있도록 해주는 
 
 ### **HTTP Request 구조**
 
-HTTP request 메세지는 크게 3부분으로 구성된다:
+HTTP request 메세지는 크게 3부분으로 구성된다.
 
 - Start line
 - Headers
