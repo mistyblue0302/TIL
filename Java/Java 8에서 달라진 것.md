@@ -4,7 +4,7 @@
 
 #### 1. Optional 클래스
 
-Optional 클래스는 null 처리를 보다 간편하게 하기 위해서 만들어졌다. NullPointerException 발생을 명확하게 처리하려고 할 시에 사용한다.
+Optional 클래스는 null 처리를 보다 간편하게 하기 위해서 만들어졌다. NullPointerException 발생을 명확하게 처리하려고 할 때에 사용한다.
     
 ```java
 public final class Optional<T> extends Object
