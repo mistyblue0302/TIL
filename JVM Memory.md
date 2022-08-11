@@ -46,6 +46,7 @@
 
 - **Native Method Stack** : 자바 외 언어로 작성된 코드를 위한 메모리 영역
 
+<br>
 
 ![img3](https://github.com/dilmah0203/TIL/blob/main/Image/Run-time%20Data%20Area1.png)
 
