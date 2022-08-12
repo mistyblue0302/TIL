@@ -25,7 +25,7 @@
   
 ### 프로세스 구조
 
-[!img](https://github.com/dilmah0203/TIL/blob/main/Image/Process.png)  
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Process.png)  
 
 - Code : 컴파일된 소스코드가 저장되는 영역
 - Data : 전역 변수, static 변수가 저장되는 영역
