@@ -24,7 +24,7 @@
   2. [프록시 패턴](https://github.com/dilmah0203/TIL/blob/main/SpringBasic/%ED%94%84%EB%A1%9D%EC%8B%9C%20%ED%8C%A8%ED%84%B4.md)
   3. [데코레이터 패턴](https://github.com/dilmah0203/TIL/blob/main/SpringBasic/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0%20%ED%8C%A8%ED%84%B4.md)
   4. [싱글톤 패턴](https://github.com/dilmah0203/TIL/blob/main/SpringBasic/%EC%8B%B1%EA%B8%80%ED%86%A4%20%ED%8C%A8%ED%84%B4.md)
-  5. [템플릿 메소드 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4.md)
+  5. [템플릿 메소드 패턴](https://github.com/dilmah0203/TIL/blob/main/SpringBasic/%ED%85%9C%ED%94%8C%EB%A6%BF%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4.md)
   6. [팩토리 메소드 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8C%A9%ED%86%A0%EB%A6%AC%20%EB%A9%94%EC%86%8C%EB%93%9C%20%ED%8C%A8%ED%84%B4.md)
   7. [전략 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%A0%84%EB%9E%B5%20%ED%8C%A8%ED%84%B4.md)
   8. [템플릿 콜백 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF%20%EC%BD%9C%EB%B0%B1%20%ED%8C%A8%ED%84%B4.md)
