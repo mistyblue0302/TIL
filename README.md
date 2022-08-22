@@ -4,6 +4,7 @@
 * [오브젝트와 의존관계](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80%20%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84.md)
 * [테스트](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.md)
 * [템플릿](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF.md)
+  1. [템플릿과 콜백]
 * [예외](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%8B%E1%85%A8%E1%84%8B%E1%85%AC.md)
 * 서비스 추상화
   1. [사용자 레벨 관리 기능 추가](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EB%A0%88%EB%B2%A8%20%EA%B4%80%EB%A6%AC%20%EA%B8%B0%EB%8A%A5%20%EC%B6%94%EA%B0%80.md)
