@@ -59,6 +59,8 @@ HATEOAS란 애플리케이션의 상태가 하이퍼링크를 통해 전이되�
 
 독립적 진화가 가능하다. 즉 서버의 기능이 변경되어도 클라이언트를 업데이트할 필요가 없다.
 
+<br>
+
 참고
 
 Architectural Styles and the Design of Network-based Software Architectures(https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm))
