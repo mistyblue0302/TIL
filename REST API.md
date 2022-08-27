@@ -63,6 +63,6 @@ HATEOAS란 애플리케이션의 상태가 하이퍼링크를 통해 전이되�
 
 참고
 
-[Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm))
+[Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 
 [그런 REST API로 괜찮은가](https://www.youtube.com/watch?v=RP_f5dMoHFc)
