@@ -14,7 +14,7 @@
 
 1. **연결형 서비스**
 
-- 연결형 서비스로 [**가상회선 방식**](### 가상회선 패킷 교환 방식)을 제공한다.
+- 연결형 서비스로 **가상회선 방식**을 제공한다.
 - 3-way handshaking 과정을 통해 연결을 설정한다.
 - 4-way handshaking 을 통해 연결을 해제한다.
 
@@ -145,8 +145,12 @@ TCP 헤더와 달리 UDP 헤더에는 포함된 정보가 적다. 이는 UDP는 
 
 송신 측에서 전송한 순서와 수신 측에 도착한 순서가 다를 수 있다.
 
+<br>
+
 참고
 
 [What is Transmission Control Protocol (TCP)?](https://www.geeksforgeeks.org/what-is-transmission-control-protocol-tcp/)
+
 [TCP와 UDP의 특징과 차이](https://mangkyu.tistory.com/15)
+
 [TCP의 3 way handshake와 4 way handshake](https://github.com/WeareSoft/tech-interview/blob/master/contents/network.md#tcp%EC%9D%98-3-way-handshake%EC%99%80-4-way-handshake)
