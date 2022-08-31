@@ -48,7 +48,7 @@ SimplePasswordEncoder는 변하기 쉬운 구체 클래스인데, UserService가
 
 > 의존성 주입은 어떻게 할까?
 
-1. 생성자 주입
+1. **생성자 주입**
 
 ```java
 @Service
@@ -66,7 +66,7 @@ public class UserService {
 
 생성자 주입은 객체의 최초 생성 시점에 1회 호출 되는 것이 보장되기 때문에 주입받은 객체가 변하지 않거나, 반드시 객체의 주입이 필요한 경우에 강제하기 위해 사용할 수 있다. 
 
-2. Setter 주입
+2. **Setter 주입**
 
 ```java
 @Service
@@ -88,7 +88,7 @@ public class UserService {
 ```
 필드 값을 변경하는 Setter를 통해서 의존 관계를 주입하는 방법이다. Setter 주입은 생성자 주입과 다르게 주입받는 객체가 변경될 가능성이 있는 경우나 의존성을 선택적으로 주입할 때 사용한다.
 
-3. 필드 주입
+3. **필드 주입**
 
 ```java
 @Service
@@ -103,8 +103,4 @@ public class UserService {
 ```
 
 필드 주입은 외부에서 객체 수정이 불가능 하므로 테스트 코드 작 성시 어려움이 있다.
-
-
-
-- 
 
