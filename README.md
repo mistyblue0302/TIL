@@ -85,7 +85,7 @@
 
 
 ## HTTP
-* [RESTful API](https://github.com/dilmah0203/TIL/blob/main/HTTP/RESTful%20API.md)
+* [REST API](https://github.com/dilmah0203/TIL/blob/main/HTTP/REST%20API.md)
 * [HTTP란](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%EB%9E%80.md)
 * [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20method.md)
 * [POST vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT.md)
