@@ -87,7 +87,7 @@
 ## HTTP
 * [REST API](https://github.com/dilmah0203/TIL/blob/main/HTTP/REST%20API.md)
 * [HTTP란](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%EB%9E%80.md)
-* [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20method.md)
+* [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20Method.md)
 * [POST vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT.md)
 * [PATCH vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/PATCH%20vs%20PUT.md)
 * [TCP와 UDP](https://github.com/dilmah0203/TIL/blob/main/HTTP/TCP%EC%99%80%20UDP.md)
