@@ -51,6 +51,7 @@ public abstract class Shape {
     abstract void draw();
     abstract double area();
 }
+
 public class Rectangle extends Shape {
     @Override
     public void draw() {
@@ -61,6 +62,7 @@ public class Rectangle extends Shape {
         ...
     }
 }
+
 public class Triangle extends Shape {
     @Override
     public void draw() {
@@ -122,21 +124,25 @@ public class Example {
         m.method();
     }
 }
+
 public interface Movable {
     public void method();
 }
+
 public class Car implements Movable {
     @Override
     public void method() {
         System.out.println("method in Car class");
     }
 }
+
 public class Bus implements Movable {
     @Override
     public void method() {
         System.out.println("method in Bus class");
     }
 }
+
 public class Main {
     public static void main(String[] args) {
         Example e = new Example();
@@ -167,6 +173,7 @@ public interface Calculator {
         return x * y;
     }
 }
+
 public class Example implements Calculator {
     @Override
     public int plus(int x, int y) {
@@ -177,6 +184,7 @@ public class Example implements Calculator {
         return x - y;
     }
 }
+
 public class Main {
     public static void main(String[] args) {
         Calculator calc = new Example();
@@ -202,6 +210,7 @@ public interface Calculator {
         return x * y;
     }
 }
+
 public class Ex implements Calculator {
     @Override
     public int plus(int x, int y) {
@@ -212,6 +221,7 @@ public class Ex implements Calculator {
         return x - y;
     }
 }
+
 public class Main {
     public static void main(String[] args) {
         int value = Calculator.multiply(5, 3);
