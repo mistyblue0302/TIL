@@ -104,3 +104,9 @@ public class UserService {
 
 필드 주입은 외부에서 객체 수정이 불가능 하므로 테스트 코드 작 성시 어려움이 있다.
 
+<br>
+
+참고
+
+[우아한Tech DI와 IoC](https://www.youtube.com/watch?v=8lp_nHicYd4)
+
