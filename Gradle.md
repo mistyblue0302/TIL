@@ -48,3 +48,9 @@ Groovy : JVM 상에서 실행되는 스크립트 언어로 호환성이 좋다.
 **runtimeOnly** : 런타임에만 사용되는 의존성 정의
 
 **test + Implementation,CompileOnly,RuntimeOnly** : 해당 의존성을 테스트 시에만 사용하도록 정의
+
+<br>
+
+참고
+
+[우아한Tech Gradle](https://www.youtube.com/watch?v=ntOH2bWLWQs)
