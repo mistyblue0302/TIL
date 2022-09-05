@@ -53,3 +53,9 @@
 - Blue를 구버전, Green을 신버전으로 지칭
 - 구버전과 동일하게 신버전의 인스턴스를 구성
 - 신버전 배포 시 로드 밸런서를 통해 신버전으로만 트래픽을 전환
+
+<br>
+
+참고
+
+[우아한Tech CI/CD와 무중단 배포](https://www.youtube.com/watch?v=sIPU_VkrguI)
