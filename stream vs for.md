@@ -7,7 +7,7 @@ stream과 for는 다량의 데이터 처리 작업에 사용된다. 하지만 �
 표현 방식의 차이가 있다. 
 
 - for문은 **코드 블록**으로 표현
-- stream은 **함수 객체(람다식이나 메소드 참조)**로 표현
+- stream은 **함수 객체**(람다식이나 메소드 참조)로 표현
 
 ```java
 public int subtractByFor(int baseNumber, List<Integer> numbers) {
