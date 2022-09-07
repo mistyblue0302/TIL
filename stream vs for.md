@@ -131,4 +131,4 @@ for문의 경우 Java 1부터 등장했기 때문에 Java 8에 나온 stream에 
 
 참고
 
-[stream vs for](https://www.youtube.com/watch?v=by8hb75i9X4)
+[우아한Tech stream vs for](https://www.youtube.com/watch?v=by8hb75i9X4)
