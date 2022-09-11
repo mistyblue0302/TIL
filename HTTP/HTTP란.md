@@ -54,4 +54,4 @@ HTTP는 과거 정보를 저장하지 않고 새로운 요청을 보낼 때마�
 
 참고
 
-[HTTP란?](https://www.youtube.com/watch?v=IjxkKQvn8Bc&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=31)
+[우아한Tech HTTP란?](https://www.youtube.com/watch?v=IjxkKQvn8Bc&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=31)
