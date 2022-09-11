@@ -1,22 +1,24 @@
 ## REST API
 
-> API(Application Programming Interface)란? 
-> 
-> 구현과는 독립적으로 서로 다른 프로그램간에 정보를 주고 받을 때 사용하는 규약을 정의한 것 
- 
+> API(Application Programming Interface)란?
+>
+> 구현과는 독립적으로 서로 다른 프로그램간에 정보를 주고 받을 때 사용하는 규약을 정의한 것
+
 **API 예시**
 
 - System call : 응용 프로그램과 하드웨어 사이에서 OS에 동작을 요청하는 함수들에 대한 인터페이스
 - Socket : 서로 다른 컴퓨터의 프로그램과 프로그램이 네트워크 상에서 통신할 수 있도록 선로를 제공
 - Rest API : 서로 다른 애플리케이션 간에 정보를 JSON 형식으로 HTTP 메소드를 통해 주고받음
 
-## REST
+> REST란? 
+> 
+> Representational State Transfer의 약자로 표현에 의한 상태 전달이라는 뜻을 가지고 있다. 분산 하이퍼미디어 시스템(웹)을 위한 소프트웨어 아키텍처를 말하며, 네트워크 리소스를 정의하고 처리하는 방법을 설명하는 일련의 원칙을 기반으로 하는 아키텍처 스타일이다.
 
-> REST란? Representational State Transfer의 약자로 표현에 의한 상태 전달이라는 뜻을 가지고 있다. 분산 하이퍼미디어 시스템(웹)을 위한 소프트웨어 아키텍처를 말하며, 네트워크 리소스를 정의하고 처리하는 방법을 설명하는 일련의 원칙을 기반으로 하는 아키텍처 스타일이다.
+> REST API란? REST 아키텍처 스타일을 따르는 API
 
-> REST API란? REST 아키텍쳐 스타일(제약조건의 집합)을 따르는 API
+아키텍처 스타일이란 제약조건의 집합이라고 할 수 있다.
 
-### REST를 구성하는 제약조건
+## REST를 구성하는 제약조건
 
 ### 1. 클라이언트-서버
 
@@ -28,7 +30,7 @@ Rest API에서 자원을 가지고 있는 쪽이 서버, 자원을 요청하는 
 
 ### 3. 캐시
 
-HTTP에서 제공하는 Last-Modified Tag 또는 E-Tag를 이용하여 캐싱을 구현할 수 있다.
+HTTP에서 제공하는 Last-Modified Tag 또는 E-Tag를 이용하여 캐싱을 구현할 수 있다.
 
 ### 4. Layered System
 
@@ -49,29 +51,32 @@ Rest API의 서버는 다중 계층으로 구성될 수 있으며 보안, 로드
 - **표현을 통한 자원의 조작**
 
   - 표현 : 특정한 상태의 **자원에 대한 표현**
-  - 예로 `GET /user/1 HTTP /1.1`은 /user/1에 대해 GET 요청을 서버에 날리면, 서버는 URI에 대응하는 사용자 1이라는 자원의 현재 상태를 HTTP 엔티티로 표현하여 응답한다.
+  - 예로 `GET /user/1 HTTP /1.1`은 /user/1에 대해 GET 요청을 서버에 날리면, 서버는 URI에 대응하는 사용자 1이라는 자원의 현재 상태를 HTTP로 표현하여 응답한다.
   - `POST /image`는 자원의 기대되는 초기 상태를 image로 표현하고, 이 표현을 담은 POST 요청을 서버로 보내면 서버에서는 이 표현을 바탕으로 새로운 이미지 자원을 생성하고 /image/1이라는 URI를 해당 자원에 대한 식별자로 할당한다.
 
 - **자기 서술적인 메세지**
 
-클라이언트와 서버 사이에는 수많은 컴포넌트들, 즉 중개자가 존재한다. 이 때 클라이언트와 서버에서 보내는 요청 및 응답 메세지들은 중개자들에게 **자신을 어떻게 처리해야 하는지**에 대해 제대로 설명해야 한다. 즉, 온전히 메세지의 내용만을 통해 해석이 다 가능해야 한다.
+클라이언트와 서버 사이에는 수많은 컴포넌트들, 즉 중개자가 존재한다. 이 때 클라이언트와 서버에서 보내는 요청 및 응답 메세지들은 중개자들에게 자신을 어떻게 처리해야 하는지에 대해 제대로 설명해야 한다. 즉, **온전히 메세지의 내용만을 통해 해석이 다 가능해야 한다.**
 
 `GET /user/1 HTTP/1.1`은 자기 서술적이지 못하다.
-요청 메세지의 경우, `GET /user/1 HTTP/1.1 Host: example.com` 과 같이 host 헤더 필드에 도메인명(목적지)을 기재하여 어디로 보낸 요청이다에 대한 정보를 포함시켜주어야 한다. 
+요청 메세지의 경우, `GET /user/1 HTTP/1.1 Host: example.com` 과 같이 host 헤더 필드에 도메인명(목적지)을 기재하여 어디로 보낸 요청이다에 대한 정보를 포함시켜주어야 한다.
 
 - **HATEOAS**
 
 HATEOAS란 애플리케이션의 상태가 하이퍼링크를 통해 전이되어야 한다는 것이다. JSON 형식인 경우, Link라는 헤더를 통해 리소스를 가리키는 하이퍼링크를 타고 다른 상태로 전이가 가능하다.
 
-### 왜 필요할까?
+<br>
+
+**왜 필요할까?**
 
 독립적 진화가 가능하다. 즉 서버의 기능이 변경되어도 클라이언트를 업데이트할 필요가 없다.
 
-<br>
-
 참고
 
-[Architectural Styles and the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
+[Architectural Styles and
+the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 
 [그런 REST API로 괜찮은가](https://www.youtube.com/watch?v=RP_f5dMoHFc)
+
+[우아한Tech RESTful](https://www.youtube.com/watch?v=NODVCBmyaXs)
 
