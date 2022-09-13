@@ -1,6 +1,6 @@
 ## JDK Dynamic Proxy와 CGLIB
 
-### Proxy란?
+### Proxy란
 
 클라이언트 -> 프록시 -> 타겟
 
@@ -118,7 +118,7 @@ Clien는 인터페이스를 가르키고, 인터페이스를 구현한 프록시
 
 > 어떻게 해결할까? Dynamic Proxy(동적 프록시)로 해결할 수 있다.
 
-### JDK Dynamic Proxy
+### JDK Dynamic Proxy란
 
 **동작 방식**
 
@@ -133,7 +133,7 @@ Dynamic Proxy는 프록시 팩토리에 의해 런타임 시 다이내믹하게 
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy.png)
 
-Dynamic Proxy로부터 요청을 받으려면 InvocationHandler를 구현해야 한다. sayHello(), sayHi(), sayThankYou() 메소드를 InvocationHandler 인터페이스에서 재정의한 invoke()를 통해 부가기능을 추가하여 타겟에게 다시 반환하는 형태로 해결할 수 있다.
+Dynamic Proxy로부터 요청을 받으려면 InvocationHandler를 구현해야 한다. sayHello(), sayHi(), sayThankYou() 메소드를 InvocationHandler 인터페이스에서 재정의한 invoke()를 통해 부가기능을 처리하여 타겟에게 다시 반환하는 형태로 해결할 수 있다. InvocationHandler 인터페이스의 특징은 타겟을 필드로 반드시 가지고 있어야 한다.
 
 ```java
 import java.lang.reflect.Method; //Reflection API
@@ -164,7 +164,7 @@ InvocationHandler를 구현한 UpperCaseHandler는 메소드의 이름이 say로
 
 Dynamic Proxy를 통해 요청이 전달되면 Reflection API를 이용해 타겟 오브젝트의 메소드를 호출한다. Reflection API는 동적일 때 해결되는 타입을 포함하므로 JVM의 optimization이 작동하지 않아 성능상 느리다.
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic_Proxy.png)
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy2.png)
 
 JDK Dynamic Proxy의 구현부는 위와 같다. 클라이언트가 메소드를 요청하면 DK Dynamic Proxy는 메소드 처리를 InvocationHandler에게 위임한다. InvocationHandler는 부가 기능을 수행하고 다시 타겟에게 위임하는 형태로 진행된다.
 
@@ -185,11 +185,43 @@ Proxy.newProxyInstance를 사용해서 JDK Dynamic Proxy를 사용할 수 있는
 3. 인터페이스가 반드시 있어야 한다.
 4. Invocation Handler를 재정의한 invoke를 구현해줘야 부가기능이 추가된다.
 
-### CGLIB
+### CGLIB란
 
-동적 프록시 중 하나로,
+CGLIB는 Code Generator Libray의 약자로, 클래스의 바이트 코드를 조작하여 프록시 객체를 생성해 주는 라이브러리이며 동적 프록시 중 하나이다. 스프링에서는 클라이언트가 메소드를 요청하면 ProxyFactoryBean에서 인터페이스 유무를 확인하고 인터페이스가 있으면 JDK Dynamic Proxy를 호출하고, 없으면 CGLIB 방식으로 프록시를 생성한다.
 
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/CGLIB.png)
+![img3](https://github.com/dilmah0203/TIL/blob/main/Image/CGLIB1.png)
+
+- 상속을 통한 프록시 구현
+- 바이트 코드를 조작해서 프록시 생성
+- MethodInterceptor를 재정의한 intercept() 메소드를 재정의해야 부가기능이 추가된다.
+
+![img4](https://github.com/dilmah0203/TIL/blob/main/Image/CGLIB2.png)
+
+클라이언트가 메소드를 요청하면 CGLIB에서는 InvocationHandler가 아닌 MethodInterceptor에 메소드 처리를 요청한다. 그럼 MethodInterceptor에서 부가 기능을 수행 후 타겟에 위임하게 된다. Enhancer라는 외부 의존성을 사용하여 CGLIB를 사용할 수 있다.
+
+### CGLIB의 특징
+
+1. 인터페이스에도 강제로 적용할 수 있다. 이때는 클래스에도 프록시를 적용시켜야 한다.
+2. 상속을 이용해 프록시를 만들기 때문에 메소드에 final을 붙이면 안된다.
+3. Enhancer 의존성을 추가해야 한다.
+4. Default 생성자 필요
+5. 타겟의 생성자 두 번 호출
+
+### JDK Dynamic Proxy vs CGLIB
+
+CGLIB는 메소드가 처음 호출 되었을 때 동적으로 타깃의 클래스의 바이트 코드를 조작하고, 이후 호출시엔 조작된 바이트 코드를 재사용하기 때문에 성능 면에서 빠르다. JDK Dynamic Proxy는 Reflection을 사용해 느리다.
+
+### Spring의 프록시 구현
+
+Spring은 CGLIB이 기본으로 작동한다. Spring에서 지원하는 프록시 생성 방법으로, ProxyFactoryBean을 제공한다. ProxyFactoryBean은 CGLIB를 만들기 위해 타깃의 인터페이스 정보가 필요없다. JDK Dynamic Proxy는 Invocation Handler를 통해 프록시 부가기능을 구현했지만, ProxyFactoryBean은 MethodInterceptor 인터페이스를 재정의한 invoke() 메소드를 구현해줘야 부가 기능이 추가된다.
+
+![img5](https://github.com/dilmah0203/TIL/blob/main/Image/ProxyFactoryBean.png)
+
+InvocationHandler의 특징은 타깃을 필드로 반드시 가지고 있어야 하기 때문에 타깃에 의존적이다. ProxyFactoryBean은 MethodInterceptor을 통해 이러한 단점을 극복했다. ProxyFactoryBean이 프록시를 생성하면 부가기능을 MethodInterceptor가 처리해준다. 그런데 이 때 타깃, 즉 실제 원하는 기능을 가지고 있는 객체는 프록시가 가지고 있는다.
+
+> 타깃을 왜 가지지 않을까?
+
+MethodInterceptor는 타깃을 가지지 않는데, 이유는 부가 기능을 독립적으로 유지하기 위해서이다. 즉 부가기능을 **싱글톤으로 공유**하여 사용 가능하다. 그렇기 때문에 ProxyFactoryBean은 MethodInterceptor를 사용한다. 하지만 ProxyFactoryBean도 개발자가 코드로 매번 생성하는 코드를 주입해줘야하는 단점이 있다.
 
 <br>
 
