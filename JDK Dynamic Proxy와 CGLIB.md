@@ -189,13 +189,13 @@ Proxy.newProxyInstance를 사용해서 JDK Dynamic Proxy를 사용할 수 있는
 
 CGLIB는 Code Generator Libray의 약자로, 클래스의 바이트 코드를 조작하여 프록시 객체를 생성해 주는 라이브러리이며 동적 프록시 중 하나이다. 스프링에서는 클라이언트가 메소드를 요청하면 ProxyFactoryBean에서 인터페이스 유무를 확인하고 인터페이스가 있으면 JDK Dynamic Proxy를 호출하고, 없으면 CGLIB 방식으로 프록시를 생성한다.
 
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/CGLIB1.png)
+![img3](https://github.com/dilmah0203/TIL/blob/main/Image/CGLIB2.png)
 
 - 상속을 통한 프록시 구현
 - 바이트 코드를 조작해서 프록시 생성
 - MethodInterceptor를 재정의한 intercept() 메소드를 재정의해야 부가기능이 추가된다.
 
-![img4](https://github.com/dilmah0203/TIL/blob/main/Image/CGLIB2.png)
+![img4](https://github.com/dilmah0203/TIL/blob/main/Image/CGLIB.png)
 
 클라이언트가 메소드를 요청하면 CGLIB에서는 InvocationHandler가 아닌 MethodInterceptor에 메소드 처리를 요청한다. 그럼 MethodInterceptor에서 부가 기능을 수행 후 타겟에 위임하게 된다. Enhancer라는 외부 의존성을 사용하여 CGLIB를 사용할 수 있다.
 
