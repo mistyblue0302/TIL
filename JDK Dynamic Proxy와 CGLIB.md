@@ -101,7 +101,7 @@ public class HelloProxy implements Hello {
 }
 ```
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/Proxy%20pattern.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Proxy2.png)
 
 Client 쪽에서 인터페이스를 가르키고, 인터페이스를 구현한 프록시 객체와 타겟 객체 두 가지를 생성해서 Client가 HelloProxy를 사용하도록 구현한다. HelloTarget 클래스를 변경하지 않고 부가적인 기능을 추가할 수 있게 되었다. HelloTarget이 Hello를 붙여 반환하는 기존 코드가 해야 하는 일만 유지할 수 있다.
 
