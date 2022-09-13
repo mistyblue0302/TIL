@@ -122,7 +122,7 @@ Clien는 인터페이스를 가르키고, 인터페이스를 구현한 프록시
 
 **동작 방식**
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy1.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy1.png)
 
 Dynamic Proxy는 프록시 팩토리에 의해 런타임 시 다이내믹하게 만들어지는 오브젝트다. Dynamic Proxy는 타깃의 인터페이스와 같은 타입으로 만들어진다.
 
@@ -131,7 +131,7 @@ Dynamic Proxy는 프록시 팩토리에 의해 런타임 시 다이내믹하게 
 
 위의 HelloProxy 클래스는 세 개의 메소드에 toUpperCase() 메소드가 중복되어 있다. 이러한 부분을 InvocationHandler를 통해 해결할 수 있다.
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy.png)
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy.png)
 
 Dynamic Proxy로부터 요청을 받으려면 InvocationHandler를 구현해야 한다. sayHello(), sayHi(), sayThankYou() 메소드를 InvocationHandler 인터페이스에서 재정의한 invoke()를 통해 부가기능을 처리하여 타겟에게 다시 반환하는 형태로 해결할 수 있다. InvocationHandler 인터페이스의 특징은 타겟을 필드로 반드시 가지고 있어야 한다.
 
@@ -166,7 +166,7 @@ Dynamic Proxy를 통해 요청이 전달되면 Reflection API를 이용해 타�
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy2.png)
 
-JDK Dynamic Proxy의 구현부는 위와 같다. 클라이언트가 메소드를 요청하면 DK Dynamic Proxy는 메소드 처리를 InvocationHandler에게 위임한다. InvocationHandler는 부가 기능을 수행하고 다시 타겟에게 위임하는 형태로 진행된다.
+JDK Dynamic Proxy의 구현부는 위와 같다. 클라이언트가 메소드를 요청하면 JDK Dynamic Proxy는 메소드 처리를 InvocationHandler에게 위임한다. InvocationHandler는 부가 기능을 수행하고 다시 타겟에게 위임하는 형태로 진행된다.
 
 ```java
 Hello hello = (Hello) Proxy.newProxyInstance(
