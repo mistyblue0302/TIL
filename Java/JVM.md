@@ -8,7 +8,7 @@
 
 먼저 자바 컴파일러에 의해 자바 소스파일(.java)은 바이트 코드(.class)로 변환되는데, 이러한 바이트 코드를 JVM의 Class Loader에서 읽어들인다.
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/JVM0.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/JVM.png)
 
 - **Class Loader** : 읽어들인 .class파일에 들어있는 정보는 Class Loader에 의해 Runtime Data Area의 Method Area로 적재된다. 
 
