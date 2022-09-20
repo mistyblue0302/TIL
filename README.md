@@ -102,6 +102,7 @@
 ## 운영체제
 * [프로세스 vs 쓰레드](https://github.com/dilmah0203/TIL/blob/main/OS/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20vs%20%EC%93%B0%EB%A0%88%EB%93%9C.md)
 * [Deadlock](https://github.com/dilmah0203/TIL/blob/main/OS/Deadlock.md)
+* [Mutex vs Semaphore](https://github.com/dilmah0203/TIL/blob/main/OS/Mutex%20vs%20Semaphore.md)
 
 ##
 * [시간복잡도와 공간복잡도](https://github.com/dilmah0203/TIL/blob/main/%E1%84%89%E1%85%B5%E1%84%80%E1%85%A1%E1%86%AB%E1%84%87%E1%85%A9%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%B8%E1%84%83%E1%85%A9%E1%84%8B%E1%85%AA%20%E1%84%80%E1%85%A9%E1%86%BC%E1%84%80%E1%85%A1%E1%86%AB%E1%84%87%E1%85%A9%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%B8%E1%84%83%E1%85%A9.md)
