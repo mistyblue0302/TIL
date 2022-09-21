@@ -94,7 +94,7 @@ Card Table에는 Old 객체가 Young 객체를 참조할 때마다 정보가 표
   - Java 9 이상 부터 default GC 방식
   - 고정된 크기가 없기 때문에 메모리 사용에 있어 유연성을 제공한다. 
 
-![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC.png)
+![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC_Heap.PNG)
 
 참고
 
