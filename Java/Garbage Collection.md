@@ -89,12 +89,12 @@ Card Table에는 Old 객체가 Young 객체를 참조할 때마다 정보가 표
 
 ![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC_Heap.PNG)
 
- **G1 GC**
-  - Garbage First(G1)
-  - Heap을 일정 크기의 Region으로 나누어 Young Generation, Old Generation 영역으로 활용한다.
-  - 런타임에 G1 GC가 필요에 따라 영역별 Region 개수를 튜닝하여 Stop the World를 최소화
-  - Java 9 이상 부터 default GC 방식
-  - 고정된 크기가 없기 때문에 메모리 사용에 있어 유연성을 제공한다. 
+ - **G1 GC**
+ - Garbage First(G1)
+ - Heap을 일정 크기의 Region으로 나누어 Young Generation, Old Generation 영역으로 활용한다.
+ - 런타임에 G1 GC가 필요에 따라 영역별 Region 개수를 튜닝하여 Stop the World를 최소화
+ - Java 9 이상 부터 default GC 방식
+ - 고정된 크기가 없기 때문에 메모리 사용에 있어 유연성을 제공한다. 
 
 <br>
 
