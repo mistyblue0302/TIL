@@ -19,7 +19,7 @@
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Runtime%20Data%20Area.png)
 
 - **Runtime Data Area** : JVM의 메모리 영역으로 자바 애플리케이션을 실행할 때 사용되는 데이터들을 적재하는 곳이다.
-  - **Method Area** : class에 대한 정보가 저장되는 영역으로, 메소드의 코드를 저장한다.
+  - **Method Area** : class에 대한 정보가 저장되는 영역으로, 메소드의 코드와 static변수를 저장한다.
    - **Heap** : 런타임에 생성된 모든 객체 인스턴스들이 저장되는 영역이다. new 키워드로 생성된 객체나 배열이 생성되는 영역으로 GC가 참조되지 않는 메모리를 확인하고 제거한다.
    - **PC Register** : 현재 실행되고 있는 스택 Frame의 주소를 저장하고 있는 영역이다. 멀티 쓰레드 프로그래밍 환경에서 한 쓰레드가 작업을 하다가 다른 쓰레드로 잠시 cpu 점유를 넘겨주고 돌아왔을 때 이전에 어떤 명령을 했는지 기억해야 한다. 
    - **Native Method Stack** : 자바 외 언어로 작성된 코드를 위한 메모리 영역
