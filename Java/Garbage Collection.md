@@ -103,3 +103,5 @@ https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html
 https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/generations.html#sthref16%5D
 
 https://d2.naver.com/helloworld/1329
+
+[우아한Tech GC](https://www.youtube.com/watch?v=FMUpVA0Vvjw)
