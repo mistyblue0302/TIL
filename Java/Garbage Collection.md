@@ -18,7 +18,7 @@ GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작�
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Reference%20Counting.png)
 
-Root Space는 스택 변수, 전역 변수 등 Heap 영역 참조를 담은 변수이다. Reference Counting은 Heap 영역에 선언된 객체들이 각각 reference count를 가지고 있는데 여기서 reference count는 몇 가지 방법으로 해당 객체에 접근할 수 있는지를 뜻한다. 해당 객체에 접근할 수 있는 방법이 없다면 즉, reference count가 0이면 GC의 대상이 된다. 하지만 Reference Counting은 순환 참조 문제가 있다. 두개 이상의 객체가 서로 참조를 하고있다면, 순환참조가 생겨서 참조 횟수가 영원히 0이 될 수 없기때문에 Memory Leak의 원인이 된다.
+Root Space는 Stack의 로컬 변수, 전역 변수 등 Heap 영역 참조를 담은 변수이다. Reference Counting은 Heap 영역에 선언된 객체들이 각각 reference count를 가지고 있는데 여기서 reference count는 몇 가지 방법으로 해당 객체에 접근할 수 있는지를 뜻한다. 해당 객체에 접근할 수 있는 방법이 없다면 즉, reference count가 0이면 GC의 대상이 된다. 하지만 Reference Counting은 순환 참조 문제가 있다. 두개 이상의 객체가 서로 참조를 하고있다면, 순환참조가 생겨서 참조 횟수가 영원히 0이 될 수 없기때문에 Memory Leak의 원인이 된다.
 
 **3. Mark and Sweep**
 
