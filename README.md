@@ -101,6 +101,7 @@
 
 ## 운영체제
 * [프로세스 vs 쓰레드](https://github.com/dilmah0203/TIL/blob/main/OS/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20vs%20%EC%93%B0%EB%A0%88%EB%93%9C.md)
+* [동기vs비동기, 블로킹vs논블로킹](https://github.com/dilmah0203/TIL/blob/main/OS/%EB%8F%99%EA%B8%B0vs%EB%B9%84%EB%8F%99%EA%B8%B0,%20%EB%B8%94%EB%A1%9C%ED%82%B9vs%EB%85%BC%EB%B8%94%EB%A1%9C%ED%82%B9.md)
 * [Deadlock](https://github.com/dilmah0203/TIL/blob/main/OS/Deadlock.md)
 * [Mutex vs Semaphore](https://github.com/dilmah0203/TIL/blob/main/OS/Mutex%20vs%20Semaphore.md)
 
