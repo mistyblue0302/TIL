@@ -1,8 +1,6 @@
 ## 트랜잭션(Transaction)
 
-> DB에 쿼리를 날릴 때, DB가 올바른 응답을 줄 것이라는 확신을 어떻게 할 수 있을까? 
-
-**트랜잭션**이란, 깨져서는 안되는 하나의 작업 단위를 의미한다. 그래서 트랜잭션은 commit(작업이 마무리 됨)으로 성공 하거나 rollback(작업을 취소하고 이전의 상태로 되돌림)으로 실패 이후 취소되어야 한다. DB에서는 트랜잭션을 조작함으로써 사용자가 DB에 대한 **완전성**을 보장한다. 즉, 작업을 모두 완벽하게 처리하거나 또는 처리하지 못할 경우에는 원래 상태로 복구해서 작업의 일부만 적용되는 현상이 발생하지 않게 한다.
+**트랜잭션**이란, 깨져서는 안되는 하나의 작업 단위를 의미한다. 그래서 트랜잭션은 commit(작업이 마무리 됨)으로 성공 하거나 rollback(작업을 취소하고 이전의 상태로 되돌림)으로 실패 이후 취소되어야 한다. DB에서는 트랜잭션을 조작함으로써 DB에 대한 **완전성**을 보장한다. 즉, 작업을 모두 완벽하게 처리하거나 또는 처리하지 못할 경우에는 원래 상태로 복구해서 작업의 일부만 적용되는 현상이 발생하지 않게 한다.
 
 ##  Spring이 제공하는 트랜잭션 기술
 
@@ -43,36 +41,37 @@ Spring은 다음 세 가지 기술을 이용하여 위의 문제점을 해결해
 JDBC를 이용하는 개발자가 직접 여러 개의 작업을 하나의 트랜잭션으로 관리하려면 Connection 객체를 공유하는 등 상당히 불필요한 작업들이 많이 생길 것이다. Spring은 이러한 문제를 해결하기 위해 트랜잭션 동기화를 제공한다. **트랜잭션 동기화란** 트랜잭션을 시작하기 위한 Connection 객체를 특별한 저장소에 보관해두고 필요할 때 꺼내쓸 수 있도록 하는 기술이다.
 
 ```java
-// 동기화 시작
+//동기화 시작
 TransactionSynchronizeManager.initSynchronization(); //트랜잭션 동기화 작업을 초기화
 Connection c = DataSourceUtils.getConnection(dataSource); //DB Connection 생성 및 트랜잭션 시작
 
-// 작업 진행
+//작업 진행
 
-// 동기화 종료
-DataSourceUtils.releaseConnection(c, dataSource); //DB Connection 닫기
-TransactionSynchronizeManager.unbindResource(dataSource); //동기화 작업을 종료
-TransactionSynchronizeManager.clearSynchronization(); //동기화 작업을 정리
+//동기화 종료
+DataSourceUtils.releaseConnection(c, dataSource);
+TransactionSynchronizeManager.unbindResource(dataSource); 
+TransactionSynchronizeManager.clearSynchronization(); 
 ```
 
-트랜잭션은 하나의 Connection에 종속되기 때문에, 다수의 DB를 사용할 때 트랜잭션으로 경계설정이 불가능해진다. Hibernate에서는 Connection이 아닌 Session이라는 객체를 사용하기 때문이다. 아직 **데이터 접근 기술에 의존적**이다.
+트랜잭션은 하나의 Connection에 종속되기 때문에, 다수의 DB를 사용할 때 트랜잭션으로 경계설정이 불가능해진다. 예를들어, Hibernate에서는 Connection이 아닌 Session이라는 객체를 사용하기 때문이다. 아직 **데이터 접근 기술에 의존적**이다.
 
 ### 2. 트랜잭션 추상화
 
-위 문제가 발생하는 이유는 데이터 접근 기술마다 DB와의 연결 방법이 다르기 때문이다. 하지만 가져오는 트랜잭션 객체만 다를 뿐 구현 방식에 상관 없이 동일한 임무를 수행하는 구현체들에 대한 추상화가 가능하다. Spring은 PlatformTransactionManager라는 인터페이스를 사용해 각 구현체들이 트랜잭션을 가져오는 방식을 추상화했다. 따라서 종속적인 코드를 이용하지 않고도 일관되게 트랜잭션을 처리할 수 있다.
+위 문제가 발생하는 이유는 데이터 접근 기술마다 DB와의 연결 방법이 다르기 때문이다. 하지만 가져오는 트랜잭션 객체만 다를 뿐 구현 방식에 상관 없이 동일한 임무를 수행하는 구현체들에 대한 추상화가 가능하다. Spring은 **PlatformTransactionManager**라는 인터페이스를 사용해 각 구현체들이 트랜잭션을 가져오는 방식을 추상화하였다. 따라서 종속적인 코드를 이용하지 않고도 **일관되게 트랜잭션을 처리**할 수 있다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Platformtransactionmanager.png)
 
-하지만 트랜잭션 관리 코드들이 비즈니스 로직 코드와 결합되어 2가지 책임을 갖고 있다.
+하지만 트랜잭션 관리 코드들과 비즈니스 로직 코드와 결합되어 두 가지 책임을 가지는 문제가 있다.
 
 ### 3. AOP를 이용한 트랜잭션(Transaction) 분리
 
-Spring은 선언적 트랜잭션 방식인 @Transactional 애노테이션을 이용해서 트랜잭션을 생성, 종료하는 일을 비즈니스 로직과 분리하게 도와준다.
+Spring은 선언적 트랜잭션 방식인 @Transactional 애노테이션을 이용하여 트랜잭션을 생성, 종료하는 일을 비즈니스 로직과 분리하게 도와준다.
+
 
 ```java
 public void addUsers(List<User> userList) {
-  
-  //트랜잭션의 설정정보를 꺼내옴(트랜잭션 구동에 필요한 객체)
+
+        //트랜잭션의 설정정보를 꺼내옴(트랜잭션 구동에 필요한 객체)
 	TransactionStatus status = this.transactionManager.getTransaction(new DefaultTransactionDefinition());
 	
 	try {
@@ -85,7 +84,7 @@ public void addUsers(List<User> userList) {
 		this.transactionManager.commit(status);
 	} catch (Exception e) {
 		this.transactionManager.rollback(status);
-		throw e;
+		throw e
 	}
 }
 ```
