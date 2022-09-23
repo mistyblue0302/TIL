@@ -61,7 +61,7 @@ TransactionSynchronizeManager.clearSynchronization();
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Platformtransactionmanager.png)
 
-하지만 트랜잭션 관리 코드들과 비즈니스 로직 코드와 결합되어 두 가지 책임을 가지는 문제가 있다.
+하지만 트랜잭션 관리 코드들과 비즈니스 로직 코드가 결합되어 두 가지 책임을 가지는 문제가 있다.
 
 ### 3. AOP를 이용한 트랜잭션(Transaction) 분리
 
