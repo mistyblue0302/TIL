@@ -71,21 +71,21 @@ Spring은 선언적 트랜잭션 방식인 @Transactional 애노테이션을 이
 ```java
 public void addUsers(List<User> userList) {
 
-        //트랜잭션의 설정정보를 꺼내옴(트랜잭션 구동에 필요한 객체)
-	TransactionStatus status = this.transactionManager.getTransaction(new DefaultTransactionDefinition());
-	
-	try {
-		for (User user: userList) {
-			if(isEmailNotDuplicated(user.getEmail())){
-				userRepository.save(user);
-			}
-		}
+    //트랜잭션의 설정정보를 꺼내옴(트랜잭션 구동에 필요한 객체)
+    TransactionStatus status = this.transactionManager.getTransaction(new DefaultTransactionDefinition());
 
-		this.transactionManager.commit(status);
-	} catch (Exception e) {
-		this.transactionManager.rollback(status);
-		throw e
-	}
+    try {
+	 for (User user: userList) {
+	     if(isEmailNotDuplicated(user.getEmail())) {
+		 userRepository.save(user);
+	     }
+	 }
+
+	 this.transactionManager.commit(status);
+     } catch (Exception e) {
+	 this.transactionManager.rollback(status);
+	 throw e;
+     }
 }
 ```
 
