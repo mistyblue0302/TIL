@@ -7,7 +7,7 @@
 
 ### 참조 자료형(Reference Type)
 
-- Class, Interface, Array, Enumeration 타입이 있다.
+- Class, Interface, Array, Enum 타입이 있다.
 - null값을 가질 수 있다.
 - 실제 값이 아닌 객체의 주소값(해시코드값)을 저장한다.
 - new로 인하여 생성하는 것들은 메모리 영역인 Heap 영역에 생성을 하게되고, Garbage Collector가 수행되면서 메모리를 해제한다.
