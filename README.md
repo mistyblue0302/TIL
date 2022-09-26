@@ -76,6 +76,7 @@
   8. [final 키워드는 불변을 보장할까?](https://github.com/dilmah0203/TIL/blob/main/Java/final%20%ED%82%A4%EC%9B%8C%EB%93%9C%EB%8A%94%20%EB%B6%88%EB%B3%80%EC%9D%84%20%EB%B3%B4%EC%9E%A5%ED%95%A0%EA%B9%8C.md)
 * [쓰레드](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%93%B0%EB%A0%88%EB%93%9C.md)
   1. [동시성문제를 해결하기 위해 자바에서 제공하는 것](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%8F%99%EC%8B%9C%EC%84%B1%EB%AC%B8%EC%A0%9C%EB%A5%BC%20%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%B4%20%EC%9E%90%EB%B0%94%EC%97%90%EC%84%9C%20%EC%A0%9C%EA%B3%B5%ED%95%98%EB%8A%94%20%EA%B2%83.md)
+* [불변성](https://github.com/dilmah0203/TIL/blob/main/Java/%E1%84%87%E1%85%AE%E1%86%AF%E1%84%87%E1%85%A7%E1%86%AB%E1%84%89%E1%85%A5%E1%86%BC.md)
 * [I/O](https://github.com/dilmah0203/TIL/blob/main/Java/File%ED%81%B4%EB%9E%98%EC%8A%A4.md)
   1. [InputStream과 OutputStream](https://github.com/dilmah0203/TIL/blob/main/Java/InputStream%EA%B3%BC%20OutputStream.md)
   2. [Reader와 Writer](https://github.com/dilmah0203/TIL/blob/main/Java/Reader%EC%99%80%20Writer.md)
