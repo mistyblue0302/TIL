@@ -14,4 +14,4 @@
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Immutable.png)
 
-Primitive Type은 그대로 Stack 영역에 저장이 되지만, Reference Type은 실제 데이터들은 Heap 영역에 저장하고 주소 값을 Stack 영역에 저장한다.
+Primitive Type은 그대로 Stack 영역에 저장이 되지만, Reference Type은 실제 값들은 Heap 영역에 저장하고 주소 값을 Stack 영역에 저장한다.
