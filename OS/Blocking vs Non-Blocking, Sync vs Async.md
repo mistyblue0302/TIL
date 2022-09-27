@@ -1,6 +1,6 @@
 ## Blocking vs Non-Blocking, Sync vs Async
 
-### 1. Blocking VS Non-Blocking
+### 1. Blocking vs Non-Blocking
 
 다른 주체가 작업할 때 자신에게 자신의 작업에 대한 제어권이 있는지 없는지에 따라 Blocking과 Non-Blocking을 나눈다.
 
@@ -12,7 +12,7 @@
 
 - 다른 주체의 작업과 **관련없이** 자신의 작업을 할 수 있는 상태로 제어권을 위임하지 않는다.
 
-### 2. Sync VS Async
+### 2. Sync vs Async
 
 결과 리턴 시 순서와 결과에 관심이 있는지 없는지로 판단할 수 있다.
 
@@ -27,7 +27,7 @@
 - 작업을 요구하면서 callback 함수도 같이 전달한다. 작업 요청을 받은 쪽에서 작업이 완료되면 callback을 실행한다.
 - 작업을 맡겨놓고 결과에 신경 쓰지 않음
 
-<br>
+### 3. Blocking/Non-Blocking, Sync/Async
 
 - **Blocking/Sync**
 
