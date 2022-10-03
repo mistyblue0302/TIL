@@ -22,7 +22,7 @@
 
 문자열을 저장하는 Stack을 선언 후 Stack에서 지원하는 메소드로 문자열을 넣어주었다. Stack에서 문자열을 꺼내면 마지막에 넣은 문자열이 반환될 것이라고 예상할 수 있다. 하지만 실제 실행 결과는 예상과 다르게 두 번째에 넣은 문자열이 반환된다.
 
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/StackTestFailed.png)
+![img3](https://github.com/dilmah0203/TIL/blob/main/Image/StackTest2.png)
 
 add() 메소드는 Stack의 규칙을 따르지 않기 때문이다. 원래 Stack은 나중에 들어온 원소부터 먼저 반환되어야 하는데 add() 메소드는 순서와 상관없이 특정 인덱스에 원소를 추가할 수 있게 허용하고 있다. Vector를 상속한 Stack은 자신에게 필요하지 않은 메소드를 노출할 수 밖에 없다.
 
