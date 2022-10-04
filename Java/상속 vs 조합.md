@@ -8,9 +8,9 @@
 
 ### 상속의 문제
 
-1. 하위 클래스가 상위 클래스의 구현에 의존하기 때문에 상위 클래스의 변경에 모든 하위 클래스가 영향을 받는다.
+1. **하위 클래스가 상위 클래스의 구현에 의존하기 때문에 상위 클래스의 변경에 모든 하위 클래스가 영향을 받는다.**
 
-로또 번호를 가지고 있는 역할인 Lotto 클래스가 있다. Lotto 클래스는 로또 번호를 List<Integer>로 가지고 있다.
+로또 번호를 가지고 있는 역할인 `Lotto` 클래스가 있다. `Lotto` 클래스는 로또 번호를 `List<Integer>`로 가지고 있다.
 
 ```java
 public class Lotto {
@@ -28,7 +28,7 @@ public class Lotto {
 }
 ```
   
-Lotto 클래스를 상속하는 WinningLotto 클래스는 당첨 로또번호를 가지고 있다.
+`Lotto` 클래스를 상속하는 `WinningLotto` 클래스는 당첨 로또번호를 가지고 있다.
   
 ```java
 public class WinningLotto extends Lotto {
@@ -49,7 +49,7 @@ public class WinningLotto extends Lotto {
 }
 ```
  
-하지만 Lotto 클래스의 요구사항이 바뀌어서 인스턴스 변수인 List<Integer> lottoNumbers가 int[] lottoNumbers로 바뀌었다고 가정해보자.
+하지만 `Lotto` 클래스의 요구사항이 바뀌어서 인스턴스 변수인 `List<Integer> lottoNumbers`가 `int[] lottoNumbers`로 바뀌었다고 가정해보자.
 
 ```java
 public class Lotto {
@@ -68,7 +68,7 @@ public class Lotto {
 }
 ```
   
-부모와 강한 의존을 맺은 WinningLotto 클래스 역시 영향을 받는다.
+부모와 강한 의존을 맺은 `WinningLotto` 클래스 역시 영향을 받는다.
   
 ```java
 public class WinningLotto extends Lotto {
@@ -90,16 +90,16 @@ public class WinningLotto extends Lotto {
 }
 ```
   
-즉, Lotto 클래스를 상속한 하위 클래스가 몇 개가 있든 상위 클래스의 변화로 인해 하위 클래스를 변경해주어야 한다. 이처럼 상속은 하위 클래스가 상위 클래스에 강하게 의존, 결합하기 때문에 변화에 유연하게 대처하기 어려워진다.
+즉, `Lotto` 클래스를 상속한 하위 클래스가 몇 개가 있든 상위 클래스의 변화로 인해 하위 클래스를 변경해주어야 한다. 이처럼 상속은 하위 클래스가 상위 클래스에 강하게 의존, 결합하기 때문에 변화에 유연하게 대처하기 어려워진다.
   
   
-2. 상위 클래스의 public 메소드가 하위 클래스에도 노출된다.
+2. **상위 클래스의 public 메소드가 하위 클래스에도 노출된다.**
 
-상속은 부모 클래스와 강하게 의존하기 때문에 부모 클래스의 캡슐화를 해치고 결합도가 높아진다. 부모 클래스의 구현을 변경하면, 많은 자식 클래스를 모두 변경 해줘야 하기 때문이다. 불필요한 메소드도 상속받는 문제도 있다.
+상속은 부모 클래스와 강하게 의존하기 때문에 부모 클래스의 캡슐화를 해치고 결합도가 높아진다. 부모 클래스의 구현을 변경하면, 많은 자식 클래스를 모두 변경 해줘야 하기 때문이다. 불필요한 메소드도 상속받는 문제가 있다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Stack.png)
 
-이 Stack 클래스는 Vector라는 클래스를 상속받고 있다.
+Stack 클래스는 Vector 클래스를 상속받고 있다.
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/StackTest.png) 
 
@@ -113,7 +113,7 @@ add() 메소드는 Stack의 규칙을 따르지 않기 때문이다. 원래 Stac
 
 조합하려는 클래스의 인스턴스를 새로운 클래스의 private 필드로 참조하고, 인스턴스의 메소드를 호출하는 방식으로 구현한다.
   
-위에서 보았던 WinningLotto 클래스가 Lotto를 상속하는 것이 아닌 조합(Composition)을 사용하면 다음과 같다.
+위에서 보았던 `WinningLotto` 클래스가 `Lotto`를 상속하는 것이 아닌 조합(Composition)을 사용하면 다음과 같다.
 
 ```java
 public class WinningLotto {
@@ -122,14 +122,14 @@ public class WinningLotto {
 }  
 ```
 
-WinningLotto 클래스에서 인스턴스 변수로 Lotto 클래스를 가지는 것이 조합(Composition)이다. WinningLotto 클래스는 Lotto 클래스의 메서드를 호출하는 방식으로 동작하게 된다.  
+`WinningLotto` 클래스에서 인스턴스 변수로 `Lotto` 클래스를 가지는 것이 조합(Composition)이다. `WinningLotto` 클래스는 `Lotto` 클래스의 메서드를 호출하는 방식으로 동작하게 된다.  
   
 조합을 사용하면,
 
 - 메소드를 호출하는 방식으로 동작하기 때문에 캡슐화를 깨뜨리지 않는다.
 - Lotto 클래스 같은 기존 클래스의 변화에 영향이 적어지며 안전하다.
   
-메소드 호출 방식이기 때문이 Lotto 클래스의 인스턴스 변수인 List<Integer> lottoNumbers가 int[] lottoNumbers로 바뀌어도 영향을 받지 않게 된다. 그저 메서드 호출을 통한 값을 사용하면 될 뿐이다.
+메소드 호출 방식이기 때문이 `Lotto` 클래스의 인스턴스 변수인 `List<Integer> lottoNumbers`가 `int[] lottoNumbers`로 바뀌어도 영향을 받지 않게 된다. 그저 메서드 호출을 통한 값을 사용하면 될 뿐이다.
   
 ### 상속과 조합은 언제 써야할까?
 
