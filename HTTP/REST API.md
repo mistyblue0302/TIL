@@ -52,7 +52,7 @@ HATEOAS란 애플리케이션의 상태가 하이퍼링크를 통해 전이되�
 
 아래 예시는 HATEOAS를 만족한다. <a> 태그의 href 속성을 통해 하이퍼링크가 나와있고, 하이퍼링크를 통해 그 다음 상태로 전이가 가능하기 때문이다.
 
-```http
+```
 HTTP/1.1 200 OK
 Content-Type: text/html
 
@@ -64,7 +64,7 @@ Content-Type: text/html
 
 JSON의 Link 헤더를 통해 하이퍼링크와 연결 되어 있는 다른 리소스를 가리킬 수 있다. 이전 게시물의 URI가 `/articles/1`이고, 다음 게시물의 URI가 `/articles/3`이라는 정보를 가지고 있다. Link 헤더를 통해 온전히 메세지를 해석하여 상태가 전이될 수 있다. URI를 통해 들어오는 요청을 예측할 수 있고, URI가 변경되더라도 클라이언트는 URI 변경에 따른 코드를 변경하지 않아도된다.
 
-```http
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 Link: </articles/1>; rel=“previous”,
