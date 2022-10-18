@@ -8,9 +8,7 @@
 
 ### HTTP 프로토콜 구성
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Request.png)
-
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Response.png)
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Request.PNG)
 
 ### HTTP 프로토콜 특성
 
