@@ -10,6 +10,8 @@
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Request.PNG)
 
+![img3](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Response.png)
+
 ### HTTP 프로토콜 특성
 
 1. Client-Server 구조
