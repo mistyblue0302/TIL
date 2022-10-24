@@ -1,16 +1,14 @@
-## 💡 **Java 7에서 달라진 것**
+## Java 7 변경사항
 
-### Java 7 변경사항
-
-#### 1. 숫자 표시 방법
+### 1. 숫자 표시 방법
 
 Java 7부터는 2진수 표현이 추가되었다. 2진수로 나타내기 위해서는 0b를 앞에 추가해 주면 된다. 또한 _를 사용하여 자리 단위를 나눌 수 있다. 반드시 숫자 사이에 넣어주어야 한다.
 
-#### 2. switch문에서 String사용
+### 2. switch문에서 String사용
 
 switch-case에서 String 문자열을 바로 사용할 수 있다.
 
-#### 3. 제네릭을 쉽게 사용하기 위한 Diamond
+### 3. 제네릭을 쉽게 사용하기 위한 Diamond
 
 생성자에서도 해당 타입들을 상세하게 명시했어야 했지만 Java 7부터는 명시해 줄 필요가 없다. 컴파일러에서 알아서 해당 생성자의 타입을 지정해버린다.
 
@@ -19,22 +17,34 @@ Map<String, Integer> map = new HashMap<String, Integer>();
 Map<String, Integer> map = new HashMap<>();
 ```
 
-#### 4. non reifiable varargs 타입
+### 4. non reifiable varargs 타입
 
 - reifiable : 실행 시에도 타입 정보가 남아있는 타입
 - non reifiable : 컴파일시 타입 정보가 손실되는 타입
 
 자바 제네릭 사용 중 발생 가능한 문제 중 하나가 reifiable 하지 않은 varargs 타입이다. 이 문제는 제네릭을 사용하지 않는 버전과의 호환성 때문에 발생한다.
 
-#### 5. 예외 처리 시 다중 처리 가능
+### 5. 예외 처리 시 다중 처리 가능
 
 - 각 예외들을 | 로 연결하여 간단히 처리할 수 있다.
 
 - try-with-resource : try의 소괄호에 close()를 이용해 닫아야 할 필요가 있는 객체를 적어준다. Java 7에는 AutoCloseable이라는 인터페이스가 추가되어 객체는 finally 문장에서 별도로 close()를 처리할 필요가 없다.
 
-### Java 7 추가된사항
+### 6. File 클래스
 
-#### 1. Fork/Join : 여러 개로 나누어 계산한 후 결과를 모으는 작업
+Java 7 부터는 java.nio.file 패키지에 있는 Files 클래스에서 File 클래스의 메소드를 대체하여 제공한다. File 클래스는 객체를 생성하여 데이터를 처리하는 반면, Files 클래스는 모든 메소드가 static으로 선언되어 있어 별도의 객체를 생성하지 않아도 된다.
+
+**File 클래스의 파일 경로**
+
+C:\java\text와 같이 경로를 나타낼 때에는 두 개의 역슬래시를 연달아서 \\로 사용해야 한다. 디렉터리 구분의 모호함을 없애기 위해 File 클래스에 seperator 라는 static 변수가 존재한다. 
+
+```java
+String pathName = File.seperator + "java" + File.seperator + "text";
+```
+
+## Java 7 추가된사항
+
+### 1. Fork/Join : 여러 개로 나누어 계산한 후 결과를 모으는 작업
 
 - Fork : 여러 개로 나누는 것
 - Join : 나누어서 작업한 결과를 모으는 것
@@ -60,7 +70,7 @@ Future 인터페이스는 비동기적인 요청을 하고 응답을 기다릴 �
 public abstract class ForkJoinTask<V> extends Object implements Future<V>, Serializable
 ```
 
-#### 2. NIO 2
+### 2. NIO 2
 
 - NIO(New I/O) : 데이터를 빠르게 읽고 쓰기 위함
 - 기존 File 클래스는 여러 단점들이 존재
