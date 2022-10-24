@@ -4,11 +4,11 @@ JWT는 Json Web Token의 약자로 클라이언트와 서버 사이에서 통신
 
 ### JWT의 구성요소
 
-JWT는 헤더(Header), 페이로드(Payload), 서명(Signature)으로 구성되어 있다. Json(Key/Value) 형태로 정보를 넣을 수 있다. 생성된 토큰은 HTTP 통신을 할 때 Authorization이라는 key의 value로 사용된다. 일반적으로 value에는 Bearer이 앞에 붙여진다.
+JWT는 헤더(Header), 페이로드(Payload), 서명(Signature)으로 구성되어 있다. Json(Key/Value) 형태로 정보를 넣을 수 있다. 
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/JWT%20Token.PNG)
 
-1. 헤더(Header)
+1. **헤더(Header)**
 
 토큰의 헤더는 alg와 typ 두 가지 정보로 구성된다.
 
@@ -16,7 +16,7 @@ JWT는 헤더(Header), 페이로드(Payload), 서명(Signature)으로 구성되�
 - typ는 토큰의 타입에 대한 정보가 들어있다. ex)JWT
 
 
-2. 페이로드(Payload)
+2. **페이로드(Payload)**
 
 토큰에서 사용할 정보인 클레임(Claim)이 담겨 있다. 
 
@@ -39,9 +39,17 @@ JWT는 헤더(Header), 페이로드(Payload), 서명(Signature)으로 구성되�
  비공개 클레임은 사용자 정의 클레임으로, 서버와 클라이언트 사이에 임의로 지정한 정보를 저장한다. 
 
 
-3. 서명(Signature)
+3. **서명(Signature**
 
 서명은 토큰을 인코딩하거나 유효성 검증을 할 때 사용하는 고유한 암호화 코드이다. 서명에서 사용하는 알고리즘은 헤더에서 정의한 alg를 활용한다. 위에서 만든 헤더와 페이로드의 값을 각각 BASE64Url로 인코딩하고, 인코딩한 값을 비밀 키를 이용해 헤더에서 정의한 알고리즘으로 해싱하고, 다시 BASE64Url로 인코딩하여 생성한다.
+
+생성된 토큰은 HTTP 통신을 할 때 Authorization이라는 key의 value로 사용된다. 일반적으로 value에는 Bearer이 앞에 붙여진다.
+
+```http
+{ 
+    "Authorization": "Bearer {생성된 토큰 값}"
+ }
+```
 
 <br>
 
