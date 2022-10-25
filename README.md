@@ -11,7 +11,7 @@
   2. [트랜잭션 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
   3. [서비스 추상화와 단일 책임 원칙](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94%EC%99%80%20%EB%8B%A8%EC%9D%BC%20%EC%B1%85%EC%9E%84%20%EC%9B%90%EC%B9%99.md)
   4. [메일 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%EB%A9%94%EC%9D%BC%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
-* AOP
+* [AOP](https://github.com/dilmah0203/TIL/blob/main/Spring/AOP%EB%9E%80%3F.md)
   1. [트랜잭션 코드의 분리](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EC%BD%94%EB%93%9C%EC%9D%98%20%EB%B6%84%EB%A6%AC.md?plain=1)
 
 
