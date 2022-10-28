@@ -4,11 +4,11 @@ index는 추가적인 저장 공간을 활용하여 DB 테이블의 검색 속�
 
 ### Clustered Index
 
-Clustered Index는 데이터가 테이블에 저장되는 순서를 설정한다. 즉 특정 컬럼을 기준으로 데이터들을 정렬시킨다. 테이블의 데이터는 오직 한 가지의 방법으로만 정렬되기 때문에 테이블 당 하나의 Clustered Index만 존재할 수 있다.
+Clustered Index는 데이터가 테이블에 저장되는 순서를 설정한다. 즉, **특정 컬럼을 기준으로 데이터들을 정렬시킨다**. 테이블의 데이터는 오직 한 가지의 방법으로만 정렬되기 때문에 테이블 당 하나의 Clustered Index만 존재할 수 있다.
 
 DB에서 Primary key 제약조건은 클러스터된 인덱스를 자동으로 생성하기 때문에 자료가 자동으로 정렬된다.
 
-이름 컬럼을 기준으로 정렬하면 다음과 같이 Index Page가 생성된다.
+`이름` 컬럼을 기준으로 정렬하면 다음과 같이 Index Page가 생성된다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Clustered%20Index.PNG)
 
@@ -16,8 +16,8 @@ DB에서 Primary key 제약조건은 클러스터된 인덱스를 자동으로 �
 
 이름이 `이상준`인 데이터를 조회하면 다음과 같은 과정을 통해 데이터를 찾는다. 
 
-1. Index Page에서 3행의 '장은비'보다 작기 때문에 그 이전인 '박유선'을 첫 번째 데이터로 가지는 Data Page 5를 찾아간다.
-2. Data Page 5에서 차례대로 읽어가며 이름이 '이상준'인 데이터를 찾는다.
+1. Index Page에서 3행의 `장은비`보다 작기 때문에 그 이전인 `박유선`을 첫 번째 데이터로 가지는 Data Page 5를 찾아간다.
+2. Data Page 5에서 차례대로 읽어가며 이름이 `이상준`인 데이터를 찾는다.
 
 위와 같은 검색 방법을 인덱스 스캔(Index Scan)이라고 하며, Index Page를 참고해 특정 리프 페이지만을 검색하기 때문에, 전체 Data Page를 검색하는 테이블 스캔(Table Scan)보다 검색 속도가 훨씬 빨라진다.
 
@@ -36,7 +36,7 @@ DB에서 Primary key 제약조건은 클러스터된 인덱스를 자동으로 �
 
 Non-Clustered Index는 Data Page를 전혀 건드리지 않고, '휴대폰 번호'를 기준으로 정렬된 Index Page를 별도로 생성해서 저장한다. Clustered Index와 마찬가지로 Root Index Page는 각각의 Leaf Index Page들의 시작 주소를 가지고 있다. Leaf Index Page의 Data Page 1:1는 해당 데이터가 몇 번째 Data Page의 몇 번 행에 있는지를 가리킨다. 즉, Index Page라는 것은 결국 주소만을 저장하고 있고, 데이터 자체는 Data Page에 저장한다.
 
-'휴대폰 번호'가 '01064927878'인 데이터를 검색하면 다음과 같은 과정을 통해 데이터를 찾는다. 
+휴대폰 번호가 `01064927878`인 데이터를 검색하면 다음과 같은 과정을 통해 데이터를 찾는다. 
 
 1. Root Index Page에서 Leaf Index Page를 찾아간다.
 2. Leaf Index Page에서 실제 데이터가 저장되어있는 Data Page를 찾아간다.
