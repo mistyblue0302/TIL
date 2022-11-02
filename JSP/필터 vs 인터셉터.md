@@ -1,4 +1,4 @@
-## 1. [필터(Filter)](https://github.com/dilmah0203/TIL/blob/main/JSP/%ED%95%84%ED%84%B0.md)
+## 1. [필터(Filter)](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%84%9C%EB%B8%94%EB%A6%BF%20%ED%95%84%ED%84%B0.md)
 
 디스패처 서블릿에 요청이 전달되기 전/후에 대해 부가작업을 처리할 수 있는 기능을 제공한다. 웹 컨테이너에 의해 관리가 된다.
 
