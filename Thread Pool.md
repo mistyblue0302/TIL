@@ -1,4 +1,4 @@
-## 쓰레드 풀(Threadpool)
+## 쓰레드 풀(Threadpool)이란?
 
 병렬 작업을 처리하기 위해 멀티 쓰레드를 사용하게 되는데, 쓰레드가 과도하게 증가할 경우 **쓰레드 생성과 Context-Switching**으로 인해 메모리 문제와 CPU 오버헤드가 발생할 수 있다.
 
@@ -12,7 +12,7 @@ Java는 `ThreadPoolExecutor` 클래스로 Thread Pool을 구현하고 있다.
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/ThreadPoolExecutor.png)
 
-**maximumPoolSize**는 쓰레드 풀 안에서 만들 수 있는 최대 쓰레드 개수를 의미하는데, 항상 최대 개수를 유지하지 않는다. 이유는 요청이 적을 경우 많은 양의 쓰레드가 필요하지 않기 때문이다. **corePoolSize**는 최소 쓰레드 개수로 항상 유지한다.
+**maximumPoolSize**는 쓰레드 풀 안에서 만들 수 있는 최대 쓰레드 개수를 의미하는데, 항상 최대 개수를 유지하지 않는다. 이유는 요청이 적을 경우 많은 양의 쓰레드가 필요하지 않기 때문이다. **corePoolSize**는 최소 쓰레드 개수로 항상 유지한다. **keepAliveTime**은 corePoolSize보다 쓰레드가 많아졌을 경우, 초과한 쓰레드에 대해서 keepAliveTime 값보다 오랜 시간동안 작업을 할당받지 못할 경우 제거된다. 이 값은 자원의 낭비를 감소시켜 효율적으로 쓰레드 풀을 관리할 수 있게된다.
 
 ## Tomcat의 Thread Pool
 
@@ -29,5 +29,7 @@ Tomcat은 Java의 Thread Pool과 유사한 자체 쓰레드 풀 구현체를 가
 <br>
 
 참고
+
+https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadPoolExecutor.html
 
 [Thread Pool](https://www.youtube.com/watch?v=um4rYmQIeRE&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=3)
