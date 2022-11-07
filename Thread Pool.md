@@ -20,12 +20,6 @@ Java는 `ThreadPoolExecutor` 클래스로 Thread Pool을 구현하고 있다.
 
 Tomcat은 Java의 Thread Pool과 유사한 자체 쓰레드 풀 구현체를 가지고 있다. 웹 요청이 들어오면 Tomcat의 Connector가 Connection을 생성하면서 요청된 작업을 Thread Pool의 쓰레드에 연결한다. 이 때 Tomcat이 동시에 최대로 처리할 수 있는 Connection의 개수가 **maxConnections**다. **acceptCount**는 maxConnections 이상의 요청이 들어왔을 때 사용하는 대기열 큐 사이즈로 추가적으로 들어오는 요청은 거절될 수 있다.
 
-## 어떻게 Thread Pool을 설정해야할까?
-
-- 쓰레드 개수를 요청 수에 비해 너무 많게 설정하면, 작업 중이지 않은 쓰레드가 많아져서 메모리 낭비가 생길 수 있다.
-
-- 쓰레드 개수를 요청 수에 비해 적게 설정하면, 동시에 처리할 수 있는 작업이 적어지기 때문에 평균 응답시간이 감소한다.
-
 <br>
 
 참고
