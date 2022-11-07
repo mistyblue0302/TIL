@@ -1,4 +1,4 @@
-## Thread Pool(Threadpool)
+## 쓰레드 풀(Threadpool)
 
 병렬 작업을 처리하기 위해 멀티 쓰레드를 사용하게 되는데, 쓰레드가 과도하게 증가할 경우 **쓰레드 생성과 Context-Switching**으로 인해 메모리 문제와 CPU 오버헤드가 발생할 수 있다.
 
