@@ -16,7 +16,7 @@ Java는 ThreadPoolExecutor 클래스로 Thread Pool을 구현하고 있다.
 
 ## Tomcat의 Thread Pool
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/Thread%20Pool2.PNG)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Thread%20Pool2.png)
 
 Tomcat은 Java의 Thread Pool과 유사한 자체 쓰레드 풀 구현체를 가지고 있다. 웹 요청이 들어오면 Tomcat의 Connector가 Connection을 생성하면서 요청된 작업을 Thread Pool의 쓰레드에 연결한다. 이 때 Tomcat이 동시에 최대로 처리할 수 있는 Connection의 개수가 **maxConnections**다. **acceptCount**는 maxConnections 이상의 요청이 들어왔을 때 사용하는 대기열 큐 사이즈로 추가적으로 들어오는 요청은 거절될 수 있다.
 
