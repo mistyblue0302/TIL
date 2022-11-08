@@ -31,11 +31,11 @@ public interface HandlerInterceptor {
 }
 ```
 
-- **preHandle()** : 컨트롤러가 호출되기 전에 실행되기 때문에 컨트롤러 이전에 전처리 작업에 사용한다.
+- **preHandle()** : 컨트롤러가 호출되기 전에 실행되기 때문에 컨트롤러 이전에 전처리 작업에 사용한다. 리턴이 true 일경우 preHandle() 실행후 핸들러(컨트롤러)에 접근한다. false일경우더 이상 진행이 되지 않으며 핸들러 어댑터 또한 호출이 되지 않음.
   
 - **postHandle()** : 컨트롤러 호출 이후에 실행되기 때문에 컨트롤러 이후에 처리해야 하는 후처리 작업에 사용
   
-- **afterCompletion()** : 모든 작업이 완료된 후에 실행된다.
+- **afterCompletion()** : 모든 작업이 완료된 후에 실행되며 무조건 호출된다.
 
 ### 인터셉터 설정
 
@@ -75,4 +75,8 @@ public class InterceptorExample implements HandlerInterceptor {
 ```
 
 하지만 인터셉터는 필터와 처리과정이 다르다. true를 반환하면 다음 인터셉터가 실행되거나 컨트롤러로 요청이 전달되고, false가 반환되면 요청이 중단된다. 다른 Request/Response 객체를 넘겨줄 수 없다.
+
+### 예외가 발생할 경우
+
+필터는 웹 컨텍스트에서 동작하기 때문에 예외가 발생하면 request.getRequestDispatcher(String)로 직접 다루거나 인터셉터로 처리를 미뤄야 한다. 하지만 인터셉터에서 예외가 발생하면, 인터셉터는 스프링이 관리하기 때문에 컨트롤러가 존재할 경우 인터셉터에서 throw하여 @ExceptionHandler로 예외 핸들링이 가능하다.
 
