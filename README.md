@@ -112,6 +112,7 @@
 * [Mutex vs Semaphore](https://github.com/dilmah0203/TIL/blob/main/OS/Mutex%20vs%20Semaphore.md)
 
 ## 데이터베이스
+* [인덱스](https://github.com/dilmah0203/TIL/blob/main/Database/%EC%9D%B8%EB%8D%B1%EC%8A%A4.md)
 * [Database Lock](https://github.com/dilmah0203/TIL/blob/main/Database%20Lock.md)
 
 ##
