@@ -1,8 +1,4 @@
-## Clustered Index vs Non-Clustered Index
-
-index는 추가적인 저장 공간을 활용하여 DB 테이블의 검색 속도를 향상시켜준다. 
-
-### Clustered Index
+## Clustered Index
 
 Clustered Index는 데이터가 테이블에 저장되는 순서를 설정한다. 즉, **특정 컬럼을 기준으로 데이터들을 정렬시킨다**. 테이블의 데이터는 오직 한 가지의 방법으로만 정렬되기 때문에 테이블 당 하나의 Clustered Index만 존재할 수 있다.
 
@@ -26,7 +22,7 @@ DB에서 Primary key 제약조건은 클러스터된 인덱스를 자동으로 �
     - 읽기 작업이 많을 때 빠르다
     - 테이블은 정렬되어있기 때문에 ORDER BY 절을 활용해 모든 테이블 데이터를 스캔하지 않고 원하는 데이터를 조회할 수 있다.
 
-### Non-Clustered Index
+## Non-Clustered Index
 
 > Clustered Index에서 만약 이름이 아닌 휴대폰 번호로 검색할 경우 어떻게 될까? 
 
