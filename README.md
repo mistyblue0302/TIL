@@ -114,6 +114,7 @@
 
 ## 데이터베이스
 * [인덱스](https://github.com/dilmah0203/TIL/blob/main/Database/%EC%9D%B8%EB%8D%B1%EC%8A%A4.md)
+* [Clustered Index vs NonClustered Index](https://github.com/dilmah0203/TIL/blob/main/Database/Clustered%20Index%20vs%20NonClustered%20Index.md)
 * [Database Lock](https://github.com/dilmah0203/TIL/blob/main/Database%20Lock.md)
 
 ##
