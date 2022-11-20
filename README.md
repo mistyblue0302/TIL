@@ -97,13 +97,13 @@
 * [HTTP vs HTTPS](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20vs%20HTTPS.md)
 
 
-## 네트워크
+## Network
 * [TCP와 UDP](https://github.com/dilmah0203/TIL/blob/main/Network/TCP%EC%99%80%20UDP.md)
 * [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
 * [Forward Proxy vs Reverse Proxy](https://github.com/dilmah0203/TIL/blob/main/Network/Forward%20Proxy%20vs%20Reverse%20Proxy.md)
 
 
-## 운영체제
+## OS
 * [메모리 vs 디스크](https://github.com/dilmah0203/TIL/blob/main/OS/%EB%A9%94%EB%AA%A8%EB%A6%AC%20vs%20%EB%94%94%EC%8A%A4%ED%81%AC.md)
 * [캐시 메모리](https://github.com/dilmah0203/TIL/blob/main/OS/Cache%20Memory.md)
 * [프로세스 vs 쓰레드](https://github.com/dilmah0203/TIL/blob/main/OS/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20vs%20%EC%93%B0%EB%A0%88%EB%93%9C.md)
@@ -112,7 +112,7 @@
 * [Deadlock](https://github.com/dilmah0203/TIL/blob/main/OS/Deadlock.md)
 * [Mutex vs Semaphore](https://github.com/dilmah0203/TIL/blob/main/OS/Mutex%20vs%20Semaphore.md)
 
-## 데이터베이스
+## Database
 * [인덱스](https://github.com/dilmah0203/TIL/blob/main/Database/%EC%9D%B8%EB%8D%B1%EC%8A%A4.md)
 * [Clustered Index vs NonClustered Index](https://github.com/dilmah0203/TIL/blob/main/Database/Clustered%20Index%20vs%20NonClustered%20Index.md)
 * [Database Lock](https://github.com/dilmah0203/TIL/blob/main/Database%20Lock.md)
