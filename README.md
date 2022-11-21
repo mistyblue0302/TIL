@@ -88,19 +88,16 @@
   1. [stream vs for](https://github.com/dilmah0203/TIL/blob/main/Java/stream%20vs%20for.md)
 
 
-## HTTP
+## Network
+* [TCP와 UDP](https://github.com/dilmah0203/TIL/blob/main/Network/TCP%EC%99%80%20UDP.md)
+* [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
+* [Forward Proxy vs Reverse Proxy](https://github.com/dilmah0203/TIL/blob/main/Network/Forward%20Proxy%20vs%20Reverse%20Proxy.md)
 * [REST API](https://github.com/dilmah0203/TIL/blob/main/HTTP/REST%20API.md)
 * [HTTP란](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%EB%9E%80.md)
 * [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20Method.md)
 * [POST vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT.md)
 * [PATCH vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/PATCH%20vs%20PUT.md)
 * [HTTP vs HTTPS](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20vs%20HTTPS.md)
-
-
-## Network
-* [TCP와 UDP](https://github.com/dilmah0203/TIL/blob/main/Network/TCP%EC%99%80%20UDP.md)
-* [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
-* [Forward Proxy vs Reverse Proxy](https://github.com/dilmah0203/TIL/blob/main/Network/Forward%20Proxy%20vs%20Reverse%20Proxy.md)
 
 
 ## OS
