@@ -95,8 +95,7 @@
 * [REST API](https://github.com/dilmah0203/TIL/blob/main/HTTP/REST%20API.md)
 * [HTTP란](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%EB%9E%80.md)
 * [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20Method.md)
-* [POST vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT.md)
-* [PATCH vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/PATCH%20vs%20PUT.md)
+* [POST vs PUT, PATCH vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT%2C%20PATCH%20vs%20PUT.md)
 * [HTTP vs HTTPS](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20vs%20HTTPS.md)
 
 
