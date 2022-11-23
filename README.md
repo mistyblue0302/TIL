@@ -3,7 +3,7 @@
 ## Spring
 * [오브젝트와 의존관계](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80%20%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84.md)
 * [테스트](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.md)
-  * [TDD와 단위테스트](https://github.com/dilmah0203/TIL/blob/main/TDD%EC%99%80%20%EB%8B%A8%EC%9C%84%ED%85%8C%EC%8A%A4%ED%8A%B8.md)
+  * [TDD와 단위테스트](https://github.com/dilmah0203/TIL/blob/main/Spring/TDD%EC%99%80%20%EB%8B%A8%EC%9C%84%ED%85%8C%EC%8A%A4%ED%8A%B8.md)
 * [템플릿](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF.md)
   * [템플릿과 콜백](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF%EA%B3%BC%20%EC%BD%9C%EB%B0%B1.md)
 * [예외](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%8B%E1%85%A8%E1%84%8B%E1%85%AC.md)
@@ -14,7 +14,6 @@
   * [메일 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%EB%A9%94%EC%9D%BC%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
 * [AOP](https://github.com/dilmah0203/TIL/blob/main/Spring/AOP%EB%9E%80%3F.md)
   * [트랜잭션 코드의 분리](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EC%BD%94%EB%93%9C%EC%9D%98%20%EB%B6%84%EB%A6%AC.md?plain=1)
-
 
 ## OOP
 * [자바와 객체 지향](https://github.com/dilmah0203/TIL/blob/main/OOP/%EC%9E%90%EB%B0%94%EC%99%80%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
