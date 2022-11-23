@@ -3,14 +3,15 @@
 ## Spring
 * [오브젝트와 의존관계](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8%EC%99%80%20%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84.md)
 * [테스트](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.md)
+  * [TDD와 단위테스트](https://github.com/dilmah0203/TIL/blob/main/TDD%EC%99%80%20%EB%8B%A8%EC%9C%84%ED%85%8C%EC%8A%A4%ED%8A%B8.md)
 * [템플릿](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF.md)
   1. [템플릿과 콜백](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF%EA%B3%BC%20%EC%BD%9C%EB%B0%B1.md)
 * [예외](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%8B%E1%85%A8%E1%84%8B%E1%85%AC.md)
 * 서비스 추상화
-  1. [사용자 레벨 관리 기능 추가](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EB%A0%88%EB%B2%A8%20%EA%B4%80%EB%A6%AC%20%EA%B8%B0%EB%8A%A5%20%EC%B6%94%EA%B0%80.md)
-  2. [트랜잭션 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
-  3. [서비스 추상화와 단일 책임 원칙](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94%EC%99%80%20%EB%8B%A8%EC%9D%BC%20%EC%B1%85%EC%9E%84%20%EC%9B%90%EC%B9%99.md)
-  4. [메일 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%EB%A9%94%EC%9D%BC%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
+  * [사용자 레벨 관리 기능 추가](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EB%A0%88%EB%B2%A8%20%EA%B4%80%EB%A6%AC%20%EA%B8%B0%EB%8A%A5%20%EC%B6%94%EA%B0%80.md)
+  * [트랜잭션 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
+  * [서비스 추상화와 단일 책임 원칙](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94%EC%99%80%20%EB%8B%A8%EC%9D%BC%20%EC%B1%85%EC%9E%84%20%EC%9B%90%EC%B9%99.md)
+  * [메일 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%EB%A9%94%EC%9D%BC%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
 * [AOP](https://github.com/dilmah0203/TIL/blob/main/Spring/AOP%EB%9E%80%3F.md)
   1. [트랜잭션 코드의 분리](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EC%BD%94%EB%93%9C%EC%9D%98%20%EB%B6%84%EB%A6%AC.md?plain=1)
 
