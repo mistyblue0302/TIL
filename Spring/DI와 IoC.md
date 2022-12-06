@@ -1,31 +1,6 @@
 ## IoC(Inversion of Control)란?
 
-```java
-public class A {
-  private B b;
-
-  public A() {
-    this.b = new B();
-  }
-}
-```
-
-A 클래스는 B를 필드로 가지고 있고 생성자 내부에서 필드를 초기화하고 있다. 
-
-```java
-public class A {
-  private B b;
-
-  public A(B b) {
-    this.b = b;
-  }
-}
-```
-위 코드에서는 외부로부터 B를 받아 초기화하고 있다. 이렇게 의존 객체를 직접 생성하여 사용하지 않고, 주입받아 사용하는 것을 제어의 역전(IoC)이라고 한다.
-
-> 왜 필요할까?
-
-객체 내부에서 생성자를 통해 다른 객체를 초기화하는 것은 결합도가 높은 코드라고 할 수 있다. 하지만 이처럼 외부에서 의존성을 주입받음으로써 역할과 책임을 분리해 객체의 응집도를 높이고 이에 따라 변경에 유연한 코드를 작성할 수 있다.
+스프링 애플리케이션에서는 오브젝트(빈)의 생성과 의존 관계 설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 스프링 컨테이너가 담당한다. 이를 스프링 컨테이너가 오브젝트에 대한 제어권을 가진다고 하여 IoC라고 부른다. 따라서 스프링 컨테이너를 IoC 컨테이너라고도 부른다.
 
 ## DIP(Dependency Inversion Principle)란?
 
@@ -46,23 +21,24 @@ SimplePasswordEncoder는 변하기 쉬운 구체 클래스인데, UserService가
 
 > 의존성 주입은 어떻게 할까?
 
-### 1. 생성자 주입
+### 1. 필드 주입
 
 ```java
 @Service
 public class UserService {
 
-  private UserRepository userRepository;
-  private MemberService memberService;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private MemberService memberService;
 
-  public UserService (UserRepository userRepository, MemberService memberService) {
-        this.userRepository = userRepository;
-        this.memberService = memberService;
-    }
 }
 ```
 
-생성자 주입은 객체의 최초 생성 시점에 1회 호출 되는 것이 보장되기 때문에 주입받은 객체가 변하지 않거나, 반드시 객체의 주입이 필요한 경우에 강제하기 위해 사용할 수 있다. 
+- `@Autowired` 애노테이션을 사용해 의존성 주입을 한다.
+- 애플리케이션 컨텍스트는 일치하는 의존성을 검색한다.
+  - 이 때 일치하는 항목이 1개라면 : 찾고 있는 의존성을 주입
+  - 일치하는 항목이 2개 이상일 경우 @Primary나 @Qualifier를 사용할 수 있다.
 
 ### 2. Setter 주입
 
@@ -84,20 +60,34 @@ public class UserService {
     }
 }
 ```
-필드 값을 변경하는 Setter를 통해서 의존 관계를 주입하는 방법이다. Setter 주입은 생성자 주입과 다르게 주입받는 객체가 변경될 가능성이 있는 경우나 의존성을 선택적으로 주입할 때 사용한다.
 
-### 3. 필드 주입
+- 필드 값을 변경하는 Setter를 통해서 의존 관계를 주입하는 방법
+- Setter 주입은 생성자 주입과 다르게 주입받는 객체가 변경될 가능성이 있는 경우나 의존성을 선택적으로 주입할 때 사용한다.
+
+### 3. 생성자 주입
 
 ```java
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private MemberService memberService;
+  private final UserRepository userRepository;
+  private final MemberService memberService;
 
+  public UserService (UserRepository userRepository, MemberService memberService) {
+        this.userRepository = userRepository;
+        this.memberService = memberService;
+    }
 }
 ```
 
-필드 주입은 외부에서 객체 수정이 불가능 하므로 테스트 코드 작성시 어려움이 있다.
+- 생성자 주입은 객체의 최초 생성 시점에 1회 호출되기 때문에 **불변**하게 사용할 수 있다.
+- **final** 키워드를 붙여 의존성의 누락을 막을 수 있다.
+- Lombok과 결합되어 코드를 간결하게 작성할 수 있다. Lombok에는 final 변수를 위한 생성자를 대신 생성해주는 @RequiredArgsConstructor를 쓸 수 있다.
+
+<br>
+
+참고
+
+https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-introduction(https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#beans-introduction)
+
+
