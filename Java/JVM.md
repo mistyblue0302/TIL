@@ -1,14 +1,19 @@
 ## JVM(Java Virtual Machine)이란?
 
-자바 바이트 코드를 실행할 수 있는 주체로, 운영체제의 종류와 무관하게 자바 코드를 컴파일하여 얻은 바이트 코드를 기계어로 바꿔 실행시켜주는 역할을 한다.
+Java 소스 코드를 컴파일하여 얻은 바이트 코드를 운영체제의 종류와 무관하게 실행시켜주는 역할을 한다.
 
-> 바이트 코드란? JVM이 알아들을 수 있는 명령어 집합
+> 바이트 코드란? JVM이 이해할 수 있는 이진 표현법
+
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/JVM2.png)
+
+- Java 소스 코드(.java)를 Java Compiler를 통해 바이트 코드(.class)로 컴파일한다.
+- 컴파일된 바이트코드를 JVM의 Class Loader에게 전달한다.
+- Class Loader는 동적로딩(Dynamic Loading)을 통해 필요한 클래스들을 로딩 및 링크하여 각 런타임데이터 영역에 할당한다. 
+- Execution Engine은 JVM 메모리에 올라온 바이트코드를 명령어 단위로 하나씩 가져와 실행한다.
 
 ### JVM의 구조
 
-먼저 자바 컴파일러에 의해 자바 소스파일(.java)은 바이트 코드(.class)로 변환되는데, 이러한 바이트 코드를 JVM의 Class Loader에서 읽어들인다.
-
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/JVM.png)
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/JVM.png)
 
 - **Class Loader** : 바이트 코드를 읽고 .class파일에 들어있는 정보를 Heap/Method Area에 저장한다.
 
@@ -16,7 +21,7 @@
 
 - **Garbage Collector** : GC는 Heap 영역에 생성(적재)된 객체들 중에 참조되지 않는 객체들을 제거하는 역할을 한다.
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Runtime%20Data%20Area.png)
+![img3](https://github.com/dilmah0203/TIL/blob/main/Image/Runtime%20Data%20Area.png)
 
 - **Runtime Data Area** : JVM의 메모리 영역으로 자바 애플리케이션을 실행할 때 사용되는 데이터들을 적재하는 곳이다.
   - **Method Area** : class에 대한 정보가 저장되는 영역으로, 메소드의 코드와 static변수를 저장한다.
@@ -25,7 +30,7 @@
    - **Native Method Stack** : 자바 외 언어로 작성된 코드를 위한 메모리 영역
    - **Stack** : 메소드 호출을 스택 Frame이라는 블록으로 쌓으며 로컬 변수, 매개변수, 중간 연산 결과들이 저장된다.
 
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/Stack%20Frame.png)
+![img4](https://github.com/dilmah0203/TIL/blob/main/Image/Stack%20Frame.png)
 
 메소드를 실행하기 위해 필요한 정보가 저장되는 영역으로 Stack은 Frame이라는 자료구조로 저장이 되는데, 메소드가 호출될 때마다 생성되며 메소드가 끝나거나 예외 발생 시 소멸된다.
 
@@ -45,7 +50,7 @@ Stack의 Frame은 다음과 같이 세 개의 부분으로 구성되어 있다.
 
 <br>
 
-![img4](https://github.com/dilmah0203/TIL/blob/main/Image/Run-time%20Data%20Area1.png)
+![img5](https://github.com/dilmah0203/TIL/blob/main/Image/Run-time%20Data%20Area1.png)
 
 Method Area와 Heap영역은 모든 쓰레드가 공유하는 곳으로, 멀티 쓰레드 프로그래밍을 할 때 동기화에 주의해야 하는 영역이다.
 Stack, PC Register, Native Method Stack 영역은 쓰레드가 생성될 때마다 같이 생성되고 쓰레드 간에 공유되지 않는다.
