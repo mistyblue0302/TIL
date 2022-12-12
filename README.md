@@ -49,7 +49,6 @@
 ## Java
 * [JVM](https://github.com/dilmah0203/TIL/blob/main/Java/JVM.md)
 * [자바의 메모리 구조](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%9E%90%EB%B0%94%EC%9D%98%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B5%AC%EC%A1%B0.md)
-* [변수의 생명주기](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%B3%80%EC%88%98%EC%9D%98%20%EC%83%9D%EB%AA%85%EC%A3%BC%EA%B8%B0.md)
 * [BigInteger와 BigDecimal](https://github.com/dilmah0203/TIL/blob/main/Java/BigInteger%EC%99%80%20BigDecimal.md)
 * [Primitive Type vs Reference Type
 ](https://github.com/dilmah0203/TIL/blob/main/Java/Primitive%20Type%20vs%20Reference%20Type.md)
