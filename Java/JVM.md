@@ -13,9 +13,9 @@ Java 소스 코드를 컴파일하여 얻은 바이트 코드를 운영체제의
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/JVM.png)
 
-- **Class Loader** : 세 단계로 이루어진다.
+- **Class Loader** : 런타임에 Method Area에 동적으로 Java 클래스를 로드하는 역할을 한다. 
   - Loading : 바이트 코드(.class)를 읽고 클래스 정보를 Method Area에 저장한다.
-  - Linking : 검증, 메모리 할당 등의 작업을 수행한다.
+  - Linking : 읽어들인 클래스의 검증, 메모리 할당 등의 작업을 수행한다.
   - Initialization : 클래스 변수를 적절한 값으로 초기화한다. 즉, static 필드들이 설정된 값으로 초기화된다.
 
 - **Runtime Data Area** : JVM이 운영체제 위에서 실행될 때, 할당 받는 메모리 영역이다.
