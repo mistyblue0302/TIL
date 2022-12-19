@@ -2,8 +2,6 @@
 
 Java 소스 코드를 컴파일하여 얻은 바이트 코드를 운영체제의 종류와 무관하게 실행시켜주는 역할을 한다.
 
-> 바이트 코드란? JVM이 이해할 수 있는 이진 표현법
-
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/JVM2.png)
 
 - Java 소스 코드(.java)를 Java Compiler를 통해 바이트 코드(.class)로 컴파일한다.
