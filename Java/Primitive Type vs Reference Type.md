@@ -1,11 +1,9 @@
-## Primitive Type vs Reference Type
-
-### 기본 자료형(Primitive Type)
+## 기본 자료형(Primitive Type)
 
 - 비객체 타입으로 null값을 가질 수 없다.
 - 실제 값을 저장하며 Stack 메모리에 저장된다.
 
-### 참조 자료형(Reference Type)
+## 참조 자료형(Reference Type)
 
 - Class, Interface, Array, Enum 타입이 있다.
 - null값을 가질 수 있다.
