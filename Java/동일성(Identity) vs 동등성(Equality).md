@@ -19,7 +19,7 @@ System.out.println(str1 == str2);       // false
 System.out.println(str2 == str3);       // true
 ```
 
-new를 통해 Heap 영역에 생성된 String str1과 리터럴을 이용해 String constant Pool 영역에 위치한 String str2과의 주소값은 같을 수가new 예약어를 통해 서로 다른 객체를 메모리에 할당하였으므로 **동일하지 않다.** 하지만 두 객체의 내용은 같으므로 **동등하다.**
+new를 통해 Heap 영역에 생성된 String str1과 리터럴(값)을 이용해 String constant Pool 영역에 위치한 String str2은 **동일하지 않다.** 하지만 두 객체의 내용은 같으므로 **동등하다.**
 
 Object클래스의 equals()메소드는 다음과 같이 구현되어있다.
 
@@ -29,8 +29,7 @@ public boolean equals(Object obj) {
 }
 ```
 
-매개변수로 전달된 객체를 == 연산자로 비교하여 리턴한다. 즉 오버라이딩하지 않고 사용할 경우 동일성을 비교하게 된다. <br>
-따라서 동등성 비교를 위해서는 equals 메소드를 Override 해야한다.
+매개변수로 전달된 객체를 == 연산자로 비교하여 리턴한다. 즉 오버라이딩하지 않고 사용할 경우 동일성을 비교하게 된다. 따라서 동등성 비교를 위해서는 equals 메소드를 Override 해야한다.
 
 ```java
 public boolean equals(Object anObject) {
@@ -56,10 +55,9 @@ public boolean equals(Object anObject) {
     }
 ```
 
-String 클래스는 equals()를 재정의 한다. ==를 통해 동일성을 판단하고, 동일하지 않다면 String인지 판단한 뒤 문자 하나하나를 비교한다. <br>
-모든 문자가 같다면 동등하다고 판단한다.
+String 클래스는 equals()를 재정의 한다. ==를 통해 동일성을 판단하고, 동일하지 않다면 String인지 판단한 뒤 문자 하나하나를 비교한다. 모든 문자가 같다면 동등하다고 판단한다.
 
-**equals()와 hashcode()**
+### equals()와 hashcode()
 
 - equals() : 동등성 비교
 
