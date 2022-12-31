@@ -55,12 +55,11 @@ public boolean equals(Object anObject) {
     }
 ```
 
-String 클래스는 equals()를 재정의 한다. ==를 통해 동일성을 판단하고, 동일하지 않다면 String인지 판단한 뒤 문자 하나하나를 비교한다. 모든 문자가 같다면 동등하다고 판단한다.
+String 클래스는 ==를 통해 동일성을 판단하고, 동일하지 않다면 String인지 판단한 뒤 문자 하나하나를 비교한다. 모든 문자가 같다면 동등하다고 판단한다.
 
 ### equals()와 hashcode()
 
 - equals() : 동등성 비교
-
 - hashcode() : 동일성 비교
 
 equals()를 override할 때에는 hashcode()도 같이 override해야한다. 왜냐면 equals()비교를 통해 객체가 같아도 주소 값은 같지 않을 수도 있기 때문이다.
