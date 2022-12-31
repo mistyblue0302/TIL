@@ -10,14 +10,16 @@ Primitive Type은 객체가 아니기 때문에 주소가 없어 동등성 비�
 ### Reference Type
 
 ```java
-String str1 = new String("Lee");
-String str2 = new String("Lee");
+String str1 = new String("Hello");
+String str2 = "Hello";
+String str3 = "Hello";
 
-System.out.println(str1 == str2); //false
-System.out.println(str1.equals(str2)); //true
+System.out.println(str1.equals(str2));  // true
+System.out.println(str1 == str2);       // false
+System.out.println(str2 == str3);       // true
 ```
 
-new 예약어를 통해 서로 다른 객체를 메모리에 할당하였으므로 **동일하지 않다.** 하지만 두 객체의 내용은 같으므로 **동등하다.**
+new를 통해 Heap 영역에 생성된 String str1과 리터럴을 이용해 String constant Pool 영역에 위치한 String str2과의 주소값은 같을 수가new 예약어를 통해 서로 다른 객체를 메모리에 할당하였으므로 **동일하지 않다.** 하지만 두 객체의 내용은 같으므로 **동등하다.**
 
 Object클래스의 equals()메소드는 다음과 같이 구현되어있다.
 
