@@ -59,7 +59,11 @@ String 클래스는 ==를 통해 동일성을 판단하고, 동일하지 않다�
 
 ### equals()와 hashcode()
 
-hashcode()는 객체의 메모리 주소를 16진수로 리턴하며 두 객체가 같은 객체인지 확인한다. equals()를 override할 때에는 hashcode()도 같이 override해야한다. 그렇지 않으면 hashcode()를 활용하는 Collection을 이용할 때 문제가 발생한다. hashcode()를 사용하는 Java의 Collection은 HashMap, HashTable 등이 있다. 공통적인 기능으로는 **hashcode()를 사용하여 키 값을 결정**한다는 것이다. 여기서 키란 객체를 판별하는 수단으로 객체의 해시코드가 다르다면 다른 객체라고 판단하기 때문에, 동등한 객체로 판단하기 위해서는 hashcode()도 재정의해야하는 것이다.
+equals()를 override할 때에는 hashcode()도 같이 override해야한다. 그렇지 않으면 hashcode()를 활용하는 Collection을 이용할 때 문제가 발생한다. hashcode()를 사용하는 Java의 Collection은 HashMap, HashTable 등이 있다. 공통적인 기능으로는 **hashcode()를 사용하여 키 값을 결정**한다는 것이다. 여기서 키란 객체를 판별하는 수단으로, 객체의 hashcode()가 다르다면 다른 객체라고 판단하기 때문에 동등한 객체로 판단하기 위해서는 hashcode()도 재정의해야하는 것이다.
+
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/HashMap.png)
+
+HashMap의 get 메소드를 보면 Key값으로 Node를 get할 때 앞에서 잠깐 살펴본 Object 클래스의 hashCode()를 이용하여 Node를 get해옴을 알 수 있다. 문제는, equals()를 오버라이딩하여 두 객체가 동등하다면, hashCode 값도 항상 동일해야만 한다는 점이다. 만일 그렇지 않다면, 예를 들어 HashMap의 Key로 어떤 객체를 사용할 때, 내용이 같은 객체(동등성을 가진)를 생성하여 Key로 넣더라도 HashCode값이 다르기 때문에 원하는 Value를 가져오지 못하기 때문이다.
 
 ```java
 public class Example {
