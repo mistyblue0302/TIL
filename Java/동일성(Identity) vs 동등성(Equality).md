@@ -61,10 +61,8 @@ String 클래스는 ==를 통해 동일성을 판단하고, 동일하지 않다�
 
 equals()를 override할 때에는 hashcode()도 같이 override해야한다. 그렇지 않으면 hashcode()를 활용하는 Collection을 이용할 때 문제가 발생한다. hashcode()를 사용하는 Java의 Collection은 HashMap, HashTable, ConcurrentHashMap 등이 있다. 공통적인 기능으로는 **hashcode()를 사용하여 키 값을 결정**한다는 것이다. 
 
-여기서 키란 객체를 판별하는 수단으로, 객체의 hashcode()가 다르다면 다른 객체라고 판단하기 때문에 동등한 객체로 판단하기 위해서는 hashcode()도 재정의해야하는 것이다.
-
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/HashMap.png)
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HashMap2.png)
 
-HashMap의 get() 메소드는 Key값으로 Node를 get할 때, hashCode()를 이용한다. equals()를 오버라이딩하여 두 객체가 동등하다면 hashCode 값도 항상 같아야 한다는 점이다. 
+HashMap의 get() 메소드는 Key값으로 Node를 get할 때, hashCode()를 이용한다. 여기서 키란 객체를 판별하는 수단으로, 객체의 hashcode()가 다르다면 다른 객체라고 판단하기 때문에 동등한 객체로 판단하기 위해서는 hashcode()도 재정의해야하는 것이다.
 
