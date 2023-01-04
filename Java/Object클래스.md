@@ -84,5 +84,3 @@ public boolean equals(Object obj) {
 > false
 > true //다른 객체라도 같은 문자열을 가지고 있다면 같다고 판단
 ```
-
-equals() 메소드는 Object 타입으로 매개변수를 받고, Object 타입을 A 클래스  형변환을 해준다.
