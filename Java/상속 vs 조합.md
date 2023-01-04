@@ -160,10 +160,3 @@ public class 포유류 extends 동물 {
   
 반면 **조합**은 **Has-A** 관계이다. 객체가 변경되더라도 영향을 최소화할 수 있기 때문에 변경에 안정적이며 느슨하게 결합되므로 설계가 유연해진다.
 
-<br>
-
-참고
-
-[우아한Tech 상속과 조합](https://www.youtube.com/watch?v=U4OSS4jJ9ns)
-  
-[https://tecoble.techcourse.co.kr/post/2020-05-18-inheritance-vs-composition/](https://tecoble.techcourse.co.kr/post/2020-05-18-inheritance-vs-composition/)  
