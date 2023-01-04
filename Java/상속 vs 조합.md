@@ -10,7 +10,7 @@
 
 1. **하위 클래스가 상위 클래스의 구현에 의존하기 때문에 상위 클래스의 변경에 모든 하위 클래스가 영향을 받는다.**
 
-로또 번호를 가지고 있는 역할인 `Lotto` 클래스가 있다. `Lotto` 클래스는 로또 번호를 `List<Integer>`로 가지고 있다.
+로또 번호를 `List<Integer>`로 가지고 있는 역할인 `Lotto` 클래스가 있다. 
 
 ```java
 public class Lotto {
@@ -111,12 +111,13 @@ add() 메소드는 Stack의 규칙을 따르지 않기 때문이다. 원래 Stac
 
 ### 조합은 상속의 문제점을 어떻게 해결할까?
 
-조합하려는 클래스의 인스턴스를 새로운 클래스의 private 필드로 참조하고, 인스턴스의 메소드를 호출하는 방식으로 구현한다.
+조합은 클래스의 인스턴스를 새로운 클래스의 private 필드로 참조하고, 인스턴스의 메소드를 호출하는 방식으로 구현한다.
   
 위에서 보았던 `WinningLotto` 클래스가 `Lotto`를 상속하는 것이 아닌 조합(Composition)을 사용하면 다음과 같다.
 
 ```java
 public class WinningLotto {
+
     private Lotto lotto;
     private BonusBall bonusBall;
 }  
