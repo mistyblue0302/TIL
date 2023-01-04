@@ -1,94 +1,53 @@
-# 💡 **Object클래스**
+## Object클래스
 
-자바에서 모든 클래스의 부모는 java.lang.Object
-
-<br>
+자바에서 모든 클래스의 부모 클래스는 java.lang.Object 클래스이다. 이유는 Object 클래스의 메소드를 통해 클래스의 기본적인 행동을 정의할 수 있기 때문이다.
 
 ```java
   public class Inheritance{}
   public class Inheritance extends Object{} //실행 결과는 같다
 ```
 
-<br>
+### toString()
 
-**Object클래스가 제공하는 주요 메소드**
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/toString().png)
 
-- **toString()** 
-
-  객체를 문자열로 변환하기 위한 메소드, 오버라이딩 되어 있지 않을 경우에는
-  클래스이름@16진수코드 를 반환
-
-```java
-public class Book{
-    int bookNumber;
-    String bookTitle;
-
-    Book(int bookNumber, String bookTitle){
-        this.bookNumber = bookNumber;
-        this.bookTitle = bookTitle;
-    }
-
-    public String toString(){
-        return bookTitle + " " + bookNumber;
-    }
-}
-```
-
-```java
-public class Tostring{
-    public static void main(String[] args){
-        Book book = new Book(3, "소설");
-
-        System.out.println(book);
-        System.out.println(book.toString());
-    }
-}
-```
-
-```java
-> 소설 3
-> 소설 3
-```
-
-
-<br>
+- 객체를 문자열로 변환하기 위한 메소드로 오버라이딩 되어 있지 않을 경우에는 클래스이름@16진수코드 를 반환
+  - System.out.println() 메소드에 매개 변수로 들어가는 경우
+  - 객체에 대하여 더하기 연산
 
 ```java
 import java.util.Arrays;
 
-public class arraytest {
+public class arrayTest {
+
   public static void main(String[] args) {
+  
 	int[] array = new int[] {1,2,3,4};
 
 	System.out.println(array.toString());
 	System.out.println(Arrays.toString(array));
   }
-
 }
-
 ```
 
 ```java
-> [I@43a25848] //Object.toString()메소드의 값을 출력하는 것이고, 대상 개체의 해쉬코드값을 출력한다
+> [I@43a25848] //Object.toString()메소드의 값을 출력하는 것이고, 대상 개체의 해시코드값을 출력한다
 > [1, 2, 3, 4] //java.util.Araays 패키지를 이용하여 값을 문자열 형태로 리턴
 ```
 
-<br>
+### equals()
 
-- **equals()** 
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/equals().png)
 
-  객체가 같은지 비교하는 메소드이다. <br>
-  최상위 클래스인 Object에 포함되어 있기 때문에 재정의하여 사용이 가능하다
-
-  == <br>
-  비교 연산자이다. <br>
-  기본자료형에 대해서는 값을 비교, 참조자료형에서는 주소값을 비교
+- 객체가 같은지 비교하는 메소드로 같으면 true, 다르면 false를 반환한다.
+  - == 연산자로 primitive type은 값을 비교하고 reference type은 주소값을 비교한다. 주소값이 아닌 객체가 같은지 여부를 비교하기 위해 equals() 메소드를 오버라이딩 해야한다.
 
 ```java
-public class A{
+public class A {
+
     String name;
 
-    public A(String name){
+    public A(String name) {
         this.name = name;
     }
 }
@@ -96,13 +55,15 @@ public class A{
 
 ```java
 public class B {
+
 	public static void main(String[] args) {
+	
 		A a = new A("Lee");
 		A b = new A("Lee");
 
 		System.out.println(a == b);
 		System.out.println(a.equals(b));
-	}
+       }
 }
 ```
 
@@ -114,7 +75,7 @@ public class B {
 **equals재정의**
 
 ```java
-public boolean equals(Object obj){
+public boolean equals(Object obj) {
 	return this.name == ((A)obj).name;
 }
 ```
