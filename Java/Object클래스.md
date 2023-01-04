@@ -72,7 +72,7 @@ public class B {
 > false //오버라이딩 하지 않았으므로 hashcode() 값을 비교
 ```
 
-**equals재정의**
+**equals() 재정의**
 
 ```java
 public boolean equals(Object obj) {
@@ -85,5 +85,4 @@ public boolean equals(Object obj) {
 > true //다른 객체라도 같은 문자열을 가지고 있다면 같다고 판단
 ```
 
-equals 메소드를 Object 타입으로 매개변수를 받는다. <br>
-Object 타입은 A 클래스의 필드를 사용할 수 없기 때문에 형변환을 해준다.
+equals() 메소드는 Object 타입으로 매개변수를 받고, Object 타입을 A 클래스  형변환을 해준다.
