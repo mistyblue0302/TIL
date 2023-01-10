@@ -160,7 +160,6 @@ public class Triangle extends Shape {
 
 ```java
 public interface Calculator {
-
     static final int first = 10; //상수 필드
     
     public int plus(int x, int y); 
@@ -198,7 +197,6 @@ public class Main {
   
 ```java
 public interface Calculator {
-
     static final int first = 10;
     
     public int plus(int x, int y); 
