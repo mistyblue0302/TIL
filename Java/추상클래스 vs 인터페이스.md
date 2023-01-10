@@ -2,8 +2,7 @@
 
 **인터페이스와 추상클래스의 공통점과 차이점**
 
-- 추상클래스와 인터페이스는 인스턴스화 하는 것은 불가능하며,
-- 구현부가 있는 메소드와 없는 메소드를 모두 가질 수 있다는 점에서 유사하다.
+- 인터페이스와 추상클래스는 인스턴스화 하는 것은 불가능하며, 구현부가 있는 메소드와 없는 메소드를 모두 가질 수 있다는 점에서 유사하다.
 - 인터페이스에서 모든 변수는 기본적으로 public static final 이며, 모든 메소드는 public abstract인 **반면** 추상클래스는 static이나 final이 아닌 변수를 지정할 수 있고 public, protected, private 메소드를 가질 수 있다.
 - 인터페이스는 다른 여러개의 인터페이스들을 함께 구현할 수 있지만, 자바는 다중 상속을 지원하지 않으므로 추상클래스를 상속받은 서브클래스는 다른 클래스를 상속받을 수 없다.
 
@@ -18,11 +17,11 @@ public interface 인터페이스이름 {
 
 > 언제 사용할까?
 
-- 구현 클래스들 간에 관련성이 없는 경우
+- 관련 없는 클래스가 인터페이스를 구현할 때
 - 특정 데이터 타입의 행동을 명시하고싶은데, 어디서 구현되는지 상관 없는 경우
 - 다중상속을 활용할 때
 
-다음 예시를 보자.
+첫 번째 관련 없는 클래스가 인터페이스를 구현할 경우는, 두 객체를 비교하기 위해 Comparable 인터페이스의 compareTo() 메소드를 재정의하는 것을 뜻한다. 다음 예시를 보자.
 
 ```java
 public class Car {
@@ -39,7 +38,7 @@ public class Main {
 }
 ```
 
-Main 클래스에서 다음과 같이 객체를 생성했다. 객체는 생성 이후 Car클래스에 선언된 모든 메소드를 사용할 수 있게 된다. 하지만 Main 클래스에서 다른 객체를 사용하고 싶을 때는 새로운 객체로 변경해주어야 한다. 이것은 Car클래스와 Main클래스가 강한 결합을 이루고 있다고 볼 수 있으며 인터페이스를 이용하여 다음과 같이 결합도를 낮출 수 있다.
+Main 클래스에서 다음과 같이 객체를 생성하였다. 객체 생성 이후 Car 클래스에 선언된 모든 메소드를 사용할 수 있게 된다. 하지만 Main 클래스에서 다른 객체를 사용하고 싶을 때는 새로운 객체로 변경해주어야 한다. 이것은 Car 클래스와 Main 클래스가 강한 결합을 이루고 있다고 볼 수 있으며 인터페이스를 이용하여 다음과 같이 결합도를 낮출 수 있다.
 
 ```java
 public class Example {
@@ -75,12 +74,13 @@ public class Main {
 }
 ```
 
-Movable 인터페이스를 상속받은 Car과 Bus클래스에 각각 른 동작을 선언하고 이 동작을 사용하는 Main 클래스에서는 다른 객체를 사용할 시 Movable을 구현하는 객체를 생성하고 바꿔주기만 하면 된다. 
+Movable 인터페이스를 구현하는 Car과 Bus 클래스에 각각 다른 동작을 선언하고 이 동작을 사용하는 Main 클래스에서는 다른 객체를 사용할 시 Movable 인터페이스를 구현하는 객체를 생성하고 바꿔주기만 하면 된다. 
 
 
 ## 추상클래스
 
 추상 메소드는 아래와 같이 구현부가 없는 메소드를 말하며, 추상클래스를 상속받는 클래스는 상위클래스에 있는 모든 추상메소드들을 구현한다. 그렇지 않은 경우 해당 서브클래스 또한 abstract로 선언되어야 한다.
+
 
 ```java
 public abstract void method();
@@ -108,7 +108,6 @@ public abstract class 클래스이름 {
 
 ```java
 public abstract class Shape {
-
     int x;
     
     public void move() {
@@ -120,7 +119,6 @@ public abstract class Shape {
 }
 
 public class Rectangle extends Shape {
-
     @Override
     public void draw() {
         ...
@@ -133,7 +131,6 @@ public class Rectangle extends Shape {
 }
 
 public class Triangle extends Shape {
-
     @Override
     public void draw() {
         ...
@@ -146,7 +143,12 @@ public class Triangle extends Shape {
 }
 ```
 
-추상클래스는 **Is a** 관계일 때 사용하며 Rectangle과 Triangle 클래스는 Shape 클래스를 확장한다. draw()와 area() 메소드는 추상클래스 Shape를 상속받는 Rectangle과 Triangle 클래스가 오버라이딩하도록 함으로써 동작 변경이 가능하다. 또한 Shape클래스에서 int x를 선언함으로써 **상태를 변경**할 수 있다는 것이 인터페이스와의 큰 차이점이다. 인터페이스는 동작을 정의할 수 있지만 상태에 관여할 수 없다.
+추상클래스는 **Is a** 관계일 때 사용한다.
+
+- Rectangle is a Shape
+- Triangle is a Shape  
+
+인터페이스는 객체 변경을 통해 동작 변경이 가능했지만 상태에 관여할 수 없다. 하지만 추상클래스는 int x를 선언함으로써 **상태를 변경**할 수 있다는 것이 인터페이스와의 큰 차이점이다. 
 
 ## JDK 8의 인터페이스에 추가된 기능
 
