@@ -152,17 +152,20 @@ public class Triangle extends Shape {
 
 ## JDK 8의 인터페이스에 추가된 기능
 
-- default method
+- **default method**
 
-  JDK 8 이전엔 인터페이스에서 구현을 정의할 수 없었다. 그래서 새로운 메소드를 추가하려면 인터페이스를 구현하는 모든 클래스들이 해당 메소드를 구현해야했다.
+  JDK 8 이전엔 새로운 메소드를 추가하려면 인터페이스를 구현하는 모든 클래스들이 해당 메소드를 구현해야했다.
   하지만 default method로 추가가 가능해지면서 기존 인터페이스를 구현했던 클래스에서 메소드를 override하지 않아도 된다.
   기존 코드에 영향을 주지 않고 새로운 메소드를 가질 수 있도록 이전 인터페이스에 대한 호환성을 제공한다.
 
 ```java
 public interface Calculator {
-    final int first = 10; //상수 필드
-    public int plus(int x, int y); //메소드
+
+    static final int first = 10; //상수 필드
+    
+    public int plus(int x, int y); 
     public int minus(int x, int y);
+    
     default int multiply(int x, int y) {
         return x * y;
     }
@@ -188,36 +191,21 @@ public class Main {
 }
 ```
 
-- static method
+- **static method**
 
-  객체 생성 여부와 상관없이 사용이 가능하며, override가 불가능하고 상속되지 않는다.
+  객체 생성 여부와 상관없이 `Calculator.multiply();`와 같이 인터페이스만으로도 호출이 가능하며 override가 불가능하고 상속되지 않는다.
   상수를 선언할 때는 static block에서 초기화할 수 없고, 선언과 동시에 초기화해야한다.
   
 ```java
 public interface Calculator {
-    final int first = 10; //상수 필드
-    public int plus(int x, int y); //메소드
+
+    static final int first = 10;
+    
+    public int plus(int x, int y); 
     public int minus(int x, int y);
+    
     static int multiply(int x, int y) {
         return x * y;
-    }
-}
-
-public class Ex implements Calculator {
-    @Override
-    public int plus(int x, int y) {
-        return x + y;
-    }
-    @Override
-    public int minus(int x, int y) {
-        return x - y;
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        int value = Calculator.multiply(5, 3);
-        System.out.println((value));
     }
 }
 ```
