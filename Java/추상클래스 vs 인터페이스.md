@@ -1,77 +1,11 @@
-## 추상클래스 vs 인터페이스
+## 인터페이스 vs 추상클래스 
 
-**추상클래스와 인터페이스의 공통점과 차이점**
+**인터페이스와 추상클래스의 공통점과 차이점**
 
 - 추상클래스와 인터페이스는 인스턴스화 하는 것은 불가능하며,
 - 구현부가 있는 메소드와 없는 메소드를 모두 가질 수 있다는 점에서 유사하다.
-- 인터페이스에서 모든 변수는 기본적으로 public static final 이며, 모든 메소드는 public abstract인 **반면** 추상클래스는 static이나 final이 아닌 필드를 지정할 수 있고 public, protected, private 메소드를 가질 수 있다.
-- 인터페이스는 다른 여러개의 인터페이스들을 함께 구현할 수 있지만, 자바는 다중 상속을 지원하지 않으므로 추상클래스를 상속받은 자식클래스는 다른 클래스를 상속받을 수 없다.
-
-## 추상클래스
-
-추상 메소드는 아래와 같이 구현부가 없는 메소드를 말하며, 어떤 클래스가 추상 메소드를 포함한다면 추상 클래스로 선언되어야 한다.
-
-```java
-public abstract void method();
-```
-
-추상클래스를 상속받는 클래스는 부모클래스에 있는 모든 추상메소드들을 구현한다. 그렇지 않은 경우 해당 서브클래스 또한 abstract로 선언되어야 한다.
-
-```java
-public abstract class 클래스이름 {
-    //필드 선언
-    //추상메소드
-    //일반메소드
-    public void move() {
-    }
-}
-```
-
-인터페이스의 경우 default 또는 static으로 선언되지 않은 메소드는 abstract이기 때문에 생략이 가능하다.
-
-> 언제 사용할까?
-
-- 여러 하위 클래스의 공통 기능을 캡슐화할 때
-- public 이 아닌 공통적인 필드나 메소드를 가지는 클래스를 상속받고자 할 때 
-- 상태 변경을 위해 non-static, non-final 필드 선언이 필요할 때
-
-다음 예시를 보자. 
-
-```java
-public abstract class Shape {
-    int x;
-    
-    public void move() {
-        ...
-    }
-    abstract void draw();
-    abstract double area();
-}
-
-public class Rectangle extends Shape {
-    @Override
-    public void draw() {
-        ...
-    }
-    @Override
-    public double area() {
-        ...
-    }
-}
-
-public class Triangle extends Shape {
-    @Override
-    public void draw() {
-        ...
-    }
-    @Override
-    public double area() {
-        ...
-    }
-}
-```
-
-추상 클래스는 **Is a** 관계일 때 사용하며 Rectangle과 Triangle 클래스는 Shape 클래스를 확장한다. draw()와 area() 메소드는 추상클래스를 상속받는 Rectangle과 Triangle클래스가 오버라이딩하도록 함으로써 동작 변경이 가능하다. 또한 Shape클래스에서 int x를 선언함으로써 **상태에 관여**할 수 있다는 것이 인터페이스와의 큰 차이점이다. 
+- 인터페이스에서 모든 변수는 기본적으로 public static final 이며, 모든 메소드는 public abstract인 **반면** 추상클래스는 static이나 final이 아닌 변수를 지정할 수 있고 public, protected, private 메소드를 가질 수 있다.
+- 인터페이스는 다른 여러개의 인터페이스들을 함께 구현할 수 있지만, 자바는 다중 상속을 지원하지 않으므로 추상클래스를 상속받은 서브클래스는 다른 클래스를 상속받을 수 없다.
 
 ## 인터페이스
 
@@ -143,7 +77,78 @@ public class Main {
 
 Movable 인터페이스를 상속받은 Car과 Bus클래스에 각각 른 동작을 선언하고 이 동작을 사용하는 Main 클래스에서는 다른 객체를 사용할 시 Movable을 구현하는 객체를 생성하고 바꿔주기만 하면 된다. 
 
-### JDK 8의 인터페이스에 추가된 기능
+
+## 추상클래스
+
+추상 메소드는 아래와 같이 구현부가 없는 메소드를 말하며, 추상클래스를 상속받는 클래스는 상위클래스에 있는 모든 추상메소드들을 구현한다. 그렇지 않은 경우 해당 서브클래스 또한 abstract로 선언되어야 한다.
+
+```java
+public abstract void method();
+```
+
+```java
+public abstract class 클래스이름 {
+    //필드 
+    //추상메소드
+    //일반메소드
+    public void move() {
+    }
+}
+```
+
+인터페이스의 경우 default 또는 static으로 선언되지 않은 메소드는 모두 abstract이기 때문에 생략이 가능하다.
+
+> 언제 사용할까?
+
+- 여러 하위 클래스의 공통 기능을 캡슐화할 때
+- public 이 아닌 공통적인 필드나 메소드를 가지는 클래스를 상속받고자 할 때 
+- 상태 변경을 위해 non-static, non-final 필드 선언이 필요할 때
+
+다음 예시를 보자. 
+
+```java
+public abstract class Shape {
+
+    int x;
+    
+    public void move() {
+        ...
+    }
+    
+    abstract void draw();
+    abstract double area();
+}
+
+public class Rectangle extends Shape {
+
+    @Override
+    public void draw() {
+        ...
+    }
+    
+    @Override
+    public double area() {
+        ...
+    }
+}
+
+public class Triangle extends Shape {
+
+    @Override
+    public void draw() {
+        ...
+    }
+    
+    @Override
+    public double area() {
+        ...
+    }
+}
+```
+
+추상클래스는 **Is a** 관계일 때 사용하며 Rectangle과 Triangle 클래스는 Shape 클래스를 확장한다. draw()와 area() 메소드는 추상클래스 Shape를 상속받는 Rectangle과 Triangle 클래스가 오버라이딩하도록 함으로써 동작 변경이 가능하다. 또한 Shape클래스에서 int x를 선언함으로써 **상태를 변경**할 수 있다는 것이 인터페이스와의 큰 차이점이다. 인터페이스는 동작을 정의할 수 있지만 상태에 관여할 수 없다.
+
+## JDK 8의 인터페이스에 추가된 기능
 
 - default method
 
