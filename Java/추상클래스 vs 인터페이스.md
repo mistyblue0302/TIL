@@ -3,7 +3,7 @@
 **인터페이스와 추상클래스의 공통점과 차이점**
 
 - 인터페이스와 추상클래스는 인스턴스화 하는 것은 불가능하며, 구현부가 있는 메소드와 없는 메소드를 모두 가질 수 있다는 점에서 유사하다.
-- 인터페이스에서 모든 변수는 기본적으로 public static final 이며, 모든 메소드는 public abstract인 **반면** 추상클래스는 static이나 final이 아닌 변수를 지정할 수 있고 public, protected, private 메소드를 가질 수 있다.
+- 인터페이스에서 모든 변수는 기본적으로 public static final이며, 모든 메소드는 public abstract인 **반면** 추상클래스는 static이나 final이 아닌 변수를 지정할 수 있고 public, protected, private 메소드를 가질 수 있다.
 - 인터페이스는 다른 여러개의 인터페이스들을 함께 구현할 수 있지만, 자바는 다중 상속을 지원하지 않으므로 추상클래스를 상속받은 서브클래스는 다른 클래스를 상속받을 수 없다.
 
 ## 인터페이스
@@ -74,8 +74,7 @@ public class Main {
 }
 ```
 
-Movable 인터페이스를 구현하는 Car과 Bus 클래스에 각각 다른 행동을 정의하고하고 이 행동을 사용하는 Main 클래스에서는 다른 객체를 사용할 시 Movable 인터페이스를 구현하는 객체를 생성하고 바꿔주기만 하면 된다. 
-
+Movable 인터페이스를 구현하는 Car과 Bus 클래스에 각각 다른 행동을 정의하고, Main 클래스에서는 다른 객체를 사용할 시 Movable 인터페이스를 구현하는 객체를 생성하고 바꿔주기만 하면 된다. 
 
 ## 추상클래스
 
@@ -160,6 +159,7 @@ public class Triangle extends Shape {
 
 ```java
 public interface Calculator {
+
     static final int first = 10; //상수 필드
     
     public int plus(int x, int y); 
@@ -197,6 +197,7 @@ public class Main {
   
 ```java
 public interface Calculator {
+
     static final int first = 10;
     
     public int plus(int x, int y); 
