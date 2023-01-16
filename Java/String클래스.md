@@ -106,7 +106,7 @@ public class Example {
 }
 ```
 
-**contains() 매개 변수로 넘어온 값이 문자열에 존재하는지 확인한다.**
+**contains() : 매개 변수로 넘어온 값이 문자열에 존재하는지 확인한다.**
 
 ```java
 public void checkContains(String[] address) {
