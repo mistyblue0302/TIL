@@ -2,15 +2,6 @@
 
 String 클래스는 문자열과 관련된 작업을 할 때 유용하게 사용할 수 있는 메소드들이 포함되어 있다.
 
-다음 결과는 서로 같다.
-
-```java
-String str = "abc";
-
-char data[] = {'a', 'b', 'c'};
-String str = new String(data);
-```
-
 **getBytes() : String 문자열을 byte로 변환**
 
 같은 프로그램 내에서 문자열을 byte 배열로 저장하며, 
