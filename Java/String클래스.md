@@ -175,13 +175,13 @@ public void checkTrim(){
 
 ## String은 불변 객체다
 
-String은 한 번 만들어지면 변경될 수 없다. 문자열을 더하게 되면 새로운 String 객체가 생성되고, 기존 객체는 버려진다. 그리고 GC의 대상이 된다.
+String은 한 번 만들어지면 값이 변경될 수 없다. String 문자열을 더하게 되면 새로운 String 객체가 생성되고, 기존 객체는 버려진다. 그리고 나중에 GC의 대상이 된다.
 
-이러한 String 클래스의 단점을 보완하기 위한 StringBuffer와 StringBuilder가 있다. StringBuffer는 Thread safe하며, StringBuilder는 Thread safe하지 않다. 속도는 StringBuilder 클래스가 빠르다. 두 클래스는 문자열을 더할 시에 새로운 객체를 생성하지 않는다.
+이러한 String 클래스의 단점을 보완하기 위한 `StringBuffer`와 `StringBuilder`가 있다. `StringBuffer`는 Thread safe하며, `StringBuilder`는 Thread safe하지 않다. 속도는 StringBuilder 클래스가 빠르다. 두 클래스는 문자열을 더할 시에 새로운 객체를 생성하지 않는다. 
 
-  **그럼 언제 String을 사용할까?**
+**그럼 언제 String을 사용할까?**
 
-  불변성을 가지기 때문에 변하지 않는 문자열을 자주 읽는 경우 사용한다. 문자열 추가와 수정 삭제 등의 연산이 빈번하게 발생하는 경우 String을 사용하게 되면 힙에 많은 가비지가 생성되므로 StringBuffer / StringBuilder 클래스를 사용하는게 좋다.
+불변성을 가지기 때문에 변하지 않는 문자열을 자주 읽는 경우 사용한다. 문자열 추가와 수정 삭제 등의 연산이 빈번하게 발생하는 경우 String을 사용하게 되면 힙에 많은 객체가 생성되므로 StringBuffer / StringBuilder 클래스를 사용하는게 좋다.
 
 <br>
 
