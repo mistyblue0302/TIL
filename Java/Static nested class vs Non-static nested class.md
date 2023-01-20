@@ -12,9 +12,7 @@ class OuterClass {
 }
 ```
 
-<br>
-
-**static nested class**
+### Static nested class
 
 static으로 선언된 내부 class 안에서는 static으로 선언된 변수와 메소드만 사용 가능하다. 하지만 외부 class의 멤버에 접근할 시 객체를 생성해야 한다.
 
@@ -49,9 +47,7 @@ public class Main {
 
 한 곳에서만 사용되는 class를 논리적으로 그룹화한다. 만약 어떤 class가 다른 하나의 class에서만 유용하다면 해당 class에 포함시킴으로써 용도가 보다 명확해진다.
 
-<br>
-
-**non-static nested class**
+### Non-static nested class
 
 먼저 외부 class의 객체를 생성한 후 내부 class의 객체를 생성해야 한다. static nested class와는 달리 어떤 변수라도 참조할 수 있다.
 
