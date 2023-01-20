@@ -18,14 +18,12 @@ static으로 선언된 내부 class 안에서는 static으로 선언된 변수�
 
 ```java
 public class Ex {
-
     static int x = 3;
     int y = 2;
 
     private static int z = 10;
 
     static class StaticNested {
-
         void get() {
             System.out.println("x: " + x); //3
             System.out.println("z: " + z); //10
@@ -34,12 +32,10 @@ public class Ex {
 }
 
 public class Main {
-
     public static void main(String[] args) {
         Ex.StaticNested e = new Ex.StaticNested();
         e.get();
     }
-
 }
 ```
 
@@ -53,14 +49,12 @@ public class Main {
 
 ```java
 public class Ex {
-
     static int x = 3;
     int y = 2;
 
     public int z = 10;
 
     class NonNested {
-
         void get() {
             System.out.println("x: " + x); //3
             System.out.println("y: " + y); //2
@@ -70,27 +64,18 @@ public class Ex {
 }
 
 public class Main {
-
     public static void main(String[] args) {
         Ex e1 = new Ex();
         Ex.NonNested e2 = e1.new NonNested();
         e2.get();
     }
-
 }
-
 ```
 
 **왜 쓸까?**
 
 캡슐화가 필요할 때 사용한다. 만약 A라는 class에 private 변수가 있고, 이 변수에 접근하고 싶은 B라는 class가 있다고 가정하자. B class를 외부에 노출하고 싶지 않을 경우에 사용할 수 있다.
 
-<br>
-
-**gc**
-
-non-static nested class는 외부 class 멤버에 접근 할 수 있다고 하였다. 즉, 실행동안 외부 class의 모든 객체는 내부 class와 함께 메모리에 있어야 한다. gc는 인스턴스를 수거 하지 못하여 메모리 누수가 생길 수 있다.
- 
 <br>
 
 참고
