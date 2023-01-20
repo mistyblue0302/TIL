@@ -20,6 +20,10 @@ class OuterClass {
 
 ## Static nested class
 
+Static nested class의 경우 다음과 같이 객체를 생성할 수 있다.
+
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Static%20nested%20class.png)
+
 static으로 선언된 내부 class 안에서는 static으로 선언된 변수와 메소드만 사용 가능하다. 하지만 외부 class의 멤버에 접근할 시 객체를 생성해야 한다.
 
 ```java
@@ -39,13 +43,15 @@ public class OuterClass {
 
 public class Main {
     public static void main(String[] args) {
-        OuterClass.StaticNested outerObject = new  OuterClass.StaticNested();
+        OuterClass.StaticNested outerObject = new OuterClass.StaticNested();
         outerObject.get();
     }
 }
 ```
 
 ## Non-static nested class(Inner class)
+
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Inner%20class.png)
 
 먼저 외부 class의 객체를 생성한 후 내부 class의 객체를 생성해야 한다. static nested class와는 달리 해당 객체의 메소드와 필드에 직접 접근할 수 있다. 내부 class를 인스턴스화하려면 먼저 외부 class를 인스턴스화해야 한다.
 
