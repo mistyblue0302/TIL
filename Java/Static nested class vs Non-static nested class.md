@@ -1,6 +1,6 @@
-## Static nested class vs Non-static nested class
+## Nested Classes
 
-Java에선 class 안의 또 다른 class를 허용하는데 이러한 class를 nested class(중첩 클래스)라고 한다. nested class는 static과 non-static으로 나뉜다. Non-static nested class를 inner class라고 하며, static으로 선언되어 있는 nested class는 static nested class이다.
+Java에선 class 안의 또 다른 class를 허용하는데 이러한 class를 nested class(중첩 클래스)라고 한다. nested class는 static과 non-static으로 나뉜다. static으로 선언되어 있는 nested class는 static nested class이며 on-static nested class는 inner class이다.
 
 ```java
 class OuterClass {
@@ -12,7 +12,11 @@ class OuterClass {
 }
 ```
 
-### Static nested class
+왜 쓸까?
+
+한 곳에서만 사용되는 class를 논리적으로 그룹화한다. 만약 어떤 class가 다른 하나의 class에서만 유용하다면 해당 class에 포함시킴으로써 용도가 보다 명확해진다.
+
+## Static nested class
 
 static으로 선언된 내부 class 안에서는 static으로 선언된 변수와 메소드만 사용 가능하다. 하지만 외부 class의 멤버에 접근할 시 객체를 생성해야 한다.
 
@@ -39,11 +43,7 @@ public class Main {
 }
 ```
 
-**왜 쓸까?**
-
-한 곳에서만 사용되는 class를 논리적으로 그룹화한다. 만약 어떤 class가 다른 하나의 class에서만 유용하다면 해당 class에 포함시킴으로써 용도가 보다 명확해진다.
-
-### Non-static nested class
+## Non-static nested class
 
 먼저 외부 class의 객체를 생성한 후 내부 class의 객체를 생성해야 한다. static nested class와는 달리 어떤 변수라도 참조할 수 있다.
 
