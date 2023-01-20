@@ -4,14 +4,11 @@ Java에선 class 안의 또 다른 class를 허용하는데 이러한 class를 n
 
 ```java
 class OuterClass {
-    
     class InnerClass {
-        
     }
+    
     static class StaticNestedClass {
-        
     }
-
 }
 ```
 
