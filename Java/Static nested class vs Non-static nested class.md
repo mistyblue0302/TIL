@@ -20,29 +20,24 @@ class OuterClass {
 
 ## Static nested class
 
-Static nested class는 외부 class의 다른 멤버에 접근할 수 없다. Static nested class의 경우 다음과 같이 객체를 생성할 수 있다. 외부 class를 통할 필요 없이 바로 객체를 선언할 수 있다.
+- static이 붙는 nested class
+- 외부 class의 다른 멤버를 직접 참조가 불가능(static 멤버는 사용가능)
+- static의 특징에 따라 외부 클래스의 인스턴스 생성 없이 내부 class를 접근하기 위한 용도
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Static%20nested%20class.png)
-
-static으로 선언된 내부 class 안에서는 static으로 선언된 변수와 메소드만 사용 가능하다. 
 
 ```java
 class OuterClass {
 
-    static int x = 20;
-
-    int y = 10;
-
+    static int x = 10;
+    int y = 20;
     private static int z = 30;
 
     static class StaticNestedClass {
-        void accessMembers(OuterClass outer) {
-            //StaticNestedClass는 OuterClass 멤버에 접근이 불가하다.
-            //OuterClass의 객체를 받아서 이를 통해 접근해야 한다.
-            //static 멤버에는 직접 접근이 가능하다.
-            //System.out.println(y);
-            System.out.println("x: " + x); //x: 20
-            System.out.println("z: " + z); //z: 30
+        void get() {
+            System.out.println("x: " + x); //x:10
+            //System.out.println("y: " + y);
+            System.out.println("z: " + z); //z:30
         }
     }
 }
@@ -51,44 +46,47 @@ class OuterClass {
 ```java
 public class Main {
     public static void main(String[] args) {
-        OuterClass outerObject = new OuterClass();
-
-        OuterClass.StaticNestedClass staticNestedObject = new OuterClass.StaticNestedClass();
-        staticNestedObject.accessMembers(outerObject);
+        OuterClass.StaticNestedClass staticIneer = new OuterClass.StaticNestedClass();
+        staticIneer.get();
    }
 }
 ```
 
+외부 class의 private 멤버에도 접근할 수 있다는 점을 제외하고는 일반 class와 쓰임새는 동일하다.
+
 ## Non-static nested class(Inner class)
 
-Non-static nested class는 private으로 선언된 경우에도 외부 class의 다른 멤버에 접근할 수 있다. 
+-  외부 class의 다른 멤버를 직접 참조가 유지
+-  내부 class도 외부 class의 필드를 사용 가능
+
+외부 class의 객체를 생성한 뒤 내부 class의 객체를 생성해야 한다. 즉, 외부 class에 대한 참조가 필요하다.
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Inner%20class.png)
 
-먼저 외부 class의 객체를 생성한 후 내부 class의 객체를 생성해야 한다. static nested class와는 달리 해당 객체의 메소드와 필드에 직접 접근할 수 있다. 내부 class를 인스턴스화하려면 먼저 외부 class를 인스턴스화해야 한다.
-
 ```java
-public class OuterClass {
-    static int x = 3;
-    int y = 2;
+class OuterClass {
 
-    public int z = 10;
+    static int x = 10;
+    int y = 20;
+    private static int z = 30;
 
     class InnerClass {
         void get() {
-            System.out.println("x: " + x); //3
-            System.out.println("y: " + y); //2
-            System.out.println("z: " + z); //10
+            System.out.println("x: " + x); //x:10
+            System.out.println("y: " + y); //y:20
+            System.out.println("z: " + z); //z"30
         }
     }
 }
+```
 
+```java
 public class Main {
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         OuterClass outerObject = new OuterClass();
         OuterClass.InnerClass innerObject = outerObject.new InnerClass();
         innerObject.get();
-    }
+   }
 }
 ```
 
