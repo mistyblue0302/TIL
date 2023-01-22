@@ -29,9 +29,14 @@ Java 소스 코드를 컴파일하여 얻은 바이트 코드를 운영체제의
   - 인터프리터 : 바이트 코드를 한 줄씩 읽고 실행한다. 컴파일보다 속도가 느리다.
   - JIT : 인터프리터의 속도 이슈를 해결하기 위해 같이 사용한다. 자주 실행되는 바이트 코드 영역을 런타임 중에 기계어로 컴파일하여 사용한다.
 
+![img4](https://github.com/dilmah0203/TIL/blob/main/Image/Run-time%20Data%20Area1.png)
+
+Method Area와 Heap영역은 모든 쓰레드가 공유하는 곳으로, 멀티 쓰레드 프로그래밍을 할 때 동기화에 주의해야 하는 영역이다.
+Stack, PC Register, Native Method Stack 영역은 쓰레드가 생성될 때마다 같이 생성되고 쓰레드 간에 공유되지 않는다.
+
 ## JVM Stack과 Frame
 
-![img4](https://github.com/dilmah0203/TIL/blob/main/Image/Stack%20Frame.png)
+![img5](https://github.com/dilmah0203/TIL/blob/main/Image/Stack%20Frame.png)
 
 메소드를 실행하기 위해 필요한 정보가 저장되는 영역으로 Stack은 Frame이라는 자료구조로 저장이 되는데, 메소드가 호출될 때마다 생성되며 메소드가 끝나거나 예외 발생 시 소멸된다.
 
@@ -42,13 +47,6 @@ Stack의 Frame은 다음과 같이 세 개의 부분으로 구성되어 있다.
 2. **Operand Stack** : 연산을 위한 작업 공간으로 연산의 중간값을 저장한다.
 
 3. **Constant Pool Reference** : 클래스 내에 사용되는 상수들을 담는 영역으로, index와 type 그리고 매핑된 값으로 되어있다. JVM은 Constant Pool을 통해 해당 메소드나 필드의 실제 메모리 상 주소를 찾아 참조한다.
-
-<br>
-
-![img5](https://github.com/dilmah0203/TIL/blob/main/Image/Run-time%20Data%20Area1.png)
-
-Method Area와 Heap영역은 모든 쓰레드가 공유하는 곳으로, 멀티 쓰레드 프로그래밍을 할 때 동기화에 주의해야 하는 영역이다.
-Stack, PC Register, Native Method Stack 영역은 쓰레드가 생성될 때마다 같이 생성되고 쓰레드 간에 공유되지 않는다.
 
 <br>
 
