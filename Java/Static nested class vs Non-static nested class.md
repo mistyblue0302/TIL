@@ -56,8 +56,9 @@ public class Main {
 
 ## Non-static nested class(Inner class)
 
--  외부 class의 다른 멤버를 직접 참조가 유지
--  내부 class도 외부 class의 필드를 사용 가능
+-  외부 class의 인스턴스에 대한 참조가 유지된다.
+-  내부 class를 new를 통해 인스턴스를 할당해줌으로써 멤버변수처럼 사용 가능
+-  외부 class에 대한 참조가 유지되므로 내부 class도 외부 class의 필드를 사용 할 수 있다.
 
 외부 class의 객체를 생성한 뒤 내부 class의 객체를 생성해야 한다. 즉, 외부 class에 대한 참조가 필요하다.
 
@@ -89,6 +90,8 @@ public class Main {
    }
 }
 ```
+
+Non-static nested class의 인스턴스는 외부 class의 인스턴스와 연결되기 때문에, 외부 class가 사용되지 않더라도 내부 class의 참조로 인해 GC가 수거하지 못하여 메모리 해제를 하지 못하는 경우가 발생할 수 있다.
 
 <br>
 
