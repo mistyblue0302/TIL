@@ -48,7 +48,6 @@
 
 ## Java
 * [JVM](https://github.com/dilmah0203/TIL/blob/main/Java/JVM.md)
-* [자바의 메모리 구조](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%9E%90%EB%B0%94%EC%9D%98%20%EB%A9%94%EB%AA%A8%EB%A6%AC%20%EA%B5%AC%EC%A1%B0.md)
 * [BigInteger와 BigDecimal](https://github.com/dilmah0203/TIL/blob/main/Java/BigInteger%EC%99%80%20BigDecimal.md)
 * [Primitive Type vs Reference Type
 ](https://github.com/dilmah0203/TIL/blob/main/Java/Primitive%20Type%20vs%20Reference%20Type.md)
@@ -64,7 +63,7 @@
 * [예외](https://github.com/dilmah0203/TIL/blob/main/Java/%E1%84%8B%E1%85%A8%E1%84%8B%E1%85%AC.md)
 * [String클래스](https://github.com/dilmah0203/TIL/blob/main/Java/String%ED%81%B4%EB%9E%98%EC%8A%A4.md)
 * [Static nested class vs Non-static nested class](https://github.com/dilmah0203/TIL/blob/main/Java/Static%20nested%20class%20vs%20Non-static%20nested%20class.md)
-* [어노테이션](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.md)
+* [Annotation](https://github.com/dilmah0203/TIL/blob/main/Java/Annotations.md)
 * [Garbage Collection](https://github.com/dilmah0203/TIL/blob/main/Java/Garbage%20Collection.md)
 * [제네릭](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%A0%9C%EB%84%A4%EB%A6%AD.md)
 * [컬렉션](https://github.com/dilmah0203/TIL/blob/main/Java/Collection.md)
