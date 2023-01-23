@@ -1,13 +1,7 @@
 ## Annotation
 
-`@` 기호를 사용하는 문법 요소로 Java 5부터 생겼다. 어노테이션은 정보를 미리 약속된 형식으로 메소드나 클래스에 포함시켜 해석될 수 있다. 
+`@` 기호를 사용하는 문법 요소로 Java 5부터 생겼다. 어노테이션은 정보를 미리 약속된 형식으로 메소드나 클래스에 포함시켜 컴파일이나 런타임에 해석될 수 있다. 주석처럼 프로그래밍 언어에 영향을 미치지 않으면서도 유용한 정보를 제공한다.
 
-어노테이션은,
-
-- 컴파일러에게 정보를 알려주거나
-- 컴파일 시 또는 설치시 작업을 지정하거나
-- 실행할 때 별도의 처리가 필요할 때 사용한다.
- 
 어노테이션은 크게 두가지로 나뉜다.
 
 - Built-in Annotation : 자바에서 기본적으로 제공하는 어노테이션
@@ -25,8 +19,6 @@
 
 ###  Meta Annotation
 
-어노테이션을 선언 시에 사용한다.
-
 |      종류      |           설명           |
 | :------------: | :---------------------: |
 |   @Retention  |  얼마나 오래 어노테이션이 유지되는지 선언한다. 괄호 안에 적용 가능한 대상은 SOURCE, CLASS, RUNTIME이 있다.  |     
@@ -34,29 +26,38 @@
 |   @Documented  |  해당 어노테이션 정보가 자바 API문서에 포함된다는 것을 선언한다. |
 |  @Inherited  |  모든 자식 클래스에서 부모 클래스의 어노테이션이 사용가능하다는 것을 선언한다. |
 
-**어노테이션의 사용 예**
-
-어노테이션의 사용대상을 메소드로 지정하였다. 어노테이션 적용 시에 각 메소드의 이름에 해당하는 값을 괄호 안에 넣어주어야 한다. text()는 default 값을 지정해 주었기 때문에 값을 지정해주지 않아도 컴파일이 가능하지만, number()는 default 값이 지정되어 있지 않으므로 값을 정해주어야 한다. 
+## 어노테이션의 사용 예
 
 ```java
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-
-public @interface AnnotationExample {
-
-    public int number();
-
-    public String text() default "hello";
+public @interface MyAnnotation {
+    String element1();
+    int element() default 5; //default 키워드를 통해 디폴트 값 지정가능
 }
+```
 
-@AnnotationExample(number = 2, text = "juseon")
-public void example(){
+`@interface`은 어노테이션 타입을 선언하는 키워드이다. 필드 리턴 타입은 Primitives, String, Class, enums, array로 제한된다.
 
+### @Retention : 어노테이션이 유지되는 기간을 지정한다.
+- RetentionPolicy.Source : 컴파일 전까지만 유효
+- RetentionPolicy.CLASS : 컴파일러가 클래스를 참조할 때까지 유효(Default)
+- RetentionPolicy.RUNTIME : 컴파일 이후에도 JVM에 의해 계속 참조 가능
+
+### @Target : 어노테이션이 적용될 위치를 지정한다.
+
+- ElementType.PACKAGE : 패키지선언
+- ElementType.TYPE : 타입선언
+- ElementType.CONSRTUCTOR : 생성자 선언
+- ElementType.FIELD : 멤버변수 선언
+- ElementType.LOCAL_VARIABLE : 지역 변수 선언
+- ElementType.METHOD : 메서드 선언
+- ElementType.PARAMETER : 전달인자 선언
+
+```java
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD})
+public @interface MyAnnotation {
+    String testDocument();
 }
 ```
 
