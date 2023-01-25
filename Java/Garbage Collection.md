@@ -86,7 +86,7 @@ Card Table에는 Old 객체가 Young 객체를 참조할 때마다 정보가 표
   - GC 작업을 애플리케이션과 동시에 실행
   - G1 GC 등장에 따라 Deprecated
   -  Mark and Sweep 과정 이후 Memory 파편화를 막는 Compaction이 제공되지 않는 단점
-  -  
+ 
 ![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC_Heap.PNG)
 
 - **G1 GC**
