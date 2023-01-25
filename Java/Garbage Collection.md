@@ -1,26 +1,26 @@
 ## Garbage Collection(GC)
 
-GC는 메모리 관리 기법 중 하나로, 프로그램이 **동적으로 할당**했던 메모리 영역 중 필요 없게 된 영역을 알아서 해제해준다. 여기서 동적으로 할당된 메모리란, 프로그램 런타임에 사용되는 **Heap 영역** 메모리를 뜻하고 필요 없게 된 영역은 어떤 변수도 가리키지 않게 된 영역을 의미한다.
+JVM에는 Garbage Collecter가 존재한다. Garbage Collecter는 **동적으로 할당했던** 메모리 영역 중 더 이상 참조되지 않는 불필요한 메모리를 알아서 정리해주는 역할을 한다. Garbage Collecter가 주기적으로 메모리 누수 방지를 하기 위해 메모리를 정리하는 과정을 Garbage Collection이라고 한다. 여기서 동적으로 할당했던 메모리 영역은 런타임에 사용되는 Heap 영역을 뜻한다.
 
 > GC는 왜 필요할까?
 
-GC를 도입하면 수동으로 메모리를 관리하던 것에서 비롯된 에러들을 방지할 수 있고 개발자의 실수로 인한 메모리 누수를 막을 수 있다.
+GC를 도입하면 수동으로 직접 메모리를 관리하던 것에서 비롯된 에러들을 방지할 수 있고 개발자의 실수로 인한 메모리 누수를 막을 수 있다.
 
-### GC의 동작 방식
+## GC의 동작 방식
 
 GC는 어떻게 해제할 동적 메모리 영역들을 알아서 판단할까?
 
-**1. Stop The World**
+### Stop The World
 
-GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작업이다. GC를 실행하는 쓰레드를 제외한 모든 쓰레드들의 작업이 중단되며, GC가 완료되면 작업이 재개된다.
+GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작업이다. GC를 실행하는 쓰레드를 제외한 모든 쓰레드들의 작업이 중단되며, GC가 완료되면 작업이 재개된다. 어떤 GC 알고리즘을 사용하더라도 Stop The World는 발생한다.
   
-**2.Reference Counting**
+### Reference Counting
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Reference%20Counting.png)
 
 Root Space는 Stack의 로컬 변수, 전역 변수 등 Heap 영역 참조를 담은 변수이다. Reference Counting은 Heap 영역에 선언된 객체들이 각각 reference count를 가지고 있는데 여기서 reference count는 몇 가지 방법으로 해당 객체에 접근할 수 있는지를 뜻한다. 해당 객체에 접근할 수 있는 방법이 없다면 즉, reference count가 0이면 GC의 대상이 된다. 하지만 Reference Counting은 순환 참조 문제가 있다. 두개 이상의 객체가 서로 참조를 하고있다면, 순환참조가 생겨서 참조 횟수가 영원히 0이 될 수 없기때문에 Memory Leak의 원인이 된다.
 
-**3. Mark and Sweep**
+###  Mark and Sweep
 
 Mark and Sweep은 Root에서부터 해당 객체에 접근 가능한지를 해제의 기준으로 삼는다. 또한 Reference Counting의 순환 참조 문제를 해결할 수 있다.  Root부터 그래프 순회를 통해 연결된 객체들을 찾아내고(Mark) 연결이 끊어진 객체들은 지우는 방식이다.(Sweep)
 
@@ -32,7 +32,7 @@ Mark and Sweep은 Root에서부터 해당 객체에 접근 가능한지를 해�
 
 위 그림에선 Sweep이후 분산되어 있던 메모리가 정리된 것을 볼 수 있는데, 이를 Memory 파편화를 막는 Compaction이라고 한다.
 
-### JVM의 GC
+## JVM의 GC
 
 - **Root Space**
 
@@ -71,17 +71,17 @@ Old 영역의 객체에서 Young 객체로의 참조는 어떻게 이루어질�
 
 Card Table에는 Old 객체가 Young 객체를 참조할 때마다 정보가 표시된다. Young 영역의 GC를 수행할 때에는 Old 영역의 모든 객체를 확인하지 않고, Card Table만 조회하여 GC의 대상인지 판별한다. 만약 모든 Old 영역에 존재하는 객체를 확인한다면 비효율적이기 때문이다.
 
-### GC의 종류
+## GC의 종류
 
-- **Serial GC**
+### Serial GC
   - 하나의 쓰레드로 GC를 수행하기 때문에 Stop the World의 시간이 길다.
   - 싱글 쓰레드 환경 및 Heap이 작을 때 사용
 
-- **Parallel GC**
+### Parallel GC
   - 멀티 스레드를 사용하여 GC를 수행하기 때문에 Stop the World의 시간이 짧다.
   - Java 8의 default GC 방식
 
-- **CMS GC**
+### CMS GC
   - Stop the World 최소화를 위해 고안
   - GC 작업을 애플리케이션과 동시에 실행
   - G1 GC 등장에 따라 Deprecated
@@ -89,7 +89,7 @@ Card Table에는 Old 객체가 Young 객체를 참조할 때마다 정보가 표
  
 ![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC_Heap.PNG)
 
-- **G1 GC**
+### G1 GC
   - Garbage First(G1)
   - Heap을 일정 크기의 Region으로 나누어 Young Generation, Old Generation 영역으로 활용한다.
   - 런타임에 G1 GC가 필요에 따라 영역별 Region 개수를 튜닝하여 Stop the World를 최소화
