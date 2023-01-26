@@ -10,7 +10,7 @@ GC를 도입하면 수동으로 직접 메모리를 관리하던 것에서 비�
 
 GC는 어떻게 해제할 동적 메모리 영역들을 알아서 판단할까?
 
-`Stop The World`는 GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작업이다. GC를 실행하는 쓰레드를 제외한 모든 쓰레드들의 작업이 중단되며, GC가 완료되면 작업이 재개된다. 어떤 GC 알고리즘을 사용하더라도 Stop The World는 발생한다.
+`Stop The World`는 GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작업이다. GC를 실행하는 쓰레드를 제외한 모든 쓰레드들의 작업이 중단되며, GC가 완료된 이후에 중단했던 작업이 재개된다. 어떤 GC 알고리즘을 사용하더라도 Stop The World는 발생한다.
   
 - **Young Generation** : 새롭게 생성된 객체 대부분이 여기에 위치한다. 생명 주기가 짧은 객체를 GC 대상으로 하는 영역으로 해당 영역에서 발생되는 GC를 **Minor GC**라고 하며 속도가 빠르다.
 - **Old Generation** : Young 영역에서 살아남은 객체가 여기로 복사된다. 해당 영역에서 발생되는 GC를 **Major GC**라고 하며 속도가 느리다.
@@ -29,45 +29,55 @@ Young 영역은 Eden과 두 개의 Survivor Space로 총 3개의 영역으로 �
 
 > survivor 영역은 왜 2개일까?
 
-메모리 **외부 단편화 발생을 방지**한다. 외부 단편화란, 메모리가 할당/해제를 반복하면 메모리 공간은 있지만 작은 단위의 메모리가 부분적으로 존재해서 실제로는 사용할 수 없는 경우를 말한다.
+메모리 **외부 단편화 발생을 방지**한다. 외부 단편화란, 메모리가 할당/해제를 반복하면 메모리 공간은 있지만 작은 단위의 메모리가 부분적으로 존재해서 실제로는 할당할 수 없는 경우를 뜻한다.
 
-`Mark And Sweep` 알고리즘은 Root에서부터 해당 객체에 접근 가능한지를 해제의 기준으로 삼는다. Root Space부터 연결된 객체들을 찾아내고(Mark) 연결이 끊어진 객체들은 지우는 방식이다.(Sweep) Root Space부터 연결된 객체는 Reachable, 연결되지 않은 객체는 Unreachable라고 부른다. Sweep이후 분산되어 있던 메모리가 정리된 것을 볼 수 있다.(Compaction)
+`Mark And Sweep` 알고리즘은 Root Space에서부터 해당 객체에 접근 가능한지를 메모리 해제의 기준으로 삼는다. Root Space부터 순회를 통해 연결된 객체들을 찾아내고(Mark) 연결이 끊어진 객체들은 지우는 방식이다.(Sweep) Root Space부터 연결된 객체는 Reachable, 연결되지 않은 객체는 Unreachable라고 부른다. 아래는 Sweep이후 분산되어 있던 메모리가 정리된 것을 볼 수 있다.(Compaction)
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Mark_Sweep.png)
 
-- Mark : 사용중인 메모리와 사용하지 않는 메모리를 식별한다
-- Sweep : Mark 단계에서 사용하지 않는다고 식별된 메모리를 해제한다
-- Root로부터 연결된 객체를 reachable, 연결되지 않았다면 unreachable 
+- Mark : 사용중인 메모리와 사용하지 않는 메모리를 식별한다.
+- Sweep : Mark 단계에서 사용하지 않는다고 식별된 메모리를 해제한다.
 
 ![img3](https://github.com/dilmah0203/TIL/blob/main/Image/Root%20Space.png)
 
-JVM의 GC는 기본적으로 Mark and Sweep 방식으로 동작하는데 JVM 메모리의 Stack의 로컬 변수, Method Area에 저장된 static 변수, Native Method Stack의 C/C++로 작성된 JNI참조가 Root Space가 된다. 
+Root Space는 Heap 영역 메모리에 대해 참조하고 있는 영역으로 Stack의 로컬 변수, Method Area에 저장된 static 변수, Native Method Stack의 C/C++로 작성된 JNI참조가 해당된다. 
 
 ## GC의 종류
 
 ### Serial GC
 
-하나의 쓰레드로 GC를 수행하기 때문에 Stop the World의 시간이 길다.
-싱글 쓰레드 환경 및 Heap이 작을 때 사용
+Mark And Sweep 이후 메모리 파편화를 막는 Compaction 과정이 진행된다. 하나의 쓰레드로 GC를 수행하기 때문에 Stop the World의 시간이 길다. 싱글 쓰레드 환경 및 적은 메모리일 경우에 적합한 방식이다.
 
 ### Parallel GC
-  - 멀티 스레드를 사용하여 GC를 수행하기 때문에 Stop the World의 시간이 짧다.
-  - Java 8의 default GC 방식
+
+Serial GC와 Parallel GC를 비교한 그림이다.
+
+![img4](https://github.com/dilmah0203/TIL/blob/main/Image/Parallel%20GC.png)
+
+GC의 기본적인 처리과정은 Serial GC와 동일하다. 하지만 Serial GC는 GC를 처리하는 쓰레드가 하나인 것에 비해, Parallel GC는 GC를 처리하는 쓰레드가 여러 개이다. 그렇기 때문에 Serial GC보다 빠르게 객체를 처리할 수 있다. Java 8의 default GC 방식이다.
 
 ### CMS GC
-  - Stop the World 최소화를 위해 고안
-  - GC 작업을 애플리케이션과 동시에 실행
-  - G1 GC 등장에 따라 Deprecated
-  -  Mark and Sweep 과정 이후 Memory 파편화를 막는 Compaction이 제공되지 않는 단점
- 
+
+다음 그림은 Serial GC와 CMS GC의 절차를 비교한 그림이다. 
+
+![img5](https://github.com/dilmah0203/TIL/blob/main/Image/CMS%20GC.png)
+
+초기 Mark 단계에서는 클래스 로더에서 가장 가까운 객체 중 살아 있는 객체를 찾는 것으로 끝낸다. 따라서 Stop the World 시간은 매우 짧다. 그리고 Concurrent Mark 단계에서는 방금 살아있다고 확인한 객체 중 참조하고 있는 객체들을 따라가면서 확인한다. 이 단계의 특징은 다른 쓰레드가 실행 중인 상태에서 동시에 진행된다는 것이다.
+
+그 다음 Remark 단계에서는 Concurrent Mark 단계에서 새로 추가되거나 참조가 끊긴 객체를 확인한다. 마지막으로 Concurrent Sweep 단계에서는 메모리를 해제하는 작업을 실행한다. 이 작업도 다른 쓰레드가 실행되고 있는 상황에서 진행한다.
+
+이러한 단계로 진행되기 때문에 Stop the World 시간이 매우 짧다. 그런데 CMS GC는 다음과 같은 단점이 존재한다.
+
+- 다른 GC보다 메모리와 CPU를 더 많이 사용한다.
+- Mark and Sweep 과정 이후 Memory 파편화를 막는 Compaction이 제공되지 않는다.
+
+G1 GC 등장에 따라 Deprecated되었다.
+
 ![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC_Heap.PNG)
 
 ### G1 GC
-  - Garbage First(G1)
-  - Heap을 일정 크기의 Region으로 나누어 Young Generation, Old Generation 영역으로 활용한다.
-  - 런타임에 G1 GC가 필요에 따라 영역별 Region 개수를 튜닝하여 Stop the World를 최소화
-  - Java 9 이상 부터 default GC 방식
-  - 고정된 크기가 없기 때문에 메모리 사용에 있어 유연성을 제공한다.
+
+Garbage First(G1)의 줄임말로 Heap을 일정 크기의 영역으로 나누어 객체를 할당하고 GC를 실행한다. 그러다가 해당 영역이 꽉 차면 다른 영역에 객체를 할당하고 GC를 실행한다. 즉 위에서 설명한 Young 영역에서 데이터가 Old 영역으로 이동하는 단계가 사라진 GC 방식이다. Java 9 이상 부터 default GC 방식이다.
 
 <br>
 
