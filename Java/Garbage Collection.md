@@ -1,6 +1,6 @@
 ## Garbage Collection(GC)
 
-JVM에는 Garbage Collecter가 존재한다. Garbage Collecter는 `Heap`영역에서 **동적으로 할당했던** 메모리 영역 중 더 이상 필요 없게 된 메모리를 주기적으로 정리해주는 역할을 한다. Garbage Collecter가 주기적으로 메모리 누수 방지를 하기 위해 메모리를 정리하는 과정을 Garbage Collection이라고 한다. 
+JVM에는 Garbage Collecter가 존재한다. Garbage Collection은 `Heap`영역에서 **동적으로 할당했던** 메모리 영역 중 더 이상 필요 없게 된 메모리를 정리하는 기능이다.
 
 > GC는 왜 필요할까?
 
@@ -73,11 +73,15 @@ GC의 기본적인 처리과정은 Serial GC와 동일하다. 하지만 Serial G
 
 G1 GC 등장에 따라 Deprecated되었다.
 
-![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC_Heap.PNG)
-
 ### G1 GC
 
+![img6](https://github.com/dilmah0203/TIL/blob/main/Image/G1GC_Heap.PNG)
+
 Garbage First(G1)의 줄임말로 Heap을 일정 크기의 영역으로 나누어 객체를 할당하고 GC를 실행한다. 그러다가 해당 영역이 꽉 차면 다른 영역에 객체를 할당하고 GC를 실행한다. 즉 위에서 설명한 Young 영역에서 데이터가 Old 영역으로 이동하는 단계가 사라진 GC 방식이다. Java 9 이상 부터 default GC 방식이다.
+
+기존에 Young 영역과 Old 영역을 통째로 Compaction 하던 것과 달리 해당 영역의 일부에 대해서만 Compaction을 하면 되기 때문에 처리 속도가 더 빠르다. 또한 Garbage로 영역만을 빠르게 회수하여 빈 공간을 확보하므로 GC 빈도가 줄어든다.
+
+단, Minor GC와 Major GC를 수행하고 나서도 공간 부족 상태가 생길 수 있다. 이 때는 Full GC가 발생하는데 이 GC는 싱글 쓰레드로 동작한다.
 
 <br>
 
