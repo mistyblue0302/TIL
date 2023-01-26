@@ -8,24 +8,23 @@ GC를 도입하면 수동으로 직접 메모리를 관리하던 것에서 비�
 
 ## GC의 동작 방식
 
-GC는 어떻게 해제할 동적 메모리 영역들을 알아서 판단할까?
-
 `Stop The World`는 GC를 실행하기 위해 JVM이 애플리케이션의 실행을 멈추는 작업이다. GC를 실행하는 쓰레드를 제외한 모든 쓰레드들의 작업이 중단되며, GC가 완료된 이후에 중단했던 작업이 재개된다. 어떤 GC 알고리즘을 사용하더라도 Stop The World는 발생한다.
-  
+
 - **Young Generation** : 새롭게 생성된 객체 대부분이 여기에 위치한다. 생명 주기가 짧은 객체를 GC 대상으로 하는 영역으로 해당 영역에서 발생되는 GC를 **Minor GC**라고 하며 속도가 빠르다.
 - **Old Generation** : Young 영역에서 살아남은 객체가 여기로 복사된다. 해당 영역에서 발생되는 GC를 **Major GC**라고 하며 속도가 느리다.
 
-Young 영역은 Eden과 두 개의 Survivor Space로 총 3개의 영역으로 나뉜다.
+Heap 영역은 Young 영역과 Old 영역으로 나뉘고, Young 영역은 Eden과 두 개의 Survivor Space로 나뉜다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Heap.png)
 
-각 영역의 처리 절차는 다음과 같다.
+각 영역의 **처리 절차**는 다음과 같다.
 
 - 새로 생성한 대부분의 객체는 Eden 영역에 위치한다.
 - Eden영역에 객체가 차게 되면 첫번째 Minor GC가 발생한 후 살아남은 객체는 Survivor 영역 중 하나로 이동된다.
 - Eden영역에서 GC가 지속적으로 발생함에 따라 Survivor 영역의 객체는 계속 쌓인다. 
 - 하나의 Survivor 영역이 가득차게 되면 그 중에서 살아남은 객체를 다른 Survivor영역으로 이동시킨다. 그리고 가득찼던 Survivor 영역은 아무 데이터도 없는 상태가 된다.
 - 이 과정을 반복하다가 계속해서 살아남는 객체가 있다면 Old 영역으로 이동한다. 
+- Old 영역이 꽉차면 Major GC를 실행하여 Mark And Sweep 알고리즘을 통해 메모리를 해제한다.
 
 > survivor 영역은 왜 2개일까?
 
