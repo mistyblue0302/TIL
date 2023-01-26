@@ -13,6 +13,10 @@ GC를 도입하면 수동으로 직접 메모리를 관리하던 것에서 비�
 - **Young Generation** : 새롭게 생성된 객체 대부분이 여기에 위치한다. 생명 주기가 짧은 객체를 GC 대상으로 하는 영역으로 해당 영역에서 발생되는 GC를 **Minor GC**라고 하며 속도가 빠르다.
 - **Old Generation** : Young 영역에서 살아남은 객체가 여기로 복사된다. 해당 영역에서 발생되는 GC를 **Major GC**라고 하며 속도가 느리다.
 
+> 왜 Heap 영역은 Young 영역과 Old 영역으로 나눌까?
+
+대부분의 객체는 수명이 짧으므로 특정 부분만 탐색함으로써 GC의 성능을 높이기 위해 나누었다.
+
 Heap 영역은 Young 영역과 Old 영역으로 나뉘고, Young 영역은 Eden과 두 개의 Survivor Space로 나뉜다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Heap.png)
