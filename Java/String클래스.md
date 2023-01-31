@@ -144,7 +144,7 @@ public void checkCharAt(){
 }
 ```
 
-**substring() : 대상 문자열을 잘라 String으로 리턴한다.**
+**substring() : 대상 문자열을 잘라 String으로 리턴한다. 시작 인덱스 부터 종료 인덱스 전까지 문자열의 부분 문자열을 반환한다.**
 
 ```java
 public void checkSubString(){
