@@ -102,11 +102,17 @@ noodleCategory.set(new Noodle());
 noodleCatehory.printClassName(new Pasta());
 ```
 
-**제네릭 타입**은 타입을 파라미터로 가지는 클래스와 인터페이스를 말한다. **제네릭 메소드**는 메소드의 선언부에 제네릭 타입이 선언된 형식이다. 타입 매개 변수의 범위가 메소드 내로 한정된다는 것이 제네릭 타입과의 차이점이다. NoodleCategory 클래스에 선언된 타입 매개변수와 제네릭 메소드 printClassName()에 선언된 타입 매개변수는 같은 T지만 서로 다르다.
+**제네릭 타입**은 타입을 파라미터로 가지는 클래스와 인터페이스를 말한다. **제네릭 메소드**는 메소드의 선언부에 제네릭 타입이 선언된 형식이다. 타입 매개 변수의 범위가 메소드 내로 한정된다는 것이 제네릭 타입과의 차이점이다. NoodleCategory 클래스에 선언된 타입 매개변수와 제네릭 메소드 printClassName()에 선언된 타입 매개변수는 같은 T지만 서로 다르다. 클래스의 필드에 저장된 타입은 Noodle이고 제네릭 메소드의 타입은 Pasta이다.
 
 ### 제네릭 타입제한의 필요성
 
-NoodleCategory 클래스는 현재 타입 매개변수에는 모든 종류의 타입을 저장할 수 있다. 그렇다면 해당 클래스 타입을 Coke라고 선언한다면 클래스 필드에 Coke도 저장할 수 있게된다. 만약 Noodle 타입만 저장하고 싶을 경우는 어떻게 할까?
+위의 NoodleCategory 클래스는 현재 타입 매개변수에는 모든 종류의 타입을 저장할 수 있다. 그렇다면 해당 클래스 타입을 Coke라고 선언한다면 클래스 필드에 Coke도 저장할 수 있게된다. 
+
+```java
+NoodleCategory<Coke> cokeNoodleCategory = new NoodleCategory<>();
+```
+
+만약 Noodle 타입만 저장하고 싶을 경우는 어떻게 할까?
 
 ```java
 public class NoodleCategory<T extends Noodle> {
