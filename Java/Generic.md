@@ -1,14 +1,30 @@
 ## 제네릭(Generic)
 
-제네릭이란 **컴파일 시에 타입을 체크**함으로써 형 변환에서 발생할 수 있는 문제를 사전에 없애준다.
+제네릭은 Java 5에 등장하였는데, 제네릭이 존재하기 전 컬렉션의 요소는 다음과 같이 출력하였다.
 
 ```java
-List<T> //T는 타입 매개변수
+void printCollection(Collection c) {
+    Iterator i = c.iterator();
+    for (k = 0; k < c.size(); k++) {
+        System.out.println(i.next());
+    }
+}
 ```
 
+컬렉션이 갖는 요소들의 합을 구하는 메소드를 구현했다고 하자.
+
 ```java
-List<String> stringList = new ArrayList<String>(); //String은 매개변수화된 타입
+int sum(Collection c) {
+    int sum = 0;
+    Iterator i = c.iterator();
+    for (k = 0; k < c.size(); k++) {
+        sum += Integer.parseInt(i.next());
+    }
+    return sum;
+}
 ```
+
+문제는 위 메소드가 String과 같은 다른 타입을 갖는 컬렉션도 호출이 가능하다는 점이다. String 타입을 갖는 컬렉션은 컴파일 시점엔 문제가 없다가 **런타임 시점에 메소드를 호출하면** 에러가 발생한다. 그래서 타입을 지정하여 컴파일 시점에 안정성을 보장받을 수 있는 방법을 고안하였고, 제네릭이 등장하였다.
 
 ### 제네릭은 왜 사용할까?
 
@@ -74,92 +90,44 @@ List<Object> objectList = new ArrayList<Integer>(); //Compile error
 
 제네릭에서는 Integer가 Object의 하위 타입이더라도 컴파일 오류를 낸다. 이와 같은 특징을 **무공변**이라 하고 서로의 하위 타입도 상위 타입도 될 수 없다.
 
-### 제네릭 타입과 제네릭 메소드
-
-```java
-public class NoodleCategory<T> {
-
-  public T t; //T는 t의 데이터 타입
-
-  public void set(T t) {
-    this. t = t;
-  }
-
-  public T get() {
-    return t;
-  }
-
-  public <T> void printClassName(T t) {
-    System.out.println("클래스 필드에 정의된 타입 = " + this.t.getClass().getName()); //패키지명.Noodle
-    System.out.println("제네릭 메소드에 정의된 타입 = " + t.getClass().getName()); //패키지명.Pasta
-  }
-}
-```
-
-```java
-NoodleCategory<Noodle> noodleCategory = new NoodleCategory<>();
-noodleCategory.set(new Noodle());
-noodleCatehory.printClassName(new Pasta());
-```
-
-**제네릭 타입**은 타입을 파라미터로 가지는 클래스와 인터페이스를 말한다. **제네릭 메소드**는 메소드의 선언부에 제네릭 타입이 선언된 형식이다. 타입 매개 변수의 범위가 메소드 내로 한정된다는 것이 제네릭 타입과의 차이점이다. NoodleCategory 클래스에 선언된 타입 매개변수와 제네릭 메소드 printClassName()에 선언된 타입 매개변수는 같은 T지만 서로 다르다. 클래스의 필드에 저장된 타입은 Noodle이고 제네릭 메소드의 타입은 Pasta이다.
-
 ### 제네릭 타입제한의 필요성
 
-위의 NoodleCategory 클래스는 현재 타입 매개변수에는 모든 종류의 타입을 저장할 수 있다. 그렇다면 해당 클래스 타입을 Coke라고 선언한다면 클래스 필드에 Coke도 저장할 수 있게된다. 
+제네릭이 등장하면서 컬렉션의 타입을 다음과 같이 지정할 수 있게 되었다.
 
 ```java
-NoodleCategory<Coke> cokeNoodleCategory = new NoodleCategory<>();
-```
-
-만약 Noodle 타입만 저장하고 싶을 경우는 어떻게 할까?
-
-```java
-public class NoodleCategory<T extends Noodle> {
-
-  public T t; //T는 t의 데이터 타입
-
-  public void set(T t) {
-    this. t = t;
-  }
-
-  public T get() {
-    return t;
-  }
+void sum(Collection<Integer> c) {
+    int sum = 0;
+    for (Integer e : c) {
+        sum += e;
+    }
+    return sum;
 }
 ```
 
-이를 해결하기 위해서는 생성한 NoodleCategory 클래스의 타입에 T extends Noodle를 붙여주면 된다. Noodle과 Noodle을 상속한 타입만 올 수 있게된다.
-
-```java
-NoodleCategory<Ramen> ramenNoodleCategory = new NoodleCategory<>();
-
-NoodleCategory<Coke> ramenNoodleCategory = new NoodleCategory<>(); //Compile Error
-```
+Integer가 아닌 다른 타입을 갖는 컬렉션이 위 메소드를 호출하면 컴파일 에러를 통해 타입 안정성을 보장받을 수 있게 되었다. 하지만 제네릭은 무공변이기 때문에, 타입을 Integer에서 Object로 변경하여도 모든 타입에서 공통적으로 사용하는 메소드를 만들 방법이 없다. 이를 해결하기 위해 와일드 카드가 추가되었다.
 
 ### 와일드 카드
 
-와일드카드는 정해지지 않은 unknown type이기 때문에 모든 타입에 대해 호출이 가능하다.제네릭에서 와일드 카드의 형태는 총 세가지가 있다.
+와일드카드는 정해지지 않은 **unknown type**이기 때문에 모든 타입에 대해 호출이 가능하다. 제네릭에서 와일드 카드의 형태는 총 세가지가 있다.
 
 1. <?> Unbounded Wildcards : 모든 타입이 가능
 
 2. <? extends Noodle> Upper Bounded Wildcards : Noodle과 Noodle의 하위 타입
-
 
 3. <? super Noodle> Lower Bounded Wildcards : Noodle과 Noodle의 상위 타입
 
 ```java
 public class Category<T> {
 
-  public T t;
+    public T t;
 
-  public void set(T t) {
-    this. t = t;
-  }
+    public void set(T t) {
+        this. t = t;
+    }
 
-  public T get() {
-    return t;
-  }
+    public T get() {
+        return t;
+    }
 }
 ```
 
@@ -180,9 +148,9 @@ public class CategoryHelper {
 }
 ```
 
-popNoodle() 메소드는 Category 타입 매개변수를 Noodle 타입으로 상한 제한을 하였는데, 이렇게 하게 되면 최상위 타입인 Noodle만 들어오기 때문에 해당 타입을 안전하게 가지고 올 수 있다. 하지만 메소드에서 저장을 하려고 할 경우 Category의 매개변수화 된 타입이 Pasta라면, set 메소드에 상위타입인 Noodle이 들어올지 Pasta가 들어올지 알 수 없다. 즉 하위타입에 상위 타입을 대입할 위험이 있기 때문에 컴파일 오류가 뜨게 된다.
+popNoodle() 메소드는 Category 타입 매개변수를 Noodle 타입으로 제한을 하였는데, 이렇게 하게 되면 최상위 타입인 Noodle만 들어오기 때문에 해당 타입을 안전하게 가지고 올 수 있다. 하지만 메소드에서 저장을 하려고 할 경우 Category의 매개변수화 된 타입이 Pasta라면, set 메소드에 상위타입인 Noodle이 들어올지 Pasta가 들어올지 알 수 없다. 즉 하위타입에 상위 타입을 대입할 위험이 있기 때문에 컴파일 오류가 뜨게 된다.
 
-pushNoodle() 메소드는 Category 타입 매개변수를 Noodle 타입으로 하한 제한을 하였기 때문에 Noodle이거나 Noodle의 상위 타입만 올 수 있다. 하지만 메소드에서 Category를 꺼내 Noodle로 변환할 경우 Noodle보다 상위 타입이 꺼내질 수도 있기 때문에 컴파일 오류가 나게 된다.
+pushNoodle() 메소드는 Category 타입 매개변수를 Noodle 타입으로 제한을 하였기 때문에 Noodle이거나 Noodle의 상위 타입만 올 수 있다. 하지만 메소드에서 Category를 꺼내 Noodle로 변환할 경우 Noodle보다 상위 타입이 꺼내질 수도 있기 때문에 컴파일 오류가 나게 된다.
 
 > 언제 무엇을 써야할까?
 
@@ -223,6 +191,6 @@ public class NoodleCategory<E> {
 
 참고
 
-[우아한Tech 제네릭](https://www.youtube.com/watch?v=w5AKXDBW1gQ&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=57&t=478s)
-
 [https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html](https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html)
+
+[우아한Tech 제네릭](https://www.youtube.com/watch?v=w5AKXDBW1gQ&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=57&t=478s)
