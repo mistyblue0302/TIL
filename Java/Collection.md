@@ -1,8 +1,12 @@
-# 💡 **Collection**
+## Collection
 
-자바에서는 Collection이라는 자료구조를 제공하며 다음과 같이 분류할 수 있다.
-Collection을 사용함으로써 객체나 데이터들을 효율적으로 관리할 수 있으며 라이브러리 사용으로 인한 시간 감소와 재사용의 이점이 있다.
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Collection.png)
 
-<br>
+자바에서 컬렉션 프레임워크는 목록성 데이터를 처리하는 자료 구조를 통칭한다. List와 Set, Queue는 Collection 인터페이스를 구현하고, 다음과 같이 선언되어 있다.
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/Collection1.png)
+```java
+public interface Collection<E> extends Iterable<E>
+```
+
+Iterable 인터페이스에 선언되어 있는 메소드는 iterator() 하나로, Collection에 저장된 요소를 순차적으로 가져온다.
+
