@@ -1,6 +1,6 @@
 ## Object클래스
 
-자바에서 모든 클래스의 부모 클래스는 java.lang.Object 클래스이다. 이유는 Object 클래스의 메소드를 통해 클래스의 기본적인 행동을 정의할 수 있기 때문이다.
+자바에서 모든 클래스의 부모 클래스는 java.lang.Object 클래스로, Object 클래스의 메소드를 통해 클래스의 기본적인 행동을 정의할 수 있다.
 
 ```java
   public class Inheritance{}
