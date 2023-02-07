@@ -68,7 +68,6 @@
 * [제네릭](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%A0%9C%EB%84%A4%EB%A6%AD.md)
 * [컬렉션](https://github.com/dilmah0203/TIL/blob/main/Java/Collection.md)
   * [List](https://github.com/dilmah0203/TIL/blob/main/Java/List.md)
-  * [Stack](https://github.com/dilmah0203/TIL/blob/main/Java/Stack.md)
   * [Set](https://github.com/dilmah0203/TIL/blob/main/Java/Set.md)
   * [Map](https://github.com/dilmah0203/TIL/blob/main/Java/Map.md)
   * [Map vs List](https://github.com/dilmah0203/TIL/blob/main/Java/Map%20vs%20List.md)
