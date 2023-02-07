@@ -8,5 +8,5 @@
 public interface Collection<E> extends Iterable<E>
 ```
 
-Iterable 인터페이스에 선언되어 있는 메소드는 iterator() 하나로, Collection에 저장된 요소를 순차적으로 가져온다.
+Iterable 인터페이스에 선언되어 있는 메소드는 iterator() 하나로, for-each문을 통해 Collection에 저장된 요소를 순차적으로 가져온다.
 
