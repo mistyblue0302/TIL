@@ -23,6 +23,8 @@ public void convert() {
 } 
 ```  
 
+**split() : 문자열을 잘라 String 배열로 리턴한다.**
+
 **length() : String의 내용을 비교/검색**
 
 int로 문자열의 길이를 리턴하며 공백도 길이에 포함된다.
