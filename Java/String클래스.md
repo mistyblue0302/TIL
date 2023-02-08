@@ -2,7 +2,7 @@
 
 String 클래스는 문자열과 관련된 작업을 할 때 유용하게 사용할 수 있는 메소드들이 포함되어 있다.
 
-**getBytes() : String 문자열을 byte로 변환**
+**getBytes() : String에 대해 해당 문자열을 하나의 byte 배열로 변환**
 
 같은 프로그램 내에서 문자열을 byte 배열로 저장하며, 
 getBytes의 매개 변수를 통해 캐릭터 셋을 지정할 수 있다.
@@ -10,14 +10,14 @@ getBytes의 매개 변수를 통해 캐릭터 셋을 지정할 수 있다.
 ```java
 public void convert() {
     try {
-        String ex1 = "한글"; //String 객체 생성
-        byte[] array = ex1.getBytes(); //문자열을 배열로 저장
+        String ex1 = "한글"; 
+        byte[] array = ex1.getBytes(); 
         for (byte data : array) {
-            System.out.print(data + " ");
+            System.out.print(data + " "); //-19 -107 -100 -22 -72 -128 
         }
         System.out.println();
         String ex2 = new String(array); //byte 배열로 Sring 객체를 생성
-        System.out.println(ex2);
+        System.out.println(ex2); //한글
     } catch (Exception e) {
         e.printStackTrace();
 } 
