@@ -35,9 +35,7 @@ public void checkSplit() {
 }
 ``` 
 
-**length() : String의 내용을 비교/검색**
-
-int로 문자열의 길이를 리턴하며 공백도 길이에 포함된다.
+**length() : int로 문자열의 길이를 리턴하며 공백도 길이에 포함된다.**
 
 ```java
 public void checkLength(){
@@ -147,7 +145,7 @@ public void checkIndex() {
 }
 ```
 
-**charAt() : 특정 위치의 char 값을 리턴한다.**
+**charAt() : 특정 위치의 char값을 리턴한다.**
 
 ```java
 public void checkCharAt(){
@@ -156,7 +154,7 @@ public void checkCharAt(){
 }
 ```
 
-**substring() : 대상 문자열을 잘라 String으로 리턴한다. 시작 인덱스 부터 종료 인덱스 전까지 문자열의 부분 문자열을 반환한다.**
+**substring() : 대상 문자열을 잘라 String으로 리턴한다. 시작 인덱스부터 종료 인덱스 전까지 문자열의 부분 문자열을 반환한다.**
 
 ```java
 public void checkSubString(){
