@@ -12,6 +12,7 @@
 
 ```java
 public interface 인터페이스이름 {
+
     //상수 필드
     //메소드
 }
@@ -27,13 +28,16 @@ public interface 인터페이스이름 {
 
 ```java
 public class Car {
+
     public void method() {
         System.out.println("car method");
     }
 }
   
 public class Main {
+
     public static void main(String[] args) {
+    
         Car car = new Car();
         car.method();
     }
@@ -44,16 +48,19 @@ Main 클래스에서 다음과 같이 객체를 생성하였다. 객체 생성 �
 
 ```java
 public class Example {
+
     void auto(Movable m) {
         m.method();
     }
 }
 
 public interface Movable {
+
     public void method();
 }
 
 public class Car implements Movable {
+
     @Override
     public void method() {
         System.out.println("method in Car class");
@@ -61,6 +68,7 @@ public class Car implements Movable {
 }
 
 public class Bus implements Movable {
+
     @Override
     public void method() {
         System.out.println("method in Bus class");
@@ -68,7 +76,9 @@ public class Bus implements Movable {
 }
 
 public class Main {
+
     public static void main(String[] args) {
+    
         Example e = new Example();
         e.auto(new Car()); //method in Car class
         e.auto(new Bus()); //method in Bus class
@@ -89,8 +99,10 @@ public abstract void method();
 
 ```java
 public abstract class 클래스이름 {
+
     //필드 
     //추상메소드
+    
     //일반메소드
     public void move() {
     }
@@ -109,6 +121,7 @@ public abstract class 클래스이름 {
 
 ```java
 public abstract class Shape {
+
     int x;
     
     public void move() {
@@ -120,6 +133,7 @@ public abstract class Shape {
 }
 
 public class Rectangle extends Shape {
+
     @Override
     public void draw() {
         ...
@@ -132,6 +146,7 @@ public class Rectangle extends Shape {
 }
 
 public class Triangle extends Shape {
+
     @Override
     public void draw() {
         ...
@@ -149,7 +164,7 @@ public class Triangle extends Shape {
 - Rectangle is a Shape
 - Triangle is a Shape  
 
-인터페이스는 행동을 정의할 수 있지만 상태에 관여할 수 없다. 하지만 추상클래스는 int x를 선언함으로써 **상태를 변경**할 수 있다는 것이 인터페이스와의 큰 차이점이다. 
+인터페이스는 행동을 정의할 수 있지만 상태를 가질 수 없다. 하지만 추상클래스는 int x를 선언함으로써 **상태를 가질 수 있다**는 것이 인터페이스와의 큰 차이점이다. 
 
 ## JDK 8의 인터페이스에 추가된 기능
 
@@ -173,10 +188,12 @@ public interface Calculator {
 }
 
 public class Example implements Calculator {
+
     @Override
     public int plus(int x, int y) {
         return x + y;
     }
+    
     @Override
     public int minus(int x, int y) {
         return x - y;
@@ -184,7 +201,9 @@ public class Example implements Calculator {
 }
 
 public class Main {
+
     public static void main(String[] args) {
+    
         Calculator calc = new Example();
         int value = calc.multiply(2, 3);
         System.out.println(value); //6
