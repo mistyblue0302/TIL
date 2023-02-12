@@ -47,4 +47,8 @@ Java의 int의 메모리 크기는 4Byte, long은 8Byte로 표현할 수 있는 
 
 참고
 
+https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigInteger.html
+
+https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html
+
 https://www.baeldung.com/java-bigdecimal-biginteger
