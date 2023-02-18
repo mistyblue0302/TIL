@@ -65,7 +65,7 @@
 * [Static nested class vs Non-static nested class](https://github.com/dilmah0203/TIL/blob/main/Java/Static%20nested%20class%20vs%20Non-static%20nested%20class.md)
 * [Annotation](https://github.com/dilmah0203/TIL/blob/main/Java/Annotations.md)
 * [Garbage Collection](https://github.com/dilmah0203/TIL/blob/main/Java/Garbage%20Collection.md)
-* [제네릭](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%A0%9C%EB%84%A4%EB%A6%AD.md)
+* [제네릭](https://github.com/dilmah0203/TIL/blob/main/Java/Generic.md)
 * [컬렉션](https://github.com/dilmah0203/TIL/blob/main/Java/Collection.md)
   * [List](https://github.com/dilmah0203/TIL/blob/main/Java/List.md)
   * [Set](https://github.com/dilmah0203/TIL/blob/main/Java/Set.md)
