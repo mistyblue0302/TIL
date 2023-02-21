@@ -58,11 +58,11 @@ list.remove(0);
 
 ### Stack
 
-Stack은 LIFO 기능을 위한 클래스로 모든 메서드에 synchronized가 붙어있어 Thread safe하다. 모든 작업에 Lock이 사용되기 때문에 성능이 저하될 수 있다. Deque의 구현체인 ArrayDeque는 Thread safe하지 않지만 더 빠르다.
+Stack은 LIFO 기능을 위한 클래스로 모든 메서드에 synchronized가 붙어있어 Thread safe하다. 모든 작업에 Lock이 사용되기 때문에 성능이 저하될 수 있다. Deque의 구현체인 ArrayDeque는 LIFO 구조로, Thread safe하지 않지만 더 빠르다.
 
 ### LinkedList
 
-ArrayList는 내부 배열에 객체를 저장하여 인덱스로 관리하는 반면 LinkedList는 인접한 참조들을 연결하여 관리한다. LinkedList에서 특정 인덱스의 객체를 제거하면, 제거되는 인덱스의 앞 뒤 연결만 변경되고 나머지는 변경되지 않는다. ArrayList가 제거되는 인덱스를 기준으로 뒤의 객체들이 한칸씩 이동했었던 점과 차이가 있다. 이러한 차이로 인해 객체를 삽입, 삭제할 때는 LinkedList가 성능이 좋다.
+ArrayList는 내부 배열에 객체를 저장하여 인덱스로 관리하는 반면 LinkedList는 인접한 **참조들을 연결하여 관리**한다. LinkedList에서 특정 인덱스의 객체를 제거하면, 제거되는 인덱스의 앞 뒤 연결만 변경되고 나머지는 변경되지 않는다. ArrayList가 제거되는 인덱스를 기준으로 뒤의 객체들이 한칸씩 이동했었던 점과 차이가 있다. 이러한 차이로 인해 객체를 삽입, 삭제할 때는 LinkedList가 성능이 좋다.
 
 
 
