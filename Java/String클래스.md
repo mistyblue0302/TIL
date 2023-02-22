@@ -23,7 +23,7 @@ public void convert() {
 } 
 ```  
 
-**split() : 문자열을 잘라 String 배열로 리턴한다.**
+**split(String regex) : 문자열을 잘라 String 배열로 리턴한다.**
 
 ```java
 public void checkSplit() {
@@ -70,7 +70,7 @@ public void checkEquals(){
 }
 ```
 
-**compareTo() : 매개 변수로 넘어가는 String 객체와 현재 객체가 같은지를 비교한다. 같으면 0, 순서 상으로 앞이면 -1, 뒤면 1을 리턴한다.**
+**compareTo(String anotherString) : 매개 변수로 넘어가는 String 객체와 현재 객체가 같은지를 비교한다. 같으면 0, 순서 상으로 앞이면 -1, 뒤면 1을 리턴한다.**
 
 ```java
 public void checkCompareTo(){
@@ -83,7 +83,7 @@ public void checkCompareTo(){
 }
 ```
 
-**startsWith() : 매개 변수로 넘겨준 값으로 시작하는지 확인한다.**
+**startsWith(String prefix) : 매개 변수로 넘겨준 값으로 시작하는지 확인한다.**
 
 ```java
 public static void main(String[] args) {
@@ -107,7 +107,7 @@ public class Example {
 }
 ```
 
-**contains() : 매개 변수로 넘어온 값이 문자열에 존재하는지 확인한다.**
+**contains(CharSequence s) : 매개 변수로 넘어온 값이 문자열에 존재하는지 확인한다.**
 
 ```java
 public void checkContains(String[] address) {
@@ -122,7 +122,7 @@ public void checkContains(String[] address) {
 }
 ```
 
-**regionMatches() : 특정 영역이 매개 변수로 넘어온 문자열과 동일한지 확인 후 boolean 타입으로 리턴한다. 첫 번째 매개 변수가 true일 경우 대소문자 구분을 하지 않는다.**
+**regionMatches(int toffset, String other, int ooffset, int len) : 특정 영역이 매개 변수로 넘어온 문자열과 동일한지 확인 후 boolean 타입으로 리턴한다. 첫 번째 매개 변수가 true일 경우 대소문자 구분을 하지 않는다.**
 
 ```java
  public void checkMatch(){
@@ -134,7 +134,7 @@ public void checkContains(String[] address) {
 }
 ```
 
-**indexOf() : 앞에서부터 특정 문자열이나 char를 찾는다. 없으면 -1을 리턴한다. lastIndexOf()는 뒤에서부터 찾는다.**
+**indexOf(String str, int fromIndex) : 앞에서부터 특정 문자열이나 char를 찾는다. 없으면 -1을 리턴한다. lastIndexOf()는 뒤에서부터 찾는다.**
 
 ```java
 public void checkIndex() {
@@ -145,16 +145,16 @@ public void checkIndex() {
 }
 ```
 
-**charAt() : 특정 위치의 char값을 리턴한다.**
+**charAt(int index) : 특정 위치의 char값을 리턴한다.**
 
 ```java
 public void checkCharAt(){
     String text = "Ju Seon";
-    System.out.println(text.charAt(3)); //3
+    System.out.println(text.charAt(3)); //S
 }
 ```
 
-**substring() : 대상 문자열을 잘라 String으로 리턴한다. 시작 인덱스부터 종료 인덱스 전까지 문자열의 부분 문자열을 반환한다.**
+**substring(int beginIndex, int endIndex) : 대상 문자열을 잘라 String으로 리턴한다. 시작 인덱스부터 종료 인덱스 전까지 문자열의 부분 문자열을 반환한다.**
 
 ```java
 public void checkSubString(){
