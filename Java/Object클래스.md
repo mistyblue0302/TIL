@@ -20,9 +20,9 @@ import java.util.Arrays;
 
 public class arrayTest {
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
   
-	int[] array = new int[] {1,2,3,4};
+        int[] array = new int[] {1,2,3,4};
 
 	System.out.println(array.toString());
 	System.out.println(Arrays.toString(array));
@@ -56,14 +56,14 @@ public class A {
 ```java
 public class B {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 	
-		A a = new A("Lee");
-		A b = new A("Lee");
+        A a = new A("Lee");
+	A b = new A("Lee");
 
-		System.out.println(a == b);
-		System.out.println(a.equals(b));
-       }
+	System.out.println(a == b);
+        System.out.println(a.equals(b));
+   }
 }
 ```
 
