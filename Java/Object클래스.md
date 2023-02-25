@@ -3,8 +3,8 @@
 자바에서 모든 클래스의 부모 클래스는 java.lang.Object 클래스로, Object 클래스의 메소드를 통해 클래스의 기본적인 행동을 정의할 수 있다.
 
 ```java
-  public class Inheritance{}
-  public class Inheritance extends Object{} //실행 결과는 같다
+public class Inheritance{}
+public class Inheritance extends Object{} //실행 결과는 같다
 ```
 
 ### toString()
