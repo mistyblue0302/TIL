@@ -4,9 +4,6 @@ String 클래스는 문자열과 관련된 작업을 할 때 유용하게 사용
 
 **getBytes() : String에 대해 해당 문자열을 하나의 byte 배열로 변환**
 
-같은 프로그램 내에서 문자열을 byte 배열로 저장하며, 
-getBytes의 매개 변수를 통해 캐릭터 셋을 지정할 수 있다.
-
 ```java
 public void convert() {
     String ex1 = "한글"; 
