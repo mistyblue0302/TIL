@@ -9,17 +9,16 @@ getBytes의 매개 변수를 통해 캐릭터 셋을 지정할 수 있다.
 
 ```java
 public void convert() {
-    try {
-        String ex1 = "한글"; 
-        byte[] array = ex1.getBytes(); 
-        for (byte data : array) {
-            System.out.print(data + " "); //-19 -107 -100 -22 -72 -128 
-        }
-        System.out.println();
-        String ex2 = new String(array); //byte 배열로 Sring 객체를 생성
-        System.out.println(ex2); //한글
-    } catch (Exception e) {
-        e.printStackTrace();
+    String ex1 = "한글"; 
+    byte[] array = ex1.getBytes(); 
+
+    for (byte data : array) {
+        System.out.print(data + " "); //-19 -107 -100 -22 -72 -128 
+    }
+
+    System.out.println();
+    String ex2 = new String(array); //byte 배열로 Sring 객체를 생성
+    System.out.println(ex2); //한글     
 } 
 ```  
 
@@ -29,6 +28,7 @@ public void convert() {
 public void checkSplit() {
     String text = "My Name is JuSeon";
     String[] array = text.split(" ");
+
     for(String temp : array) {
         System.out.println(temp); 
     }
@@ -59,11 +59,13 @@ public void checkEmpty(){
 public void checkEquals(){
     String s1 = "Ju Seon";
     String s2 = "Ju Seon";
+
     if(s1==s2){
         System.out.println("same"); //same
     } else {
         System.out.println("different");
     }
+
     if(s1.equals(s2)){
         System.out.println("equals"); //equals
     }
@@ -97,6 +99,7 @@ public class Example {
     public void checkstartsWith(String[] address) {
         String start = "서울";
         int startCount = 0;
+
         for (String addresses : address) {
             if (addresses.startsWith(start)) {
                 startCount++;
@@ -113,6 +116,7 @@ public class Example {
 public void checkContains(String[] address) {
     String text = "울";
     int containCount = 0;
+
     for (String addresses : address) {
         if (addresses.contains(text)) {
             containCount++;
