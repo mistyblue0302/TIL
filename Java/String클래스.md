@@ -123,7 +123,7 @@ public void checkContains(String[] address) {
 }
 ```
 
-**regionMatches(int toffset, String other, int ooffset, int len) : 특정 영역이 매개 변수로 넘어온 문자열과 동일한지 확인 후 boolean 타입으로 리턴한다. 첫 번째 매개 변수가 true일 경우 대소문자 구분을 하지 않는다.**
+**regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len) : 특정 영역이 매개 변수로 넘어온 문자열과 동일한지 확인 후 boolean 타입으로 리턴한다. 첫 번째 매개 변수가 true일 경우 대소문자 구분을 하지 않는다.**
 
 ```java
  public void checkMatch(){
