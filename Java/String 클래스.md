@@ -177,7 +177,7 @@ public void checkTrim(){
 
 ## String은 불변 객체다
 
-String은 한 번 만들어지면 값이 변경될 수 없다. String 문자열을 더하게 되면 새로운 String 객체가 생성되고, 기존 객체는 버려진다. 그리고 나중에 GC의 대상이 된다.
+String은 **불변 객체**로 객체가 만들어지면 상태가 변하지 않고 계속 유지된다. String 문자열을 더하게 되면 새로운 String 객체가 생성되고 참조하지 않게 된 String은 나중에 GC의 대상이 된다.
 
 이러한 String 클래스의 단점을 보완하기 위한 `StringBuffer`와 `StringBuilder`가 있다. `StringBuffer`는 Thread safe하며, `StringBuilder`는 Thread safe하지 않다. 속도는 StringBuilder 클래스가 빠르다. 두 클래스는 문자열을 더할 시에 새로운 객체를 생성하지 않는다. 
 
