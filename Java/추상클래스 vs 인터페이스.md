@@ -165,7 +165,7 @@ public class Triangle extends Shape {
 
 ## JDK 8의 인터페이스에 추가된 기능
 
-- **default method**
+### default method
 
 JDK 8 이전엔 새로운 메소드를 추가하려면 인터페이스를 구현하는 모든 클래스들이 해당 메소드를 구현해야했다. 하지만 default method로 추가가 가능해지면서 기존 인터페이스를 구현했던 클래스에서 메소드를 override하지 않아도 된다. 기존 코드에 영향을 주지 않고 새로운 메소드를 가질 수 있도록 이전 인터페이스에 대한 호환성을 제공한다.
 
@@ -206,7 +206,7 @@ public class Main {
 }
 ```
 
-- **static method**
+### static method
 
 객체 생성 여부와 상관없이 `Calculator.multiply();`와 같이 인터페이스만으로도 호출이 가능하며 override가 불가능하고 상속되지 않는다. 상수를 선언할 때는 static block에서 초기화할 수 없고, 선언과 동시에 초기화해야한다.
   
@@ -224,7 +224,7 @@ public interface Calculator {
 }
 ```
 
-<br>
+### 정리
 
 Java는 추상화를 구현하기 위해 추상클래스와 인터페이스 두가지 기능이 존재한다. **인터페이스**는 상태를 가질 수 없지만 동작 변경을 통해 결합도를 낮추는 것을 도와준다. **추상클래스**는 상태를 가질 수 있고 메소드 오버라이딩을 통한 공통 기능을 구현하고 확장시킬 때 사용한다.
 
