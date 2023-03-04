@@ -16,7 +16,7 @@ class OuterClass {
 
 1. 한 곳에서만 사용되는 class를 **논리적으로 그룹화**한다. 만약 어떤 class가 다른 하나의 class와만 관계가 있다면, 외부 class를 새로 작성하는 것이 아닌 내부 class로 작성함으로써 용도가 보다 명확해진다.
 
-2.B class가 A class의 멤버에 대해 접근이 필요할 때 B class를 A class의 nested class로 만들어 접근을 가능하게 하면서도 A class의 멤버들은 private으로 선언이 가능해지면서 캡슐화할 수 있다.
+2. B class가 A class의 멤버에 대해 접근이 필요할 때 B class를 A class의 nested class로 만들어 접근을 가능하게 하면서도 A class의 멤버들은 private으로 선언이 가능해지면서 캡슐화할 수 있다.
 
 ## Static nested class
 
