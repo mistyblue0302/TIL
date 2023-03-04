@@ -1,6 +1,6 @@
 ## Nested Classes
 
-Java에선 class안의 또 다른 class를 허용하는데 이러한 class를 nested class(중첩 클래스)라고 한다. nested class는 static과 non-static으로 나뉜다. 
+nested class(중첩 클래스)란 class안에 선언된 또 다른 class를 의미한다. nested class는 static과 non-static으로 나뉜다. 
 
 ```java
 class OuterClass {
@@ -14,15 +14,15 @@ class OuterClass {
 
 왜 사용할까?
 
-1. 한 곳에서만 사용되는 class를 논리적으로 그룹화한다. 만약 어떤 class가 다른 하나의 class에서만 유용하다면 해당 class에 포함시킴으로써 용도가 보다 명확해진다.
+1. 한 곳에서만 사용되는 class를 **논리적으로 그룹화**한다. 만약 어떤 class가 다른 하나의 class와만 관계가 있다면, 외부 class를 새로 작성하는 것이 아닌 내부 class로 작성함으로써 용도가 보다 명확해진다.
 
-2. B class가 A class의 멤버에 대해 접근이 필요할 때 B class를 A class의 nested class로 만들어 접근을 가능하게 하면서도 A class의 멤버들은 private으로 선언이 가능해지면서 캡슐화할 수 있다.
+2. 
 
 ## Static nested class
 
 - static이 붙는 nested class
 - 외부 class의 다른 멤버를 직접 참조가 불가능(static 멤버는 사용가능)
-- static의 특징에 따라 외부 클래스의 인스턴스 생성 없이 내부 class를 접근하기 위한 용도
+- static의 특징에 따라 **외부 클래스의 인스턴스 생성 없이** 내부 class를 접근하기 위한 용도
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Static%20nested%20class.png)
 
@@ -56,13 +56,13 @@ public class Main {
 
 ## Non-static nested class(Inner class)
 
+외부 class의 객체를 생성한 뒤 내부 class의 객체를 생성해야 한다. 즉, **외부 class에 대한 참조가 필요하다.**
+
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Inner%20class.png)
+
 -  외부 class의 인스턴스에 대한 참조가 유지된다.
 -  내부 class를 new를 통해 인스턴스를 할당해줌으로써 멤버변수처럼 사용 가능
 -  외부 class에 대한 참조가 유지되므로 내부 class도 외부 class의 필드를 사용 할 수 있다.
-
-외부 class의 객체를 생성한 뒤 내부 class의 객체를 생성해야 한다. 즉, 외부 class에 대한 참조가 필요하다.
-
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Inner%20class.png)
 
 ```java
 class OuterClass {
