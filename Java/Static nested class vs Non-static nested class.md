@@ -68,7 +68,7 @@ public class Main {
 class OuterClass {
 
     static int x = 10;
-    private int y = 20;
+    int y = 20;
     private static int z = 30;
 
     class InnerClass {
