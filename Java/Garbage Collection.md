@@ -1,6 +1,6 @@
 ## Garbage Collection(GC)
 
-JVM에는 Garbage Collecter가 존재한다. Garbage Collection은 `Heap`영역에서 **동적으로 할당했던** 메모리 영역 중 더 이상 필요 없게 된 메모리를 정리하는 기능이다.
+Garbage Collection은 `Heap`영역에서 **동적으로 할당했던** 메모리 영역 중 더 이상 필요 없게 된 메모리를 정리하는 기능이다.
 
 > GC는 왜 필요할까?
 
