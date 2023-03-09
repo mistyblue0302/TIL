@@ -28,13 +28,13 @@ Heap 영역은 Young 영역과 Old 영역으로 나뉘고, Young 영역은 Eden�
 - Eden영역에서 GC가 지속적으로 발생함에 따라 Survivor 영역의 객체는 계속 쌓인다. 
 - 하나의 Survivor 영역이 가득차게 되면 그 중에서 살아남은 객체를 다른 Survivor영역으로 이동시킨다. 그리고 가득찼던 Survivor 영역은 아무 데이터도 없는 상태가 된다.
 - 이 과정을 반복하다가 계속해서 살아남는 객체가 있다면 Old 영역으로 이동한다. 
-- Old 영역이 꽉차면 Major GC를 실행하여 Mark And Sweep 알고리즘을 통해 메모리를 해제한다.
+- Old 영역이 꽉차면 Major GC를 실행하여 **Mark And Sweep** 알고리즘을 통해 메모리를 해제한다.
 
 > survivor 영역은 왜 2개일까?
 
 메모리 **외부 단편화 발생을 방지**한다. 외부 단편화란, 메모리가 할당/해제를 반복하면 메모리 공간은 있지만 작은 단위의 메모리가 부분적으로 존재해서 실제로는 할당할 수 없는 경우를 뜻한다.
 
-`Mark And Sweep` 알고리즘은 Root Space에서부터 해당 객체에 접근 가능한지를 메모리 해제의 기준으로 삼는다. Root Space부터 순회를 통해 연결된 객체들을 찾아내고(Mark) 연결이 끊어진 객체들은 지우는 방식이다.(Sweep) Root Space부터 연결된 객체는 Reachable, 연결되지 않은 객체는 Unreachable라고 부른다. 아래는 Sweep이후 분산되어 있던 메모리가 정리된 것을 볼 수 있다.(Compaction)
+`Mark And Sweep` 알고리즘은 Root Space에서부터 해당 객체에 접근 가능한지를 메모리 해제의 기준으로 삼는다. Root Space부터 순회를 통해 연결된 객체들을 찾아내고(**Mark**) 연결이 끊어진 객체들은 지우는 방식이다.(**Sweep**) Root Space부터 연결된 객체는 Reachable, 연결되지 않은 객체는 Unreachable라고 부른다. 아래는 Sweep이후 분산되어 있던 메모리가 정리된 것을 볼 수 있다.(**Compaction**)
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Mark_Sweep.png)
 
@@ -43,7 +43,7 @@ Heap 영역은 Young 영역과 Old 영역으로 나뉘고, Young 영역은 Eden�
 
 ![img3](https://github.com/dilmah0203/TIL/blob/main/Image/Root%20Space.png)
 
-Root Space는 Heap 영역 메모리에 대해 참조하고 있는 영역으로 Stack의 로컬 변수, Method Area에 저장된 static 변수, Native Method Stack의 C/C++로 작성된 JNI참조가 해당된다. 
+Root Space는 Heap 메모리 영역을 참조하는 method area, static 변수, stack, native method stack이 있다.
 
 ## GC의 종류
 
