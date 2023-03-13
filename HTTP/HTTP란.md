@@ -1,6 +1,6 @@
-## HTTP
+## HTTP(Hypertext Protocol)
 
-> HTTP란? Hypertext Protocol의 약자로 서버-클라이언트 메세지 교환 프로토콜을 의미
+**HTTP**란 서버와 클라이언트간의 메세지 교환 프로토콜을 의미한다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20communication.png)
 
@@ -12,21 +12,27 @@
 
 ![img3](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Response.png)
 
-### HTTP 프로토콜 특성
+### HTTP 프로토콜 특징
 
-1. Client-Server 구조
+1. **클라이언트 서버 구조**
 
-각각의 Server와 Client는 독립되어 있다. Client는 Server에 요청(Request)를 보내고 응답이 올 때까지 대기하고, Server는 Client에서 받은 요청(Request)에 대한 결과를 만들어 응답을 하는 것이다.
+- Request Response 구조
+- 클라이언트는 서버에 요청을 보내고, 응답을 대기
+- 서버가 요청에 대한 결과를 만들어서 응답
 
-2. Stateless(무상태)
+2. **Stateless(무상태)**
 
-HTTP는 과거 정보를 저장하지 않고 새로운 요청을 보낼 때마다 새로운 응답을 생성한다.
+- 서버가 클라이언트의 상태를 보존하지 않는다.
+- 장점 : 서버 확장성 높음(Scale-Out)
+- 단점 : 클라이언트가 추가 데이터 전송
 
-> 상태 유지가 필요할 때는? 세션과 쿠키를 이용한다.
+상태가 유지되려면 항상 같은 서버가 유지되어야 한다. 하지만 무상태의 경우 상태를 보관하지 않기 때문에 아무 서버나 호출해도 된다. 중간에 서버가 장애났을 경우 다른 서버로 교체만 해주면 되기 때문이다. 
 
-3. Connectionless(비연결성)
+3. **Connectionless(비연결성)**
 
-클라이언트가 서버에 요청을 보내고 응답을 받게되면 바로 클라이언트와 서버의 연결을 끊어버린다. 따라서 서버는 최소한의 자원만을 사용하게 된다.
+클라이언트가 서버에 요청을 보내고 응답을 받게되면 바로 클라이언트와 서버의 연결을 끊어버린다. 따라서 서버는 최소한의 자원만을 사용하게 되기 때문에 효율적이다.
+
+TCP/IP 연결을 새로 
 
 ### HTTP 상태코드
 
