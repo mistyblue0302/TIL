@@ -90,12 +90,13 @@
 * [DNS](https://github.com/dilmah0203/TIL/blob/main/Network/DNS.md)
 * [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
 * [Forward Proxy vs Reverse Proxy](https://github.com/dilmah0203/TIL/blob/main/Network/Forward%20Proxy%20vs%20Reverse%20Proxy.md)
+
+## HTTP
 * [REST API](https://github.com/dilmah0203/TIL/blob/main/HTTP/REST%20API.md)
 * [HTTP란](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%EB%9E%80.md)
 * [HTTP Method](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20Method.md)
 * [POST vs PUT, PATCH vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT%2C%20PATCH%20vs%20PUT.md)
 * [HTTP vs HTTPS](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20vs%20HTTPS.md)
-
 
 ## OS
 * [메모리 vs 디스크](https://github.com/dilmah0203/TIL/blob/main/OS/%EB%A9%94%EB%AA%A8%EB%A6%AC%20vs%20%EB%94%94%EC%8A%A4%ED%81%AC.md)
