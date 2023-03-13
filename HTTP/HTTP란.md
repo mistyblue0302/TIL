@@ -4,11 +4,11 @@
 
 클라이언트가 리소스를 HTTP를 통해 요청하면 TCP, IP 프로토콜을 걸쳐 서버쪽의 HTTP까지 요청이 도달한다. 이에 대한 응답을 다시 서버에서 HTTP로 보내면 TCP, IP 프로토콜을 통과해 클라이언트까지 응답이 도달하게 된다.
 
-### HTTP 프로토콜 구성
+## HTTP 프로토콜 구성
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP.png)
 
-### HTTP 프로토콜 특징
+## HTTP 프로토콜 특징
 
 1. **클라이언트 서버 구조**
 
@@ -30,7 +30,7 @@
 
 TCP/IP 연결을 새로 맺어야 하는 한계가 있지만, 지금은 HTTP 지속 연결로 해결되었다.
 
-### HTTP 상태코드
+## HTTP 상태코드
 
 - 1xx : 해당 요청에 대한 프로세스를 진행중
 
@@ -52,8 +52,4 @@ TCP/IP 연결을 새로 맺어야 하는 한계가 있지만, 지금은 HTTP 지
   - 501 : 서버에 요청을 처리할 수 있는 기능이 없음
   - 503 : 서버의 유지보수로 작동이 중단되거나 과부하가 걸린 상태
 
-<br>
 
-참고
-
-[우아한Tech HTTP란?](https://www.youtube.com/watch?v=IjxkKQvn8Bc&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=31)
