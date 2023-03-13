@@ -18,7 +18,7 @@ SOLID는 아래 5가지 원칙의 앞 머리 알파벳을 따서 부르는 이�
 
 **응집도**는 하나의 모듈 내의 구성요소끼리 서로 관련되어 있는 정도를 말한다. 응집도가 높은 모듈은 하나의 책임에 집중하고 독립성이 높아져 재사용이나 수정에 용이하다.
 
-### 1. 단일 책임 원칙
+## 1. 단일 책임 원칙
 
 **한 클래스는 하나의 책임만 가져야한다**는 것이 단일 책임 원칙이다. 이 원칙을 지킴으로써 몇 가지 이점이 있다.
 
@@ -59,6 +59,7 @@ public class BookPrinter {
 
 ```java
 public class Dog {
+
     final static Boolean 수컷 = true;
     final static Boolean 암컷 = false;
     Boolean 성별;
@@ -97,9 +98,9 @@ class 암컷강아지 extends Dog {
 
 이렇게 객체 별로 책임을 나누게 될 경우. 코드 변경이 있을 때 해당 객체만 수정하면 되므로 수정에 따른 영향도가 작아진다. 그렇기 때문에 의존성은 낮아지고 코드가 간결해져 유지 보수가 쉬워진다.
 
-### 2. 개방-폐쇄 원칙
+## 2. 개방-폐쇄 원칙
 
-확장에는 열려 있으나 변경에는 닫혀 있어야 한다.
+**확장**에는 **열려 있으나** **변경**에는 **닫혀 있어야 한다**.
 
 개방-폐쇄 원칙의 좋은 예는 JDBC다. JDBC를 사용하는 클라이언트는 데이터베이스가 오라클에서 MySQL로 바뀌더라도 Connection을 설정하는 부분 외에는 따로 수정할 필요가 없다.
 
@@ -109,6 +110,7 @@ class 암컷강아지 extends Dog {
 
 ```java
 public class Animal {
+
     String type;
     
     Animal(String type) {
@@ -119,6 +121,7 @@ public class Animal {
 
 ```java
 public class HelloAnimal {
+
     void hello(Animal animal) {
         if(animal.type.equals("Cat")) {
             System.out.println("냐옹");
@@ -132,6 +135,7 @@ public class HelloAnimal {
 ```java
 public class Main {
   public static void main(String[] args) {
+  
       HelloAnimal hello = new HelloAnimal();
         
       Animal cat = new Animal("Cat");
@@ -149,6 +153,7 @@ HelloAnimal 클래스를 수정해주어야 한다. 각 객체의 필드 변수�
 
 ```java
 public class HelloAnimal {
+
     void hello(Animal animal) {
         if (animal.type.equals("Cat")) {
             System.out.println("냐옹");
@@ -167,6 +172,7 @@ public class HelloAnimal {
 ```java
 public class Main {
     public static void main(String[] args) {
+    
         HelloAnimal hello = new HelloAnimal();
 
         Animal cat = new Animal("Cat");
@@ -218,6 +224,7 @@ class HelloAnimal {
 ```java
 public class Main {
     public static void main(String[] args) {
+    
         HelloAnimal hello = new HelloAnimal();
 
         Animal cat = new Cat();
@@ -259,6 +266,7 @@ class HelloAnimal {
 ```java
 public class Main {
     public static void main(String[] args) {
+    
         HelloAnimal hello = new HelloAnimal();
 
         Animal cat = new Cat();
@@ -275,18 +283,47 @@ public class Main {
 }
 ```
 
-### 3. 리스코프 치환 원칙
+## 3. 리스코프 치환 원칙
 
-객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위 클래스의 인스턴스는 상위 객체 참조 변수에 대입해 상위 클래스의 인스턴스 역할을 하는 데 문제가 없어야 한다.
+**하위 클래스의 인스턴스는** 상위 객체 참조 변수에 대입해 **상위 클래스의 인스턴스 역할을 하는 데 문제가 없어야 한다.** 즉 상위 클래스의 인스턴스 위치에 하위 클래스의 인스턴스를 대신 사용했을 때 코드가 원래 의도대로 동작해야 한다는 의미이다. 이것을 상위 클래스와 하위 클래스 사이의 행위가 일관성 있다고 한다. **다형성**을 지원하기 위한 원칙이다.
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/LSP.png)
+상위 타입인 SuperClass와 하위 타입인 SubClass가 있다고 하자. 
 
-위 계층도인 경우 딸이 아버지, 할아버지의 역할을 하는 것이 논리에 맞지 않음을 알 수 있다. 아래 계층도의 경우는 리스코프 치환 원칙을 잘 지키고 있다. 하위에 존재하는 것들은 상위에 있는 것들의 역할을 하는 데 전혀 문제가 없다. 고래가 포유류 또는 동물의 역할을 하는 것은 전혀 문제가 되지 않는다.
+```java
+public void someMethod(SuperClass sc) {
+    sc.otherSomeMethod();
+}
+```
+
+someMethod()는 상위 타입 객체인 SuperClass 타입의 객체를 사용하고 있는데, 이 메소드에 `someMethod(new SubClass());`와 같이 하위 타입의 객체를 전달해도 정상적으로 동작해야 한다는 것이 리스코프 치환 원칙이다.
+
+리스코프 치환 원칙을 잘 적용한 예제는 자바의 **컬렉션 프레임워크(Collection Framework)이다.**
+
+만약 변수에 LinkedList 자료형을 담아 사용하다가 중간에 전혀 다른 HashSet 자료형으로 바꿔도 add() 메소드 동작을 보장받기 위해서는 Collection 이라는 인터페이스 타입으로 변수를 선언하여 할당하면 된다.
+
+왜냐하면 인터페이스 Collection의 추상 메서드를 각기 하위 자료형 클래스에서 implements하여 인터페이스 구현 규약을 잘 지키도록 미리 잘 설계되어 있기 때문이다.
+
+```java
+void myData() {
+    Collection data = new LinkedList();
+    data = new HashSet(); // 중간에 전혀 다른 자료형 클래스를 할당해도 호환된다.
+    
+    modify(data);
+}
+
+void modify(Collection data){
+    list.add(1); // 인터페이스로 인해 add 메소드 동작이 각기 자료형에 맞게 보장된다.
+    // ...
+}
+```
+
+### 리스코프 치환 원칙을 지키지 않을 때의 문제
 
 너비와 높이를 가지는 Rectangle 클래스가 있다.
 
 ```java
 public class Rectangle {
+
     protected int width;
     protected int height;
 
@@ -312,64 +349,138 @@ public class Rectangle {
 }
 ```
 
-Square 클래스는 Rectangle을 상속받고 있으며 setHight()와 setWidth()를 오버라이딩 하였다.
+정사각형을 표현하기 위한 Square 클래스가 Rectangle 클래스를 상속받도록 구현을 했다고 하자. 정사각형은 가로와 세로가 모두 동일한 값을 가져야 하므로, Square 클래스는 Rectangle 클래스의 setWidth() 메서드와 setHeight() 메서드를 재정의해서 가로와 세로 값이 일치하도록 구현하였다.
 
 ```java
 public class Square extends Rectangle {
+
     @Override
-    public void setHeight(int value) {
-        this.width = width;
-        this.height = value;
+    public void setHeight(int width) { //너비와 높이 둘 중 하나를 입력해도 나머지 값이 일치되도록 메서드를 오버라이딩
+        super.setWidth(width);
+        super.setHeight(width);
     }
 
     @Override
-    public void setWidth(int value) {
-        this.height = height;
-        this.width = value;
+    public void setWidth(int height) {
+        super.setWidth(height);
+        super.setHeight(height);
     }
 }
 ```
 
 ```java
-public class Test {
-    public boolean work(Rectangle rectangle) {
-        rectangle.setHeight(5);
-        rectangle.setWidth(3);
-
-        return rectangle.area() == 15;
-    }
-
-}
-
 public class Main {
     public static void main(String[] args) {
-        Test test = new Test();
-        System.out.println(test.work(new Rectangle())); //true
-        System.out.println(test.work(new Square())); //false
+
+        Rectangle rectangle = new Rectangle();
+        rectangle.setHeight(5);
+        rectangle.setWidth(10);
+
+        System.out.println(rectangle.getArea()); //50
+
     }
 }
 ```
 
-work() 메소드는 상위 타입인 Rectangle를 사용한다. 리스코프 치환 원칙에 따르면 Rectangle을 Square 객체로 치환하여도 프로그램은 정상적으로 동작하여야 한다. 하지만 부모 클래스인 Rectangle의 결과 값은 true이고, Square은 false를 반환한다. 자식 클래스인 Square가 부모클래스의 getArea() 메소드를 제대로 수행하지 못하고 있기 때문이다.
+높이5 , 너비10으로 직사각형의 길이가 정상적으로 구해진 것을 확인할 수 있다.
 
-<br>
+리스코프 치환 원칙은 부모 객체를 호출하는 동작에서 자식 객체가 부모 객체를 대체 할 수 있다는 원칙이었다. 그렇다면 Rectangle 클래스에서의 테스트와 같은 값을 할당했을 때, 당연히 같은 결과를 반환해야 한다.
 
-### 4. 인터페이스 분리 원칙
+```java
+public class Main {
+    public static void main(String[] args) {
 
-단일 책임 원칙에서 제시한 해결책은 클래스를 나누어 하나의 역할(책임)만 하도록 다수의 클래스로 분할하는 것이었다. 인터페이스 분리 원칙은 중간에 인터페이스를 추가하여 역할을 제한하는 것이 핵심이다. 결론적으로 단일 책임 원칙과 인터페이스 분리 원칙은 같은 문제에 대한 두 가지 다른 해결책이라고 볼 수 있다. 하지만 특별한 경우가 아니라면 단일 책임 원칙을 적용하는 것이 더 좋은 해결책이다.
+        Rectangle square = new Square();
+        
+        square.setWidth(10);
+        square.setHeight(5);
 
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/ISP.png)
+        System.out.println(square.getArea()); //25
+    }
+}
+```
 
+가장 마지막에 수행된 setHeight(5)가 객체의 너비와 높이를 모두 5로 할당했기 때문에 넓이도 25로 출력되었다. 이는 자식 객체가 부모 객체의 역할을 대체하지 못한다는 의미이다.
+
+이렇게 잘못된 상속 관계를 리스코프 치환 원칙을 이용해 다음과 같이 구현할 수 있다.
+
+직사각형과 정사각형보다 더 큰 범주의 `Shape 클래스`를 상속받을 수 있게 구현한다.
+
+```java
+public class Shape {
+
+    public int width;
+    public int height;
+
+    public int getWidth() {
+        return width;
+    }
+  
+    public void setWidth(int width) {
+        this.width = width;
+    }
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getArea() {
+        return width * height;
+    }
+}
+```
+
+```java
+public class Rectangle extends Shape {
+    public Rectangle(int width, int height) {
+        setWidth(width);
+        setHeight(height);
+    }
+}
+```
+
+```java
+public class Square extends Shape {
+    public Square(int length) {
+        setWidth(length);
+        setHeight(length);
+    }  
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+    
+        Shape rectangle = new Rectangle(10, 5);
+        Shape square = new Square(5);
+        
+        System.out.println(rectangle.getArea()); //50
+        System.out.println(square.getArea()); //25
+    }
+}
+```
+
+더이상 Rectangle 객체와 Square 객체는 상속 관계가 아니므로, 리스코프 치환 원칙을 지키고 있다.
+
+## 4. 인터페이스 분리 원칙
+
+단일 책임 원칙에서 제시한 해결책은 클래스를 나누어 하나의 역할(책임)만 하도록 다수의 클래스로 분할하는 것이었다. 인터페이스 분리 원칙은 중간에 인터페이스를 추가하여 역할을 제한하는 것이 핵심이다. 
 
 인터페이스는 클라이언트 입장에서 사용하는 기능만 제공하도록 인터페이스를 분리해야 한다. 이로써 한 기능에 대한 변경의 여파를 최소화할 수 있다.
 
 ```java
 public interface multifunction {
-  void copy();
-  void fax(Address from, Address to);
-  void print();
+    void copy();
+    void fax(Address from, Address to);
+    void print();
 }
+```
 
+```java
 public class CopyMachine implements multifunction {
 
   @Override
@@ -386,38 +497,39 @@ public class CopyMachine implements multifunction {
 }
 ```
 
-multifunction 인터페이스에 모든 기능을 넣었더니, CopyMachine을 구현하는데 필요없는 fax()와 print() 메소드도 구현을 해줘야 한다.
+multifunction 인터페이스에 모든 기능을 넣었더니, CopyMachine을 구현하는데 필요없는 fax()와 print() 메소드도 구현을 해줘야 한다. 만약 multinfunction 인터페이스에서 fax()나 print()에 대해서 리턴 타입이 변경된다면, 이와 전혀 상관없는 CopyMachine 클래스도 같이 수정해줘야 하는 문제가 발생한다.
 
 인터페이스 분리 원칙을 사용하면 다음과 같이 작성할 수 있다.
 
 ```java
 public interface Print{
-  void print();
-}
-
-public interface Copy {
-  void copy();
-}
-
-public interface Fax {
-  void fax(Address from, Address to);
-}
-
-public class CopyMachine implements Copy {
-  @Override
-  public void copy() {
-  }
+    void print();
 }
 ```
-<br>
 
-### 5. 의존관계 역전 원칙
+```java
+public interface Copy {
+    void copy();
+}
+```
 
-고수준 모듈은 저수준 모듈의 구현에 의존해서는 안 된다. 이 두 모듈 모두 다른 추상화된 것에 의존해야 한다. 
+```java
+public interface Fax {
+    void fax(Address from, Address to);
+}
+```
 
-> 고수준 모듈이란? 인터페이스와 같은 객체의 형태나 추상적 개념
+```java
+public class CopyMachine implements Copy {
+    @Override
+    public void copy() {
+    }
+}
+```
 
-> 저수준 모듈이란? 구현된 객체
+## 5. 의존관계 역전 원칙
+
+의존관계 역전 원칙이란 **객체는 저수준 모듈보다 고수준 모듈에 의존해야한다**는 원칙이다. 여기서 고수준 모듈이란 인터페이스와 같은 객체의 형태나 추상적 개념, 저수준 모듈이란 구현 객체를 의미한다.
 
 ![img4](https://github.com/dilmah0203/TIL/blob/main/Image/DIP1.png)
 
@@ -425,13 +537,11 @@ public class CopyMachine implements Copy {
 
 ![img5](https://github.com/dilmah0203/TIL/blob/main/Image/DIP2.png)
 
-위와 같이 자동차가 구체적인 타이어들(스노우타이어, 일반타이어, 광폭타이어)이 아닌 추상화된 타이어 인터페이스에만 의존하게 함으로써 타이어가 변경되더라도 자동차는 그 영향을 받지 않는 형태로 구성된다. 
+위와 같이 자동차가 구체적인 타이어들(스노우타이어, 일반타이어, 광폭타이어)이 아닌 **추상화된 타이어 인터페이스**에만 의존하게 함으로써 **타이어가 변경되더라도 자동차는 그 영향을 받지 않는 형태로 구성된다.**
 
-자동차는 자신보다 변하기 쉬운 스노우타이어에 의존하던 관계를 중간에 추상화된 타이어 인터페이스를 추가해 두고 의존 관계를 역전시키고 있다. 이처럼 자신보다 변하기 쉬운 것에 의존하던 것을 추상화된 인터페이스나 상위 클래스를 두어 변하기 쉬운 것의 변화에 영향받지 않게 하는 것이 의존 역전 원칙이다.
+자동차는 자신보다 변하기 쉬운 스노우타이어에 의존하던 관계를 중간에 추상화된 타이어 인터페이스를 추가해 두고 의존 관계를 역전시키고 있다. 이처럼 인터페이스나 상위 클래스를 두어 변하기 쉬운 것의 변화에 영향받지 않게 하는 것이 의존 역전 원칙이다.
 
 정리하자면 상위 클래스일수록, 인터페이스일수록, 추상클래스일수록 변하지 않을 가능성이 높기에 하위 클래스나 구체 클래스가 아닌 상위 클래스, 인터페이스, 추상 클래스를 통해 의존하라는 것이다.
-
-<br>
 
 참고
 
