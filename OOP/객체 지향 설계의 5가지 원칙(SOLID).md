@@ -2,82 +2,74 @@
 
 SOLID는 아래 5가지 원칙의 앞 머리 알파벳을 따서 부르는 이름이다. 이 원칙은 응집도는 높이고, 결합도는 낮추라는 고전 원칙을 객체 지향의 관점에서 재정립한 것이라고 할 수 있다.
 
-- 단일 책임 원칙(SRP)
-- 개방-폐쇄 원칙(OCP)
-- 리스코프 치환 원칙(LSP)
-- 인터페이스 분리 원칙(ISP)
-- 의존관계 역전 원칙(DIP)
-
-<br>
+- SRP: 단일 책임 원칙(single responsibility principle)
+- OCP: 개방-폐쇄 원칙 (Open/closed principle)
+- LSP: 리스코프 치환 원칙 (Liskov substitution principle) 
+- ISP: 인터페이스 분리 원칙 (Interface segregation principle) 
+- DIP: 의존관계 역전 원칙 (Dependency inversion principle)
 
 > **결합도와 응집도란?**
 
 모듈이란 소프트웨어 내의 프로그램 또는 작업 단위의 의미로 사용되며 모듈화란 소프트웨어를 각 기능별로 나누는 것을 말한다. 여기서 좋은 모듈화란 각각의 모듈은 주어진 기능을 독립적으로 수행하며 다른 모듈과 적게 연관되어야 한다.
 
-즉, 독립성이 높은 모듈일수록 좋다. 독립성이 높으면 해당 모듈을 수정하더라도 다른 모듈에 끼치는 영향이 적으며 오류가 발생하더라도 쉽게 해결할 수 있기 때문이다.
-
-모듈의 독립성은 결합도(Coupling)과 응집도(Cohesion)로 측정한다. 모듈의 독립성을 높이기 위해서는 결합도를 낮추고 응집도를 높여야 한다.
+즉, 독립성이 높은 모듈일수록 좋다. 독립성이 높으면 해당 모듈을 수정하더라도 다른 모듈에 끼치는 영향이 적으며 오류가 발생하더라도 쉽게 해결할 수 있기 때문이다. 모듈의 독립성은 결합도(Coupling)과 응집도(Cohesion)로 측정한다. 모듈의 독립성을 높이기 위해서는 결합도를 낮추고 응집도를 높여야 한다.
 
 **결합도**는 모듈(클래스)간의 상호 의존하는 정도를 의미한다. 자바의 클래스로 예를 들면, 결합도가 높은 클래스는 다른 클래스와 연관된 정도가 높기 때문에 해당 클래스 변경 시 연관된 클래스도 변경해야하고 재사용하기 어렵다. 결합도가 낮으면 모듈 간의 상호 의존성이 줄어들어 수정이나 유지보수에 용이하다.
 
 **응집도**는 하나의 모듈 내의 구성요소끼리 서로 관련되어 있는 정도를 말한다. 응집도가 높은 모듈은 하나의 책임에 집중하고 독립성이 높아져 재사용이나 수정에 용이하다.
 
-<br>
-
 ### 1. 단일 책임 원칙
 
-역할(책임)을 분리하라는 것이 단일 책임 원칙이다. 이 원칙을 지킴으로써 몇 가지 이점이 있다.
+**한 클래스는 하나의 책임만 가져야한다**는 것이 단일 책임 원칙이다. 이 원칙을 지킴으로써 몇 가지 이점이 있다.
 
 - 책임이 하나인 클래스는 테스트 케이스가 적다.
-
 - 단일 클래스의 기능이 적을수록 종속성이 줄어들어 응집력이 좋아진다.
 
 단일 책임 원칙은 속성과 메소드, 패키지, 모듈 등에도 적용할 수 있는 개념이다. 다음 예시는 단일 책임 원칙을 위반한다.
 
 ```java
 public class Book {
-  private String name;
-  private String author;
-  private String text;
 
-  //constructor, getters and setters
+    private String name;
+    private String author;
+    private String text;
 
-  public String isWordInText(String word) {
-    return text.contains(word);
-  }
+    //constructor, getters and setters
 
-  public void printTextToConsole() {
-  }
+    public String isWordInText(String word) {
+      return text.contains(word);
+    }
+
+    public void printTextToConsole() {
+    }
 }
 ```
-isWordInText() 메소드와 printTextToConsole() 메소드는 문자열 포함 여부를 확인하고 텍스트를 출력하는 서로 다른 동작을 한다.
+isWordInText() 메소드는 문자열 포함 여부를 확인하고 printTextToConsole() 메소드는 텍스트를 출력하는 서로 다른 동작을 한다.
 
 다음과 같이 텍스트 출력만 처리하는 별도의 클래스를 구현함으로써 출력과 관련 없는 Book 클래스를 들릴 일이 없어져 클래스 간의 결합도가 줄어들게 된다.
 
 ```java
 public class BookPrinter {
-  public void printTextToConsole() {
-  }
+    public void printTextToConsole() {
+    }
 }
 ```
-
-<br>
 
 다음 예시는 메소드가 단일 책임 원칙을 위반한다. Dog 클래스의 소변보다() 메소드가 수컷 강아지의 행위와 암컷 강아지의 행위를 모두 구현하려고 하기에 단일 책임 원칙을 위배하고 있는 것이다. 메소드가 단일 책임 원칙을 지키지 않을 경우는 대표적으로 분기 처리를 위한 if 문이 있다.
 
 ```java
-class Dog {
-  final static Boolean 수컷 = true;
-  final static Boolean 암컷 = false;
-  Boolean 성별;
+public class Dog {
+    final static Boolean 수컷 = true;
+    final static Boolean 암컷 = false;
+    Boolean 성별;
 
-  void 소변보다() {
-    if(this.성별 == 수컷) {
-      //한쪽 다리를 들고 소변을 본다
-    } else {
-      // 뒷다리 두 개로 앉은 자세로 소변을 본다
+    void 소변보다() {
+      if(this.성별 == 수컷) {
+        //한쪽 다리를 들고 소변을 본다
+      } else {
+        // 뒷다리 두 개로 앉은 자세로 소변을 본다
+      }
     }
-  }
 }
 ```
 
@@ -85,120 +77,203 @@ class Dog {
 
 ```java
 abstract class Dog {
-  abstract void 소변보다() 
+    abstract void 소변보다() 
 }
+```
 
+```java
 class 수컷강아지 extends Dog {
-  void 소변보다() {
+    void 소변보다() {
     //한쪽 다리를 들고 소변을 본다
-  }
+    }
 }
 
 class 암컷강아지 extends Dog {
-  void 소변보다() {
+    void 소변보다() {
     //뒷다리 두 개로 앉은 자세로 소변을 본다
-  }
+    }
 }
 ```
-<br>
+
+이렇게 객체 별로 책임을 나누게 될 경우. 코드 변경이 있을 때 해당 객체만 수정하면 되므로 수정에 따른 영향도가 작아진다. 그렇기 때문에 의존성은 낮아지고 코드가 간결해져 유지 보수가 쉬워진다.
 
 ### 2. 개방-폐쇄 원칙
 
 확장에는 열려 있으나 변경에는 닫혀 있어야 한다.
 
-> 확장이란? 새로운 타입을 추가함으로써 새로운 기능을 구현하는 것
-
-> 변경이란? 확장이 발생했을 때 코드를 호출하는 쪽에서 변경이 발생하지 않는 것
-
 개방-폐쇄 원칙의 좋은 예는 JDBC다. JDBC를 사용하는 클라이언트는 데이터베이스가 오라클에서 MySQL로 바뀌더라도 Connection을 설정하는 부분 외에는 따로 수정할 필요가 없다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/JDBC.png)
 
-
-다음 예시는 개방-폐쇄 원칙을 위반한 예이다. 운전자의 차 종이 바뀔때마다 새로운 drive() 메소드를 실행해야 한다.
+다음 예시는 개방-폐쇄 원칙을 위반한 예이다. Animal 클래스가 있고, Animal 타입을 받아 고양이 혹은 개의 소리에 맞추어 출력하는 HelloAnimal 클래스가 있다.
 
 ```java
-public class Driver {
+public class Animal {
+    String type;
+    
+    Animal(String type) {
+        this.type = type;
+    }
+}
+```
+
+```java
+public class HelloAnimal {
+    void hello(Animal animal) {
+        if(animal.type.equals("Cat")) {
+            System.out.println("냐옹");
+        } else if(animal.type.equals("Dog")) {
+            System.out.println("멍멍");
+        }
+    }
+}
+```
+
+```java
+public class Main {
   public static void main(String[] args) {
+      HelloAnimal hello = new HelloAnimal();
+        
+      Animal cat = new Animal("Cat");
+      Animal dog = new Animal("Dog");
 
-      Truck truck = new Truck(); 
-      truck.drive(); 
-      Bus bus = new Bus(); 
-      bus.drive(); 
-  } 
-} 
-
-class Truck { 
-  public void drive() {
-     System.out.println("Truck Drive");
-  } 
-} 
-
-class Bus { 
-  public void drive() {
-    System.out.println("Bus Drive"); 
+      hello.hello(cat); // 냐옹
+      hello.hello(dog); // 멍멍
   }
 }
 ```
 
-이러한 문제를 개방-폐쇄 원칙을 이용하여 구현하면 아래와 같다.
+여기서 문제는 기능 추가이다. 만약 고양이나 개 이외에 양이나 사자를 추가하면 어떻게 될까?
+
+HelloAnimal 클래스를 수정해주어야 한다. 각 객체의 필드 변수에 맞게 if문을 분기하여 구성해주어야 한다.
 
 ```java
-public class Driver { 
-  public static void main(String[] args) {
+public class HelloAnimal {
+    void hello(Animal animal) {
+        if (animal.type.equals("Cat")) {
+            System.out.println("냐옹");
+        } else if (animal.type.equals("Dog")) {
+            System.out.println("멍멍");
+        } else if (animal.type.equals("Sheep")) {
+            System.out.println("메에에");
+        } else if (animal.type.equals("Lion")) {
+            System.out.println("어흥");
+        }
+        // ...
+    }
+}
+```
 
-     Car[] car = new Car[2]; 
-     car[0] = new Truck(); 
-     car[1] = new Bus(); 
+```java
+public class Main {
+    public static void main(String[] args) {
+        HelloAnimal hello = new HelloAnimal();
 
-     for (int i = 0; i < car.length; i++) {
-        car[i].drive(); 
-     } 
-  } 
-} 
+        Animal cat = new Animal("Cat");
+        Animal dog = new Animal("Dog");
 
-class Car { 
-  public String carType = "";
+        Animal sheep = new Animal("Sheep");
+        Animal lion = new Animal("Lion");
 
-   public void car(String carType) {
-      this.carType =carType;
-   } 
-   
-   public void setCarType(String carType) {
-      this.carType =carType;
-   } 
-   
-   public void drive() {
-      System.out.println(carType + " Drive");
-   }
-} 
+        hello.hello(cat); // 냐옹
+        hello.hello(dog); // 멍멍
+        hello.hello(sheep); 
+        hello.hello(lion);
+    }
+}
+```
 
-class Truck extends Car {
-  public Truck() { 
-    setCarType("Truck");
-  } 
-  
-  @Override 
-  public void drive() { 
-    super.drive(); 
-  } 
-} 
+이런식으로 코드를 구성한다면, 동물이 추가될 때마다 코드 변경이 생긴다. 이를 **OCP 원칙에 따라 추상화 클래스를 구성하고 상속하여 확장하는 관계로 구성하면 변경에는 닫히고 추가에는 열려있는 설계를 할 수 있다.**
 
-class Bus extends Car {
-  public Bus() { 
-     setCarType("Bus");
-  } 
-  
-  @Override 
-  public void drive() {
-     super.drive(); 
+```java
+abstract class Animal {
+    abstract void speak();
+}
+```
+
+```java
+class Cat extends Animal { 
+  void speak() {
+      System.out.println("냐옹");
   }
 }
 ```
 
-Car라는 클래스에서 drive() 메소드를 선언함으로써 어떤 차종이 와도 drive()를 오버라이딩할 수 있다. 따라서 Car 클래스의 코드 변경 없이 drive() 기능을 확장할 수 있다.
+```java
+class Dog extends Animal { 
+    void speak() {
+        System.out.println("멍멍");
+    }
+}
+```
 
-<br>
+```java
+class HelloAnimal {
+    void hello(Animal animal) {
+        animal.speak();
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        HelloAnimal hello = new HelloAnimal();
+
+        Animal cat = new Cat();
+        Animal dog = new Dog();
+
+        hello.hello(cat); // 냐옹
+        hello.hello(dog); // 멍멍
+    }
+}
+```
+
+위와 같이 구성하게 되면 기능 추가가 되었을 때에도 코드 수정 없이 확장이 가능하게 된다. 다음과 같이 양 클래스와 사자 클래스를 추가할때 HelloAnimal 클래스의 코드 수정 없이 정상적으로 기능 확장이 되는 것을 보여준다.
+
+```java
+class Sheep extends Animal {
+    void speak() {
+        System.out.println("매에에");
+    }
+}
+```
+
+```java
+class Lion extends Animal {
+    void speak() {
+        System.out.println("어흥");
+    }
+}
+```
+
+```java
+// 기능 확장으로 인한 클래스가 추가되어도, 더이상 수정할 필요가 없어진다
+class HelloAnimal {
+    void hello(Animal animal) {
+        animal.speak();
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        HelloAnimal hello = new HelloAnimal();
+
+        Animal cat = new Cat();
+        Animal dog = new Dog();
+
+        Animal sheep = new Sheep();
+        Animal lion = new Lion();
+
+        hello.hello(cat); // 냐옹
+        hello.hello(dog); // 멍멍
+        hello.hello(sheep); // 매에에
+        hello.hello(lion); // 어흥
+    }
+}
+```
 
 ### 3. 리스코프 치환 원칙
 
