@@ -2,15 +2,11 @@
 
 **HTTP**란 서버와 클라이언트간의 메세지 교환 프로토콜을 의미한다.
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20communication.png)
-
 클라이언트가 리소스를 HTTP를 통해 요청하면 TCP, IP 프로토콜을 걸쳐 서버쪽의 HTTP까지 요청이 도달한다. 이에 대한 응답을 다시 서버에서 HTTP로 보내면 TCP, IP 프로토콜을 통과해 클라이언트까지 응답이 도달하게 된다.
 
 ### HTTP 프로토콜 구성
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Request.PNG)
-
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Response.png)
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP.png)
 
 ### HTTP 프로토콜 특징
 
@@ -32,7 +28,7 @@
 
 클라이언트가 서버에 요청을 보내고 응답을 받게되면 바로 클라이언트와 서버의 연결을 끊어버린다. 따라서 서버는 최소한의 자원만을 사용하게 되기 때문에 효율적이다.
 
-TCP/IP 연결을 새로 
+TCP/IP 연결을 새로 맺어야 하는 한계가 있지만, 지금은 HTTP 지속 연결로 해결되었다.
 
 ### HTTP 상태코드
 
