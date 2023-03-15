@@ -48,9 +48,9 @@ public class HashMap <K, V> { ... }
 public class ClassName <T, K> { ... }
  
 public class Main {
-	public static void main(String[] args) {
-		ClassName<String, Integer> a = new ClassName<String, Integer>();
-	}
+    public static void main(String[] args) {
+	ClassName<String, Integer> a = new ClassName<String, Integer>();
+    }
 }
 ```
 
