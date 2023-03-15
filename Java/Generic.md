@@ -26,6 +26,38 @@ int sum(Collection c) {
 
 문제는 위 메소드가 String과 같은 다른 타입을 갖는 컬렉션도 호출이 가능하다는 점이다. String 타입을 갖는 컬렉션은 컴파일 시점엔 문제가 없다가 **런타임 시점에 메소드를 호출하면** 에러가 발생한다. 그래서 타입을 지정하여 컴파일 시점에 안정성을 보장받을 수 있는 방법을 고안하였고, 제네릭이 등장하였다.
 
+이렇듯 **제네릭(Generic)은 클래스 내부에서 지정하는 것이 아닌 외부에서 사용자에 의해 지정되는 것**을 의미한다. **특정(Specific) 타입을 미리 지정해주는 것이 아닌 필요에 의해 지정할 수 있도록 하는 일반(Generic) 타입이라는 것이다.**
+
+제네릭은 아래 타입들이 많이 쓰인다.
+
+|타입|설명|
+|------|------|
+| T |Type|
+| E |Element|
+| K |Key|
+| V |Value|
+| N |Number|
+
+```java
+public class ClassName <T> { ... }
+public Interface InterfaceName <T> { ... }
+public class HashMap <K, V> { ... }
+```
+
+제네릭 타입의 클래스나 인터페이스의 경우 위와 같이 선언한다. T 타입은 해당 블록 안에서까지 유효하다. 객체 생성시에 구체적인 타입을 명시해준다.
+
+```java
+public class ClassName <T, K> { ... }
+ 
+public class Main {
+	public static void main(String[] args) {
+		ClassName<String, Integer> a = new ClassName<String, Integer>();
+	}
+}
+```
+
+타입 파라미터로 명시할 수 있는 것은 **참조 타입**(Reference Type)밖에 올 수 없다. 즉 int와 double, char 같은 primitive type은 올 수 없다. 사용자가 정의한 클래스 타입도 가능하다.
+    
 ### 제네릭은 왜 사용할까?
 
 ### 1.컴파일 타임에 강력한 타입 검사
