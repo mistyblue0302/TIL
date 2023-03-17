@@ -10,17 +10,18 @@ String s = queue.peek(); //삭제하지않고 요소를 반환
 String s2 = queue.poll(); //삭제하면서 반환
 ```
 
-Queue는 한쪽 방향으로만(단방향) 삽입 삭제가 가능한 반면, Queue를 상속하고 있는 Deque는 Double ended Queue라는 의미로 양쪽에서 삽입삭제가 가능한 자료구조이다.
+Queue는 한쪽 방향으로만(단방향) 삽입 삭제가 가능한 반면, Queue를 상속하고 있는 Deque는 Double ended Queue라는 의미로 양방향에서 삽입삭제가 가능한 자료구조이다.
 
 Queue/Deque를 구현하는 클래스는 다음과 같다.
 
 - LinkedList
-- ArrayDeque
 - PriorityQueue
-
-### ArrayDeque
+- ArrayDeque
 
 ### PriorityQueue
 
-우선순위 
+우선순위 큐로 우선순위가 높은 데이터가 먼저 나오게된다. 따로 정렬방식을 지정하지 않는다면 **낮은 숫자가 높은 우선순위를 가진다.**
    
+
+### ArrayDeque
+
