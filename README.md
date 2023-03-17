@@ -66,6 +66,7 @@
 * [제네릭](https://github.com/dilmah0203/TIL/blob/main/Java/Generic.md)
 * [컬렉션](https://github.com/dilmah0203/TIL/blob/main/Java/Collection.md)
   * [List](https://github.com/dilmah0203/TIL/blob/main/Java/List.md)
+  * [Queue](https://github.com/dilmah0203/TIL/blob/main/Java/Queue.md)
   * [Set](https://github.com/dilmah0203/TIL/blob/main/Java/Set.md)
   * [Map](https://github.com/dilmah0203/TIL/blob/main/Java/Map.md)
   * [Map vs List](https://github.com/dilmah0203/TIL/blob/main/Java/Map%20vs%20List.md)
