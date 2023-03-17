@@ -78,6 +78,6 @@ stack.push(3);
 int value = stack.peek(); //요소를 제거하지 않고 반환
 int value2 = stack.pop(); //요소를 제거하고 반환
         
-int result = stack.search(3);
+int result = stack.search(3); //스택의 상단으로부터 몇 번째에 위치하는지 반환(거리)
 ```
 
