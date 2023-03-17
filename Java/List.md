@@ -49,13 +49,16 @@ ArrayList는 배열과 유사하지만 특정 인덱스의 요소를 제거할 �
 
 ### LinkedList
 
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/LinkedList.png)
+![img3](https://github.com/dilmah0203/TIL/blob/main/Image/LinkedList2.png)
+
 ArrayList는 내부 배열에 요소를 저장하여 인덱스로 관리하는 반면 LinkedList는 인접한 **참조들을 연결하여 관리**한다. LinkedList에서 특정 요소를 제거하거나 추가하면, 앞 뒤 연결만 변경되고 나머지는 변경되지 않는다. 중간에 요소를 추가나 삭제하더라도 전체 인덱스가 밀리거나 당겨지는 일이 없기 때문에 ArrayList에 비해 요소의 추가나 삭제가 용이하지만 인덱스로 특정 요소에 접근할 경우 순차 탐색으로 이루어져 있어 탐색 속도가 느리다. 요소를 추가, 삭제할 때는 LinkedList가 성능이 좋다.
 
 ### Vector
 
 Vector와 ArrayList의 차이점은 Vector 클래스는 synchronized 메소드로 구성되어 있다. 그렇기 때문에 멀티 쓰레드 환경에서 안전하다.(Thread safe하다) 하지만 동기화되어 있기 때문에 ArrayList보다는 요소를 추가, 삭제하는 과정이 느리다.
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Vector.png)
+![img4](https://github.com/dilmah0203/TIL/blob/main/Image/Vector.png)
 
 ```java
 List<String> list = new Vector<>();
