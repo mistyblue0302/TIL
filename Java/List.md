@@ -70,3 +70,14 @@ list.remove(0);
 
 Stack은 LIFO 기능을 위한 클래스로 모든 메서드에 synchronized가 붙어있어 Thread safe하다. 모든 작업에 Lock이 사용되기 때문에 성능이 저하될 수 있다. Deque의 구현체인 ArrayDeque는 LIFO 구조로, Thread safe하지 않지만 더 빠르다.
 
+```java
+Stack<Integer> stack = new Stack<>();
+stack.push(1);
+stack.push(3);
+        
+int value = stack.peek(); //요소를 제거하지 않고 반환
+int value2 = stack.pop(); //요소를 제거하고 반환
+        
+int result = stack.search(3);
+```
+
