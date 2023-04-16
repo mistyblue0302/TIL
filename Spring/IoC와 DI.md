@@ -1,6 +1,6 @@
 ## 1장. IoC 컨테이너와 DI
 
-### 제어의 역전(IoC : Inversion of Control)
+### 1. 제어의 역전(IoC : Inversion of Control)
 
 - 스프링 애플리케이션에서는 오브젝트(빈)의 생성과 의존 관계 설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 스프링 컨테이너가 담당한다. 
 - 이를 스프링 컨테이너가 오브젝트에 대한 제어권을 가진다고 하여 IoC라고 부른다. 따라서 스프링 컨테이너를 IoC 컨테이너라고도 부른다.
@@ -15,7 +15,7 @@
 
 스프링 IoC 컨테이너는 각각의 **빈에 대한 정보를 담은 메타정보를 읽어들인 뒤에 이를 참고하여 빈 오브젝트를 생성하고 프로퍼티나 생성자를 통해 의존 오브젝트를 주입해주는 DI 작업을 수행**한다.
 
-### IoC 컨테이너의 종류
+### 2. IoC 컨테이너의 종류
  
 **BeanFactory**
 
@@ -49,13 +49,13 @@ XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationC
 
 서블릿 컨테이너가 브라우저로부터 오는 HTTP 요청을 받아 해당 요청에 매핑되어 있는 서블릿을 실행해주는 방식으로 동작한다.
 
-### IoC 컨테이너 계층구조
+### 3. IoC 컨테이너 계층구조
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/ApplicationContext.png)
 
 각자 독립적으로 자신이 관리하는 빈을 갖고 있지만 DI를 위해 빈을 찾을 때는 부모 애플리케이션 컨텍스트의 빈까지 모두 검색한다. 만약, 형제 Context에 찾고자 하는 Bean 객체가 존재할지라도 자기 자신과 부모의 Context에 존재하면 찾을 수 없다. 자신이 먼저 그 다음 부모에 동일한 빈이 발견되면 자신이 가진것이 우선이 된다.
 
-###  웹 애플리케이션의 IoC 컨테이너 구성
+### 4. 웹 애플리케이션의 IoC 컨테이너 구성
 
 - 웹 애플리케이션 안에 WebApplicationContext 타입의 IoC 컨테이너를 둔다.
 - 몇 개의 서블릿이 중앙집중식으로 모든 요청을 다 받아서 처리하는 방식을 프론트 컨트롤러 패턴이라고 한다. 스프링은 이 패턴을 사용한다.
@@ -80,7 +80,7 @@ XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationC
 - 동시에 웹 어플리케이션 레벨에 등록된 Root ApplicationContext를 찾아서 이를 자신의 부모 컨텍스트로 사용한다.
 - 여러개의 DispatcherServlet 도 등록이 가능하며 네임스페이스로 구분한다.
 
-### IoC/DI를 위한 빈 설정 메타정보 작성
+### 5. IoC/DI를 위한 빈 설정 메타정보 작성
 
 - **@Configuration** : 애플리케이션 컨텍스트가 사용할 설정정보
 
@@ -117,7 +117,7 @@ public class UserDaoTest {
 
 @Configuration이 붙은 DaoFactory는 이 애플리케이션 컨텍스트가 활용하는 IoC 설정정보다. 애플리케이션 컨텍스트는 DaoFactory 클래스를 설정정보로 등록해두고 @Bean이 붙은 메소드의 이름을 가져와 빈 목록을 만들어둔다. 클라이언트가 애플리케이션 컨텍스트의 getBean() 메소드를 호출하면 자신의 빈 목록에서 요청한 이름이 있는지 찾고, 있다면 빈을 생성하는 메소드를 호출해서 오브젝트를 생성시킨 후 돌려준다.
 
-### 싱글톤 레지스트리와 오브젝트 스코프
+### 6. 싱글톤 레지스트리와 오브젝트 스코프
 
 DaoFactory를 직접 사용하는 것과 @Configuration 애노테이션을 추가해서 스프링의 애플리케이션 컨텍스트를 통해 사용하는 것은 결과만 보자면 동일한 것 같다. 하지만 스프링의 애플리케이션 컨텍스트는 기존 오브젝트 팩토리와는 중요한 차이점이 있다.
 
@@ -183,7 +183,7 @@ CGLIB라는 라이브러리를 사용해서 임의의 다른 클래스를 만들
 
 스프링이 관리하는 오브젝트, 즉 **빈이 생성되고 존재하고 적용되는 범위**를 빈의 스코프라고 한다. 빈의 스코프는 싱글톤이다. 하지만 경우에 따라서는 싱글톤 외의 스코프를 가질 수 있다. 대표적으로 프로토타입 스코프가 있다. 그 외에도 웹을 통해 새로은 HTTP 요청이 올 때 생성되는 요청 스코프가 있고, 웹의 세션과 비슷한 세션 스코프도 있다.
 
-### 의존관계 주입(DI : Dependency Injection)
+### 7. 의존관계 주입(DI : Dependency Injection)
 
 스프링 IoC 기능의 대표적인 동작원리는 의존관계 주입(DI)이라고 불린다. DI는 오브젝트 레퍼런스를 외부로부터 주입받고 이를 통해 여타 오브젝트와 다이내믹하게 의존관계가 만들어지는 것이 핵심이다.
 
@@ -219,7 +219,66 @@ CGLIB라는 라이브러리를 사용해서 임의의 다른 클래스를 만들
 
 인터페이스를 사용함으로써 결합도가 낮아지고, 의존 대상이 바뀌어도 영향 받지 않고 변경을 통한 확장을 할 수 있다.
 
-### XML을 이용한 설정
+> 의존성 주입은 어떻게 할까?
+
+**필드 주입**
+
+```java
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
+    private MemberService memberService;
+}
+```
+
+- `@Autowired` 애노테이션을 사용해 의존성 주입을 한다.
+- 애플리케이션 컨텍스트는 일치하는 의존성을 검색한다.
+  - 이 때 일치하는 항목이 1개라면 : 찾고 있는 의존성을 주입
+  - 일치하는 항목이 2개 이상일 경우 @Primary나 @Qualifier를 사용할 수 있다.
+
+**Setter 주입**
+
+```java
+@Service
+public class UserService {
+    private UserRepository userRepository;
+    private MemberService memberService;
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    @Autowired
+    public void setMemberService(MemberService memberService) {
+        this.memberService = memberService;
+    }
+}
+```
+
+- 필드 값을 변경하는 Setter를 통해서 의존 관계를 주입하는 방법
+- Setter 주입은 생성자 주입과 다르게 주입받는 객체가 변경될 가능성이 있는 경우나 의존성을 선택적으로 주입할 때 사용한다.
+
+**생성자 주입**
+
+```java
+@Service
+public class UserService {
+  private final UserRepository userRepository;
+  private final MemberService memberService;
+  public UserService (UserRepository userRepository, MemberService memberService) {
+        this.userRepository = userRepository;
+        this.memberService = memberService;
+    }
+}
+```
+
+- 생성자 주입은 객체의 최초 생성 시점에 1회 호출되기 때문에 **불변**하게 사용할 수 있다.
+- **final** 키워드를 붙여 의존성의 누락을 막을 수 있다.
+- Lombok과 결합되어 코드를 간결하게 작성할 수 있다. Lombok에는 final 변수를 위한 생성자를 대신 생성해주는 @RequiredArgsConstructor를 쓸 수 있다.
+
+### 8. XML을 이용한 설정
 
 스프링의 애플리케이션 컨텍스트는 XML에 담긴 DI 정보를 활용할 수 있다. XML 설정은 @Configuration과 @Bean이 붙은 자바 클래스로 만든 설정과 내용이 동일하다. 하나의 @Bean 메소드를 통해 얻을 수 있는 빈의 DI 정보는 다음 세 가지다.
 
