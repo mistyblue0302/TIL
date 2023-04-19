@@ -2,8 +2,7 @@
 
 * [스프링 트랜잭션](https://github.com/dilmah0203/TIL/blob/main/Spring/Spring%20Transaction.md)
 * [AOP](https://github.com/dilmah0203/TIL/blob/main/Spring/AOP%EB%9E%80%3F.md)
-  * [트랜잭션 코드의 분리](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%20%EC%BD%94%EB%93%9C%EC%9D%98%20%EB%B6%84%EB%A6%AC.md?plain=1)
-
+ 
 ## Spring
 * [자바와 객체 지향](https://github.com/dilmah0203/TIL/blob/main/OOP/%EC%9E%90%EB%B0%94%EC%99%80%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
 * [객체 지향을 확장하기 위한 키워드](https://github.com/dilmah0203/TIL/blob/main/OOP/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%EC%9D%84%20%ED%99%95%EC%9E%A5%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%9C%20%ED%82%A4%EC%9B%8C%EB%93%9C.md)
