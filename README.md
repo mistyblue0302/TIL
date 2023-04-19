@@ -1,6 +1,4 @@
 # Today I Learned
-
-* [스프링 트랜잭션](https://github.com/dilmah0203/TIL/blob/main/Spring/Spring%20Transaction.md)
  
 ## Spring
 * [자바와 객체 지향](https://github.com/dilmah0203/TIL/blob/main/OOP/%EC%9E%90%EB%B0%94%EC%99%80%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
