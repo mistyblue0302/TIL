@@ -226,6 +226,7 @@ CGLIB라는 라이브러리를 사용해서 임의의 다른 클래스를 만들
 ```java
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
     
@@ -244,8 +245,10 @@ public class UserService {
 ```java
 @Service
 public class UserService {
+
     private UserRepository userRepository;
     private MemberService memberService;
+    
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -265,8 +268,11 @@ public class UserService {
 ```java
 @Service
 public class UserService {
+
   private final UserRepository userRepository;
   private final MemberService memberService;
+  
+  @Autowired
   public UserService (UserRepository userRepository, MemberService memberService) {
         this.userRepository = userRepository;
         this.memberService = memberService;
