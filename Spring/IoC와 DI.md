@@ -33,7 +33,7 @@ GenericApplicationContext context = new GenericApplicationContext();
 
 XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(context);
 reader.loadBeanDefinitions("외부 파일 위치");
-context.refresh(); //빈에 대한 메타정보를 읽어들였으니 application context를화초기화
+context.refresh(); //빈에 대한 메타정보를 읽어들였으니 application context를 초기화
 
 Hello hello = context.getBean(Hello.class);
 hello.hi();
