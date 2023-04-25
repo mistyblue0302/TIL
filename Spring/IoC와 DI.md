@@ -89,25 +89,27 @@ XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationC
 ```java
 @Configuration
 public class DaoFactory {
-  @Bean //빈 이름: userDao, 빈 객체: UserDao
-  public UserDao userDao() {
-    return new UserDao(connectionMaker());
-  }
-  
-  @Bean //빈 이름: connectionMaker, 빈 객체: DConnectionMaker
-  public ConnectionMaker connectionMaker() {
-    return new DConnectionMaker();
-  }
+
+    @Bean //빈 이름: userDao, 빈 객체: UserDao
+    public UserDao userDao() {
+        return new UserDao(connectionMaker());
+    }
+
+    @Bean //빈 이름: connectionMaker, 빈 객체: DConnectionMaker
+    public ConnectionMaker connectionMaker() {
+        return new DConnectionMaker();
+    }
 }
 ```
 
 ```java
 public class UserDaoTest {
-  public static void main(String[] args) throws ClassNotFoundException, SQLException {
-    ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-    UserDao dao = context.getBean("userDao", UserDao.class);
-    ...
-  }
+
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+        UserDao dao = context.getBean("userDao", UserDao.class);
+         ...
+    }
 }
 ```
 
@@ -213,9 +215,7 @@ CGLIB라는 라이브러리를 사용해서 임의의 다른 클래스를 만들
 
 - 의존관계는 사용할 오브젝트에 대한 래퍼런스를 외부에서 주입해줌으로써 만들어진다.
 
-> DI 받는다?
->
-> DI의 동작방식은 외부로부터의 주입이다. 하지만 단지 외부에서 파라미터로 오브젝트를 넘겨주었다고 해서, DI가 아니라는 점이다. 주입받는 메소드 파라미터가 이미 특정 클래스 타입으로 고정되어 있다면 DI가 일어날 수 없다. DI에서 말하는 주입은 **다이내믹하게 구현 클래스를 결정해서 제공받을 수 있도록 인터페이스 타입의 파라미터를 통해** 이뤄져야 한다.
+DI의 동작방식은 외부로부터의 주입이다. 하지만 단지 외부에서 파라미터로 오브젝트를 넘겨주었다고 해서, DI가 아니라는 점이다. 주입받는 메소드 파라미터가 이미 특정 클래스 타입으로 고정되어 있다면 DI가 일어날 수 없다. DI에서 말하는 주입은 **다이내믹하게 구현 클래스를 결정해서 제공받을 수 있도록 인터페이스 타입의 파라미터를 통해** 이뤄져야 한다.
 
 인터페이스를 사용함으로써 결합도가 낮아지고, 의존 대상이 바뀌어도 영향 받지 않고 변경을 통한 확장을 할 수 있다.
 
