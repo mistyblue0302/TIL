@@ -75,7 +75,7 @@ XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationC
 
 **서블릿 ApplicationContext 등록**
 
-- 스프링의 웹 기능을 지원하는 프론트 컨트롤러 서블릿은 DisparcherServlet이다.
+- 스프링의 웹 기능을 지원하는 프론트 컨트롤러 서블릿은 DispatcherServlet이다.
 - DispatcherServlet은 서블릿이 초기화 될 떄 자신만의 컨텍스트를 생성하고 초기화한다.
 - 동시에 웹 어플리케이션 레벨에 등록된 Root ApplicationContext를 찾아서 이를 자신의 부모 컨텍스트로 사용한다.
 - 여러개의 DispatcherServlet 도 등록이 가능하며 네임스페이스로 구분한다.
