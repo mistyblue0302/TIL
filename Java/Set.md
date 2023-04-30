@@ -14,7 +14,6 @@ boolean value2 = set.isEmpty();
 
 set.remove("java");
 System.out.println(set.size());
-}
 ```
 
 List는 index로 관리하기 때문에 add()같은 메소드를 쓰면 순서대로 저장된다. Queue 또한 PriorityQueue를 제외하고는 기본적으로 입력한 순서대로 객체가 연결되어 있다. 하지만 Set의 경우는 입력받은 순서를 보장할 수 없다.
