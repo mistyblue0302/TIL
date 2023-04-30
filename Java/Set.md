@@ -43,7 +43,7 @@ add() 메소드를 통해 요소들을 넣은 순서대로 연결한다. Set임�
 
 ### TreeSet
 
-이진트리의 향상된 버전인 Red-Black Tree를 기반으로 만들어진다. HashSet과 마찬가지로 중복 저장하지 않지만 저장된 데이터의 값에 따라 오름차순으로 **정렬**된다. 정렬 과정 때문에 HashSet보다 성능이 약간 느리다.
+이진트리의 향상된 버전인 Red-Black Tree를 기반으로 만들어진다. HashSet과 마찬가지로 중복 저장하지 않지만 저장된 데이터의 값에 따라 오름차순으로 **정렬**된다. 정렬 과정 때문에 HashSet보다 성능이 느리다.
 
 ![img3](https://github.com/dilmah0203/TIL/blob/main/Image/TreeSet.png)
 
