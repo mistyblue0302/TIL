@@ -5,7 +5,7 @@
 - 스프링 애플리케이션에서는 오브젝트(빈)의 생성과 의존 관계 설정, 사용, 제거 등의 작업을 애플리케이션 코드 대신 스프링 컨테이너가 담당한다. 
 - 이를 스프링 컨테이너가 오브젝트에 대한 제어권을 가진다고 하여 IoC라고 부른다. 따라서 스프링 컨테이너를 IoC 컨테이너라고도 부른다.
 
-스프링에서는 IoC를 담당하는 컨테이너를 **Bean Factory** 또는 **Application Context**이라고 부른다. 빈 팩토리라고 말할 때는 빈을 생성하고 관계를 설정하는 IoC의 기본 기능에 초점을 맞춘 것이고, 애플리케이션 컨텍스트라고 말할 때는 애플레케이션 전반에 걸쳐 모든 구성요소의 제어 작업을 담당하는 IoC 엔진이라는 의미가 있다.
+스프링에서는 IoC를 담당하는 컨테이너를 **Bean Factory** 또는 **Application Context**라고 부른다. 빈 팩토리라고 말할 때는 빈을 생성하고 관계를 설정하는 IoC의 기본 기능에 초점을 맞춘 것이고, 애플리케이션 컨텍스트라고 말할 때는 애플레케이션 전반에 걸쳐 모든 구성요소의 제어 작업을 담당하는 IoC 엔진이라는 의미가 있다.
 
 제어의 역전이 사용되는 사례는 여러가지가 있다.
 
@@ -24,7 +24,7 @@
  
 **ApplicationContext**
 
-Bean을 등록, 생성, 조회, 반환 관리하는 기능은 BeanFactory와 같다. 메시지, 프로필, 환경 변수 등을 처리할 수 있는 기능을 추가로 정의한다.
+BeanFactory를 상속받고 있기 때문에 Bean을 등록, 생성, 조회, 반환 관리하는 기능은 BeanFactory와 같다. 또한 BeanFactory 외에도 다양한 클래스들을 상속받고 있기 때문에 메시지, 프로필, 환경 변수와 같은 더 많은 기능을 제공한다. 스프링은 ApplicationContext을 통해 Bean을 관리한다.
 
 - GenericApplicationContext : 일반적인 애플리케이션 컨택스트이다. 외부 파일(XML 등)로부터 빈 설정 메타정보를 전달받아 사용한다.
 
@@ -41,7 +41,7 @@ hello.hi();
 
 XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationContext 이용하도록 하여 Hello bean을 사용하게 만든 코드이다. JUnit 테스트에서 생성되는 Application Context가 GenericApplicationContext이다.
 
-- WebApplicationContext :  스프링에서 가장 많이 활용하는애플리케이션 컨텍스트로 웹 환경에서 사용할 때 필요한 기능이 추가된 어플리케이션 컨텍스트이다. 
+- WebApplicationContext :  스프링에서 가장 많이 활용하는애플리케이션 컨텍스트로 웹 환경에서 사용할 때 필요한 기능이 추가된 어플리케이션 컨텍스트이다. Java 어노테이션 설정을 이용하도록 구현된 AnnotationConfigWebApplicationContext도 있다.
 
 다음 그림은 웹 환경에서 스프링 빈으로 이뤄진 애플리케이션이 동작하는 구조다.
 
