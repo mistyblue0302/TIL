@@ -132,7 +132,7 @@ System.out.println(dao1);
 System.out.println(dao2);
 ```
 
-두 개는 각기 다른 값을 가진 동일하지 않은 오브젝트다. userDao를 매번 호출하면 계속해서 새로운 오브젝트가 만들어질 것이다.
+두 개는 각기 다른 값을 가진 동일하지 않은 오브젝트다. userDao를 매번 호출하면 계속해서 새로운 오브젝트가 만들어진다.
 
 ```java
 ApplicationContext context = new AnnotationConfigApplication(DaoFactory.class);
