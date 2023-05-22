@@ -251,6 +251,7 @@ public class UserService {
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+    
     @Autowired
     public void setMemberService(MemberService memberService) {
         this.memberService = memberService;
@@ -267,11 +268,11 @@ public class UserService {
 @Service
 public class UserService {
 
-  private final UserRepository userRepository;
-  private final MemberService memberService;
+    private final UserRepository userRepository;
+    private final MemberService memberService;
   
-  @Autowired
-  public UserService (UserRepository userRepository, MemberService memberService) {
+    @Autowired
+    public UserService (UserRepository userRepository, MemberService memberService) {
         this.userRepository = userRepository;
         this.memberService = memberService;
     }
