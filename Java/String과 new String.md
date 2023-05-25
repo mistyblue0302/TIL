@@ -10,7 +10,7 @@ String c = "hello";
 ```
 
 new를 통해 String을 생성하면 **Heap영역**에 존재하게 되고, 리터럴(값)을 이용할 경우 **string constant pool**영역에 존재하게 된다.
-b와 c는 같은 객체를 바라보지만, a는 다른 메모리의 객체를 바라보게 된다.
+b와 c는 string constant pool에 만들어진 하나의 객체를 참조한다. 
 
 ```java
 System.out.println(a.equals(b)); //true
