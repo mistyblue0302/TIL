@@ -1,64 +1,46 @@
-# 💡 **Map**
+## Map
 
-Map은 키(key)와 값(value)으로 이루어져 있다. Map 인터페이스를 구현한 클래스에는 HashMap, TreeMap, LinkedHashMap 등이 있다.
+**Map**은 키(key)와 값(value) 쌍의 형태로 이루어져 있다. 
 
-<br>
-
-**HashMap의 생성자**
-
-HaspMap에 객체가 들어가면 hashCode() 메소드 결과 값에 따른 bucket이라는 목록 형태의 바구니가 만들어진다. 서로 다른 키가 저장될 경우, hashCode()의 값이 동일하다면 bucket에 여러 값이 들어갈 수 있다. 따라서 get() 메소드 호출로 hashCode()의 결과를 확인 하고, bucket에 들어간 목록에 데이터가 여러 개일 경우 equals() 메소드를 통하여 동일 값을 찾게 된다.
-
-<br>
-
-Collection에서는 해당 위치에 값이 없을 경우 예외가 발생하지만 Map에서는 존재하지 않는 키로 get()을 할 경우 null을 리턴한다. 이미 존재하는 키로 값을 넣을 때에는 새로운 값으로 대치된다.
+- 키를 값의 index로 사용한다.
+- 순서가 없기 때문에 중간 삽입이 없다.
+- 키는 중복이 불가능하지만 값은 중복이 가능하다. (중복이 있다면 마지막에 저장된 키가 출력)
+- 키는 set에 저장된다.
 
 ```java
-Map<String, String> map = new HashMap<>();
-map.put("A", "a");
-map.put("C", "c");
-System.out.println(map.get("A")); //a
-System.out.println(map.get("B")); //null
-```
-<br>
+Map<String, Integer> map = new HashMap<>();
+map.put("a", 1);
+map.put("b", 2);
 
-**HashMap의 키를 확인하려면**
-
-keySet() 메소드를 사용하여 키를 확인할 수 있다. 리턴 타입은 Set이다. 
-
-```java
-Map<String, String> map = new HashMap<>();
-map.put("A", "a");
-map.put("B", "b");
-map.put("C", "c");
-Set<String> keySet = map.keySet();
-System.out.println(keySet); //[A, B, C]
-for (String data : keySet) {
-  System.out.print(map.get(data)); //abc
+for(String key : map.keySet()) {
+    System.out.println(key + " " + map.get(key));
 }
-```        
-<br>
 
-**HashMap의 값을 확인하려면**
+map.remove("a");
+map.replace("b", 3);
+map.put("c", 4); //hashmap에 키가 없는 경우 해당 키와 값을 삽입, replace는 null을 반환
 
-Set과 Map은 데이터 순서가 중요하지 않은 자료 구조이다. 객체에 담겨 있는 값만 필요할 경우 values() 메소드를 사용할 수 있으며 Collection 타입의 목록으로 리턴한다.
+int size = map.size();
 
-```java
-Map<String, String> map = new HashMap<>();
-map.put("A", "a");
-map.put("B", "b");
-map.put("C", "c");
-Collection<String> values = map.values();
-for (String data : values) {
-System.out.print(data); //abc
+for(String key : map.keySet()) {
+    System.out.println(key + " " + map.get(key));
 }
 ```
-Map에 선언된 Entry 타입 객체를 사용하여 리턴할 수도 있다. Entry는 하나의 키와 값만이 저장된다.
 
-```java
-Set<Map.Entry<String, String>> entry = map.entrySet();
-for (Map.Entry<String, String> data : entry) {
-System.out.println(data);
-}
-```
+Map 인터페이스를 구현한 클래스는 다음과 같다
+
+- HashMap
+- TreeMap
+- LinkedHashMap 
+
+### HashMap
+
+HashMap 클래스는 해시 알고리즘을 사용하여 검색 속도가 매우 빠르다. 
+
+### TreeMap
+
+### LinkedHashMap
+
+LinkedHashMap은 데이터의 순서를 보장한다.
 
 
