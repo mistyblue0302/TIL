@@ -6,7 +6,7 @@
 - 크기(길이)가 고정되어 있다.
 - index에 위치한 하나의 데이터를 삭제하면 해당 index는 빈공간으로 계속 남는다.
 
-**List**는 배열처럼 데이터들을 일렬로 늘어놓은 구조로 길이가 가변적이다. 또한 **순서**가 있으며 **중복을 허용**하고, 데이터 사이에 빈 공간이 없고 연속되어 있다. 객체를 **인덱스**로 관리하기 때문에 List에 객체를 추가하면 자동으로 인덱스가 부여되고, 인덱스를 참조하여 객체를 찾는다. List는 객체를 추가(add), 검색(contains, get, size), 삭제(remove, clear)하는 기능의 메소드가 선언되어 있다. 
+**List**는 배열처럼 데이터들을 일렬로 늘어놓은 구조로 길이가 가변적이다. 또한 **순서**가 있으며 **중복을 허용**하고, 데이터 사이에 빈 공간이 없고 연속되어 있다. 객체를 **index**로 관리하기 때문에 List에 객체를 추가하면 자동으로 index가 부여되고, index를 참조하여 객체를 찾는다. List는 객체를 추가(add), 검색(contains, get, size), 삭제(remove, clear)하는 기능의 메소드가 선언되어 있다. 
 
 ```java
 List<String> list = new ArrayList<>();
@@ -34,7 +34,7 @@ List 인터페이스를 구현한 클래스는 다음과 같다.
 
 ### ArrayList
 
-ArrayList는 최상위 타입인 오브젝트 배열(Object[])을 사용하여 데이터를 담아 인덱스로 요소를 관리하지만 **크기를 동적으로 늘릴 수 있다**는 점에서 일반 배열과 차이가 있다. 또한 Thread safe하지 않다.
+ArrayList는 최상위 타입인 오브젝트 배열(Object[])을 사용하여 데이터를 담아 index로 요소를 관리하지만 **크기를 동적으로 늘릴 수 있다**는 점에서 일반 배열과 차이가 있다. 또한 Thread safe하지 않다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/ArrayList.png)
 
@@ -45,14 +45,14 @@ List<String> list = new ArrayList<>(); //기본 저장 용량 10
 List<String> list = new ArrayList<>(100); //저장 용량을 100으로 설정
 ```
 
-ArrayList는 배열과 유사하지만 특정 인덱스의 요소를 제거할 경우, 제거한 요소의 인덱스부터 마지막 인덱스까지 모두 앞으로 1칸씩 이동하게 된다. 요소를 추가할 경우 1칸씩 뒤로 이동하게 된다. 요소의 삭제와 삽입이 빈번하게 일어날 경우 모든 객체가 재정렬 되기 때문에 성능이 좋지 않다. ArrayList는 인덱스가 있으므로 검색이나 가장 마지막 위치에 요소를 추가할 경우 성능이 좋다.
+ArrayList는 배열과 유사하지만 특정 index의 요소를 제거할 경우, 제거한 요소의 index부터 마지막 index까지 모두 앞으로 1칸씩 이동하게 된다. 요소를 추가할 경우 1칸씩 뒤로 이동하게 된다. 요소의 삭제와 삽입이 빈번하게 일어날 경우 모든 객체가 재정렬 되기 때문에 성능이 좋지 않다. ArrayList는 index가 있으므로 검색이나 가장 마지막 위치에 요소를 추가할 경우 성능이 좋다.
 
 ### LinkedList
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/LinkedList.png)
 ![img3](https://github.com/dilmah0203/TIL/blob/main/Image/LinkedList2.png)
 
-ArrayList는 내부 배열에 요소를 저장하여 인덱스로 관리하는 반면 LinkedList는 인접한 **참조들을 연결하여 관리**한다. LinkedList에서 특정 요소를 제거하거나 추가하면, 앞 뒤 연결만 변경되고 나머지는 변경되지 않는다. 중간에 요소를 추가하거나 삭제하더라도 전체 인덱스가 밀리거나 당겨지는 일이 없기 때문에 ArrayList에 비해 요소의 추가나 삭제가 용이하지만 인덱스로 특정 요소에 접근할 경우 순차 탐색으로 이루어져 있어 탐색 속도가 느리다. 요소를 추가, 삭제할 때는 LinkedList가 성능이 좋다.
+ArrayList는 내부 배열에 요소를 저장하여 index로 관리하는 반면 LinkedList는 인접한 **참조들을 연결하여 관리**한다. LinkedList에서 특정 요소를 제거하거나 추가하면, 앞 뒤 연결만 변경되고 나머지는 변경되지 않는다. 중간에 요소를 추가하거나 삭제하더라도 전체 index가 밀리거나 당겨지는 일이 없기 때문에 ArrayList에 비해 요소의 추가나 삭제가 용이하지만 index로 특정 요소에 접근할 경우 순차 탐색으로 이루어져 있어 탐색 속도가 느리다. 요소를 추가, 삭제할 때는 LinkedList가 성능이 좋다.
 
 ### Vector
 
