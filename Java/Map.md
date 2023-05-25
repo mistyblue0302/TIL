@@ -35,7 +35,15 @@ Map 인터페이스를 구현한 클래스는 다음과 같다
 
 ### HashMap
 
-HashMap 클래스는 해시 알고리즘을 사용하여 검색 속도가 매우 빠르다. HashTable은 HashMap과 동일한 내부 구조를 가지고 있다. HashTable과의 차이점은 다음과 같다.
+HashMap은 해시 알고리즘을 사용하여 검색 속도가 O(1)로 매우 빠르다. HashTable은 HashMap과 동일한 내부 구조를 가지고 있는데, HashTable과의 차이점은 다음과 같다.
+
+**HashTable의 get() 메소드**
+
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/HashTable%20method.png)
+
+**HashMap의 get() 메소드**
+
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HashMap%20method.png)
 
 - thread-safe 여부
     - Hashtable은 Thread-safe하고, HashMap은 Thread-safe하지 않다. 멀티스레드 환경이 아니라면 Hashtable은 HashMap 보다 성능이 떨어진다.
@@ -43,6 +51,8 @@ HashMap 클래스는 해시 알고리즘을 사용하여 검색 속도가 매우
     - Hashtable은 key에 null을 허용하지 않지만, HashMap은 key에 null을 허용한다.
 
 ### TreeMap
+
+키-값 쌍을 RedBlack Tree로 저장하여 관리한다. 키 값이 중복되지 않는다는 점은 동일하지만, 키 값을 기준으로 정렬된다. 탐색과 추가/삭제에 O(logN)의 시간이 걸린다.
 
 ### LinkedHashMap
 
