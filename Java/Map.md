@@ -35,7 +35,7 @@ Map 인터페이스를 구현한 클래스는 다음과 같다
 
 ### HashMap
 
-HashMap은 해시 알고리즘을 사용하여 검색 속도가 O(1)로 매우 빠르다. HashTable은 HashMap과 동일한 내부 구조를 가지고 있는데, HashTable과의 차이점은 다음과 같다.
+HashMap은 검색 속도가 O(1)로 매우 빠르다. HashTable은 HashMap과 동일한 내부 구조를 가지고 있는데, HashTable과의 차이점은 다음과 같다.
 
 **HashTable의 get() 메소드**
 
