@@ -35,7 +35,12 @@ Map 인터페이스를 구현한 클래스는 다음과 같다
 
 ### HashMap
 
-HashMap 클래스는 해시 알고리즘을 사용하여 검색 속도가 매우 빠르다. 
+HashMap 클래스는 해시 알고리즘을 사용하여 검색 속도가 매우 빠르다. HashTable은 HashMap과 동일한 내부 구조를 가지고 있다. HashTable과의 차이점은 다음과 같다.
+
+- thread-safe 여부
+    - Hashtable은 Thread-safe하고, HashMap은 Thread-safe하지 않다. 멀티스레드 환경이 아니라면 Hashtable은 HashMap 보다 성능이 떨어진다.
+- null 허용 
+    - Hashtable은 key에 null을 허용하지 않지만, HashMap은 key에 null을 허용한다.
 
 ### TreeMap
 
