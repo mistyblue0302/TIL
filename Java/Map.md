@@ -36,7 +36,8 @@ Map 인터페이스를 구현한 클래스는 다음과 같다
 
 ### HashMap
 
-HashMap은 검색 속도가 O(1)로 매우 빠르다. HashTable은 HashMap과 동일한 내부 구조를 가지고 있는데, HashTable과의 차이점은 다음과 같다.
+키와 값이 1:1로 매핑되는 자료구조로 HashMap은 삽입과 삭제, 검색 속도가 O(1)로 매우 빠르다. HashMap의 내부 구조는 배열로 되어있고, 키는 배열의 인덱스가 될 수 있으며 버킷이라고 한다.
+HashTable은 HashMap과 동일한 내부 구조를 가지고 있는데, HashTable과의 차이점은 다음과 같다.
 
 **HashTable의 get() 메소드**
 
