@@ -21,10 +21,6 @@ map.replace("b", 3);
 map.put("c", 4); //hashmap에 키가 없는 경우 해당 키와 값을 삽입, replace는 null을 반환
 
 int size = map.size();
-
-for(String key : map.keySet()) {
-    System.out.println(key + " " + map.get(key));
-}
 ```
 
 Map 인터페이스를 구현한 클래스는 다음과 같다
