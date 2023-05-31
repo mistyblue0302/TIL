@@ -25,7 +25,6 @@ int size = map.size();
 
 Map 인터페이스를 구현한 클래스는 다음과 같다
 
-- HashTable
 - HashMap
 - TreeMap
 - LinkedHashMap 
