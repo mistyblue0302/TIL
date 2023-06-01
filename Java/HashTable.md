@@ -15,7 +15,7 @@ HashTable은 해시함수를 사용하여 key를 해시 값으로 매핑하고, 
 
 > key는 hash function을 통해 hash로 변경되며 hash는 value와 매칭되어 저장소에 저장 된다.
 
-Hashtable 은 key-value가 1:1로 매핑되어 있기 때문에 삽입, 삭제, 검색의 과정에서 평균적으로 O(1)의 시간복잡도를 가지고 있다. key의 전체 개수와 동일한 크기의 버킷을 가진 HashTable을 Direct-address table라고한다. Direct-address table의 장점은 key의 개수와 버킷의 크기가 같기 때문에 해시 충돌 문제가 발생하지 않는다. 하지만 실제 사용하는 key가 몇 개 되지 않을 경우는 메모리 낭비이다. 
+Hashtable 은 key-value가 1:1로 매핑되어 있기 때문에 삽입, 삭제, 검색의 과정에서 평균적으로 O(1)의 시간복잡도를 가지고 있다. 
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HashTable.png)
 
