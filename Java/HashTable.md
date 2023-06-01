@@ -1,10 +1,23 @@
 ## HashTable
 
-HashTable 클래스는 Collections Framework가 만들어지기 전부터 존재했다. Vector나 HashTable과 같은 기존의 클래스들은 호환을 위해 남겨두었지만 가능한 ArrayList나 HashMap을 사용하는 것이 좋다.
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/HashTable2.png)
 
-HashTable은 HashMap과 사용법이 거의 동일하다.(key-value의 형태이고 key는 중복될 수 없고, value는 중복될 수 있다.)
+HashTable은 해시함수를 사용하여 key를 해시 값으로 매핑하고, 이 해시 값을 주소로 삼아 데이터(value)를 key와 함께 저장하는 자료구조이고 데이터가 저장되는 곳을 버킷이라고 한다. HashTable은 HashMap과 사용법이 거의 동일하다.
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/HashTable.png)
+- **key**
+  - 고유한 값으로 hash function의 input이 된다.
+  - key값 그대로 저장소에 저장할 경우 다양한 key의 길이 만큼의 크기를 구성해두어야 하기 때문에 일정한 길이의 해시로 변경한다.
+- **hash function**
+  - key를 **고정된 길이**의 hash로 변경해주는 역할을 한다. 이 과정을 hashing이라고 한다.
+  - 서로 다른 key가 같은 hash값을 가지게 되는 경우를 해시 충돌 이라고 한다.
+- **value**
+  - 저장소(bucket)에 최종적으로 저장되는 값으로, hash와 매칭되어 저장된다.
+
+> key는 hash function을 통해 hash로 변경되며 hash는 value와 매칭되어 저장소에 저장 된다.
+
+Hashtable 은 key-value가 1:1로 매핑되어 있기 때문에 삽입, 삭제, 검색의 과정에서 평균적으로 O(1)의 시간복잡도를 가지고 있다. key의 전체 개수와 동일한 크기의 버킷을 가진 HashTable을 Direct-address table라고한다. Direct-address table의 장점은 key의 개수와 버킷의 크기가 같기 때문에 해시 충돌 문제가 발생하지 않는다. 하지만 실제 사용하는 key가 몇 개 되지 않을 경우는 메모리 낭비이다. 
+
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HashTable.png)
 
 위 처럼 기본 생성자로 객체를 생성하게 되면 `초기용량(버킷의 수) = 11`, `로드팩터 = 0.75`로 설정된다.
 
