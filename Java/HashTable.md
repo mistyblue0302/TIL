@@ -14,4 +14,5 @@ HashTable은 HashMap과 사용법이 거의 동일하다.(key-value의 형태이
   - Hashtable은 Thread-safe하고, HashMap은 Thread-safe하지 않다는 특징을 가지고 있다. 그렇기에 멀티스레드 환경이 아니라면 Hashtable은 HashMap보다 성능이 떨어진다는 단점을 가지고 있다.
 - Null 값 허용 여부
   - Hashtable은 key에 null을 허용하지 않지만, HashMap은 key에 null을 허용한다.
-- HashMap은 보조 해시 함수를 사용하기 때문에
+- HashMap은 보조 해시 함수를 사용하기 때문에 보조 해시 함수를 사용하지 않는 HashTable에 비해 해시 충돌이 덜 발생할 수 있어 상대적으로 성능상 이점이 있다. 
+- [HashMap은 어떻게 구현되어 있을까?](https://dilmah0203.github.io/HashMap/)
