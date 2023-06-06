@@ -71,11 +71,7 @@ Link: </articles/1>; rel=“previous”,
       </articles/3>; rel=“next”
 ```
 
-왜 Uniform Interface가 필요할까?
-
-서버와 클라이언트가 각각 독립적으로 진화하기 때문에 서버의 기능이 변경되어도 클라이언트를 업데이트할 필요가 없다. 
-
-> 정리하면 REST API란 URI를 통해 자원을 식별하고, HTTP Method 표현을 통해 행위를 정의하는 것을 말한다.
+정리하면 **REST API**란 URI를 통해 리소스를 식별하고, HTTP Method 표현을 통해 행위를 구분하여 정의하는 것을 말한다.
 
 <br>
 
