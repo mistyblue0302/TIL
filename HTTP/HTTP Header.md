@@ -33,10 +33,38 @@ Accept-Language: ko-KR,ko;q=0.9,es-US;q=0.8,en;q=0.7
 Quality Values(q)값을 사용하여 우선순위를 정할 수 있다. 0~1의 값으로 클수록 높은우선순위를 가진다. 협상 헤더는 요청시에만 사용한다.
 
 3. **전송 방식**
+
 - 단순 전송 : 요청에 대한 응답시 메세지 바디에 대한 Content-Length를 지정하는 전송 방식 
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=UTF-8
+Content-Length: 3423
+```
+
 - 압축 전송 : 서버에서 메시지 바디를 압축하여 용량을 감소시켜 전달하는 전송 방식으로 Content-Encoding이라는 항목을 헤더에 넣어 압축방식을 클라이언트에게 전달해주어야 한다.
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: text/html;charset=UTF-8
+Content-Encoding: gzip
+```
+
 - 분할 전송 : 서버에서 클라이언트로 응답 메시지를 특정 단위로 쪼개서 보내는 전송 방법으로 Transfer-Encoding을 명시해주어야 한다. chunked라는 덩어리로 쪼개서 보낸다. 분할 전송때는 Content-Length를 넣으면 안된다.(길이를 예측할 수 없기 때문에)
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Transfer-Encoding: chunked
+```
+
 - 범위 전송 : 특정 범위를 지정해서 요청에 대한 응답을 받는 전송방법
+
+```HTTP
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Range: bytes 1001-2000 / 2000
+```
 
 4. **일반 정보**
 -  Referer : 이전 웹 페이지의 주소, 요청에서 사용
