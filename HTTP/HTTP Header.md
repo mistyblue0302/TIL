@@ -19,6 +19,12 @@
 표현 헤더는 전송, 응답 둘다 사용된다.
 
 2. **협상**  : 클라이언트가 선호하는 표현 요청
+
+```HTTP
+GET /event
+Accept-Language: ko-KR,ko;q=0.9,es-US;q=0.8,en;q=0.7
+```
+
 - Accept : 클라이언트가 선호하는 미디어 타입 전달
 - Accept-Charset : 클라이언트가 선호하는 문자 인코딩
 - Accept-Encoding : 클라이언트가 선호하는 압축 인코딩
