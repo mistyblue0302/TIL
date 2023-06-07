@@ -1,11 +1,11 @@
 ## HTTP Header
 
-헤더는 `field-name : field value`가 올 수 있다. field-name은 대소문자 구분이 없다. 
-HTTP 전송에 필요한 모든 부가정보(메세지 바디의 내용, 크기, 인증, 서버 정보, 캐시 관리 정보)를 담고 있다. 
+- 헤더는 `field-name : field value`가 올 수 있다. field-name은 대소문자 구분이 없다. 
+- 또한 HTTP 전송에 필요한 모든 부가정보(메세지 바디의 내용, 크기, 인증, 서버 정보, 캐시 관리 정보)를 담고 있다. 
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP%20Header.png)
 
-- 메세지 본문을 통해 표현 데이터 전달
+- 메세지 본문(message body)를 통해 표현 데이터 전달
 - **표현**은 요청이나 응답에서 전달할 실제 데이터
 - **표현 헤더는 표현 데이터**를 해석할 수 있는 정보 제공
   - 데이터 유형(html, json), 데이터 길이, 압축 정보 등등
