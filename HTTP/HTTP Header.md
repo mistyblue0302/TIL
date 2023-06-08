@@ -103,22 +103,22 @@ Content-Range: bytes 1001-2000 / 2000
 
 캐시 만료후에도 서버에서 데이터를 변경하지 않은 경우 서버에서 동일한 데이터를 요청해서 응답받는 것은 비용낭비다. 이럴때 저장해둔 캐시를 재사용할 수 있으면 좋은데, 어떻게 클라이언트의 데이터와 서버의 데이터가 동일하다는 것을 알 수 있을까? 그래서 **검증 헤더**가 들어가게 된다.
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP_Header1.png)
-
 - 데이터가 마지막으로 수정된 시간정보를 헤더에 작성해준다. 
   - **Last-Modified: 2020년 11월 10일 10:00:00**
 - 응답 결과를 캐시에 저장할 때 데이터 최종 수정일도 저장된다. 
 
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP_Header2.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP_Header1.png)
 
 - 캐시 시간이 초과해서 다시 요청을 할 경우, 캐시에 최종 수정일 정보(Last-Modified)가 있다면 요청 헤더 **if-modified-since**에 해당 날짜를 담아서 서버에 보낸다. 서버는 해당 자료의 최종 수정일과 비교해서 데이터가 수정이 안되었을 경우 응답 메세지에 이를 담아서 알려준다.
 
-![img3](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP_Header3.png)
+![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP_Header2.png)
 
 - HTTP Body는 응답 데이터에 없다.
 - 상태코드는 304 Not Modified로 변경된것이 없다는 것을 알린다.
 - 그래서 전송 데이터는 바디가 빠졌기에 헤더만 포함된 0.1M만 전송된다.
 - 클라이언트에서는 해당 응답을 받은 뒤 캐시를 갱신해주고 다시 일정시간 유효하게 된다.
+
+![img3](https://github.com/dilmah0203/TIL/blob/main/Image/HTTP_Header3.png)
 
 즉 캐시 유효 시간이 초과해도, 서버의 데이터가 갱신되지 않으면 304 Not Modified + 헤더 메타 정보만 응답한다. 클라이언트는 서버가 보낸 응답 정보로 캐시의 메타 정보를 갱신하고 재활용한다. 결과적으로 네트워크 다운로드가 발생하지만 용량이 적은 헤더만 다운로드받으면 된다.
 
