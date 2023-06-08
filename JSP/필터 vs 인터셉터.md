@@ -82,10 +82,12 @@ public class InterceptorExample implements HandlerInterceptor {
 ### 예외가 발생할 경우
 
 필터는 웹 컨텍스트에서 동작하기 때문에 예외가 발생하면,
-1. web.xml에 error-page를 잘 등록해줘서 에러를 사용자에게 응답
-2. Filter내부에서 예외를 처리하기 위한 필터를 따로 둬서 try-catch문을 사용하여 예외 처리
-3. Filter 내부에서 try-catch 구문을 통해 예외 발생 시, HandlerExceptionResolver를 빈으로 주입받아 @ExceptionHandler에서 처리
+- web.xml에 error-page를 잘 등록해줘서 에러를 사용자에게 응답
+- Filter내부에서 예외를 처리하기 위한 필터를 따로 둬서 try-catch문을 사용하여 예외 처리
+- Filter 내부에서 try-catch 구문을 통해 예외 발생 시, HandlerExceptionResolver를 빈으로 주입받아 @ExceptionHandler에서 처리
     - 즉, 필터에서 발생하는 예외를 DispatcherServlet의 예외 처리기인 HandlerExceptionResolver에 보내서 처리하는 방식
 
-인터셉터에서 예외가 발생하면, 인터셉터는 스프링이 관리하기 때문에 컨트롤러가 존재할 경우 인터셉터에서 throw하여 @ExceptionHandler로 예외 핸들링이 가능하다.
+인터셉터에서 예외가 발생하면, 인터셉터는 스프링이 관리하기 때문에 컨트롤러가 존재할 경우
+
+- @ControllerAdvice, @ExceptionHandler로 예외 핸들링이 가능하다.
 
