@@ -2,12 +2,12 @@
 
 stream과 for는 다량의 데이터 처리 작업에 사용된다. 하지만 가독성이나 성능 등 여러 측면에서 차이가 있다.
 
-### 함수 객체 vs 코드 블록
+### 표현 방식
 
-표현 방식의 차이가 있다. 
+- for문은 **코드 블록**으로 표현한다.
+- stream은 **함수 객체**(람다식이나 메소드 참조)로 표현한다.
 
-- for문은 **코드 블록**으로 표현
-- stream은 **함수 객체**(람다식이나 메소드 참조)로 표현
+for문에서는 코드 블록의 외부 변수인 baseNumber에 대해 코드 블록 내부에서 수정이 가능하다.
 
 ```java
 public int subtractByFor(int baseNumber, List<Integer> numbers) {
@@ -20,7 +20,7 @@ public int subtractByFor(int baseNumber, List<Integer> numbers) {
 }
 ```
 
-for문에서는 코드 블록의 외부 변수인 baseNumber에 대해 코드 블록 내부에서 수정이 가능하다.
+하지만 stream의 경우 람다식으로 표현을 하기 때문에 final인 변수만 읽을 수 있게 된다. 따라서 외부 변수인 baseNumber를 수정할 수가 없다.
 
 ```java
 public int subtractByStream(int baseNumber, List<Integer> numbers) {
@@ -31,7 +31,7 @@ public int subtractByStream(int baseNumber, List<Integer> numbers) {
 }
 ```
 
-stream의 경우 람다식으로 표현을 하기 때문에 final인 변수만 읽을 수 있게 된다. 따라서 외부 변수인 baseNumber를 수정할 수가 없다.
+또한 for문은 return으로 메소드를 빠져나갈 수 있고, break나 continue를 통해 반복문을 제어할 수 있지만 람다로 표현하는 stream은 이와 같은 작업들이 불가능하다.
 
 ```java
 public int myMethod(List<Integer> numbers) {
@@ -53,11 +53,11 @@ public int myMethod(List<Integer> numbers) {
 }
 ```
 
-또한 for문은 break나 continue를 통해 반복문을 제어할 수 있지만, 람다로 표현하는 stream은 불가능하다.
-
-### 외부 반복 vs 내부 반복
+### 외부 반복(how) vs 내부 반복(what)
 
 다음은 중복 체크에서 중복이 제거된 요소들의 개수를 구하는 코드이다.
+
+for문을 이용하는 코드는 중복을 허용하지 않는 Set에 데이터들을 삽입하고 size() 메소드를 통해서 중복이 제거된 요소들의 개수를 구한다. 이는 구체적인 구현 로직이 외부에 노출되는 외부 반복 형식이다.
 
 ```java
 public int byFor(List<Integer> numbers) {
@@ -69,6 +69,8 @@ public int byFor(List<Integer> numbers) {
 }
 ```
 
+stream을 이용하는 코드는 for문을 이용한 방식과는 달리 구체적인 구현 로직이 외부에 노출되지 않는 내부 반복의 형태를 띈다. 
+
 ```java
 public int byStream(List<Integer> numbers) {
     return (int) numbers.stream()
@@ -77,11 +79,28 @@ public int byStream(List<Integer> numbers) {
 }
 ```
 
-for문을 이용하는 코드는 중복을 허용하지 않는 Set에 데이터들을 삽입하고 size() 메소드를 통해서 중복이 제거된 요소들의 개수를 구한다. 이는 구체적인 구현 로직이 외부에 노출되는 외부 반복 형식이다.
-
-반면 stream을 이용하는 코드는 for문을 이용한 방식과는 달리 구체적인 구현 로직이 외부에 노출되지 않는 내부 반복의 형태를 띈다.
+외부 반복을 하는 for는 로직이 노출되어 있기 때문에 how 중심의 코드라고 할 수 있다. 반면 내부 반복형식의 stream은 로직이 추상화되어 있어 what 중심의 코드라고 볼 수 있다.
 
 ### 가독성
+
+```java
+public double average(List<Integer> grades) {
+    int sum = 0;
+    for(int grade : grades) {
+        sum += grade;
+    }
+    return sum / grades.size();
+}
+```
+
+```java
+public double averageByStream(List<Integer> grades) {
+    return grades.stream()
+            .mapToInt(Integer::intValue)
+            .average()
+            .orElse(0.0);
+}
+```
 
 for문의 경우 조건을 위해 if문의 중첩으로 인해 Indent Depth가 깊어져 가독성이 떨어질 수 있다. 하지만 stream의 경우 조건들을 filter의 체이닝 형식을 통해 표현이 가능하기 때문에 보다 간결한 표현이 가능하다.
 
