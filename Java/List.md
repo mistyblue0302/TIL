@@ -38,7 +38,7 @@ ArrayList는 최상위 타입인 오브젝트 배열(Object[])을 사용하여 �
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/ArrayList.png)
 
-ArrayList의 초기 저장 용량은 10이다. 처음 저장 용량 크기를 넘게 되면 자동적으로 저장 용량이 늘어난다.
+ArrayList의 초기 저장 용량은 10이다. 처음 저장 용량 크기를 넘게 되면 자동적으로 저장 용량이 늘어난다. 용량이 늘어나면 기존 배열에 저장된 내용을 새로운 배열로 복사한 다음에 저장되는데 이 과정에서 처리 시간이 많이 소요되기 때문에 초기 용량을 설정하는 것이 좋다.
 
 ```java
 List<String> list = new ArrayList<>(); //기본 저장 용량 10
