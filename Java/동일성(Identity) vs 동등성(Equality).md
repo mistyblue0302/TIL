@@ -4,9 +4,13 @@
 
 ### Primitive Type
 
-Primitive Type은 객체가 아니기 때문에 객체 타입에서 지원하는 동등성 비교를 할 수 없으며, 동일성 비교는 변수의 값으로 비교한다. == 연산자를 사용하였을 때 내용이 같으면 동일하다.
+- Primitive Type은 객체가 아니기 때문에 객체 타입에서 지원하는 동등성 비교를 할 수 없으며, 동일성 비교는 변수의 값으로 비교한다. 
+- `==` 연산자를 사용하였을 때 내용이 같으면 동일하다.
 
 ### Reference Type
+
+- new를 통해 Heap 영역에 생성된 String str1과 리터럴(값)을 이용해 String constant Pool 영역에 위치한 String str2은 **동일하지 않다.** 
+- 하지만 두 객체의 내용은 같으므로 **동등하다.**
 
 ```java
 String str1 = new String("Hello");
@@ -18,44 +22,48 @@ System.out.println(str1 == str2);       // false
 System.out.println(str2 == str3);       // true
 ```
 
-new를 통해 Heap 영역에 생성된 String str1과 리터럴(값)을 이용해 String constant Pool 영역에 위치한 String str2은 **동일하지 않다.** 하지만 두 객체의 내용은 같으므로 **동등하다.**
-
-Object클래스의 equals()메소드는 매개변수로 전달된 객체를 == 연산자로 비교하여 리턴한다. 
+아래의 코드를 보자.
 
 ```java
-public boolean equals(Object obj) {
-    return (this == obj);
+public class PhoneNumber {
+
+    int number1;
+    int number2;
+    int number3;
+
+    public PhoneNumber(int number1, int number2, int number3) {
+        this.number1 = number1;
+        this.number2 = number2;
+        this.number3 = number3;
+    }
+
+    public static void main(String[] args) {
+        Map<PhoneNumber, String> map = new HashMap<>();
+        map.put(new PhoneNumber(1, 2, 3), "juseon");
+        System.out.println(map.get(new PhoneNumber(1, 2, 3)));
+    }
 }
 ```
 
-즉 오버라이딩하지 않고 사용할 경우 동일성을 비교하게 된다. 따라서 동등성 비교를 위해서는 equals 메소드를 오버라이딩 해야한다.
+위 코드의 결과는 
+        
+
+Object 클래스의 메소드는 아래와 같다.
+- `hashCode()`를 보면 native가 붙어있는데 JVM이 내부적으로 메모리 주소를 이용해서 해시코드를 만든다.
+- `equals()` 메소드는 매개변수로 전달된 객체를 `==` 연산자로 비교하여 리턴한다. 즉, 주소값이 같으면 true, 다르면 false를 반환하게 된다.
 
 ```java
-public boolean equals(Object anObject) {
-    if (this == anObject) {
-        return true;
+public class Object {
+
+    public native int hashCode();
+
+    public boolean equals(Object obj) {
+        return (this == obj);
     }
-    if (anObject instanceof String) {
-        String anotherString = (String) anObject;
-        int n = value.length;
-        if (n == anotherString.value.length) {
-            char v1[] = value;
-            char v2[] = anotherString.value;
-            int i = 0;
-            while (n-- != 0) {
-                if (v1[i] != v2[i]) {
-                    return false;
-                }
-                i++;
-            }
-            return true;
-        }
-    }
-    return false;
 }
 ```
 
-String 클래스는 ==를 통해 동일성을 판단하고, 동일하지 않다면 String인지 판단한 뒤 문자 하나하나를 비교한다. 모든 문자가 같다면 동등하다고 판단한다.
+
 
 ### equals()와 hashcode()
 
