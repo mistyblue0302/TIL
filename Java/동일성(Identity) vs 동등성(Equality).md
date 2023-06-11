@@ -1,6 +1,8 @@
 ## 동일성(Identity) vs 동등성(Equality)
 
-**동일성**은 할당된 **메모리 주소가 같음**을 의미하고, **동등성**은 두 개의 객체가 **같은 내용을 가지고 있음**을 뜻한다. 동등성은 변수가 참조하고 있는 객체의 주소가 서로 다르더라도 내용만 같으면 두 변수는 동등하다고 할 수 있다. 자바에서 `==`는 **동일성**, `equals`는 **동등성**을 비교한다.
+- **동일성**은 할당된 **메모리 주소가 같음**을 의미하고, **동등성**은 두 개의 객체가 **같은 내용을 가지고 있음**을 뜻한다. 
+- 동등성은 변수가 참조하고 있는 객체의 주소가 서로 다르더라도 내용만 같으면 두 변수는 동등하다고 할 수 있다. 
+- 자바에서 `==`는 **동일성**, `equals`는 **동등성**을 비교한다.
 
 ### Primitive Type
 
@@ -45,13 +47,10 @@ public class PhoneNumber {
 }
 ```
 
-위 코드의 결과는 
+위 코드의 결과는 null이 나오게 된다. 이유는 무엇일까?
+
+위와 같이 `equals()`, `hashCode()`를 재정의하지 않으면 Object 클래스의 메소드를 사용하게 된다.
         
-
-Object 클래스의 메소드는 아래와 같다.
-- `hashCode()`를 보면 native가 붙어있는데 JVM이 내부적으로 메모리 주소를 이용해서 해시코드를 만든다.
-- `equals()` 메소드는 매개변수로 전달된 객체를 `==` 연산자로 비교하여 리턴한다. 즉, 주소값이 같으면 true, 다르면 false를 반환하게 된다.
-
 ```java
 public class Object {
 
@@ -63,14 +62,51 @@ public class Object {
 }
 ```
 
+Object 클래스의 메소드는 위와 같다.
+- `hashCode()`를 보면 native가 붙어있는데 JVM이 내부적으로 메모리 주소를 이용해서 해시코드를 만든다.
+- `equals()` 메소드는 매개변수로 전달된 객체를 `==` 연산자로 비교하여 리턴한다. 즉, 주소값이 같으면 true, 다르면 false를 반환하게 된다.
 
+`HashMap`, `HashTable`, `HashSet`, `ConcurrentHashMap`에서는 `equals()`, `hashCode()`를 사용하기 때문에 재정의를 하지 않았다면 위와 같은 문제가 발생할 수 있다. 같은 객체임에도 key를 인식하지 못하고 null을 반환하는 문제다.
 
 ### equals()와 hashcode()
 
-equals()를 override할 때에는 hashcode()도 같이 override해야한다. 그렇지 않으면 hashcode()를 활용하는 Collection을 이용할 때 문제가 발생한다. hashcode()를 사용하는 Java의 Collection은 HashMap, HashTable, ConcurrentHashMap 등이 있다. 공통적인 기능으로는 **hashcode()를 사용하여 키 값을 결정**한다는 것이다. 
+```java
+public class PhoneNumber {
 
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/HashMap.png)
-![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HashMap2.png)
+    int number1;
+    int number2;
+    int number3;
 
-HashMap의 get() 메소드는 Key값으로 Node를 get할 때, hashCode()를 이용한다. 여기서 키란 객체를 판별하는 수단으로, 객체의 hashcode()가 다르다면 다른 객체라고 판단하기 때문에 동등한 객체로 판단하기 위해서는 hashcode()도 재정의해야하는 것이다.
+    public PhoneNumber(int number1, int number2, int number3) {
+        this.number1 = number1;
+        this.number2 = number2;
+        this.number3 = number3;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        
+        PhoneNumber phoneNumber = (PhoneNumber) o;
+        return number1 == phoneNumber.number1 && number2 == phoneNumber.number2 && number3 == phoneNumber.number3;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number1, number2, number3);
+    }
+
+    public static void main(String[] args) {
+        Map<PhoneNumber, String> m = new HashMap<>();
+        m.put(new PhoneNumber(1, 2, 3), "juseon");
+        System.out.println(m.get(new PhoneNumber(1, 2, 3)));
+    }
+}
+```
+
+만약 `equals()`만 재정의하고 `hashCode()`를 재정의하지 않으면 `hashCode()`는 Object 클래스 메소드를 사용해 다른 값이 나올 것이다. 즉, 논리적으로 같다고 정의한 객체임에도 불구하고 해시코드 값이 달라 다른 버킷에 저장될 수 있다. 그렇기 때문에 `equals()`를 재정의하려면 `hashCode()`도 재정의해야한다.
