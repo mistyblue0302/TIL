@@ -4,6 +4,7 @@
 * [객체 지향 프로그래밍이란?](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%9E%90%EB%B0%94%EC%99%80%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
 * [객체 지향을 확장하기 위한 키워드](https://github.com/dilmah0203/TIL/blob/main/Spring/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%EC%9D%84%20%ED%99%95%EC%9E%A5%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%9C%20%ED%82%A4%EC%9B%8C%EB%93%9C.md)
 * [객체 지향 설계의 5가지 원칙(SOLID)](https://github.com/dilmah0203/TIL/blob/main/Spring/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%20%EC%84%A4%EA%B3%84%EC%9D%98%205%EA%B0%80%EC%A7%80%20%EC%9B%90%EC%B9%99(SOLID).md)
+* [Web Server vs WAS](https://github.com/dilmah0203/TIL/blob/main/Web%20Server%20vs%20WAS.md)
 * 디자인 패턴
   * [어댑터 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%96%B4%EB%8C%91%ED%84%B0%20%ED%8C%A8%ED%84%B4.md)
   * [프록시 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%94%84%EB%A1%9D%EC%8B%9C%20%ED%8C%A8%ED%84%B4.md)
@@ -107,7 +108,7 @@
 * [정렬 알고리즘](https://github.com/dilmah0203/TIL/blob/main/Algorithm/%EC%A0%95%EB%A0%AC%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.md)
 
 ## 
-* [Web Server vs WAS](https://github.com/dilmah0203/TIL/blob/main/Web%20Server%20vs%20WAS.md)
+
 * [프레임워크 vs 라이브러리](https://github.com/dilmah0203/TIL/blob/main/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%20vs%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC.md)
 * [쿠키, 세션, 토큰, 캐시](https://github.com/dilmah0203/TIL/blob/main/%EC%BF%A0%ED%82%A4%20vs%20%EC%84%B8%EC%85%98%20vs%20%ED%86%A0%ED%81%B0%20vs%20%EC%BA%90%EC%8B%9C.md)
 
