@@ -79,6 +79,7 @@
 * [TCP와 UDP](https://github.com/dilmah0203/TIL/blob/main/Network/TCP%EC%99%80%20UDP.md)
 * [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
 * [Forward Proxy vs Reverse Proxy vs Load Balancer](https://github.com/dilmah0203/TIL/blob/main/Network/Forward%20Proxy%20vs%20Reverse%20Proxy%20vs%20Load%20Balancer.md)
+* [JWT(JSON Web Token)란?](https://github.com/dilmah0203/TIL/blob/main/Network/JWT%20Token.md)
 
 
 ## HTTP
