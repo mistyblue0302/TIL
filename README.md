@@ -4,7 +4,7 @@
 * [객체 지향 프로그래밍이란?](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%9E%90%EB%B0%94%EC%99%80%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5.md)
 * [객체 지향을 확장하기 위한 키워드](https://github.com/dilmah0203/TIL/blob/main/Spring/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%EC%9D%84%20%ED%99%95%EC%9E%A5%ED%95%98%EA%B8%B0%20%EC%9C%84%ED%95%9C%20%ED%82%A4%EC%9B%8C%EB%93%9C.md)
 * [객체 지향 설계의 5가지 원칙(SOLID)](https://github.com/dilmah0203/TIL/blob/main/Spring/%EA%B0%9D%EC%B2%B4%20%EC%A7%80%ED%96%A5%20%EC%84%A4%EA%B3%84%EC%9D%98%205%EA%B0%80%EC%A7%80%20%EC%9B%90%EC%B9%99(SOLID).md)
-* [Web Server vs WAS](https://github.com/dilmah0203/TIL/blob/main/Web%20Server%20vs%20WAS.md)
+* [Web Server vs WAS](https://github.com/dilmah0203/TIL/blob/main/Spring/Web%20Server%20vs%20WAS.md)
 * 디자인 패턴
   * [어댑터 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%96%B4%EB%8C%91%ED%84%B0%20%ED%8C%A8%ED%84%B4.md)
   * [프록시 패턴](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%94%84%EB%A1%9D%EC%8B%9C%20%ED%8C%A8%ED%84%B4.md)
