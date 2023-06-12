@@ -1,13 +1,13 @@
 ## TDD란?
 
-**일반 개발 방식**
+### 일반 개발 방식
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/BasicDevelopment.PNG)
 
 - 일반적인 개발 방식은 설계 > 개발 > 테스트 > 배포의 형태를 가진다. 
 - 이러한 개발 방식은 테스트가 실패하게 되면 설계단계로 다시 돌아오게 되어 많은 시간이 소요된다는 단점이 있다.
 
-**TDD 개발 방식**
+### TDD 개발 방식
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/TDDDevelopment.PNG)
 
