@@ -2,185 +2,159 @@
 
 ## 1. 사용자 레벨 관리 기능 추가
 
-- Level enum 생성
-- User 필드 추가
-- DB의 USER 테이블에도 필드 추가
-- UserDaoTest 수정
-- UserDaoJdbc 수정
+사용자 관리 기능에는 단지 정보를 넣고 검색하는 것 외에도 레벨을 조정해주는 기능이 필요하다. 사용자 관리 기능에서 구현해야 할 비즈니스 로직은 다음과 같다.
+
+- 사용자의 레벨은 BASIC, SILVER, GOLD 세 가지 중 하나다.
+- 사용자가 처음 가입하면 BASIC 레벨이 되며, 이후 활동에 따라서 한 단계씩 업그레이드될 수 있다.
+- 가입 후 50회 이상 로그인을 하면 BASIC에서 SILVER 레벨이 된다.
+- SILVER 레벨에서 30번 이상 추천을 받으면 GOLD 레벨이 된다.
+- 사용자 레벨의 변경 작업은 일정한 주기를 가지고 일괄적으로 진행된다. 변경 작업 전에는 조건을 충족하더라도 레벨의 변경이 일어나지 않는다.
+
+사용자 레벨로 사용할 enum을 정의하자.
 
 ```java
-public class UserDaoTest {
-  ...
-  @BeforeEach
-  public void setUp() {
-    this.dao = this.context.getBean("userDao", UserDaoJdbc.class);
-    user1 = new User("gyumee", "박성철", "springno1", Level.BASIC, 1, 0);
-    user2 = new User("leegw700", "이길원", "springno2", Level.SILVER, 55, 10);
-    user3 = new User("bumjin", "박범진", "springno3", Level.GOLD, 100, 40);
-  }
+public enum Level {
+	BASIC(1), SILVER(2), GOLD(3);  //세 개의 enum 오브젝트 정의
+	
+	private final int value;
+	
+	Level(int value) {  //DB에 값을 넣어줄 생성자
+		this.value = value;
+	}
+	
+	public int intValue() {  //값을 가져오는 메소드
+		return value;
+	}
+	
+	public Level nextLevel() { 
+		return this.next;
+	}
+	
+	public static Level valueOf(int value) {
+		switch(value) {
+		case 1: return BASIC;
+		case 2: return SILVER;
+		case 3: return GOLD;
+		default: throw new AssertionError("Unknown value: " + value);
+		}
+	}
 }
 ```
 
-## 2. 사용자 수정 기능 추가
-
-- 수정 기능 테스트 추가
-
-먼저 픽스처 오브젝트를 등록한다.
+이렇게 만든 Level 타입의 변수를 User 클래스에 추가하자.
 
 ```java
-@Test
-public void update() {
-  dao.deleteAll();
+Level level;
+int login;
+int recommend;
+```
 
-  dao.add(user1);
+레벨 관리 기능을 구현하기 위해서는 사용자를 다 가져와서 조회한 후 사용자별로 레벨 업그레이드 작업을 진행하면서 UserDao의 update()를 호출해 DB에 결과를 넣어주면 된다.
 
-  user1.setName("주선");
-  user.setPassword("springno6");
-  user1.setLevel(Level.GOLD);
-  user.setLogin(1000);
-  user.setRecommend(999);
-  dao.update(user1);
+사용자 관리 로직은 어디에 두는 것이 좋을까? UserDaoJdbc는 적당하지 않다. DAO는 데이터를 어떻게 가져오고 조작할지를 다루는 곳이지 비즈니스 로직을 두는곳이 아니다. 사용자 관리 비즈니스 로직을 담을 클래스를 하나 추가하자.
+비즈니스 로직 서비스를 제공하는 UserService 클래스를 만든다. 
 
-  User user1update = dao.get(user1.getId());
-  checkSameUser(user1, user1update);
+먼저 레벨의 순서와 다음 단계 레벨이 무엇인지를 결정하는 일을 Enum 클래스인 Level 클래스에게 맡긴다. 
+
+```java
+public enum Level {
+	GOLD(3, null), SILVER(2, GOLD), BASIC(1, SILVER);  
+	
+	private final int value;
+	private final Level next; 
+	
+	Level(int value, Level next) {  
+		this.value = value;
+		this.next = next; 
+	}
+	
+	public int intValue() {
+		return value;
+	}
+	
+	public Level nextLevel() { 
+		return this.next;
+	}
+	
+	public static Level valueOf(int value) {
+		switch(value) {
+		case 1: return BASIC;
+		case 2: return SILVER;
+		case 3: return GOLD;
+		default: throw new AssertionError("Unknown value: " + value);
+		}
+	}
 }
 ```
 
-- UserDao와 UserDaoJdbc 수정
+User는 Level 타입의 level 필드에게 다음 레벨이 무엇인지 알려달라고 요청해서 현재 레벨을 변경해주면 된다.
 
-- 수정 테스트 보완
+```java
+//User의 레벨 업그레이드 작업용 메소드
+public void upgradeLevel() {
+    Level nextLevel = this.level.nextLevel();	
+    if (nextLevel == null) { 								
+        throw new IllegalStateException(this.level + "은  업그레이드가 불가능합니다");
+    }
+    else {
+        this.level = nextLevel;
+    }	
+}
+```
 
-현재 update() 테스트는 수정할 로우의 내용이 바뀐 것만을 확인할 뿐이지, 수정하지 않아야 할 로우의 내용이 그대로 남아 있는지는 확인해주지 못한다는 문제가 있다. 
-
-이 문제를 해결할 방법은 두 가지가 있다.
-
-1. JdbcTemplate의 update()가 돌려주는 리턴 값을 확인
-
-JdbcTemplate 의 update() 메서드는 영향받은 로우의 개수를 리턴해주므로, 리턴 타입을 int 로 바꾸고 영향받은 로우의 개수와 비교해볼 수 있다.
-
-2. 테스트를 보강해서 원하는 사용자 외의 정보는 변경되지 않았음을 직접 확인
-
-사용자를 두 명 등록해놓고, 그 중 하나만 수정한 뒤에 수정된 사용자와 수정하지 않은 사용자의 정보를 모두 확인한다.
-
-## 3. UserService.upgradeLevels()
-
-사용자 관리 로직은 어디에 두는 것이 좋을까? UserDaoJdbc는 적당하지 않다. DAO는 데이터를 어떻게 가져오고 조작할지를 다루는 곳이지 비즈니스 로직을 두는 곳이 아니다. 
-
-UserService 클래스는 UserDao의 구현 클래스가 바뀌어도 영향받지 않도록 해야 한다. 따라서 DAO의 인터페이스를 사용하고 DI를 적용해야 한다.
-
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/UserService.png)
-
-1. UserService 클래스와 빈 등록
+이제 UserService를 개선해보자.
 
 ```java
 public class UserService {
-  UserDao userDao;
+	public static final int MIN_LOGCOUNT_FOR_SILVER = 50;
+	public static final int MIN_RECCOMEND_FOR_GOLD = 30;
 
-  public void setUserDao(UserDao userDao) {
-    this.userDao = userDao;
-  }
-}
-```
-2. xml 파일에 userDao 빈을 DI받음
+	private UserDao userDao;
 
-```xml
-<bean id="userService" class="service.UserService">
-    <property name="userDao" ref="userDao"/>
-  </bean>
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	
+	public void upgradeLevels() {
+		List<User> users = userDao.getAll();  
+		for(User user : users) {  
+			if (canUpgradeLevel(user)) {  
+				upgradeLevel(user);  
+			}
+		}
+	}
+  
+	private boolean canUpgradeLevel(User user) {
+		Level currentLevel = user.getLevel(); 
+		switch(currentLevel) {                                   
+		  case BASIC: return (user.getLogin() >= MIN_LOGCOUNT_FOR_SILVER); 
+		  case SILVER: return (user.getRecommend() >= MIN_RECCOMEND_FOR_GOLD);
+		  case GOLD: return false;
+		  default: throw new IllegalArgumentException("Unknown Level: " + currentLevel); 
+		}
+	}
 
-  <bean id="userDao" class="dao.UserDaoJdbc">
-    <property name="dataSource" ref="dataSource"/>
-  </bean>
-</beans>
-```
-
-3. UserServiceTest 테스트 클래스
-
-테스트 대상인 UserService 빈을 제공받을 수 있도록 @Autowired가 붙은 인스턴스 변수로 선언해준다.
-
-```java
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = "/test-applicationContext.xml")
-public class UserServiceTest {
-  @Autowired
-  UserService userService;
-
-  @Test //userService 빈이 주입되는지 확인하는 테스트
-  public void bean(){
-    assertThat(this.userService, is(notNullValue()));
-  }
-}
-```
-
-4. upgradeLevels() 메소드
-
-  - BASIC 레벨이면서 로그인 조건을 만족하면, SIVER로 변경하고 changed를 true로 설정
-  - SILBER 레벨이면서 추천을 30번 이상 받으면, GOLD로 변경하고 changed를 true로 설정
-  - GOLD일 때는 로직에 따라 레벨 변경이 일어나지 않는다.
-
-```java
-public void upgradeLevels() {
-  List<User> users = userDao.getAll();
-  for (User user : users) {
-      Boolean changed = null; //레벨에 변화가 있는지 확인
-      if (user.getLevel() == Level.BASIC && user.getLogin() >= 50) {
-          user.setLevel(Level.SILVER);
-          changed = true;
-      } else if (user.getLevel() == Level.SILVER && user.getRecommend() >= 30) {
-          user.setLevel(Level.GOLD);
-          changed = true;
-      } else if (user.getLevel() == Level.GOLD) {
-          changed = false;
-      } else {
-          changed = false;
-      }
-      if (changed) { //레벨의 변경이 있는 경우에만 update() 호출
-          userDao.update(user);
-      }
-  }
+	private void upgradeLevel(User user) {
+		user.upgradeLevel();
+		userDao.update(user);
+	}
+	
+	public void add(User user) {
+		if (user.getLevel() == null) user.setLevel(Level.BASIC);
+		userDao.add(user);
+	}
 }
 ```
 
-5. upgradeLevels() 테스트
 
-적어도 가능한 모든 조건을 하나씩 확인해야 한다. 사용자 레벨은 BASIC, SILVER, GOLD 세 가지가 있고 변경이 일어나지 않는 GOLD를 제외한 나머지 두 가지는 업그레이드가 되는 경우와 아닌 경우가 있을 수 있으므로 최소한 다섯 가지 경우를 살펴봐야 한다.
+## 2. 트랜잭션 서비스 추상화
 
-```java
-List<User> users;
 
-@BeforeEach
-public void setUp() {
-  users = Arrays.asList( //배열을 리스트로 만들어 주는 메소드
-  new User("bumjin", "박범진", "p1", Level.BASIC, 49, 0),
-  new User("joytouch", "강명성", "p2", Level.BASIC, 50, 0),
-  new User("erwins", "신승한", "p3", Level.SILVER, 60, 29),
-  new User("madnite1", "이상호", "p4", Level.SILVER, 60, 30),
-  new User("green", "오민규", "p5", Level.GOLD, 100, 100)
-  );
-}
-```
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/UserService.png)
 
-```java
-@Test
-public void upgradeLevels(){
-  userDao.deleteAll();
-  for(User user : users) userDao.add(user);
 
-  userService.upgradeLevels();
 
-  checkLevel(users.get(0), Level.BASIC); //사용자별 업그레이드 후의 예상 레벨 검증
-  checkLevel(users.get(1), Level.SILVER);
-  checkLevel(users.get(2), Level.SILVER);
-  checkLevel(users.get(3), Level.GOLD);
-  checkLevel(users.get(4), Level.GOLD);
 
-}
-
-private void checkLevel(User user, Level expectedLevel){
-  User userUpdate = userDao.get(user.getId());
-  assertThat(userUpdate.getLevel(), is(expectedLevel));
-}
-```
 
 ## 4. UserService.add()
 
