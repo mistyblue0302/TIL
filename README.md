@@ -22,7 +22,7 @@
    * [2장 테스트](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%90%E1%85%A6%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3.md)
    * [3장 템플릿](https://github.com/dilmah0203/TIL/blob/main/Spring/%ED%85%9C%ED%94%8C%EB%A6%BF.md)
    * [4장 예외](https://github.com/dilmah0203/TIL/blob/main/Spring/%E1%84%8B%E1%85%A8%E1%84%8B%E1%85%AC.md)
-   * [5장 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.%20md)
+   * [5장 서비스 추상화](https://github.com/dilmah0203/TIL/blob/main/Spring/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%B6%94%EC%83%81%ED%99%94.md)
    * [6장 AOP](https://github.com/dilmah0203/TIL/blob/main/Spring/AOP.md)
 
 
