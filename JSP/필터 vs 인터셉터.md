@@ -10,26 +10,23 @@ Spring이 제공하는 기술로, **디스패처 서블릿이 컨트롤러를 �
 
 ### 인터셉터의 메소드
 
-인터셉터를 추가하기 위해서는 HandlerInterceptor 인터페이스를 구현(implements)해야 하며, 다음 3가지 메소드를 가지고 있다.
+인터셉터를 추가하기 위해서는 `HandlerInterceptor` 인터페이스를 구현(implements)해야 하고 다음 3가지 메소드를 가지고 있다.
 
 ```java
 public interface HandlerInterceptor { 
   
   default boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) 
-    throws Exception { 
-    
-    return true; 
-  } 
+    throws Exception {} 
   
   default void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, 
-    @Nullable ModelAndView modelAndView) throws Exception {
-  } 
+    @Nullable ModelAndView modelAndView) throws Exception {} 
   
   default void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, 
-    @Nullable Exception ex) throws Exception {
-  } 
+    @Nullable Exception ex) throws Exception {} 
 }
 ```
+
+서블릿 필터의 경우 doFilter() 메소드 하나만 제공하지만, 인터셉터는 컨트롤러 호출 전/후, 요청 완료 이후와 같이 단계적으로 세분화되어 있다.
 
 - **preHandle()** : **컨트롤러가 호출되기 전**에 실행되기 때문에 컨트롤러 이전에 전처리 작업에 사용한다. 리턴이 true 일경우 preHandle() 실행후 핸들러(컨트롤러)에 접근한다. false일경우더 이상 진행이 되지 않으며 핸들러 어댑터 또한 호출이 되지 않음.
   
@@ -39,7 +36,7 @@ public interface HandlerInterceptor {
 
 ### 인터셉터 설정
 
-인터셉터는 WebMvcConfigurer를 구현한 클래스 내부에서 addInterceptors() 메소드를 오버라이딩하여 추가할 수 있다.
+인터셉터는 `WebMvcConfigurer`를 구현한 클래스 내부에서 **addInterceptors()** 메소드를 오버라이딩하여 추가할 수 있다.
 
 ## 3. 필터 vs 인터셉터
 
