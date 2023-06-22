@@ -10,7 +10,7 @@ RDB는 관계형 데이터 모델을 기초로 두고, 모든 데이터를 2차�
   - 각 데이터를 중복없이 한 번만 저장할 수 있다.
 - RDBMS의 한계
   - RDB는 사전에 정의된 스키마를 요구하는 table 기반 데이터 구조를 가진다. 
-  - ACID와 Transaction을 보장하기 위해 Scale-Out이 쉽지 않다.
+  - ACID와 Transaction을 보장하기 위해 Scale-Out이 쉽지 않다.(ACID를 준수하면서 샤딩(sharding)(데이터가 수평적으로 분할되고 기기의 모음 전반에 걸쳐 분산되는 경우)은 까다롭다.)
   - multiple server로 Scale-Out을 하게 되면 join을 하기 위해 상당히 복잡한 과정이 필요하다.
 
 ### RDB는 언제 사용하면 좋을까?
