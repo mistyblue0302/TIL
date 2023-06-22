@@ -30,12 +30,3 @@
 - h2database는 런타임시에만 사용된다.
 - Spring-boot-starter-test는 테스트에서만 사용된다.
 
-**api** : 내부 의존성을 컴파일과 런타임 모두에 보이는 의존성
-
-**implementation** : 내부 의존성을 런타임에서만 보이는 구현 의존성
-
-**compileOnly** : 컴파일에만 사용되는 의존성 정의
-
-**runtimeOnly** : 런타임에만 사용되는 의존성 정의
-
-**test + Implementation,CompileOnly,RuntimeOnly** : 해당 의존성을 테스트 시에만 사용하도록 정의
