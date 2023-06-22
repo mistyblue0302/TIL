@@ -102,7 +102,7 @@
 * [Mutex vs Semaphore](https://github.com/dilmah0203/TIL/blob/main/OS/Mutex%20vs%20Semaphore.md)
 
 ## Database
-* [인덱스](https://github.com/dilmah0203/TIL/blob/main/Database/%EC%9D%B8%EB%8D%B1%EC%8A%A4.md)
+* [인덱스](https://github.com/dilmah0203/TIL/blob/main/Database/Index.md)
 * [Clustered Index vs NonClustered Index](https://github.com/dilmah0203/TIL/blob/main/Database/Clustered%20Index%20vs%20NonClustered%20Index.md)
 * [Database Lock](https://github.com/dilmah0203/TIL/blob/main/Database/Database%20Lock.md)
 
