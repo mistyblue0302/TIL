@@ -41,7 +41,7 @@ hello.hi();
 
 XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationContext 이용하도록 하여 Hello bean을 사용하게 만든 코드이다. JUnit 테스트에서 생성되는 Application Context가 GenericApplicationContext이다.
 
-- WebApplicationContext :  스프링에서 가장 많이 활용하는애플리케이션 컨텍스트로 웹 환경에서 사용할 때 필요한 기능이 추가된 어플리케이션 컨텍스트이다. Java 어노테이션 설정을 이용하도록 구현된 AnnotationConfigWebApplicationContext도 있다.
+- WebApplicationContext :  스프링에서 가장 많이 활용하는 애플리케이션 컨텍스트로 웹 환경에서 사용할 때 필요한 기능이 추가된 애플리케이션 컨텍스트이다. Java 어노테이션 설정을 이용하도록 구현된 AnnotationConfigWebApplicationContext도 있다.
 
 다음 그림은 웹 환경에서 스프링 빈으로 이뤄진 애플리케이션이 동작하는 구조다.
 
@@ -122,7 +122,12 @@ public class UserDaoTest {
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/ApplicationContext1.png)
 
-@Configuration이 붙은 DaoFactory는 이 애플리케이션 컨텍스트가 활용하는 IoC 설정정보다. 애플리케이션 컨텍스트는 DaoFactory 클래스를 설정정보로 등록해두고 @Bean이 붙은 메소드의 이름을 가져와 빈 목록을 만들어둔다. 클라이언트가 애플리케이션 컨텍스트의 getBean() 메소드를 호출하면 자신의 빈 목록에서 요청한 이름이 있는지 찾고, 있다면 빈을 생성하는 메소드를 호출해서 오브젝트를 생성시킨 후 돌려준다.
+@Configuration이 붙은 DaoFactory는 이 애플리케이션 컨텍스트가 활용하는 IoC 설정정보다. 
+
+- 애플리케이션 컨텍스트는 @Configuration이 붙은 클래스들을 설정 정보로 등록해두고, @Bean이 붙은 메소드의 이름으로 빈 목록을 생성한다.
+- 클라이언트가 해당 빈을 요청한다.
+- 애플리케이션 컨텍스트는 자신의 빈 목록에서 요청한 이름이 있는지 찾는다.
+- 애플리케이션 컨텍스트는 설정 클래스로부터 빈 생성을 요청하고, 생성된 빈을 돌려준다.
 
 ## 6. 싱글톤 레지스트리와 오브젝트 스코프
 
