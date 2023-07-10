@@ -49,6 +49,11 @@ XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationC
 
 서블릿 컨테이너가 브라우저로부터 오는 HTTP 요청을 받아 해당 요청에 매핑되어 있는 서블릿을 실행해주는 방식으로 동작한다.
 
+- 서블릿은 웹 애플리케이션이 시작될 때 미리 만들어둔 웹 애플리케이션 컨텍스트에게 빈 오브젝트로 구성된 애플리케이션의 기동 역할을 해줄 빈을 요청해서 받아둔다.
+- 그리고 미리 지정된 메소드를 호출함으로써 스프링 컨테이너가 DI 방식으로 구성해둔 애플리케이션의 기능이 시작되는 것이다.
+
+스프링은 이런 웹 환경에서 애플리케이션 컨텍스트를 생성하고 설정 메타 정보로 초기화해주고, 클라이언트로부터 들어오는 요청마다 적절한 빈을 찾아서 이를 실행해주는 기능을 가진 [DispatcherServlet](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80.md#dispatcher-servlet%EB%94%94%EC%8A%A4%ED%8C%A8%EC%B2%98-%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80)이라는 이름의 서블릿을 제공한다.
+
 ## 3. IoC 컨테이너 계층구조
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/ApplicationContext.png)
