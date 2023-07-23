@@ -13,11 +13,11 @@
   - 중간 값보다 검색 값이 작다면 중간값 기준 왼쪽 배열을 대상으로 검색한다.
 3. 값을 찾을 때까지 또는 더 이상 검색할 범위가 없을 때까지 반복한다.
 
-key=32 값을 이진 탐색을 이용하여 찾는다. 먼저 배열의 가운데를 결정한다.
+key=32 값을 이진 탐색을 이용하여 찾는다. 먼저 배열의 가운데를 결정한다.(mid = (low + high) / 2)
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Binary_Search5.png)
 
-중앙 값 27과 검색 값 32를 비교한다. 검색 값이 더 크므로 오른쪽 구간을 검색 범위로 정한다.
+중앙 값 27과 검색 값 32를 비교한다. 검색 값이 더 크므로 오른쪽 구간을 검색 범위로 정한다.(low = mid + 1)
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Binary_Search4.png)
 
