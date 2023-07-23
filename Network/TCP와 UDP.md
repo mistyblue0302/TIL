@@ -1,4 +1,4 @@
-## IP(Integer Protocol)
+## IP(Internet Protocol)
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/Internet%20Protocol.png)
 
