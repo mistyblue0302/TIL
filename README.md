@@ -84,8 +84,8 @@
 
 
 ## HTTP
+* [웹 브라우저 요청 흐름](https://github.com/dilmah0203/TIL/blob/main/HTTP/Web%20Browser.md))
 * [REST API](https://github.com/dilmah0203/TIL/blob/main/HTTP/REST%20API.md)
-* [웹 브라우저 요청 흐름](https://github.com/dilmah0203/TIL/blob/main/HTTP/Web%20Browser.md)
 * [HTTP란](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%EB%9E%80.md)
 * [POST vs PUT, PATCH vs PUT](https://github.com/dilmah0203/TIL/blob/main/HTTP/POST%20vs%20PUT%2C%20PATCH%20vs%20PUT.md)
 * [HTTP 상태코드](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C.md)
