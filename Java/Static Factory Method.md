@@ -27,6 +27,8 @@ public class Book {
     - 하위 자료형 객체를 반환할 수 있다.
     - 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
 - 단점
+    - 정적 팩토리 메소드만 제공하면, 생성자가 없으므로 하위 클래스를 만들 수 없다.
+    - 정적 팩토리 메소드는 찾기 어렵다. (다른 메소드와 잘 구분되지 않는다.)
 
 ### 1. 이름 표현을 통해 반환될 객체를 쉽게 묘사할 수 있다.
 
@@ -111,12 +113,12 @@ public static BigInteger valueOf(long val) {
 메소드 호출을 통해 반환할 객체의 타입을 유연하게 지정할 수 있다.
 
 ```java
-interface SmartPhone {}
+public interface SmartPhone {}
 
-class Galaxy implements SmartPhone {}
-class IPhone implements SmartPhone {}
+public class Galaxy implements SmartPhone {}
+public class IPhone implements SmartPhone {}
 
-class SmartPhones {
+public class SmartPhones {
     public static SmartPhone getSamsungPhone() {
         return new Galaxy();
     }
@@ -157,3 +159,19 @@ public interface SmartPhone {
     }    
 }
 ```
+
+### Lombok의 RequiredArgsConstructor 
+
+Lombok의 `RequiredArgsConstructor`를 사용하면 정적 팩토리 메소드를 쉽게 만들 수 있다.
+
+```java
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor(staticName = "of")
+public class BlogUser {
+    private final Long id;
+    private final String name;
+}
+```
+
+위와 같이 staticName을 사용하면 lombok이 of라는 이름을 가진 정적 팩토리 메소드를 만들어준다. 즉, 다음과 같이 사용할 수 있다.
