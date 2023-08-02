@@ -175,3 +175,15 @@ public class BlogUser {
 ```
 
 위와 같이 staticName을 사용하면 lombok이 of라는 이름을 가진 정적 팩토리 메소드를 만들어준다. 즉, 다음과 같이 사용할 수 있다.
+
+```java
+BlogUser user = BlogUser.of(1L, "JuSeon");
+```
+
+<br>
+
+참고
+
+[https://johngrib.github.io/wiki/pattern/static-factory-method/](https://johngrib.github.io/wiki/pattern/static-factory-method/)
+
+[https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/](https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/)
