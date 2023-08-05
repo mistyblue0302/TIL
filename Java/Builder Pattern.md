@@ -184,7 +184,7 @@ public class Hamburger {
 }
 ```
 
-Hamburger 클래스 내부에 static 클래스인 Builder가 정의되어 있다. Builder 클래스는 필수 매개변수인 size 만을 전달받아 생성된다. 그리고 bun, patty, lettuce, tomato 와 같은 메소드는 빌더 자기자신의 매개변수를 설정하고 반환하는 것을 확인할 수 있다.
+Hamburger 클래스 내부에 static 클래스인 Builder가 정의되어 있다. Builder 클래스는 필수 매개변수인 size만을 전달받아 생성된다. 그리고 bun, patty, lettuce, tomato 와 같은 메소드는 빌더 자기자신의 매개변수를 설정하고 반환하는 것을 확인할 수 있다.
 
 ```java
 Hamburger hamburger = new Hamburger.Builder(10)
