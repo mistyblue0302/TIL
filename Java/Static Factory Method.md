@@ -1,24 +1,5 @@
 ## 정적 팩토리 메소드(Static Factory Method) 
 
-```java
-public class Book {
-
-    private String title;
-
-    private Book(String title) {
-        this.title = title;
-    }
-
-    public static Book titleOf(String title) { //정적 팩토리 메소드
-        return new Book(title); //메소드에서 생성자를 호출하여 리턴
-    }
-
-    public static void main(String[] args) {
-        Book b = Book.titleOf("abc"); //정적 팩토리 메소드 호출을 통해 객체를 얻는다.
-    }
-}
-```
-
 정적 팩토리 메소드는 다음과 같은 장단점이 있다.
 
 - 장점
