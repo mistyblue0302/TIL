@@ -64,6 +64,7 @@
 * [Java 8에서 달라진 것](https://github.com/dilmah0203/TIL/blob/main/Java/Java%208%EC%97%90%EC%84%9C%20%EB%8B%AC%EB%9D%BC%EC%A7%84%20%EA%B2%83.md)
   * [stream vs for](https://github.com/dilmah0203/TIL/blob/main/Java/stream%20vs%20for.md)
 * [생성자 대신 정적 팩토리 메소드를 고려하라](https://github.com/dilmah0203/TIL/blob/main/Java/Static%20Factory%20Method.md)
+* [생성자에 매개변수가 많다면 빌더를 고려하라](https://github.com/dilmah0203/TIL/blob/main/Java/Builder%20Pattern.md)
 
 ## JSP
 * [웹 프로그래밍 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%9B%B9%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88.md)
