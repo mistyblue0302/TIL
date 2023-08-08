@@ -127,4 +127,4 @@ public class PhoneNumber {
 
 ### non-null 규약을 어떻게 검증할 수 있을까?
 
-equals()가 두 객체의 값을 같다고 판단했다면 hashCode() 값도 똑같은 값을 반환하도록 설정하고, equals()를 오버라이딩 할 땐 Optional을 사용하여 null을 체크할 수 있다. `Optional.ofNullable()`은 null일 수 있는 값을 Optional로 감쌀 때 사용하는 메소드로 만일 값이 null일 경우 비어 있는 Optional 객체가 반환된다.
+equals()를 오버라이딩 할 땐 Optional을 사용하여 null을 체크할 수 있다. `Optional.ofNullable()`은 null일 수 있는 값을 Optional로 감쌀 때 사용하는 메소드로 만일 값이 null일 경우 비어 있는 Optional 객체가 반환된다.
