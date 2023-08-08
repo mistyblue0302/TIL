@@ -109,4 +109,22 @@ public class PhoneNumber {
 }
 ```
 
-만약 `equals()`만 재정의하고 `hashCode()`를 재정의하지 않으면 `hashCode()`는 Object 클래스 메소드를 사용해 다른 값이 나올 것이다. 즉, 논리적으로 같다고 정의한 객체임에도 불구하고 해시코드 값이 달라 다른 버킷에 저장될 수 있다. 그렇기 때문에 `equals()`를 재정의하려면 `hashCode()`도 재정의해야한다.
+`equals()`는 동등성을 비교하기 때문에 두 객체의 내용이 같은 내용을 가지고 있음을 뜻한다. 두 객체의 주소가 다르더라도 내용이 같으면 동등하다고 판단한다. `hashcode()`는 객체를 식별하기 위한 정수 값으로 객체의 메모리 주소를 이용해서 해시코드를 만들어 리턴하기 때문에 오버라이딩 하지 않으면, equals()로 비교했을 때 두 객체의 내용이 논리적으로 같음에도 불구하고 `hashcode()` 값이 달라 다른 버킷에 저장될 수 있다. 그렇기 때문에 `equals()`를 재정의하려면 `hashcode()`도 재정의해야한다.
+
+### equals() 메소드 재정의 규약
+
+- 반사성(reflexivity) : null이 아닌 모든 참조 값 x에 대해, x.equals(x)는 true다.
+- 대치성(symmetry) : null이 아닌 모든 참조 값 x,y에 대해, x.equals(y)가 true면 y.equals(x)도 true다.
+- 추이성(transitivity) : null이 아닌 모든 참조 값 x, y, z에 대해, x.equals(y)가 true고 y.equals(z)도 true면 x.equals(z)도 true다.
+- 일관성(consistency) : null이 아닌 모든 참조 값 x,y에 대해 x.equals(y)를 반복해서 호출하면 항상 true를 반환하거나 항상 false를 반환한다.
+- non-null : null이 아닌 모든 참조 값 x에 대해, x.equals(null)은 항상 false 이다.
+
+### hashCode() 메서드 재정의 규약
+
+- equals() 비교에 사용되는 정보가 변경되지 않았다면, 애플리케이션이 실행되는 동안 그 객체의 hashcode() 메소드는 몇 번을 호출해도 일관되게 항상 같은 값을 반환해야 한다.
+- equals()가 두 객체를 같다고 판단했다면, 두 객체의 hashcode()는 똑같은 값을 반환해야 한다.
+- equals()가 두 객체를 다르다고 판단했더라도, 두 객체의 hashcode()가 서로 다른 값을 반환할 필요는 없다.
+
+### non-null 규약을 어떻게 검증할 수 있을까?
+
+equals()가 두 객체의 값을 같다고 판단했다면 hashcode() 값도 똑같은 값을 반환하도록 설정하고, equals()를 오버라이딩 할 땐 Optional을 사용하여 null을 체크할 수 있다. `Optional.ofNullable()`은 null일 수 있는 값을 Optional로 감쌀 때 사용하는 메소드로 만일 값이 null일 경우 비어 있는 Optional 객체가 반환된다.
