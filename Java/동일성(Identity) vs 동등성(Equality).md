@@ -7,7 +7,7 @@
 ### Primitive Type
 
 - Primitive Type은 객체가 아니기 때문에 객체 타입에서 지원하는 동등성 비교를 할 수 없다.
-- 동일성 비교는 변수의 값으로 비교한다. 
+- ==을 통해 값이 같은지 비교한다.
 
 ### Reference Type
 
