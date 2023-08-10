@@ -26,7 +26,7 @@ Heap 영역은 Young 영역과 Old 영역으로 나뉘고, Young 영역은 Eden�
 - 새로 생성한 대부분의 객체는 Eden 영역에 위치한다.
 - Eden영역에 객체가 차게 되면 첫번째 Minor GC가 발생한 후 살아남은 객체는 Survivor 영역 중 하나로 이동된다.
 - Eden영역에서 GC가 지속적으로 발생함에 따라 Survivor 영역의 객체는 계속 쌓인다. 
-- 하나의 Survivor 영역이 가득차게 되면 그 중에서 살아남은 객체를 다른 Survivor영역으로 이동시킨다. 그리고 가득찼던 Survivor 영역은 아무 데이터도 없는 상태가 된다.
+- 하나의 Survivor 영역이 가득차게 되면 그 중에서 살아남은 객체를 다른 Survivor 영역으로 이동시킨다. 그리고 가득찼던 Survivor 영역은 아무 데이터도 없는 상태가 된다.
 - 이 과정을 반복하다가 계속해서 살아남는 객체가 있다면 Old 영역으로 이동한다. 
 - Old 영역이 꽉차면 Major GC를 실행하여 **Mark And Sweep** 알고리즘을 통해 메모리를 해제한다.
 
@@ -34,7 +34,7 @@ Heap 영역은 Young 영역과 Old 영역으로 나뉘고, Young 영역은 Eden�
 
 메모리 **외부 단편화 발생을 방지**한다. 외부 단편화란, 메모리가 할당/해제를 반복하면 메모리 공간은 있지만 작은 단위의 메모리가 부분적으로 존재해서 실제로는 할당할 수 없는 경우를 뜻한다.
 
-`Mark And Sweep` 알고리즘은 Root Space에서부터 해당 객체에 접근 가능한지를 메모리 해제의 기준으로 삼는다. Root Space부터 순회를 통해 연결된 객체들을 찾아내고(**Mark**) 연결이 끊어진 객체들은 지우는 방식이다.(**Sweep**) Root Space부터 연결된 객체는 Reachable, 연결되지 않은 객체는 Unreachable라고 부른다. 아래는 Sweep이후 분산되어 있던 메모리가 정리된 것을 볼 수 있다.(**Compaction**)
+`Mark And Sweep` 알고리즘은 Root Space에서부터 해당 객체에 접근 가능한지를 **메모리 해제의 기준**으로 삼는다. Root Space부터 순회를 통해 연결된 객체들을 찾아내고(**Mark**) 연결이 끊어진 객체들은 지우는 방식이다.(**Sweep**) Root Space부터 연결된 객체는 Reachable, 연결되지 않은 객체는 Unreachable라고 부른다. Sweep 이후 분산된 객체들의 heap의 시작 주소로 모아 메모리가 할당된 부분과 그렇지 않은 부분을 압축한다.(**Compaction**) 아래는 분산되어 있던 메모리가 정리된 것을 볼 수 있다.
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/Mark_Sweep.png)
 
