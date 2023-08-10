@@ -114,9 +114,9 @@ public class PhoneNumber {
 ### equals() 메소드 재정의 규약
 
 - 반사성(reflexivity) : null이 아닌 모든 참조 값 x에 대해, x.equals(x)는 true다.
-- 대치성(symmetry) : null이 아닌 모든 참조 값 x,y에 대해, x.equals(y)가 true면 y.equals(x)도 true다.
+- 대치성(symmetry) : null이 아닌 모든 참조 값 x, y에 대해, x.equals(y)가 true면 y.equals(x)도 true다.
 - 추이성(transitivity) : null이 아닌 모든 참조 값 x, y, z에 대해, x.equals(y)가 true고 y.equals(z)도 true면 x.equals(z)도 true다.
-- 일관성(consistency) : null이 아닌 모든 참조 값 x,y에 대해 x.equals(y)를 반복해서 호출하면 항상 true를 반환하거나 항상 false를 반환한다.
+- 일관성(consistency) : null이 아닌 모든 참조 값 x, y에 대해 x.equals(y)를 반복해서 호출하면 항상 true를 반환하거나 항상 false를 반환한다.
 - non-null : null이 아닌 모든 참조 값 x에 대해, x.equals(null)은 항상 false 이다.
 
 ### hashCode() 메서드 재정의 규약
