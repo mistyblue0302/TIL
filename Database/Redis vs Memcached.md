@@ -54,8 +54,14 @@ In-memory DB에는 다양한 DB들이 존재하는데, 세션 저장소로 가�
 - 데이터를 문자열로만 저장
 - 멀티쓰레드 아키텍처(더 많은 코어와 메모리를 제공)
 
+### 정리
+
+Memcached는 데이터를 문자열로만 저장하는 반면, Redis는 다양한 자료형을 지원한다. 따라서 Memcached를 사용할 때는 데이터를 전부 변환하여 저장하고, 가져올 때 파싱이 필요하지만 Redis를 사용할 때는 바로 원하는 데이터로 다룰 수 있다. 그리고 Memcached는 프로세스가 종료되면 임시 저장되었던 데이터가 사라지지만 Redis는 snapshot과 AOF 기능을 통해 데이터 유실 없이 복구할 수 있다. Redis는 Replication을 통해 다른 서버에도 동일한 데이터가 보관될 수 있게 하여 서버 복구가 가능하다.
+
 <br>
 
 참고
 
-https://brownbears.tistory.com/43[https://brownbears.tistory.com/43]
+[https://brownbears.tistory.com/43](https://brownbears.tistory.com/43)
+
+[https://velog.io/@dnjwm8612/Session-Storage-Redis-Memcached](https://velog.io/@dnjwm8612/Session-Storage-Redis-Memcached)
