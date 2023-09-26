@@ -95,6 +95,7 @@
 * [HTTP vs HTTPS](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20vs%20HTTPS.md)
 
 ## OS
+* [운영체제 기초](https://github.com/dilmah0203/TIL/blob/main/OS/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%20%EA%B8%B0%EC%B4%88.md)
 * [메모리 vs 디스크](https://github.com/dilmah0203/TIL/blob/main/OS/%EB%A9%94%EB%AA%A8%EB%A6%AC%20vs%20%EB%94%94%EC%8A%A4%ED%81%AC.md)
 * [캐시 메모리](https://github.com/dilmah0203/TIL/blob/main/OS/Cache%20Memory.md)
 * [프로세스 vs 쓰레드](https://github.com/dilmah0203/TIL/blob/main/OS/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20vs%20%EC%93%B0%EB%A0%88%EB%93%9C.md)
