@@ -66,6 +66,8 @@ Content-Type: text/plain
 Content-Range: bytes 1001-2000 / 2000
 ```
 
+요청과 응답 모두 사용될 수 있다.
+
 4. **일반 정보**
 
 -  Referer : 이전 웹 페이지의 주소, 요청에서 사용
