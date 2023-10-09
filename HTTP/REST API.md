@@ -70,7 +70,7 @@ Link: </articles/1>; rel=“previous”,
       </articles/3>; rel=“next”
 ```
 
-정리하면 REST API는 HTTP URI를 통해 자원을 명시하고 HTTP Method 표현을 통해 자원을 처리하도록 설계된 아키텍처이다.
+정리하면 **REST API**는 **HTTP URI를 통해 자원을 명시하고 HTTP Method 표현을 통해 자원을 처리하도록 설계된 아키텍처**이다.
 
 <br>
 
