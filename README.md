@@ -81,6 +81,7 @@
 * [TCP와 UDP](https://github.com/dilmah0203/TIL/blob/main/Network/TCP%EC%99%80%20UDP.md)
 * [Forward Proxy vs Reverse Proxy vs Load Balancer](https://github.com/dilmah0203/TIL/blob/main/Network/Forward%20Proxy%20vs%20Reverse%20Proxy%20vs%20Load%20Balancer.md)
 * [JWT(JSON Web Token)란?](https://github.com/dilmah0203/TIL/blob/main/Network/JWT%20Token.md)
+* [쿠키 vs 세션](https://github.com/dilmah0203/TIL/blob/main/Network/%EC%BF%A0%ED%82%A4%EC%99%80%20%EC%84%B8%EC%85%98.md)
 * [쿠키 vs 세션 vs 토큰 vs 캐시](https://github.com/dilmah0203/TIL/blob/main/Network/%EC%BF%A0%ED%82%A4%20vs%20%EC%84%B8%EC%85%98%20vs%20%ED%86%A0%ED%81%B0%20vs%20%EC%BA%90%EC%8B%9C.md)
 
 
@@ -92,7 +93,6 @@
 * [HTTP 상태코드](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20%EC%83%81%ED%83%9C%EC%BD%94%EB%93%9C.md)
 * [HTTP Header](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20Header.md)
 * [HTTP vs HTTPS](https://github.com/dilmah0203/TIL/blob/main/HTTP/HTTP%20vs%20HTTPS.md)
-* [쿠키와 세션](https://github.com/dilmah0203/TIL/blob/main/HTTP/%EC%BF%A0%ED%82%A4%EC%99%80%20%EC%84%B8%EC%85%98.md)
 
 ## OS
 * [운영체제 기초](https://github.com/dilmah0203/TIL/blob/main/OS/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%20%EA%B8%B0%EC%B4%88.md)
