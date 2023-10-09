@@ -107,7 +107,7 @@ Content-Type: application/json
 - 서버가 리소스의 URI를 생성하고 관리
 
 ```HTTP
-PUT /files/star.jpg HTTP/1.1
+PUT /members/100 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -117,7 +117,5 @@ Content-Type: application/json
 ```
 
 - 클라이언트가 리소스 URI를 알고 있어야 한다.
-  - 파일 등록 /files/{filename} -> PUT
-  - PUT **/files/star.jpg**
 
 
