@@ -168,13 +168,73 @@ public class UserServiceTx implements UserService {
 
 ## Mockito 프레임워크
 
+Mockito 프레임워크는 목 오브젝트를 편리하게 작성하도록 도와준다.
+
+```java
+UserDao mockUserDao = mock(UserDao.class);
+```
+
+이렇게 만들어진 목 오브젝트는 아직 아무런 기능이 없다. 여기에 만약 getAll() 메소드를 불러올 때 사용자 목록을 리턴하도록 스텁 기능을 추가하고 싶다면 다음과 같이 추가하면 된다.
+
+```java
+when(mockUserDao.getAll()).thenReturn(this.users);
+```
+
+`mockUserDao.getAll()`이 호출되었을 때(when), users 리스트를 리턴해주어라(thenReturn)는 선언이다. 이렇게 정의한 후에 mockUserDao.getAll()이 호출되면 users가 리턴이 될 것이다.
+
+그럼 리턴타입이 없는 update() 또는 insert()의 기능을 하는 메소드를 호출하는 경우는 어떻게 검증을 할까?
+
+```java
+verify(mockUserDao, time(2)).update(any(User.class));
+```
+
+위 코드는 User 타입의 오브젝트를 파라미터로 받으며, update() 메소드가 두 번 호출되었는지 (times(2)) 확인(verify)하라는 것이다.
+
+- Mockito 목 오브젝트 단계
+  - 인터페이스를 이용해 목 오브젝트를 만든다.
+  - 목 오브젝트가 리턴할 값이 있으면 이를 지정해준다. 메소드가 호출되면 예외를 강제로 던지게 만들 수도 있다.
+  - 테스트 대상 오브젝트에 DI 해서 목 오브젝트가 테스트 중에 사용되도록 만든다.
+  - 테스트 대상 오브젝트를 사용한 후에 목 오브젝트의 특정 메소드가 호출됐는지, 어떤 값을 가지고 몇 번 호출됐는지를 검증한다.
+
+목 오브젝트를 통해 변경된 테스트 코드는 다음과 같다.
+
+```java
+@Test
+public void mockUpgradeLevels() throws Exception {
+    UserServiceImpl userServiceImpl = new UserServiceImpl();
+
+    //다이내믹한 목 오브젝트 생성과 메소드의 리턴 값 설정, DI까지 세 줄이면 충분하다.
+    UserDao mockUserDao = mock(UserDao.class);	    
+    when(mockUserDao.getAll()).thenReturn(this.users);
+    userServiceImpl.setUserDao(mockUserDao);
+
+    //리턴타입이 없는 메소드를 가진 목 오브젝트는 더욱 간단하게 만들 수 있다.
+    MailSender mockMailSender = mock(MailSender.class);  
+    userServiceImpl.setMailSender(mockMailSender);
+
+    userServiceImpl.upgradeLevels();
+
+    //목 오브젝트가 제공하는 검증기능을 통해 어떤 메소드가 몇번 호출되었는지, 파라미터는 무엇인지 확인 가능하다. 
+    verify(mockUserDao, times(2)).update(any(User.class));				  
+    verify(mockUserDao, times(2)).update(any(User.class));
+    verify(mockUserDao).update(users.get(1));
+    assertThat(users.get(1).getLevel(), is(Level.SILVER));
+    verify(mockUserDao).update(users.get(3));
+    assertThat(users.get(3).getLevel(), is(Level.GOLD));
+
+    ArgumentCaptor<SimpleMailMessage> mailMessageArg = ArgumentCaptor.forClass(SimpleMailMessage.class);  
+    verify(mockMailSender, times(2)).send(mailMessageArg.capture());
+    List<SimpleMailMessage> mailMessages = mailMessageArg.getAllValues();
+    assertThat(mailMessages.get(0).getTo()[0], is(users.get(1).getEmail()));
+    assertThat(mailMessages.get(1).getTo()[0], is(users.get(3).getEmail()));
+}
+```
+
+- times() : 메소드 호출 횟수 검증
+- any() : 파라미터의 내용은 무시하고 호출 횟수만 확인, 호출 횟수 검사가 끝나면 목 오브젝트가 호출됐을 때의 파라미터를 하나씩 검증
 
 
-
-## AOP란?
-
-AOP(Aspect Oriented Programming, 관점 지향 프로그래밍)란 여러 오브젝트에 나타나는 **공통적인 부가 기능**을 모듈화하여 **재사용**하는 기법이다.
-
+## 다이내믹 프록시와 팩토리 빈
 
 
 
