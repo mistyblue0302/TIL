@@ -238,7 +238,7 @@ public void mockUpgradeLevels() throws Exception {
 
 트랜잭션 경계설정 코드로 돌아와서 생각해보자. 트랜잭션 기능은 사용자 비즈니스 로직과 성격이 다르기 때문에 그림과 같이 아예 밖으로 분리할 수 있다.
 
-[img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy.png)
 
 이렇게 분리된 부가기능을 담은 클래스는 부가기능 외의 나머지 모든 기능은 원래의 핵심기능을 가진 클래스로 위임해주어야 한다. 핵심기능은 부가기능을 가진 클래스의 존재 자체를 모른다. 따라서 부가기능이 핵심기능을 사용하는 구조가 된다.
 
@@ -248,11 +248,11 @@ public void mockUpgradeLevels() throws Exception {
 
 그림으로 보자면 다음과 같다.
 
-[img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy2.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy2.png)
 
 위의 그림처럼 자신이 클라이언트가 사용하려고 하는 실제 대상인 것처럼 위장해서 클라이언트의 요청을 받아주는 것을 대리자, 대리인과 같은 역할이라고 한다고 해서 **프록시(proxy)** 라고 부른다. 그리고 프록시를 통해 최종적으로 요청을 위임받아 처리하는 실제 오브젝트를 **타깃(target)** 또는 **실제(real subject)**라고 한다.
 
-[img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy3.png)
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy3.png)
 
 프록시의 특징은 다음과 같다.
 
