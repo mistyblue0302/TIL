@@ -236,23 +236,71 @@ System.out.println(warrior.getStrength() + ", " + warrior.getDex() + ", " + warr
 ### 4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
 
 ```java
-public class Rogue extends Character {
+public class Character {
 
-    public Rogue(int strength, int dex, int intelligence) {
-        super(strength, dex, intelligence);
+    private String name;
+
+    public Character(String name) {
+        this.name = name;
     }
 
-    public static Rogue makeRogue(int dex) {
-        return new Rogue(5, dex, 20);
+    public String getName() {
+        return name;
+    }
+
+    public void attack() {
+        System.out.println(name + "이 공격을 합니다.");
+    }
+
+    public static Character createCharacter(String name, String type) {
+        if ("warrior".equalsIgnoreCase(type)) {
+            return new Warrior(name);
+        } else if ("wizard".equalsIgnoreCase(type)) {
+            return new Wizard(name);
+        }
+
+        return new Character(name);
     }
 }
 ```
 
-또한 반환되는 객체를 다양하게 선택할 수 있습니다. 클라이언트 코드에서 `Rogue` 객체를 생성해주기만 하면 됩니다. 아래 예시는 `Rogue` 클래스의 정적 팩토리 메소드를 사용하여 `Rogue` 객체를 생성하였습니다. 클라이언트 코드에서 `dex` 값을 매개변수로 전달하면 `makeRouge()` 메소드는 `Rogue` 객체를 생성하고 값을 초기화합니다.
+```java
+public class Wizard extends  Character{
+
+    public Wizard(String name) {
+        super(name);
+    }
+
+    @Override
+    public void attack() {
+        System.out.println(getName() + " 마법사가 공격을 합니다.");
+    }
+}
+```
 
 ```java
-Rogue rogue = Rogue.makeRogue(15);
+public class Warrior extends Character {
+
+    public Warrior(String name) {
+        super(name);
+    }
+
+    @Override
+    public void attack() {
+        System.out.println(getName() + " 전사가 공격을 합니다.");
+    }
+}
 ```
+
+```java
+Character character1 = Character.createCharacter("전사1", "warrior");
+Character character2 = Character.createCharacter("마법사1", "wizard");
+
+character1.attack(); // 전사1 전사가 공격을 합니다.
+character2.attack(); // 마법사1 마법사가 공격을 합니다.
+```
+
+`createCharacter()` 메소드는 name과 type을 매개변수로 받습니다. type이 "warrior"인 경우 `Warrior` 객체를 생성하고, "wizard"인 경우 `Wizard` 객체를 생성합니다. 이렇게 정적 팩토리 메소드를 통해 매개변수 type에 따라 매번 다른 클래스의 객체를 반환할 수 있습니다.
 
 ### 5. 정적 팩토리 메소드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.
 
