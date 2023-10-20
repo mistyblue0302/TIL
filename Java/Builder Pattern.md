@@ -15,8 +15,7 @@ public class Character {
         this.healthPoint = healthPoint;
     }
 
-    public static Character createCharacter(int strength, int dex, int intelligence,
-        int healthPoint) {
+    public static Character createCharacter(int strength, int dex, int intelligence, int healthPoint) {
         return new Character(strength, dex, intelligence, healthPoint);
     }
 }
@@ -33,7 +32,13 @@ Character character2 = Character.createCharacter(20, 30, 10, 0); //정적 팩토
 
 > 선택 매개변수가 많을 때 활용할 수 있는 대안이 있을까?
 
-## 빌더 패턴 (Builder Pattern)
+## 자바빈즈 패턴(JavaBeans Pattern)
+
+- 매개변수가 없는 생성자로 객체를 만든 후, setter 메소드들을 호출해 원하는 매개변수의 값을 설정하는 방식
+
+  
+
+## 빌더 패턴(Builder Pattern)
 
 빌더 패턴은 선택적 매개변수가 많은 상황에서 생성자 혹은 정적 팩토리 메소드보다 유용하게 사용할 수 있다.
 
