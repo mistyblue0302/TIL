@@ -1,3 +1,38 @@
+정적 팩토리 메소드와 생성자에는 제약이 있습니다. 선택적 매개변수가 많을 때 처리하기 어려운 상황이 발생할 수 있습니다. 
+
+```java
+public class Character {
+
+    private int strength;
+    private int dex;
+    private int intelligence;
+    private int healthPoint;
+
+    public Character(int strength, int dex, int intelligence, int healthPoint) {
+        this.strength = strength;
+        this.dex = dex;
+        this.intelligence = intelligence;
+        this.healthPoint = healthPoint;
+    }
+
+    public static Character createCharacter(int strength, int dex, int intelligence,
+        int healthPoint) {
+        return new Character(strength, dex, intelligence, healthPoint);
+    }
+}
+```
+
+```java
+Character character1 = new Character(20, 30, 10, 0); //생성자를 사용하여 생성
+Character character2 = Character.createCharacter(20, 30, 10, 0); //정적 팩토리 메소드로 생성
+```
+
+이 상황에서 healthPoint가 0인 경우를 나타내기 위해 int strength, dex, intelligence 세 가지의 매개변수만을 받는 생성자를 추가해야 합니다. 이렇게 선택 매개변수에 대한 모든 가능한 조합을 다루기 위해 다수의 오버로드된 생성자나 정적 팩토리 메소드가 필요해집니다.
+
+선택적 매개변수가 많아지면 가독성을 해치고 코드를 작성하기 어려워집니다. 코드를 읽을 때 각 값의 의미가 무엇인지 헷갈릴 것이고, 매개변수의 개수 또한 확인해보아야 합니다. 만약, 타입이 같은 매개변수가 여러 개 있을 경우 찾기 어려운 버그로 이어질 수 있습니다. 클라이언트가 실수로 매개변수의 순서를 바꾸어도 컴파일러는 감지하지 못하고, 결국 런타임에 버그의 가능성이 높아집니다.
+
+> 선택 매개변수가 많을 때 활용할 수 있는 대안이 있을까?
+
 ## 빌더 패턴 (Builder Pattern)
 
 빌더 패턴은 선택적 매개변수가 많은 상황에서 생성자 혹은 정적 팩토리 메소드보다 유용하게 사용할 수 있다.
