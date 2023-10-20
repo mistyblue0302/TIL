@@ -296,8 +296,8 @@ public class Warrior extends Character {
 Character character1 = Character.createCharacter("전사1", "warrior");
 Character character2 = Character.createCharacter("마법사1", "wizard");
 
-character1.attack(); // 전사1 전사가 공격을 합니다.
-character2.attack(); // 마법사1 마법사가 공격을 합니다.
+character1.attack(); //전사1 전사가 공격을 합니다.
+character2.attack(); //마법사1 마법사가 공격을 합니다.
 ```
 
 `createCharacter()` 메소드는 name과 type을 매개변수로 받습니다. type이 "warrior"인 경우 `Warrior` 객체를 생성하고, "wizard"인 경우 `Wizard` 객체를 생성합니다. 이렇게 정적 팩토리 메소드를 통해 매개변수 type에 따라 매번 다른 클래스의 객체를 반환할 수 있습니다.
@@ -396,7 +396,7 @@ public class Character {
         return level;
     }
 
-    // 정적 팩토리 메소드
+    //정적 팩토리 메소드
     public static Character createCharacter(String name, int level) {
         return new Character(name, level);
     }
