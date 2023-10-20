@@ -7,6 +7,7 @@
     - 호출될 때마다 객체를 새로 생성하지 않아도 된다.
     - 하위 자료형 객체를 반환할 수 있다.
     - 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
+    - 런타임 시 유연하게 동적으로 객체의 클래스를 결정할 수 있다.
 - 단점
     - 정적 팩토리 메소드만 제공하면, 생성자가 없으므로 하위 클래스를 만들 수 없다.
     - 정적 팩토리 메소드는 찾기 어렵다. (다른 메소드와 잘 구분되지 않는다.)
@@ -34,7 +35,7 @@ public class Character {
 Character character = new Character(20, 30, 10);
 ```
 
-만약 생성자를 사용해 캐릭터를 만들어 준다면, 다음과 같을 것입니다. 하지만 new 키워드를 통해 생성하면, 생성자에 넘기는 매개변수와 생성자 자체만으로는 반환될 캐릭터 특성을 제대로 설명하지 못합니다. 변수명으로 구분지어 주지 않는다면 연속된 숫자만으로 캐릭터의 직업을 유추하기 어렵습니다.
+만약 생성자를 사용해 캐릭터를 만들어 준다면, 다음과 같을 것입니다. 하지만 `new` 키워드를 통해 생성하면, 생성자에 넘기는 매개변수와 생성자 자체만으로는 반환될 캐릭터 특성을 제대로 설명하지 못합니다. 변수명으로 구분지어 주지 않는다면 연속된 숫자만으로 캐릭터의 직업을 유추하기 어렵습니다.
 
 ```java
 public class Character {
@@ -87,7 +88,7 @@ public class Character {
 }
 ```
 
-위의 코드에서 생성자는 int value 값을 받는 유일한 시그니처를 가지고 있습니다. 하지만 `defaultCount()`와 `createCount`라는 두 개의 정적 팩토리 메소드를 사용하면 두 가지 방법으로 객체를 생성할 수 있습니다.
+위의 코드에서 생성자는 `int value` 값을 받는 유일한 시그니처를 가지고 있습니다. 하지만 `defaultCount()`와 `createCount`라는 두 개의 정적 팩토리 메소드를 사용하면 두 가지 방법으로 객체를 생성할 수 있습니다.
 
 ```java
 Character defaultCharacter = Character.defaultCount(); //0
@@ -131,7 +132,7 @@ Character warrior = Character.makeWarrior();
 
 ```
 
-new 키워드를 사용하면 인스턴스가 그때 그때 생성되는 반면, 정적 팩토리 메소드는 static을 통해 미리 생성된 Character 객체를 반환하기 때문에 매번 새로운 인스턴스를 생성하지 않아도 됩니다. 따라서 생성 비용이 큰 객체가 자주 요청되는 상황이라면 성능이 향상될 수 있습니다.
+`new` 키워드를 사용하면 인스턴스가 그때 그때 생성되는 반면, 정적 팩토리 메소드는 `static`을 통해 미리 생성된 `Character` 객체를 반환하기 때문에 매번 새로운 인스턴스를 생성하지 않아도 됩니다. 따라서 생성 비용이 큰 객체가 자주 요청되는 상황이라면 성능이 향상될 수 있습니다.
 
 데이터베이스 연결을 예시로 들어보겠습니다.
 
@@ -157,7 +158,7 @@ public class DatabaseConnection {
 
 ### 3. 반환 타입의 하위 자료형 객체를 반환할 수 있다.
 
-정적 팩토리 메소드를 사용하면 메소드 호출을 통해 얻을 객체의 인스턴스를 선택 가능하게 해줍니다.(다형성) Wizard와 Warrior 클래스는 Character 클래스의 하위 클래스로 Character 클래스에 정의된 makeCharacter() 메소드를 호출하면 Character 타입의 객체를 반환합니다. 이것은 다형성을 활용한 것으로, 정적 팩토리 메소드를 통해 해당 하위 클래스의 객체를 얻을 수 있습니다.
+정적 팩토리 메소드를 사용하면 메소드 호출을 통해 얻을 객체의 인스턴스를 선택 가능하게 해줍니다.(다형성) `Wizard`와 `Warrior` 클래스는 `Character` 클래스의 하위 클래스로 `Character` 클래스에 정의된 `makeCharacter()` 메소드를 호출하여 `Character` 타입의 객체를 반환합니다. 이것은 다형성을 활용한 것으로, 정적 팩토리 메소드를 통해 해당 하위 클래스의 객체를 얻을 수 있습니다.
 
 ```java
 public class Character {
@@ -226,11 +227,13 @@ System.out.println(wizard.getStrength() + ", " + wizard.getDex() + ", " + wizard
 System.out.println(warrior.getStrength() + ", " + warrior.getDex() + ", " + warrior.getIntelligence()); //80, 10, 5
 ```
 
-- Character 클래스의 정적 팩토리 메소드를 호출하여 Character 객체를 생성하고 초기화 합니다.
-- Wizard.makeWizard()를 호출하면 Wizard 클래스의 정적 팩토리 메소드가 실행되고 이 메소드는 상위 클래스인 Character의 생성자를 호출하여 초기화 합니다.
-- Warrior.makeWarrior()은 2번과 같은 원리로 동작하고 상위 클래스인 Character의 생성자를 호출하여 초기화 합니다.
+- `Character` 클래스의 정적 팩토리 메소드를 호출하여 `Character` 객체를 생성하고 초기화 합니다.
+- `Wizard.makeWizard()`를 호출하면 `Wizard` 클래스의 정적 팩토리 메소드가 실행되고 이 메소드는 상위 클래스인 `Character`의 생성자를 호출하여 초기화 합니다.
+- `Warrior.makeWarrior()`은 2번과 같은 원리로 동작하고 상위 클래스인 `Character`의 생성자를 호출하여 초기화 합니다.
 
-정적 팩토리 메소드를 통해 객체 생성에 관한 로직을 숨길 수 있습니다. 클라이언트 코드(main)는 구체적인 객체 생성 방법(makeCharacter())을 알 필요가 없고, 클래스 내부가 변경되어도 영향을 받지 않습니다. 단순히 makeWizard() 또는 makeWarrior() 메소드를 호출하여 객체를 얻을 수 있습니다.
+정적 팩토리 메소드를 통해 객체 생성에 관한 로직을 숨길 수 있습니다. 클라이언트 코드(main)는 구체적인 객체 생성 방법(`makeCharacter()`)을 알 필요가 없고, 클래스 내부가 변경되어도 영향을 받지 않습니다. 단순히 `makeWizard()` 또는` makeWarrior()` 메소드를 호출하여 객체를 얻을 수 있습니다.
+
+### 4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
 
 ```java
 public class Rogue extends Character {
@@ -245,34 +248,156 @@ public class Rogue extends Character {
 }
 ```
 
-또한 반환되는 객체를 다양하게 선택할 수 있습니다. 새로운 하위 클래스를 추가하거나 기존 클래스에 변경이 생길 시 기존의 정적 팩토리 메소드만 수정하여 새로운 객체를 반환할 수 있습니다.
-
-
-### 4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
-
-
-### Lombok의 RequiredArgsConstructor 
-
-Lombok의 `RequiredArgsConstructor`를 사용하면 정적 팩토리 메소드를 쉽게 만들 수 있다.
+또한 반환되는 객체를 다양하게 선택할 수 있습니다. 클라이언트 코드에서 `Rogue` 객체를 생성해주기만 하면 됩니다. 아래 예시는 `Rogue` 클래스의 정적 팩토리 메소드를 사용하여 `Rogue` 객체를 생성하였습니다. 클라이언트 코드에서 `dex` 값을 매개변수로 전달하면 `makeRouge()` 메소드는 `Rogue` 객체를 생성하고 값을 초기화합니다.
 
 ```java
-import lombok.RequiredArgsConstructor;
+Rogue rogue = Rogue.makeRogue(15);
+```
 
-@RequiredArgsConstructor(staticName = "of")
-public class User {
-    private final Long id;
-    private final String name;
+### 5. 정적 팩토리 메소드를 작성하는 시점에는 반환할 객체의 클래스가 존재하지 않아도 된다.
+
+`Character` 클래스는 `makeCharacter()` 메소드로 객체를 생성합니다. 이 메소드는 `type`을 배개변수로 받아 객체의 클래스를 결정합니다. 즉, 반환될 객체가 런타임에 동적으로 결정됩니다.
+
+```java
+public class Character {
+
+    private String name;
+
+    public Character(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void attack() {
+        System.out.println(name + "이 공격합니다.");
+    }
+
+    public static Character makeCharacter(String name, String type) {
+
+        if ("warrior".equalsIgnoreCase(type)) {
+            return new Warrior(name);
+        } else if ("wizard".equalsIgnoreCase(type)) {
+            return new Wizard(name);
+        }
+
+        return new Character(name);
+    }
 }
 ```
 
-위와 같이 staticName을 사용하면 lombok이 of라는 이름을 가진 정적 팩토리 메소드를 만들어준다. 즉, 다음과 같이 사용할 수 있다.
-
 ```java
-User user = User.of(1L, "JuSeon");
+public class Wizard extends Character {
+
+    public Wizard(String name) {
+        super(name);
+    }
+
+    @Override
+    public void attack() {
+        System.out.println(getName() + " 마법사가 공격합니다.");
+    }
+}
 ```
 
+```java
+public class Warrior extends Character {
 
+    public Warrior(String name) {
+        super(name);
+    }
 
+    @Override
+    public void attack() {
+        System.out.println(getName() + " 전사가 공격합니다.");
+    }
+}
+```
 
+```java
+Character warrior = Character.makeCharacter("전사", "warrior");
+Character wizard = Character.makeCharacter("마법사", "wizard");
 
-[https://luckydavekim.github.io/development/etc/effective-java/item1-consider-static-factory-methods-instead-of-constructors](https://luckydavekim.github.io/development/etc/effective-java/item1-consider-static-factory-methods-instead-of-constructors)
+warrior.attack();
+wizard.attack();
+```
+
+정적 팩토리 메소드를 작성하는 시점에는 반환될 객체의 클래스가 무엇인지 알지 못합니다. 런타임 시 동적으로 객체의 클래스를 결정하고 생성할 수 있습니다.
+
+> 장점만 있을까?
+
+### 1. 정적 팩토리 메소드만 제공하면, 생성자가 없으므로 하위 클래스를 만들 수 없다. 
+
+```java
+public class Character {
+    private String name;
+    private int level;
+
+    private Character(String name, int level) {
+        this.name = name;
+        this.level = level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    // 정적 팩토리 메소드
+    public static Character createCharacter(String name, int level) {
+        return new Character(name, level);
+    }
+}
+```
+
+```java
+public class Warrior extends Character {
+
+    private int strength;
+
+    private Warrior(String name, int level, int strength) {
+        super(name, level); //오류가 발생한다.
+        this.strength = strength;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+}
+```
+
+위의 코드에서 `Character` 클래스는 정적 팩토리 메소드를 통해 객체를 생성하고, 생성자는 private으로 숨겼습니다. 그리고 `Warrior`라는 하위 클래스를 만들려고하면 오류가 발생합니다. 이유는 하위 클래스가 부모 클래스의 생성자에 접근할 수 없기 때문입니다.
+
+### 2. 정적 팩토리 메소드는 찾기 어렵다.(다른 메소드와 잘 구분되지 않는다.)
+
+```java
+public class Character {
+    private String name;
+
+    public Character(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    //정적 팩토리 메소드
+    public static Character createCharacter(String name) {
+        return new Character(name);
+    }
+
+    //일반 메소드
+    public void create(String name) {
+        System.out.println(name + "이 생성됩니다.");
+    }
+}
+
+```
+
+`createCharacter()`라는 정적 팩토리 메소드와 `create()`라는 일반 메소드의 이름이 유사합니다. 이렇게 메소드명이 유사할 경우 정적 팩토리 메소드를 찾기 어렵고 가독성이 떨어질 수 있습니다.
