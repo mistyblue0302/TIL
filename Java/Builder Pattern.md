@@ -200,9 +200,18 @@ Character character = new Character.Builder(20, 30, 10)
 - 선택적 매개변수인 healPoint는 Builder 클래스를 통해 설정되고
 - Builder 클래스는 Character 객체를 생성할 때 필드의 상태를 고정시키기 때문에 변경할 수 없게됩니다.
 
+빌더 패턴은 유연하며 매개변수에 따라 다양한 객체를 만들 수 있습니다.
 
+```java
+Character character = new Character.Builder(20, 30, 10)
+    .build();
+```
 
-
+```java
+Character warrior = new Character.Builder(30, 20, 10)
+    .healthPoints(150)
+    .build();
+```
 
 
 
