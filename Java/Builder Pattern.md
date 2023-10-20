@@ -36,7 +36,48 @@ Character character2 = Character.createCharacter(20, 30, 10, 0); //정적 팩토
 
 - 매개변수가 없는 생성자로 객체를 만든 후, setter 메소드들을 호출해 원하는 매개변수의 값을 설정하는 방식
 
-  
+```java
+public class Character {
+
+    private int strength;
+    private int dex;
+    private int intelligence;
+    private int healthPoint;
+
+    public Character() {
+        // 기본 생성자
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public void setDex(int dex) {
+        this.dex = dex;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public void setHealthPoint(int healthPoint) {
+        this.healthPoint = healthPoint;
+    }
+}
+```
+
+```java
+Character character = new Character();
+character.setStrength(20);
+character.setDex(30);
+character.setIntelligence(10);
+character.setHealthPoint(0);
+```
+
+점층적 생성자 패턴의 단점들이 자바빈즈 패턴에서는 더 이상 보이지 않게됩니다. 코드가 길어지긴 했지만 인스턴스를 만들기 쉽고, 그 결과 더 읽기 쉬운 코드가 되었습니다. 하지만 단점을 지니고 있습니다.
+
+- 자바빈즈 패턴에서는 필드에 값을 설정하기 위해 여러개의 setter 메소드를 호출
+- 이로 인해 객체가 완전히 생성되기 전에 일부 값이 설정되어 일관성이 무너질 수 있다.
 
 ## 빌더 패턴(Builder Pattern)
 
