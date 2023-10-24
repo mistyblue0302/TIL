@@ -1,6 +1,6 @@
 ## B-Tree
 
-B-Tree는 이진트리를 확장해 하나의 노드가 가질 수 있는 자식 노드 개수가 2보다 큰 트리구조이다. **탐색 성능을 높이기 위해 균형 있게 높이를 유지**한다. 모든 리프 노드가 같은 level로 유지되도록 자동으로 균형을 맞춰준다.
+B-Tree는 **탐색 성능을 높이기 위해 균형 있게 높이를 유지하는 Balanced Tree의 일종**이다.  모든 리프 노드가 같은 level로 유지되도록 자동으로 균형을 맞춰준다.
 노드의 자식 수 중 최대값을 K라고 하면, 해당 B-Tree를 K차 B-Tree라고 한다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree.png)
