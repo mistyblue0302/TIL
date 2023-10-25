@@ -70,7 +70,7 @@
 * [생성자 대신 정적 팩토리 메소드를 고려하라](https://github.com/dilmah0203/TIL/blob/main/Java/Static%20Factory%20Method.md)
 * [생성자에 매개변수가 많다면 빌더를 고려하라](https://github.com/dilmah0203/TIL/blob/main/Java/Builder%20Pattern.md)
 * [private 생성자나 열거 타입으로 싱글톤임을 보증하라](https://github.com/dilmah0203/TIL/blob/main/Java/Singleton.md)
- 
+* [인스턴스화를 막으려거든 private 생성자를 사용하라](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%ED%99%94%EB%A5%BC%20%EB%A7%89%EC%9C%BC%EB%A0%A4%EA%B1%B0%EB%93%A0%20private%20%EC%83%9D%EC%84%B1%EC%9E%90%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
  
 ## JSP
 * [웹 프로그래밍 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%9B%B9%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88.md)
