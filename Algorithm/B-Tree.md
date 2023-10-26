@@ -55,38 +55,18 @@ B-Tree는 **탐색 성능을 높이기 위해 균형 있게 높이를 유지하�
 
 key를 삽입하는 경우 트리의 균형이 깨질 수 있다.
 
-- K가 들어갈 리프 노드를 검색 과정과 동일하게 탐색한다.
-- 해당 리프 노드에 자리가 남아있다면 정렬을 유지하도록 알맞은 위치에 삽입하고, 리프 노드가 가득 차있다면 K를 삽입한 후 해당 노드를 분할한다.
+- key가 들어갈 리프 노드를 검색 과정과 동일하게 탐색한다.
+- 해당 리프 노드에 자리가 남아있다면 정렬을 유지하도록 알맞은 위치에 삽입하고, 리프 노드가 가득 차있다면 key를 삽입한 후 해당 노드를 분할한다.
 - 노드 분할 시 노드의 중앙값을 기준으로 분할한다. 중앙값은 부모 노드로 합쳐지거나 새로운 노드로 생성된다.
 
-13이라는 key를 삽입하는 과정이다. (검색 과정은 생략)
+삽입하고자 하는 값을 k라고 하였을 때, 리프노드가 가득차지 않았다면 오름차순으로 k를 삽입한다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree8.png)
 
-12와 14사이에 삽입이 된다.
+만약 리프노드가 가득찬 경우 노드를 분할한다.(중앙값을 기준으로) 중앙값은 부모 노드로 병합하거나 새로운 노드로 생성된다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree9.png)
-
-노드에 들어갈 수 있는 key 수보다 더 많은 상태이다.
-
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree10.png)
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree11.png)
-
-리프 노드의 중앙값인 13이 부모 노드에 합쳐진다. 12와 14는 각각 13의 왼쪽, 오른쪽 자식이 된다.
-
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree12.png)
-
-부모 노드 또한 key가 꽉 차있으므로 중앙값인 11을 분할한다.
-
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree13.png)
-
-루트 노드에 11이 합쳐졌다. 루트 노드 역시 key가 꽉 차있다.
-
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree14.png)
-
-루트 노드의 중앙값인 11을 분할한다.
-
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree15.png)
 
 ## B-Tree의 key 삭제
 
@@ -96,7 +76,7 @@ key를 삽입하는 경우 트리의 균형이 깨질 수 있다.
 
 **Case 1.1) 현재 노드의 key 개수가 최소 key 개수보다 크다면**
 
-다른 노드들에 영향 없이 해당 key를 단순 삭제한다.
+다른 노드들에 영향 없이 해당 k를 단순 삭제한다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree16.png)
  
@@ -120,17 +100,17 @@ key를 삽입하는 경우 트리의 균형이 깨질 수 있다.
 - `inorder successor` : 노드의 오른쪽 자손에서 가장 작은 key
   
 1. 현재 노드의 `inorder predecessor` 또는 `inorder successor`와 key의 자리를 바꾼다.
-2. 리프 노드의 key를 삭제하게 되면, Case 1 조건으로 이동한다.
+2. 리프 노드의 k를 삭제하게 되면, Case 1 조건으로 이동한다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree19.png) 
 
 ### Case 3. 삭제할 key k가 내부 노드에 있고, 노드에 key 개수가 최소 key 개수만큼, 노드의 자식 key 개수도 모두 최소 key 개수인 경우
 
-1. key를 삭제하고, k의 양쪽 자식을 병합하여 하나의 노드로 만든다.
-2. key의 부모 key를 인접한 형제 노드에 붙인다. 이후, 이전에 병합했던 노드를 자식노드로 설정
+1. k를 삭제하고, k의 양쪽 자식을 병합하여 하나의 노드로 만든다.
+2. k의 부모 key를 인접한 형제 노드에 붙인다. 이후, 이전에 병합했던 노드를 자식노드로 설정
 3. 해당 과정을 수행하였을 때 부모노드의 개수가 에 따라 이후 수행 과정이 달라진다.
   3-1. 만일 새로 구성된 인접 형제노드의 key가 최대 key 개수를 넘어갔다면, 삽입 연산의 노드 분할 과정을 수행
-  3-2. 만일 인접 형제노드가 새로 구성되더라도 원래 key의 부모 노드가 최소 key의 개수보다 작아진다면, 부모 노드에 대하여 2번 과정부터 다시 수행
+  3-2. 만일 인접 형제노드가 새로 구성되더라도 원래 k의 부모 노드가 최소 key의 개수보다 작아진다면, 부모 노드에 대하여 2번 과정부터 다시 수행
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/B-Tree20.png) 
 
