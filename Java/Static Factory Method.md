@@ -239,7 +239,7 @@ System.out.println(warrior.getStrength() + ", " + warrior.getDex() + ", " + warr
 - `Wizard.makeWizard()`를 호출하면 `Wizard` 클래스의 정적 팩토리 메소드가 실행되고 이 메소드는 상위 클래스인 `Character`의 생성자를 호출하여 초기화 합니다.
 - `Warrior.makeWarrior()`은 2번과 같은 원리로 동작하고 상위 클래스인 `Character`의 생성자를 호출하여 초기화 합니다.
 
-정적 팩토리 메소드를 통해 객체 생성에 관한 로직을 숨길 수 있습니다. 클라이언트 코드(main)는 구체적인 객체 생성 방법(`makeCharacter()`)을 알 필요가 없고, 클래스 내부가 변경되어도 영향을 받지 않습니다. 단순히 `makeWizard()` 또는` makeWarrior()` 메소드를 호출하여 객체를 얻을 수 있습니다.
+정적 팩토리 메소드를 통해 객체 생성에 관한 로직을 숨길 수 있습니다. 클라이언트 코드(main)는 구체적인 객체 생성 방법(`makeCharacter()`)을 알 필요가 없고, 클래스 내부가 변경되어도 영향을 받지 않습니다. 단순히 `makeWizard()` 또는 `makeWarrior()` 메소드를 호출하여 객체를 얻을 수 있습니다.
 
 ### 4. 입력 매개변수에 따라 매번 다른 클래스의 객체를 반환할 수 있다.
 
