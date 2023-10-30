@@ -34,7 +34,7 @@ Character character2 = Character.createCharacter(20, 30, 10, 0); //정적 팩토
 
 ## 자바빈즈 패턴(JavaBeans Pattern)
 
-- 매개변수가 없는 생성자로 객체를 만든 후, setter 메소드들을 호출해 원하는 매개변수의 값을 설정하는 방식
+- 매개변수가 없는 생성자로 객체를 만든 후, setter 메소드들을 호출해 필요한 필드만 설정하는 방식
 
 ```java
 public class Character {
@@ -100,7 +100,7 @@ character.setHealthPoint(0);
 
 > 왜 자바빈즈 패턴은 클래스를 불변으로 만들 수 없을까?
 
-자바빈즈 패턴은 기본 생성자를 통해 객체를 생성하고, setter를 통해 필드를 변경하는데, 이렇게 객체의 상태를 변경할 경우 객체의 일관성이 중간에 깨질 수 있기 때문입니다. 따라서 `불변 클래스`로 만들어 불변하게 관리할 수 있을 것 같습니다.
+자바빈즈 패턴은 기본 생성자를 통해 객체를 생성하고 setter를 통해 필드를 변경하는데, 이렇게 객체의 상태를 변경할 경우 객체의 일관성이 중간에 깨질 수 있기 때문입니다. 따라서 `불변 클래스`로 만들어 불변하게 관리할 수 있을 것 같습니다.
 
 ```java
 public final class ImmutableCharacter {
@@ -200,18 +200,12 @@ Character character = new Character.Builder(20, 30, 10)
 - 선택적 매개변수인 `healPoint`는 `Builder` 클래스를 통해 설정되고
 - `Builder` 클래스는 `Character` 객체를 생성할 때 필드의 상태를 고정시키기 때문에 변경할 수 없게됩니다.
 
-빌더 패턴은 유연하며 매개변수에 따라 다양한 객체를 만들 수 있습니다.
-
 ```java
 Character character = new Character.Builder(20, 30, 10)
     .build();
 ```
 
-```java
-Character warrior = new Character.Builder(30, 20, 10)
-    .healthPoints(150)
-    .build();
-```
+선택적 매개변수인 `healthPoint` 없이 `Character`를 생성하였습니다. 이렇게 하면 `healthPoint` 값이 기본값인 0으로 설정됩니다. 즉, 선택적 매개변수를 생략할 경우 해당 값은 기본값으로 초기화됩니다. 빌더 패턴은 매개변수에 따라 다양한 객체를 만들 수 있습니다. 그리고 빌더 패턴을 통해 유연하게 빌더 하나로 매번 생성하는 객체에 조금씩 변화를 줄 수 있습니다.(만드는 객체에 시리얼 번호를 증가하는 식으로)
 
-선택적 매개변수인 `healthPoint` 없이 `Character`를 생성하였습니다. 이렇게 하면 `healthPoint` 값이 기본값인 0으로 설정됩니다. 즉, 선택적 매개변수를 생략할 경우 해당 값은 기본값으로 초기화됩니다.
+단점으로는 객체를 만들기 전 빌더를 만들어야 하는데 성능에 민감한 상황에서는 문제가 될 수 있습니다. 그리고 생성자를 사용하는 것보다 코드가 길어집니다. 따라서 빌더 패턴은 매개변수가 많거나 앞으로 늘어날 가능성이 있는 경우에 사용하는 것이 좋습니다.
 
