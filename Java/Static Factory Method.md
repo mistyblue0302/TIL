@@ -72,30 +72,38 @@ Character warrior = Character.makeWarrior();
 ```java
 public class Character {
 
-    private int value;
+    private String name;
+    private String password;
 
-    private Character(int value) {
-        this.value = value;
+    private Character(String name) {
+        this.name = name;
     }
 
-    public static Character defaultCount() {
-        return new Character(0);
+    private Character(String password) { //컴파일 오류 : 시그니처가 동일하다.
+        this.password = password;
     }
 
-    public static Character createCount(int value) {
-        return new Character(value);
+    public static Character withName(String name) {
+        return new Character(name);
+    }
+
+    public static Character withPassword(String password) {
+        Character character = new Character(password);
+        character.setPassword(password);
+        return character;
     }
 }
 ```
 
-위의 코드에서 생성자는 `int value` 값을 받는 유일한 시그니처를 가지고 있습니다. 하지만 `defaultCount()`와 `createCount`라는 두 개의 정적 팩토리 메소드를 사용하면 두 가지 방법으로 객체를 생성할 수 있습니다.
+위의 코드에서 생성자는 `String name` 값을 받는 유일한 시그니처를 가지고 있습니다. 하지만 `withName()`과 `withPassword()`라는 두 개의 정적 팩토리 메소드를 사용하면 두 가지 방법으로 `Character` 객체를 생성할 수 있습니다.
 
 ```java
-Character defaultCharacter = Character.defaultCount(); //0
-Character customCharacter = Character.createCount(32); //32
+Character character = new Character("juseon");
+Character character2 = Character.withName("juseon");
+Character character3 = Character.withPassword("juseon");
 ```
 
-첫 번째 방법은 `생성자를 이용해 value를 0으로 초기화한` Character 객체를 생성하고 값을 초기화 합니다. 두 번째 방법은 `매개변수 값으로 value를 초기화한` Character 객체를 생성합니다.
+첫 번째 방법은 `생성자를 이용해 name이 juseon인` Character 객체를 생성하고 값을 초기화 합니다. 두 번째 방법은 `이름을 사용하여` Character 객체를 생성하거나 `비밀번호를 사용하여` Character 객체를 생성합니다.
 
 ### 2. 호출할 때마다 인스턴스를 새로 생성할 필요가 없다.
 
