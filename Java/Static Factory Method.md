@@ -273,7 +273,7 @@ public class Character {
 ```
 
 ```java
-public class Wizard extends  Character{
+public class Wizard extends  Character {
 
     public Wizard(String name) {
         super(name);
