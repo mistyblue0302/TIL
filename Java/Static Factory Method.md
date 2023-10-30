@@ -332,7 +332,6 @@ public class Character {
     }
 
     public static Character makeCharacter(String name, String type) {
-
         if ("warrior".equalsIgnoreCase(type)) {
             return new Warrior(name);
         } else if ("wizard".equalsIgnoreCase(type)) {
@@ -380,14 +379,15 @@ warrior.attack();
 wizard.attack();
 ```
 
-정적 팩토리 메소드를 작성하는 시점에는 반환될 객체의 클래스가 무엇인지 알지 못합니다. 런타임 시 동적으로 객체의 클래스를 결정하고 생성할 수 있습니다.
+정적 팩토리 메소드를 작성하는 시점에는 반환될 객체의 클래스가 무엇인지 알지 못합니다. 런타임 시 동적으로 객체의 클래스를 결정하고 생성할 수 있습니다. `makeCharacter()` 메소드를 호출할 때 `type` 값을 기반으로 `Character` 클래스의 하위 클래스 중 하나를 반환합니다.
 
 > 장점만 있을까?
 
-### 1. 정적 팩토리 메소드만 제공하면, 생성자가 없으므로 하위 클래스를 만들 수 없다. 
+### 1. public 또는 protected 생성자 없이 정적 팩토리 메소드만 제공하면, 하위 클래스를 만들 수 없다. 
 
 ```java
 public class Character {
+
     private String name;
     private int level;
 
@@ -433,6 +433,7 @@ public class Warrior extends Character {
 
 ```java
 public class Character {
+
     private String name;
 
     public Character(String name) {
@@ -453,7 +454,7 @@ public class Character {
         System.out.println(name + "이 생성됩니다.");
     }
 }
-
 ```
 
 `createCharacter()`라는 정적 팩토리 메소드와 `create()`라는 일반 메소드의 이름이 유사합니다. 이렇게 메소드명이 유사할 경우 정적 팩토리 메소드를 찾기 어렵고 가독성이 떨어질 수 있습니다.
+
