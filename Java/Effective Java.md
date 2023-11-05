@@ -797,3 +797,363 @@ String name = Character.INSTANCE.getName();
 ```
 
 `Character.INSTANCE`를 통해 항상 동일한 인스턴스에 접근하고 이를 통해 데이터를 공유할 수 있습니다. 또한, 이 방식은 직렬화에 대한 안전성을 제공해줍니다. 하지만 이 방법은 `enum` 말고 다른 상위 클래스를 상속해야 한다면 사용할 수 없습니다.(인터페이스는 구현 가능)
+
+---
+
+## 인스턴스화를 막으려거든 private 생성자를 사용하라
+
+추상 클래스를 만드는 것으로는 인스턴스화를 막을 수 없다. 
+추상 클래스를 사용하여 클래스를 정의하면 해당 클래스를 직접 인스턴스화할 수 없지만, 하위 클래스를 만들어 인스턴스화할 수 있기 때문이다.
+
+그리고 아무런 생성자를 만들지 않은 경우 컴파일러가 기본적으로 아무 인자가 없는 public 생성자를 만들어 주기 때문에 그런 경우에도 인스턴스를 생성할 수 있다.
+
+```java
+public abstract class UtilityClass {
+
+    public abstract void doSomething();
+
+    public static UtilityClass createInstance() {
+        return new AnotherClass();
+    }
+}
+```
+
+```java
+public class AnotherClass extends UtilityClass {
+
+    @Override
+    public void doSomething() {
+        System.out.println("do something");
+    }
+}
+```
+
+```java
+//UtilityClass utilityClass = new UtilityClass(); //컴파일 오류(인스턴스화할 수 없다)
+
+//하위 클래스를 사용하여 인스턴스 생성
+UtilityClass utility = UtilityClass.createInstance();
+utility.doSomething();
+```
+
+명시적으로 private 생성자를 추가하여 클래스의 인스턴스화를 막을 수 있다.
+
+```java
+public class UtilityClass {
+
+    //인스턴스를 만들지 못하게 막는다.
+    private UtilityClass() {
+        throw new AssertionError();
+    }
+
+    public static String getName() {
+        return "juseon";
+    }
+}
+```
+
+```java
+//UtilityClass utilityClass = new UtilityClass(); //컴파일 오류(인스턴스화할 수 없다)
+UtilityClass.getName();
+```
+
+부가적으로 상속도 막을 수 있다. 상속의 경우에 상위 클래스의 생성자를 호출해야 하는데, 이 클래스의 생성자가 private이라 호출이 막혔기 때문에 상속을 할 수 없다.
+
+--- 
+
+## 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라
+
+### static 유틸리티 클래스
+
+많은 클래스는 하나 이상의 리소스에 의존한다. 예로 맞춤법 검사기 `SpellChecker`는 `dictionary`를 사용하고, 이를 의존성이라고 부른다. 이때 `SpellChecker`를 다음과 같이 구현할 수 있습니다.
+
+```java
+public class SpellChecker {
+
+    //부적절한 static 유틸리티 클래스 사용 예
+    private static final Lexicon dictionary = new KoreanDictionary();
+
+    private SpellChecker() {
+    }
+
+    public static boolean isValid(String word) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static List<String> suggestions(String typo) {
+        throw new UnsupportedOperationException();
+    }
+}
+```
+
+```java
+SpellChecker.isValid("hello");
+```
+
+아래의 코드를 보면 한국어 사전으로 고정이 되어있습니다. 다른 사전으로 이용하기 위해서는 코드를 변경해야 하므로 유연하지 못하고 테스트하기 어렵습니다.
+
+```java
+private static final Lexicon dictionary = new KoreanDictionary();
+```
+
+### 싱글톤으로 구현하기
+
+```java
+public class SpellChecker {
+
+    private final Lexicon dictionary = new KoreanDictionary();
+
+    private SpellChecker() {
+    }
+
+    public static final SpellChecker INSTANCE = new SpellChecker() {
+    };
+
+    public boolean isValid(String word) {
+        throw new UnsupportedOperationException();
+    }
+
+    public List<String> suggestions(String typo) {
+        throw new UnsupportedOperationException();
+    }
+}
+```
+
+```java
+SpellChecker.INSTANCE.isValid("hello"); //싱글톤 인스턴스를 통해 메소드 사용
+```
+
+사전을 하나만 사용할꺼라면 위와 같은 구현도 만족스러울 수 있겠지만, 실제로는 사전이 언어별로 따로 있고 테스트를 위해 테스트용 사전을 사용하고 싶을 수도 있습니다.
+
+**어떤 클래스가 사용하는 리소스에 따라 동작을 달리 해야 하는 경우에는 static 유틸리티 클래스와 싱글톤을 사용하는 것은 적합하지 않습니다.** 이러한 요구 사항을 만족하기 위해 **인스턴스를 생성할 때 생성자에 필요한 자원을 넘겨주는 방법**이 있습니다.
+
+### 적절한 구현
+
+```java
+public class SpellChecker {
+
+    private final Lexicon dictionary;
+
+    public SpellChecker(Lexicon dictionary) {
+        this.dictionary = Objects.requireNonNull(dictionary);
+    }
+
+    public boolean isValid(String word) {
+        throw new UnsupportedOperationException();
+    }
+
+    public List<String> suggestions(String typo) {
+        throw new UnsupportedOperationException();
+    }
+}
+```
+
+```java
+//한국어 사전을 사용하는 경우
+Lexicon koreanDictionary = new KoreanDictionary();
+SpellChecker spellChecker = new SpellChecker(koreanDictionary);
+
+//영어 사전을 사용하는 경우
+Lexicon englishDictionary = new EnglishDictionary();
+SpellChecker spellChecker2 = new SpellChecker(englishDictionary);
+
+//클라이언트 코드에서 각각의 사전을 주입하여 사용
+boolean isValid1 = spellChecker.isValid("안녕하세요");
+boolean isValid2 = spellChecker2.isValid("hello");
+```
+
+위와 같은 의존성 주입은 `생성자`, `정적 팩토리 메소드`, 그리고 `빌더`에도 적용할 수 있습니다.
+
+**정적 팩토리 메소드 예시**
+
+```java
+public class SpellChecker {
+
+    private final Lexicon dictionary;
+
+    public SpellChecker(Lexicon dictionary) {
+        this.dictionary = dictionary;
+    }
+
+    public static SpellChecker createForKorean() {
+        Lexicon koreanDictionary = new KoreanDictionary();
+        return new SpellChecker(koreanDictionary);
+    }
+}
+```
+
+```java
+SpellChecker spellChecker = SpellChecker.createForKorean();
+```
+
+**빌더 패턴 예시**
+
+```java
+public class SpellChecker {
+
+    private final Lexicon dictionary;
+
+    public SpellChecker(Builder builder) {
+        this.dictionary = builder.dictionary;
+    }
+
+    public static class Builder {
+
+        private Lexicon dictionary;
+
+        public Builder createDictionary(Lexicon dictionary) {
+            this.dictionary = dictionary;
+            return this;
+        }
+
+        public SpellChecker build() {
+            return new SpellChecker(this);
+        }
+    }
+}
+```
+
+```java
+Lexicon koreanDictionary = new KoreanDictionary();
+SpellChecker spellChecker = new SpellChecker.Builder()
+    .createDictionary(koreanDictionary)
+    .build();
+```
+
+이 패턴의 변형으로, 생성자에 리소스의 팩토리를 전달하는 방법도 있습니다. 팩토리란 호출 때마다 특정 타입의 인스턴스를 반복해서 만들어주는 객체로, 자바8에 들어온 `Supplier<T>` 인터페이스가 팩토리를 표현한 예로 `Supplier<T>`를 인자로 받는 메소드는 보통 `bounded wildcard type`으로 입력을 제한해야 합니다.
+
+```java
+public class SpellChecker {
+
+    private final Lexicon dictionary;
+
+    public SpellChecker(Supplier<Lexicon> dictionary) {
+        this.dictionary = dictionary.get();
+    }
+
+    public boolean isValid(String word) {
+        throw new UnsupportedOperationException();
+    }
+
+    public static void main(String[] args) {
+        Lexicon lexicon = new KoreanDictionary();
+        SpellChecker checker = new SpellChecker(new Supplier<Lexicon>() {
+            @Override
+            public Lexicon get() {
+                return lexicon;
+            }
+        });
+        checker.isValid("hello");
+    }
+}
+```
+
+예로 다음 코드는 팩토리가 생성한 타일들로 구성된 모자이크를 만드는 메소드입니다.
+
+```java
+public class Mosaic {
+
+    //변수, 생성자
+
+    public Mosaic create(Supplier<? extends Tile> tileFactory) {
+       return new Mosaic();
+    }
+}
+```
+
+의존성 주입이 유연함과 테스트 용이성을 향상시켜 주지만, 의존성이 많은 프로젝트의 경우 코드가 장황해질 수 있습니다. 이 점은 스프링 프레임워크를 사용하여 해결할 수 있습니다. `SpellChecker`클래스와 `KoreanDictionary`클래스를 스프링 빈으로 등록하고, 자바 설정 파일을 만들어 @ComponentScan을 하는 방식으로 구현하면 됩니다.
+
+요약하면 의존하는 리소스에 따라 다른 동작을 하는 클래스를 만들 때는 static 유틸리티 클래스나 싱글톤을 사용하지 않고, 생성자나 팩토리로 전달하는 의존성 주입을 사용함으로써 유연함과 재사용성, 테스트에 용이해질 수 있습니다.
+
+---
+
+## 불필요한 객체 생성을 피하라
+
+똑같은 기능의 객체를 매번 생성하기보다는 객체 하나를 재사용하는 편이 낫습니다. 재사용하면 더 빠르고, 불변객체는 항상 재사용할 수 있습니다.
+
+### 문자열 객체 생성
+
+자바에서 String을 new로 생성하게 되면 항상 새로운 겍체를 만들게 됩니다. 다음과 같이 String 객체를 생성하는 것이 올바릅니다. ([String과 new String](https://github.com/dilmah0203/TIL/blob/main/Java/String%EA%B3%BC%20new%20String.md))
+
+```java
+String s = "example";
+```
+
+문자열 리터럴을 재사용할 수 있기 때문에, 해당 자바 가상 머신 안에 같은 문자열 리터럴이 존재하면 그 리터럴을 재사용합니다.
+
+### 정적 팩토리 메소드 사용하기
+
+자바 9에서 `Deprecated`된 `Boolean(String)` 생성자 대신 `Boolean.valueOf(String)` 같은 정적 팩토리 메소드를 사용할 수 있습니다. 생성자는 호출할 때마다 새로운 객체를 만들지만, 팩토리 메소드는 그렇지 않습니다.
+
+### 생성 비용이 비싼 객체
+
+만드는 데 메모리나 시간이 오래걸리는 생성 비용이 비싼 객체가 반복해서 호출된다면 캐싱하여 재사용할 수 있습니다. 
+
+다음은 정규표현식을 활용한 예입니다. 문자열이 로마 숫자를 표현하는지 확인하는 코드입니다.
+
+```java
+static boolean isRomanNumeralSlow(String s) {
+    return s.matches("^(?=.)M*(C[MD]|D?C{0,3})"
+            + "(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
+}
+```
+
+`String.matches()`는 정규표현식으로 문자열 형태를 확인하는 방법이긴 하지만 성능이 중요한 상황에서 반복적으로 사용하기에 적절하지 않습니다. 
+
+`String.matches()`는 내부적으로 `Pattern` 객체를 만들어 쓰는데 그 객체를 만들려면 정규표현식으로 유한 상태 머신로 컴파일 하는 과정이 필요합니다. 즉 비싼 객체입니다. 성능을 개선하려면 `Pattern` 인스턴스를 직접 생성해 캐싱해두고 재사용하는 것이 좋습니다.
+
+```java
+public class RomanNumerals {
+
+    private static final Pattern ROMAN = Pattern.compile(
+            "^(?=.)M*(C[MD]|D?C{0,3})"
+                    + "(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
+
+    static boolean isRomanNumeral(String s) {
+        return ROMAN.matcher(s).matches();
+    }
+}
+```
+
+하지만 위의 코드도 문제가 있는데, 만약 `isRomanNumeral()` 메소드가 호출되지 않는다면 `ROMAN` 필드는 필요없이 만든셈이 됩니다.
+
+### 어댑터
+
+객체가 불변이라면 재사용해도 안전함이 명확합니다. 하지만 어떤 경우에는 분명하지 않은 경우가 있습니다. 어댑터를 예로 들면, 어댑터는 실제 작업은 뒷단 객체에 위임하고, 자신은 제2의 인터페이스 역할을 해주는 객체입니다. 
+
+예로 `Map` 인터페이스의 `keySet()` 메소드는 `Map` 객체 안의 키 전부를 담은 `Set`을 반환합니다. `keySet()`을 호출할 때마다 새로운 객체가 나올 것 같지만 사실 같은 객체를 리턴하기 때문에 리턴 받은 `Set` 객체를 변경하면, 결국 `Map` 객체도 변경하게 됩니다.
+
+```java
+Map<String, Integer> map = new HashMap<>();
+map.put("apple", 3);
+map.put("grape", 5);
+
+Set<String> fruit = map.keySet();
+Set<String> fruit2 = map.keySet();
+fruit.remove("apple");
+System.out.println(fruit2.size());  //1
+System.out.println(map.size());   //1
+```
+
+### 오토박싱
+
+불필요한 객체를 만들어내는 또 다른 예로 오토박싱이 있습니다. 오토박싱은 프로그래머가 `primitive type`과 해당하는 `래퍼 클래스` 객체 간에 자동으로 상호 변환해주는 기술입니다.
+
+오토박싱은 `primitive type`과 그에 대응하는 `래퍼 클래스`간의 구분을 흐려주지만, 완전히 없애주진 않습니다.
+
+```java
+private static long sum() {
+    Long sum = 0L;
+    for (long i = 0; i <= Integer.MAX_VALUE; i++) {
+        sum += i;
+    }
+
+    return sum;
+}
+```
+
+위 코드는 `sum` 변수의 타입을 `Long`으로 만들었기 때문에 불필요한 `Long` 객체를 2의 31 제곱개 만큼 만들게 됩니다. 타입을 `primitive` 타입으로 바꾸면 성능이 약 10배 이상 차이납니다.
+
+**불필요한 오토박싱을 피하려면 래퍼 클래스 보다는 primitive type을 사용해야 합니다.**
+
+하지만 방어적인 복사(데이터를 복제해 새로운 객체를 생성하여 작업을 수행하는 것)를 해야 하는 경우에는 객체를 재사용하면 심각한 버그와 보안성 문제가 생길 수 있습니다.
