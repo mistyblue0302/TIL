@@ -1219,8 +1219,6 @@ public Object pop() {
 
 스택에서 꺼낼 때 그 위치에 있는 객체를 꺼내주고 그 자리를 `null`로 설정합니다. 그렇다고 필요없는 객체를 볼 때마다 `null`로 설정할 필요는 없습니다. **객체를 `null`로 설정하는 건 예외적인 경우여야 합니다.** 필요없는 객체 래퍼런스를 정리하는 최선책은 그 래퍼런스를 가리키는 변수를 특정한 범위(스코프) 안에서만 사용하는 것입니다.(예로 로컬 변수는 해당 영역을 넘어가면 쓸모가 없어져서 GC에서 자동으로 정리됩니다.) 즉 변수를 가능한 가장 최소 범위안에서 사용하면 자연스럽게 처리될 것입니다.
 
-> 그럼 언제 래퍼런스를 `null`로 설정해야 하는가?
-
 **메모리를 직접 관리할 때**, `Stack` 구현체처럼 `elements`라는 배열을 관리하는 경우 GC는 어떤 객체가 필요없는 객체인지 알 수 없습니다. 오직 프로그래머만 `elements`에서 가용 영역과 필요없는 영역을 알 수 있습니다. 따라서 프로그래머는 해당 래퍼런스를 `null`로 만들어서 GC에게 알려줘야 합니다.
 
 **메모리를 직접 관리하는 클래스는 프로그래머가 메모리 누수를 주의해야 합니다.**
@@ -1229,9 +1227,24 @@ public Object pop() {
 
 캐시를 사용할 때에도 메모리 누수 문제를 조심해야 합니다. 객체의 래퍼런스를 캐시에 넣어 놓고 캐시를 비우는 것을 잊기 쉽습니다. 여러가지 해결책이 있지만, **캐시의 키**에 대한 래퍼런스가 캐시 밖에서 필요 없어지면 해당 엔트리를 캐시에서 자동으로 비워주는 `WeakHashMap`을 쓸 수 있습니다.
 
-또는 특정 시간이 지나면 캐시값이 의미 없어지는 경우에 백그라운드 쓰레드를 사용하거나(Scheduled ThreadPoolExecutor), 새로운 엔트리를 추가할 때 부가적인 작업으로 기존 캐시를 비우는 일을 할 수도 있습니다.(LinkedHashMap 클래스의 removeEldesEntry() 메소드)
+또는 특정 시간이 지나면 캐시값이 의미 없어지는 경우에 백그라운드 쓰레드(메인 쓰레드와 별개로 실행되는 쓰레드)를 사용하여(`ScheduledThreadPoolExecutor`) 만약 값이 더 이상 필요하지 않다고 판단되면 백그라운드 쓰레드가 해당 값을 캐시에서 제거하거나, 새로운 키-값 쌍을 추가할 때 부가적인 작업으로 기존 캐시를 비우는 일을 할 수도 있습니다.(`LinkedHashMap` 클래스의 `removeEldestEntry()` 메소드)
 
 ```java
+Map<String, Integer> cache = new LinkedHashMap<>(3, 0.75f, true) {
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<String, Integer> eldest) {
+        return size() > 3; //캐시 크기를 3으로 제한하고 가장 오래된 엔트리를 제거
+    }
+};
+
+cache.put("one", 1);
+cache.put("two", 2);
+cache.put("three", 3);
+
+System.out.println(cache);
+
+cache.put("four", 4); // 엔트리 청소
+System.out.println(cache);
 ```
 
 ### 콜백
