@@ -63,16 +63,8 @@
 * [Java 7에서 달라진 것](https://github.com/dilmah0203/TIL/blob/main/Java/Java%207%EC%97%90%EC%84%9C%20%EB%8B%AC%EB%9D%BC%EC%A7%84%20%EA%B2%83.md)
 * [Java 8에서 달라진 것](https://github.com/dilmah0203/TIL/blob/main/Java/Java%208%EC%97%90%EC%84%9C%20%EB%8B%AC%EB%9D%BC%EC%A7%84%20%EA%B2%83.md)
   * [stream vs for](https://github.com/dilmah0203/TIL/blob/main/Java/stream%20vs%20for.md)
+* [Effective Java](https://github.com/dilmah0203/TIL/blob/main/Java/Effective%20Java.md)
 
-
-## Effective Java 
-
-* [생성자 대신 정적 팩토리 메소드를 고려하라](https://github.com/dilmah0203/TIL/blob/main/Java/Static%20Factory%20Method.md)
-* [생성자에 매개변수가 많다면 빌더를 고려하라](https://github.com/dilmah0203/TIL/blob/main/Java/Builder%20Pattern.md)
-* [private 생성자나 열거 타입으로 싱글톤임을 보증하라](https://github.com/dilmah0203/TIL/blob/main/Java/Singleton.md)
-* [인스턴스화를 막으려거든 private 생성자를 사용하라](https://github.com/dilmah0203/TIL/blob/main/Java/%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%ED%99%94%EB%A5%BC%20%EB%A7%89%EC%9C%BC%EB%A0%A4%EA%B1%B0%EB%93%A0%20private%20%EC%83%9D%EC%84%B1%EC%9E%90%EB%A5%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
-* [자원을 직접 명시하지 말고 의존 객체 주입을 사용하라](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%A6%AC%EC%86%8C%EC%8A%A4%EB%A5%BC%20%EC%A7%81%EC%A0%91%20%EB%AA%85%EC%8B%9C%ED%95%98%EC%A7%80%20%EB%A7%90%EA%B3%A0%20%EC%9D%98%EC%A1%B4%20%EA%B0%9D%EC%B2%B4%20%EC%A3%BC%EC%9E%85%EC%9D%84%20%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC.md)
-* [불필요한 객체 생성을 피하라](https://github.com/dilmah0203/TIL/blob/main/Java/%EB%B6%88%ED%95%84%EC%9A%94%ED%95%9C%20%EA%B0%9D%EC%B2%B4%20%EC%83%9D%EC%84%B1%EC%9D%84%20%ED%94%BC%ED%95%98%EB%9D%BC.md)
  
 ## JSP
 * [웹 프로그래밍 기초](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%9B%B9%20%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%20%EA%B8%B0%EC%B4%88.md)
