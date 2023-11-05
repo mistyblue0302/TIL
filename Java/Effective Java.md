@@ -1162,3 +1162,88 @@ private static long sum() {
 ---
 
 ## 다 쓴 객체 참조를 해제하라
+
+### 메모리를 직접 관리
+
+자바는 GC가 있기 때문에 메모리 관리에 더 이상 신경 쓰지 않아도 된다고 생각하기 쉽지만 그렇지 않습니다.
+
+```java
+public class Stack {
+
+    private Object[] elements;
+
+    private int size = 0;
+
+    private static final int DEFAULT_INITIAL_CAPACITY = 16;
+
+    public Stack() {
+        this.elements = new Object[DEFAULT_INITIAL_CAPACITY];
+    }
+
+    public void push(Object e) {
+        this.ensureCapacity();
+        this.elements[size++] = e;
+    }
+
+    public Object pop() {
+        if (size == 0) {
+            throw new EmptyStackException();
+        }
+
+        return this.elements[--size];
+    }
+
+    private void ensureCapacity() {
+        if (this.elements.length == size) {
+            this.elements = Arrays.copyOf(elements, 2 * size + 1);
+        }
+    }
+}
+```
+
+스택에서 계속 쌓다가 `pop()`을 여러 번 실행했다고 했을 때, 그래도 스택이 차지하고 있는 메모리는 줄어들지 않습니다. 이유는 저 스택의 구현체는 필요없는 객체들에 대한 참조를 그대로 가지고 있기 때문입니다. 가용한 범위는 `size` 보다 작은 부분이고 그 값 보다 큰 부분에 있는 값들은 필요없이 메모리를 차지하고 있습니다.
+
+다음과 같이 코드를 수정할 수 있습니다.
+
+```java
+public Object pop() {
+    if (size == 0) {
+        throw new EmptyStackException();
+    }
+
+    Object result = elements[--size];
+    elements[size] = null;  //다 쓴 참조 해제
+    return result;
+}
+```
+
+스택에서 꺼낼 때 그 위치에 있는 객체를 꺼내주고 그 자리를 `null`로 설정합니다. 그렇다고 필요없는 객체를 볼 때마다 `null`로 설정할 필요는 없습니다. **객체를 `null`로 설정하는 건 예외적인 경우여야 합니다.** 필요없는 객체 래퍼런스를 정리하는 최선책은 그 래퍼런스를 가리키는 변수를 특정한 범위(스코프) 안에서만 사용하는 것입니다.(예로 로컬 변수는 해당 영역을 넘어가면 쓸모가 없어져서 GC에서 자동으로 정리됩니다.) 즉 변수를 가능한 가장 최소 범위안에서 사용하면 자연스럽게 처리될 것입니다.
+
+> 그럼 언제 래퍼런스를 `null`로 설정해야 하는가?
+
+**메모리를 직접 관리할 때**, `Stack` 구현체처럼 `elements`라는 배열을 관리하는 경우 GC는 어떤 객체가 필요없는 객체인지 알 수 없습니다. 오직 프로그래머만 `elements`에서 가용 영역과 필요없는 영역을 알 수 있습니다. 따라서 프로그래머는 해당 래퍼런스를 `null`로 만들어서 GC에게 알려줘야 합니다.
+
+**메모리를 직접 관리하는 클래스는 프로그래머가 메모리 누수를 주의해야 합니다.**
+
+### 캐시
+
+캐시를 사용할 때에도 메모리 누수 문제를 조심해야 합니다. 객체의 래퍼런스를 캐시에 넣어 놓고 캐시를 비우는 것을 잊기 쉽습니다. 여러가지 해결책이 있지만, **캐시의 키**에 대한 래퍼런스가 캐시 밖에서 필요 없어지면 해당 엔트리를 캐시에서 자동으로 비워주는 `WeakHashMap`을 쓸 수 있습니다.
+
+또는 특정 시간이 지나면 캐시값이 의미 없어지는 경우에 백그라운드 쓰레드를 사용하거나(Scheduled ThreadPoolExecutor), 새로운 엔트리를 추가할 때 부가적인 작업으로 기존 캐시를 비우는 일을 할 수도 있습니다.(LinkedHashMap 클래스의 removeEldesEntry() 메소드)
+
+```java
+```
+
+### 콜백
+
+```java
+```
+
+
+
+
+
+
+
+
+
