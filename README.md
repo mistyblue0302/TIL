@@ -28,6 +28,7 @@
 
 ## Java
 * [JVM](https://github.com/dilmah0203/TIL/blob/main/Java/JVM.md)
+* [Heap vs Stack](https://github.com/dilmah0203/TIL/blob/main/Java/%ED%9E%99%20vs%20%EC%8A%A4%ED%83%9D.md)
 * [BigInteger와 BigDecimal](https://github.com/dilmah0203/TIL/blob/main/Java/BigInteger%EC%99%80%20BigDecimal.md)
 * [Primitive Type vs Reference Type
 ](https://github.com/dilmah0203/TIL/blob/main/Java/Primitive%20Type%20vs%20Reference%20Type.md)
