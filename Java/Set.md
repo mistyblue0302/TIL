@@ -2,6 +2,7 @@
 
 - **Set**은 입력 순서대로의 **저장 순서를 보장하지 않는다.** 따라서 데이터의 존재 유무를 확인하기 위한 용도로 사용한다. 
 - **데이터를 중복해서 저장할 수 없기 때문에** 같은 값을 저장하면 마지막에 저장한 값만 저장된다.
+- 요소의 검색, 추가, 삭제에 평균 O(1)의 시간복잡도를 가진다.
 
 ```java
 Set<String> set = new HashSet<>();
@@ -22,7 +23,7 @@ Set을 구현한 클래스는 3가지가 있다.
 
 ### HashSet
 
-HashSet의 경우 Hash 알고리즘 기반으로 동작한다.
+HashSet의 경우 내부적으로 HashMap을 사용하여 데이터를 저장한다.
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/HashSet.png)
 
@@ -30,8 +31,6 @@ HashSet의 경우 Hash 알고리즘 기반으로 동작한다.
 - 이미 저장되어 있는 객체들의 해시 코드 값과 비교하여 동일한 해시 코드가 있다면, equals() 메소드로 두 객체를 비교 후 true면 저장하지 않는다.
 
 ![img2](https://github.com/dilmah0203/TIL/blob/main/Image/HashSet2.png)
-
-HashSet 객체를 만들면 내부적으로 HashMap 객체를 만들어서 사용한다. 
 
 HashMap은 **initialCapacity(기본 초기 용량) = 16, load factor = 0.75**로, 각 bucket은 해시 코드 값에 해당한다. **load factor**란, 데이터의 개수 / 저장공간으로 데이터의 개수가 증가하여 원래 load factor의 값보다 커지면 bucket을 두 배 크기로 늘리고 모든 요소가 새 bucket으로 재할당된다.
 
@@ -43,7 +42,7 @@ add() 메소드를 통해 요소들을 넣은 순서대로 연결한다. Set임�
 
 ### TreeSet
 
-이진트리의 향상된 버전인 Red-Black Tree를 기반으로 만들어진다. HashSet과 마찬가지로 중복 저장하지 않지만 저장된 데이터의 값에 따라 오름차순으로 **정렬**된다. 정렬 과정 때문에 HashSet보다 성능이 느리다.
+이진트리의 향상된 버전인 Red-Black Tree를 기반으로 만들어진다. HashSet과 마찬가지로 중복 저장하지 않지만 저장된 데이터의 값에 따라 오름차순으로 **정렬**된다. 정렬 과정 때문에 HashSet보다 성능이 느리다. 요소의 추가 및 삭제에 O(logn)의 시간 복잡도를 가진다.
 
 ![img3](https://github.com/dilmah0203/TIL/blob/main/Image/TreeSet.png)
 
