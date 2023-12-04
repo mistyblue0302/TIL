@@ -233,50 +233,9 @@ public class UserService {
   - 이 때 일치하는 항목이 1개라면 : 찾고 있는 의존성을 주입
   - 일치하는 항목이 2개 이상일 경우 : @Primary나 @Qualifier를 사용할 수 있다.
 - 코드가 간결하다는 장점이 있지만 테스트하기 어렵다.
-  - 아래 코드에서 UserService는 필드 주입을 통해 UserRepository를 주입받고 있다. 그러나 테스트 중에 userRepository를 쉽게 변경하거나 목 객체(Mock Object)로 교체하기가 어렵다.
-    
-```java
-public interface UserRepository {
-    String getUserName();
-}
-
-public class UserService {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    public String getUserInfo() {
-        String userName = userRepository.getUserName();
-        return "User Info: " + userName;
-    }
-}
-```
-
-```java
-public class RealUserRepository implements UserRepository {
-
-    @Override
-    public String getUserName() {
-        // 실제 데이터를 가져오는 로직
-        return "Real User";
-    }
-}
-```
-
-```java
-public class UserTest {
-
-    @Test
-    public void testWithRealRepository() {
-        UserService userService = new UserService();
-
-        //어떻게 userRepository를 주입 또는 변경할 수 있을까?
-        String result = userService.getUserInfo();
-        assertEquals("User Info: Real User", result);
-    }
-}
-```
-
+ - 필드 주입의 경우 이후 스프링 없이 자바 코드 만으로 테스트 케이스를 작성할 때, 해당 코드의 필드 부분을 변경할 수 있는 방법이 없다. 예를 들어 서비스를 테스트 해야 하는데, 레포지토리를 메모리 레포지토리로 설정할지, 아니면 더미 레포지토리 같은 걸 만들어서 테스트 해야 하는데, 해당 필드를 쉽게 교체할 수 없다.
+ - 스프링 프레임워크와 같이 의존성 주입을 통해 객체를 교체하거나 변경(ex. @Profile을 사용해 특정 환경에서만 빈을 정의)하지 않으면 테스트가 어렵다.
+   
 ### setter 주입
 
 ```java
