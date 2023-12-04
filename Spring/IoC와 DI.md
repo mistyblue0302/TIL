@@ -232,6 +232,50 @@ public class UserService {
 - 애플리케이션 컨텍스트는 일치하는 의존성을 검색한다.
   - 이 때 일치하는 항목이 1개라면 : 찾고 있는 의존성을 주입
   - 일치하는 항목이 2개 이상일 경우 : @Primary나 @Qualifier를 사용할 수 있다.
+- 코드가 간결하다는 장점이 있지만 테스트하기 어렵다.
+  - 아래 코드에서 UserService는 필드 주입을 통해 UserRepository를 주입받고 있다. 그러나 테스트 중에 userRepository를 쉽게 변경하거나 목 객체(Mock Object)로 교체하기가 어렵다.
+    
+```java
+public interface UserRepository {
+    String getUserName();
+}
+
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public String getUserInfo() {
+        String userName = userRepository.getUserName();
+        return "User Info: " + userName;
+    }
+}
+```
+
+```java
+public class RealUserRepository implements UserRepository {
+
+    @Override
+    public String getUserName() {
+        // 실제 데이터를 가져오는 로직
+        return "Real User";
+    }
+}
+```
+
+```java
+public class UserTest {
+
+    @Test
+    public void testWithRealRepository() {
+        UserService userService = new UserService();
+
+        //어떻게 userRepository를 주입 또는 변경할 수 있을까?
+        String result = userService.getUserInfo();
+        assertEquals("User Info: Real User", result);
+    }
+}
+```
 
 ### setter 주입
 
@@ -255,7 +299,7 @@ public class UserService {
 ```
 
 - 필드 값을 변경하는 setter를 통해서 의존 관계를 주입하는 방법
-- setter 주입은 생성자 주입과 다르게 주입받는 객체가 변경될 가능성이 있는 경우나 의존성을 선택적으로 주입할 때 사용한다.
+- setter 주입은 public으로 열려 있어 주입받는 객체가 변경될 가능성이 있기 때문에 불변성을 확보하기 어렵다.
 
 ### 생성자 주입
 
