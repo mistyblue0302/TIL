@@ -1,6 +1,6 @@
 ## REST API
 
-**REST**란 서버와 클라이언트 간 통식 방식 중 하나로, **표현에 의한 상태 전달**(Representational State Transfer)이라는 뜻을 가지고 있다. 자원을 이름으로 구분하여 상태를 주고받는 것을 뜻한다.
+**REST**란 서버와 클라이언트 간 통신 방식 중 하나로, **표현에 의한 상태 전달**(Representational State Transfer)이라는 뜻을 가지고 있다. 자원을 이름으로 구분하여 상태를 주고받는 것을 뜻한다.
 
 API(Application Programming Interface)는 서로 다른 프로그램 간에 정보를 주고받을 때 사용하는 규약을 정의한 것으로, REST API란 REST 아키텍처 스타일을 따르는 API라고 정의할 수 있다. 아키텍처 스타일은 제약조건의 집합을 말한다.
 
