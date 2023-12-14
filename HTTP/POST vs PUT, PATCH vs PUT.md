@@ -35,7 +35,7 @@ Content-Type: application/json
 - **클라이언트가 리소스를 식별**
   - 클라이언트가 리소스 위치를 알고 URI를 지정한다.
 - PUT는 멱등하다. PUT request로는 새로운 정보가 계속해서 생성되지 않는다. 
-- POST Request의 Response는 Caching 할 수 없다.
+- PUT Request의 Response는 Caching 할 수 없다.
 
 ## PATCH vs PUT
 
