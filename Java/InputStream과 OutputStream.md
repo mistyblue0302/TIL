@@ -1,10 +1,8 @@
-# 💡 **InputStream과 OutputStream**
+## InputStream과 OutputStream
 
 자바의 I/O는 기본적으로 InputStream과 OutputStream이라는 abstract 클래스를 통해 제공된다. 데이터를 읽을 때에는 InputStream의 자식 클래스를 통해 읽고, 데이터를 쓸 때에는 OutputStream의 자식 클래스를 통해 쓴다. InputStream과 OutputStream은 byte를 다루기 위한 클래스이다.
 
-<br>
-
-**InputStream**
+### InputStream
 
 ```java
 public abstract class InputStream
@@ -16,9 +14,7 @@ InputStream클래스는 Closeable 인터페이스를 구현했으며, 이 인터
 
 데이터를 읽을 때는 read() 메소드를 사용하며 유일한 abstract 메소드다.
 
-<br>
-
-**OutputStream**
+### OutputStream
 
 ```java
 public abstract class OutputStream
