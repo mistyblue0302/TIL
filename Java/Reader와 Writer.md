@@ -1,4 +1,4 @@
-# 💡 **Reader와 Writer**
+## Reader와 Writer
 
 Reader와 Writer은 **char** 기반의 문자열을 처리하기 위한 클래스이다.
 
