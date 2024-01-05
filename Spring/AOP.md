@@ -46,14 +46,14 @@ public class UserService {
 	}
 
 	//비즈니스 로직을 메소드로 분리
-    private void upgradeLevelsInternal() {
-        List<User> users = userDao.getAll();
-        for (User user : users) {
-            if (canUpgradeLevel(user)) {
-                upgradeLevel(user);
-            }
-        }
-    }
+	private void upgradeLevelsInternal() {
+        	List<User> users = userDao.getAll();
+        	for (User user : users) {
+            		if (canUpgradeLevel(user)) {
+                		upgradeLevel(user);
+            		}
+        	}
+    	}
 }
 ```
 
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 	}
-   }
+}
 ```
 
 ```java
@@ -115,7 +115,7 @@ public class UserServiceTx implements UserService {
 }
 ```
 
-## 트랜잭션 적용을 위한 DI 설정
+### 트랜잭션 적용을 위한 DI 설정
 
 클라이언트가 UserService라는 인터페이스를 통해 사용자 관리 로직을 이용하려고 할 때 먼저 트랜잭션을 담당하는 오브젝트가 사용돼서 트랜잭션에 관련된 작업을 진행해주고, 실제 사용자 관리 로직을 담은 오브젝트가 이후에 호출돼서 비즈니스 로직에 관련된 작업을 수행하도록 만든다.
 
@@ -128,9 +128,9 @@ public class UserServiceTx implements UserService {
 
 ## 고립된 단위 테스트
 
-가장 편하고 좋은 테스트 방법은 가능한 한 작은 단위로 쪼개서 테스트 하는 것이다. 작은 단위의 테스트가 좋은 이유는 테스트가 실패했을 때 그 원인을 찾기 쉽기 떄문이다.
+가장 편하고 좋은 테스트 방법은 가능한 한 작은 단위로 쪼개서 테스트 하는 것이다. 작은 단위의 테스트가 좋은 이유는 테스트가 실패했을 때 그 원인을 찾기 쉽기 떄문이다. 반대로 테스트에서 오류가 발견됐을 때 그 테스트가 진행되는 동안 실행된 코드의 양이 많다면 그 원인을 찾기가 매우 힘들어질 수 있다.
 
-하지만 UserServiceTest는 UserDao, TransactionManager, MailSender라는 세가지 의존관계를 갖고있다. 따라서 그 세 가지 의존관계를 갖는 오브젝트들이 테스트가 진행되는 동안에 같이 실행된다. UserService를 테스트하는 것처럼 보이지만 사실은 그 뒤에 존재하는 훨씬 더 많은 오브젝트와 환경, 서비스, 서버, 심지어 네트워크까지 함께 테스트하는 셈이 된다.
+하지만 UserServiceTest는 UserDao, TransactionManager, MailSender라는 세가지 의존관계를 갖고있다. 따라서 그 세 가지 의존관계를 갖는 오브젝트들이 테스트가 진행되는 동안에 같이 실행된다. 더 큰 문제는 그 세 가지 의존 오브젝트도 자신의 코드만 실행하고 마는 게 아니라는 점이다. UserService를 테스트하는 것처럼 보이지만 사실은 그 뒤에 존재하는 훨씬 더 많은 오브젝트와 환경, 서비스, 서버, 심지어 네트워크까지 함께 테스트하는 셈이 된다.
 
 ## 테스트 대상 오브젝트 고립시키기
 
