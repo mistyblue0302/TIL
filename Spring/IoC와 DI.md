@@ -17,15 +17,18 @@
 
 ## 2. IoC 컨테이너의 종류
  
-**BeanFactory**
-
- BeanFactory 인터페이스를 구현한 클래스는 단순히 컨테이너에서 객체를 생성하고 DI를 처리하는 기능만 제공한다. Bean을 등록, 생성, 조회, 반환 관리를 한다. Bean을 조회할 수 있는 getBean() 메소드가 정의되어 있다.
+- **BeanFactory**
+  - 스프링 컨테이너의 최상위 인터페이스
+  - 빈을 관리하고 조회하는 역할을 담당
+  - `getBean()` 메소드를 제공한다.
  
-**ApplicationContext**
+- **ApplicationContext**
+  - BeanFactory를 상속받고 있기 때문에 빈을 등록, 생성, 조회, 반환 관리하는 기능은 BeanFactory와 같다.
+  - 그러면 둘의 차이가 뭘까?
+  - BeanFactory외에도 다양한 인터페이스들을 구현하고 있기 때문에 메시지, 프로필, 환경 변수와 같은 더 많은 기능을 제공한다.
+  - 스프링은 ApplicationContext을 통해 빈 관리기능 + 편리한 부가기능을 제공한다.
 
-BeanFactory를 상속받고 있기 때문에 Bean을 등록, 생성, 조회, 반환 관리하는 기능은 BeanFactory와 같다. 또한 BeanFactory 외에도 다양한 클래스들을 상속받고 있기 때문에 메시지, 프로필, 환경 변수와 같은 더 많은 기능을 제공한다. 스프링은 ApplicationContext을 통해 Bean을 관리한다.
-
-- GenericApplicationContext : 일반적인 애플리케이션 컨택스트이다. 외부 파일(XML 등)로부터 빈 설정 메타정보를 전달받아 사용한다.
+**GenericApplicationContext** : 일반적인 애플리케이션 컨택스트이다. 외부 파일(XML 등)로부터 빈 설정 메타정보를 전달받아 사용한다.
 
 ```java
 GenericApplicationContext context = new GenericApplicationContext();
@@ -38,20 +41,7 @@ Hello hello = context.getBean(Hello.class);
 hello.hi();
 ```
 
-XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationContext 이용하도록 하여 Hello bean을 사용하게 만든 코드이다. JUnit 테스트에서 생성되는 Application Context가 GenericApplicationContext이다.
-
-- WebApplicationContext :  스프링에서 가장 많이 활용하는 애플리케이션 컨텍스트로 웹 환경에서 사용할 때 필요한 기능이 추가된 애플리케이션 컨텍스트이다. Java 어노테이션 설정을 이용하도록 구현된 AnnotationConfigWebApplicationContext도 있다.
-
-다음 그림은 웹 환경에서 스프링 빈으로 이뤄진 애플리케이션이 동작하는 구조다.
-
-![img](https://github.com/dilmah0203/TIL/blob/main/Image/WebApplicationContext.png)
-
-서블릿 컨테이너가 브라우저로부터 오는 HTTP 요청을 받아 해당 요청에 매핑되어 있는 서블릿을 실행해주는 방식으로 동작한다.
-
-- 서블릿은 웹 애플리케이션이 시작될 때 미리 만들어둔 웹 애플리케이션 컨텍스트에게 빈 오브젝트로 구성된 애플리케이션의 기동 역할을 해줄 빈을 요청해서 받아둔다.
-- 그리고 미리 지정된 메소드를 호출함으로써 스프링 컨테이너가 DI 방식으로 구성해둔 애플리케이션의 기능이 시작되는 것이다.
-
-스프링은 이런 웹 환경에서 애플리케이션 컨텍스트를 생성하고 설정 메타 정보로 초기화해주고, 클라이언트로부터 들어오는 요청마다 적절한 빈을 찾아서 이를 실행해주는 기능을 가진 [DispatcherServlet](https://github.com/dilmah0203/TIL/blob/main/JSP/%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80.md#dispatcher-servlet%EB%94%94%EC%8A%A4%ED%8C%A8%EC%B2%98-%EC%84%9C%EB%B8%94%EB%A6%BF%EC%9D%B4%EB%9E%80)이라는 이름의 서블릿을 제공한다.
+XML 설정정보 리더인 XmlBeanDefinitionReader를 통해 GenericApplicationContext 이용하도록 하여 Hello bean을 사용하게 만든 코드이다. 
 
 ## 3. IoC 컨테이너 계층구조
 
