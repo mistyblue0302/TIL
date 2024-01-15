@@ -347,30 +347,191 @@ Hello proxiedHello = (Hello)Proxy.newProxyInstance(
     new UppercaseHandler(new HelloTarget()));
 ```
 
+## 다이내믹 프록시의 확장
 
+위 코드를 다른 메소드도 사용이 가능하게끔 변경해보자.
 
+```java
+public class UppercaseHandler implements InvocationHandler {
+    // 어떤 종류의 인터페이스를 구현한 타깃에도 적용 가능하도록 Object 타입으로 수정
+    Object target;
+    private UppercaseHandler(Object target) {
+        this.target = target;
+    }
+    
+    public Object invoke(Object proxy, Method method, Object[] args) thorws Throwable {
+        // 호출된 메소드의 리턴 타입이 String인 경우만 대문자 변경 기능을 적용하도록 조건문 설정
+        Object ret = method.invoke(target, args);
+        if (Ret instanceof String) {
+            return ((String)ret).toUpperCase();
+        } else {
+            return ret;
+        }
+    }
+}
+```
 
+## 다이내믹 프록시를 위한 트랜잭션 부가기능
 
+```java
+public class TransactionHandler implements InvocationHandler {
 
+	Object target; // 부가기능(트랜잭션)을 제공할 타깃, Object로 선언함으로써 모든 타입 적용 가능
+	PlatformTransactionManager transactionManager; // 트랜잭션 기능을 제공하는 데 필요한 트랜잭션 매니저
+	String pattern; // 트랜잭션을 적용할 메소드 이름 패턴
 
+	...
 
+	public Object invoke(Object proxy, Method method, Object[] args)
+			throws Throwable {
+		if (method.getName().startsWith(pattern)) { // 트랜잭션을 적용할 메소드면 적용하도록
+			return invokeInTransaction(method, args);
+		} else {
+			return method.invoke(target, args);
+		}
+	}
 
+	private Object invokeInTransaction(Method method, Object[] args)
+			throws Throwable {
+		TransactionStatus status = this.transactionManager
+				.getTransaction(new DefaultTransactionDefinition());
+		try {
+            		// 트랜잭션을 시작하고 타깃 오브젝트의 메소드를 호출, 예외발생하지 않으면 커밋
+			Object ret = method.invoke(target, args);
+			this.transactionManager.commit(status);
+			return ret;
+		} catch (InvocationTargetException e) {
+			this.transactionManager.rollback(status); // 예외발생시 롤백
+			throw e.getTargetException();
+		}
+	}
+}
+```
 
+요청을 위임할 타깃을 DI로 제공받도록 한다. 타깃을 저장할 변수는 Object로 선언했다. 따라서 트랜잭션 적용이 필요한 어떤 타깃 오브젝트에도 적용할 수 있다.
 
+그리고 모든 오브젝트에 트랜잭션이 적용되지 않도록 특정 패턴을 설정해 패턴으로 시작된 메소드만 트랜잭션 기능을 수행하도록 한다.
 
+이를 사용하는 테스트코드는 다음과 같다.
 
+```java
+@Test
+public void upgradeAllOrNothing() throws Exception {
+    ...
+    TransactionHandler txHandler = new TransactionHandler();
+    txHandler.setTarget(testUserService);
+    txHandler.setTransactionManager(transactionManager);
+    txHandler.setPattern("upgradeLevels");
+    UserService txUSerService = (UserService)Proxy.newProxyInstance(getClass().getClassLoader(), new Class[] {UserService.class }, txHandler);
+    ...
+}
+```
 
+이제 위에서 만든 TransactionHandler와 다이내믹 프록시를 스프링의 DI를 통해 사용할 수 있도록 만들어야 할 차례다.
 
+### 다이내믹 프록시를 위한 팩토리 빈
 
+그런데 문제는 DI의 대상이 되는 다이내믹 프록시 오브젝트는 일반적인 스프링의 빈으로는 등록할 방법이 없다는 점이다. 스프링의 빈은 기본적으로 이름과 프로퍼티로 정의된다. 스프링은 내부적으로 리플렉션 API를 이용해서 빈 정의에 나오는 클래스 이름을 가지고 빈 오브젝트를 생성한다. 하지만 다이내믹 프록시 오브젝트는 이런식으로 프록시 오브젝트를 사용하지 않는다.
 
+클래스 자체도 내부적으로 다이내믹하게 새로 정의해서 사용하기 때문에 다이내믹 프록시 오브젝트의 클래스가 어떤 것인지도 알 수도 없다. 따라서 사전에 프록시 오브젝트의 클래스 정보를 미리 알아내서 스프링의 빈에 정의할 방법이 없다.
 
+다이내믹 프록시는 Proxy 클래스의 newProxtInstance() 라는 스태틱 메소드를 통해서만 만들 수 있다.
 
+### 팩토리 빈
 
+스프링은 클래스 정보를 가지고 디폴트 생성자를 통해 오브젝트를 만드는 방법 외에도 여러가지 방법을 제공한다. 대표적으로 팩토리 빈 생성 방법을 들 수 있다.
 
+**팩토리 빈이란 스프링을 대신해서 오브젝트의 생성로직을 담당하도록 만들어진 특별한 빈을 말한다.**
 
+팩토리 빈을 만드는 방법은 여러가지가 있지만, 가장 간단한 방법은 스프링의 FactoryBean이라는 인터페이스를 구현하는 것이다. FactoryBean 인터페이스는 다음의 세가지 메소드로 구현되어 있다.
 
+```java
+package org.springframework.beans.factory;
 
+public interface FactoryBean<T> {
+    T getObject() throws Exception; // 빈 오브젝트를 생성해서 돌려준다.
+    Class<? extends T> getObjectType(); // 생성되는 오브젝트의 타입을 알려준다.
+    boolean isSingleton(); // getObject()가 돌려주는 오브젝트가 항상 같은 싱글톤 오브젝트인지 알려준다.
+}
+```
 
+### 다이내믹 프록시를 만들어주는 팩토리 빈
+
+- `Proxy` 클래스의 `newProxyInstance()`를 통해서만 생성이 가능한 다이내믹 프록시 오브젝트는 일반적인 방법으로는 스프링 빈으로 등록할 수 없다.
+- 대신 팩토리 빈을 사용하면 다이내믹 프록시 오브젝트를 스프링의 빈으로 만들어줄 수가 있다.
+  - 팩토리 빈의 `getObject()` 메소드에 다이내믹 프록시 오브젝트를 만들어주는 코드를 넣으면 된다.
+  
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Dynamic%20Proxy5.png)
+
+스프링 빈에는 팩토리 빈과 UserServiceImpl만 빈으로 등록한다. 팩토리 빈은 다이내믹 프록시가 위임할 타깃 오브젝트인 UserServiceImpl에 대한 레퍼런스를 프로퍼티를 통해 DI 받아둬야 한다. 다이내믹 프록시와 함께 생성할 TransactionHandler에게 타깃 오브젝트를 전달해줘야 하기 때문이다. 그 외에도 다이내믹 프록시나 Transactionhandler를 만들 때 필요한 정보는 팩토리 빈의 프로퍼티로 설정해뒀다가 다이내믹 프록시를 만들면서 전달해줘야 한다.
+
+다이내믹 프록시를 직접 만들어서 UserServoice에 적용해봤던 upgradeAllOrNothing() 테스트 코드를 팩토리 빈을 만들어서 getObject() 안에 넣어주기만 하면 된다.
+
+### 트랜잭션 프록시 팩토리 빈
+
+```java
+public class TxProxyFactoryBean implements FactoryBean<Object> {
+
+	Object target;
+	PlatformTransactionManager transactionManager;
+	String pattern;
+	Class<?> serviceInterface; // 다이내믹 프록시를 생성할 떄 필요하다. UserService 외의 인터페이스를 가진 타깃에도 적용할 수 있다. 
+	
+	public void setTarget(Object target) {
+		this.target = target;
+	}
+
+	public void setTransactionManager(PlatformTransactionManager transactionManager) {
+		this.transactionManager = transactionManager;
+	}
+
+	public void setPattern(String pattern) {
+		this.pattern = pattern;
+	}
+
+	public void setServiceInterface(Class<?> serviceInterface) {
+		this.serviceInterface = serviceInterface;
+	}
+
+	// FactoryBean 인터페이스 구현 메소드
+	public Object getObject() throws Exception { // DI 받은 정보를 이용해서 TransactionHandler를 사용하는 다이내믹 프록시를 생성한다. 
+		TransactionHandler txHandler = new TransactionHandler();
+		txHandler.setTarget(target);
+		txHandler.setTransactionManager(transactionManager);
+		txHandler.setPattern(pattern);
+		return Proxy.newProxyInstance(
+			getClass().getClassLoader(),new Class[] { serviceInterface }, txHandler);
+	}
+
+	public Class<?> getObjectType() {
+        // 팩토리 빈이 생성하는 오브젝트 타입은 DI 받은 인터페이스 타입에 따라 달라진다. 따라서 다양한 타입의 프록시 오브젝트 생성에 재사용 할 수 있다. 
+		return serviceInterface;
+	}
+
+	public boolean isSingleton() {
+        // getObject() 가 매번 같은 오브젝트를 리턴하지 않는다는 의미.
+		return false;
+	}
+}
+```
+
+## 프록시 팩토리 빈 방식의 장점과 한계
+
+### 장점
+
+- 프록시 팩토리 빈의 재사용
+  - 한 번 부가기능을 가진 프록시를 생성하는 팩토리 빈을 만들어두면 타깃의 타입에 상관없이 재사용할 수 있다.
+- 다이내믹 프록시를 이용하면 타깃 인터페이스를 구현하는 클래스를 일일이 만드는 번거로움이 제거
+- 하나의 핸들러 메소드를 구현하는 것만으로도 수많은 메소드에 부가기능을 부여해줄 수 있으니 부가기능 코드의 중복 문제 해결
+  - 다이내믹 프록시에 팩토리 빈을 이용한 DI까지 더하면 다이내믹 프록시 생성 코드도 제거 가능
+
+### 한계
+
+- 프록시를 통해 타깃에 부가기능을 제공하는 것은 메소드 단위로 일어남 -> 여러개의 클래스에 공통적인 부가기능을 제공하는 일이 불가능함
+- 하나의 타깃에 여러 개의 부가기능을 적용하려고 할 때도 문제임 프록시 팩토리 빈 설정이 부가기능의 개수만큼 따라 붙어야 함
+- TransactionHandler 오브젝트가 프록시 팩토리 빈 개수만큼 만들어짐. 같은 기능을하는 오브젝트이지만 다 다르게 생성이 됨
+
+---
 
 
 
