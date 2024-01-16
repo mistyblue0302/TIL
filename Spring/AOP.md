@@ -581,14 +581,41 @@ MethodInterceptor 오브젝트는 여러 프록시가 공유해서 사용할 수
   - 프록시는 포인트컷으로부터 부가기능을 적용할 대상 메소드인지 확인받으면, `MethodInterceptor` 타입의 어드바이스를 호출한다.
   - 어드바이스는 JDK의 다이내믹 프록시의 `InvocationHandler`와 달리 직접 타깃을 호출하지 않는다.
 
+어드바이스가 일종의 템플릿이 되고 타깃을 호출하는 기능을 갖고 있는 MethodInvocation 오브젝트가 콜백이 되는 것이다.
 
+- 템플릿은 한 번 만들면 재사용이 가능하고 여러 빈이 공유해서 사용할 수 있듯이, 어드바이스도 독립적인 싱글톤 빈으로 등록하고 DI를 주입해서 여러 프록시가 사용하도록 만들 수 있다.
+  - **프록시로부터 어드바이스와 포인트컷을 독립시키고 DI를 사용하게 한 것은 전형적인 전략 패턴 구조다.**
+ 
+포인트 컷까지 적용된 ProxyFactoryBean 을 사용하는 테스트 코드를 살펴보
 
+```java
+@Test
+public void pointcutAdvisor() {
+    ProxyFactoryBean pfBean = new ProxyFactoryBean();
+    pfBean.setTarget(new HelloTarget());
+    
+    // 메소드 이름을 비교해서 대상을 선정하는 알고리즘을 제공하는 포인트컷 생성
+    NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
+    // 이름 비교조건 설정. sayH로 시작하는 모든 메소드를 선택하게 한다.
+    pointcut.setMappedName("syaH*");
+    
+    // 포인트컷과 어드바이스를 advisor로 묶어서 한 번에 추가
+    pfBean.addAdvisor(new DefaultPointcutAdvisor(pointcut, new UppercaseAdvice()));
+    
+    Hello proxiedHello = (Hello) pfBean.getObject();
+    
+    assertThat(proxiedHello.sayHello("Toby"), is("HELLO TOBY"));
+    assertThat(proxiedHello.sayHi("Toby"), is("HI TOBY"));
+	assertThat(proxiedHello.sayThankYou("Toby"), is("Thank You Toby"));
+}
+```
 
+- 여러 개의 어드바이스와 포인트컷이 추가될 수 있다.
+- 어떤 어드바이스(부가 기능)에 대해 어떤 포인트컷(메소드 선정)을 적용할지 애매해지기 때문에 둘을 묶은 Advisor 오브젝트로 등록한다.
 
+이 둘을 Advisor 타입의 오브젝트에 담아서 조합을 만들어 등록하는 것이다. 여러 개의 어드바이스가 등록되더라도 각각 다른 포인트컷과 조합될 수 있기 때문에 각기 다른 메소드 선정 방식을 적용할 수 있다. 이렇게 어드바이스와 포인트 컷을 묶은 오브젝트를 인터페이스 이름을 따서 어드바이저라고 부른다.
 
-
-
-
+어드바이저 = 포인트컷(메소드 선정 알고리즘) + 어드바이스(부가기능)
 
 
 
