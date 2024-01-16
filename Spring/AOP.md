@@ -617,9 +617,35 @@ public void pointcutAdvisor() {
 
 어드바이저 = 포인트컷(메소드 선정 알고리즘) + 어드바이스(부가기능)
 
+### 어드바이스와 포인트 컷의 재사용
 
+```xml
+<bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target" ref="userServiceImpl"/>
+    <property name="interceptorNames">
+        <list>
+            <value>transactionAdvisor</value>
+        </list>
+    </property>
+</bean>
+<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+    <property name="advice" ref="transactionAdvice"/>
+    <property name="pointcut" ref="transactionPointcut"/>
+</bean>
+<bean id="transactionAdvice" class="springbook.service.TransactionAdvice">
+    <property name="transactionManager" ref="transactionManager"/>
+</bean>
+<bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+    <property name="mappedName" value="upgrade*"/>
+</bean>
+```
 
+![img](https://github.com/dilmah0203/TIL/blob/main/Image/Advice.png)
 
+- ProxyFactoryBean은 DI와 템플릿/콜백 패턴, 서비스 추상화 등의 기법이 모두 적용된 것이다.
+  - 독립적이고, 여러 프록시가 공유할 수 있는 어드바이스와 포인트컷으로 확장 기능을 분리한다.
+- 과거에 Proxy를 서비스별로 일일이 만들어주던 번거로움이 크게 해소된다.
+  - 어드바이스와 포인트컷 및 그에 따른 조합 어드바이저를 싱글톤 Bean으로 등록해두고 재사용한다.
 
 
 
