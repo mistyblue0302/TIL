@@ -51,7 +51,7 @@
 
 ### 3. **기본 객체**
 
-    웹 어플리캐이션 프로그래밍을 하는 데 필요한 기능을 제공해준다. 기본 객체로는 request, response, session 등이 있다.
+    웹 어플리케이션 프로그래밍을 하는 데 필요한 기능을 제공해준다. 기본 객체로는 request, response, session 등이 있다.
     
   - request 기본 객체
     
