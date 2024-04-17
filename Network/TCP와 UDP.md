@@ -123,6 +123,9 @@ TCP 헤더와 달리 UDP 헤더에는 포함된 정보가 적다. 이는 UDP는 
 |TCP(Transfer Control Protocol)|UDP(User Datagram Protocol)|
 |-|-|
 |연결이 성공해야 통신 가능(연결형 프로토콜)|비연결형 프로토콜(연결 없이 통신이 가능)|
+|전송 순서 보장|전송 순서를 보장하지 않는다.|
+|느리다.||빠르다.|
+|가상 회선 방식|데이터그램 방식|
 |데이터의 경계를 구분하지 않음(Byte-Stream Service)|데이터의 경계를 구분함(Datagram Service)|
 |신뢰성 있는 데이터 전송(3-way Handshaking, 4-way Handshaking을 통해)|비신뢰성 있는 데이터 전송(데이터의 재전송 없음)|
 |일 대 일(Unicast) 통신|일 대 일, 일 대 다(Broadcast), 다 대 다(Multicast) 통신|
