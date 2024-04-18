@@ -4,10 +4,7 @@ Java 소스 코드를 컴파일하여 얻은 바이트 코드를 운영체제의
 
 ![img](https://github.com/dilmah0203/TIL/blob/main/Image/JVM2.png)
 
-- Java 소스 코드(.java)를 Java Compiler를 통해 바이트 코드(.class)로 컴파일한다.
-- 컴파일된 바이트코드를 JVM의 Class Loader에게 전달한다.
-- Class Loader는 동적로딩(Dynamic Loading)을 통해 필요한 클래스들을 로딩 및 링크하여 각 런타임데이터 영역에 할당한다. 
-- Execution Engine은 JVM 메모리에 올라온 바이트코드를 명령어 단위로 하나씩 가져와 실행한다.
+우선 컴파일된 바이트코드를 JVM의 Class Loader에게 전달하면 Class Loader는 로딩(클래스 정보를 method area에 저장) 및 링크(클래스 검증, 메모리 할당)를 통해 각 Runtime Data Area에 할당합니다. 이후 JVM의 실행 엔진을 통해 메모리 영역에 있는 클래스 인스턴스를 생성 후 메소드를 호출해 프로그램을 실행한다.
 
 ## JVM의 구조
 
