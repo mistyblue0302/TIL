@@ -47,10 +47,12 @@ public interface UserMapper {
 
 ## ORM(Object Relation Mapping)
 
-- ORM이란 객체와 관계형 데이터베이스의 데이터를 자동으로 매핑(연결)해주는 데이터 접근 기술
-- MyBatis는 Java 코드와 SQL 쿼리문을 매핑 시켜주어야 했지만 JPA와 같은 ORM 기술은 객체가 DB에 연결되기 때문에, SQL을 직접 작성하지 않고 표준 인터페이스 기반으로 처리한다.
-- 반복적인 SQL을 직접 작성할 필요 없이, 객체에 집중한 설계가 가능하다.
-- ORM은 객체간의 관계를 바탕으로 SQL을 자동으로 생성하고 메소드를 통해 조작한다.
-- 필드가 추가되거나 삭제될 시에 해당 객체만 수정하면 된다.
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/JPA.png)
+
+- 객체 관계 매핑으로, 객체는 객체대로 설계
+- 관계형 데이터베이스는 관계형 데이터베이스대로 설계
+- ORM 프레임워크가 중간에서 매핑
+- JPA는 자바 진영의 ORM 기술 표준으로 애플리케이션과 JDBC 사이에서 동작
+- 객체를 데이터베이스에 저장할 때 JPA가 Entity 분석, INSERT 쿼리 생성, JDBC API 사용, 패러다임 불일치를 해결한다.
 
 
