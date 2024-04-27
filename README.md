@@ -66,7 +66,9 @@
   * [stream vs for](https://github.com/dilmah0203/TIL/blob/main/Java/stream%20vs%20for.md)
 * [Effective Java](https://github.com/dilmah0203/TIL/blob/main/Java/Effective%20Java.md)
 
+
 ## JPA
+* [JPA 소개](https://github.com/mistyblue0302/TIL/blob/main/JPA/JPA%EC%86%8C%EA%B0%9C.md)
 
 ## Network
 * [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
