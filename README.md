@@ -68,6 +68,7 @@
 
 
 ## JPA
+* [JDBC, SQL Mapper, ORM](https://github.com/mistyblue0302/TIL/blob/main/JPA/JDBC,%20SQL%20Mapper,%20ORM.md)
 * [JPA 소개](https://github.com/mistyblue0302/TIL/blob/main/JPA/JPA%EC%86%8C%EA%B0%9C.md)
 
 ## Network
