@@ -218,7 +218,7 @@ public class UserService {
 }
 ```
 
-- `@Autowired` 애노테이션을 사용해 타입에 맞는 빈을 찾아 의존성 주입을 한다.
+- `@Autowired` 애노테이션을 사용해 **타입**에 맞는 빈을 찾아 의존성 주입을 한다.
 - 애플리케이션 컨텍스트는 일치하는 의존성을 검색한다.
   - 이 때 일치하는 항목이 1개라면 : 찾고 있는 의존성을 주입
   - 일치하는 항목이 2개 이상일 경우 : @Primary나 @Qualifier를 사용할 수 있다.
@@ -269,6 +269,16 @@ public class UserService {
 - **불변**, **필수** 의존관계에 사용
 - **final** 키워드를 붙여 의존성의 누락을 막을 수 있다.
 - Lombok과 결합되어 코드를 간결하게 작성할 수 있다. Lombok에는 final 변수를 위한 생성자를 대신 생성해주는 @RequiredArgsConstructor를 쓸 수 있다.
+
+```java
+@Service
+@RequiredArgsConstructor
+public class UserService {
+
+    private final UserRepository userRepository;
+    private final MemberService memberService;
+}
+```
 
 ## 8. XML을 이용한 설정
 
