@@ -71,6 +71,7 @@
 * [JDBC, SQL Mapper, ORM](https://github.com/mistyblue0302/TIL/blob/main/JPA/JDBC,%20SQL%20Mapper,%20ORM.md)
 * [JPA 소개](https://github.com/mistyblue0302/TIL/blob/main/JPA/JPA%EC%86%8C%EA%B0%9C.md)
 * [영속성 컨텍스트](https://github.com/mistyblue0302/TIL/blob/main/JPA/%EC%98%81%EC%86%8D%EC%84%B1%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.md)
+* [엔티티 매핑](https://github.com/mistyblue0302/TIL/blob/main/JPA/%EC%97%94%ED%8B%B0%ED%8B%B0%EB%A7%A4%ED%95%91.md)
 
 ## Network
 * [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
