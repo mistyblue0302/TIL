@@ -34,7 +34,7 @@ Base64로 인코딩 된 Header, Payload와 서버만이 가지고 있는 비밀 
 ```http
 { 
     "Authorization": "Bearer {생성된 토큰 값}"
- }
+}
 ```
 
 ```
