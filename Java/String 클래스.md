@@ -13,7 +13,6 @@ public void convert() {
         System.out.print(data + " "); //-19 -107 -100 -22 -72 -128 
     }
 
-    System.out.println();
     String ex2 = new String(array); //byte 배열로 Sring 객체를 생성
     System.out.println(ex2); //한글     
 } 
