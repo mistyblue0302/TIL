@@ -17,21 +17,22 @@
 ```java
 public class DAO {
 
-  private JdbcTemplate jdbcTemplate;
- 
-  @Autowired
-  public void setDataSource(DataSource dataSource){
-    this.jdbcTemplate = new JdbcTemplate(dataSource);
-  }
- 
-  public List<User> getUsers(){
-    return jdbcTemplate.query("select * from users", new RowMapper<User>() {
-      @Override
-      public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new User(rs.getInt("id"), rs.getString("name"));
-      }
-    });
-  }
+    private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    public List<User> getUsers() {
+        String sql = "SELECT * FROM users";
+        return jdbcTemplate.query(sql, new RowMapper<User>() {
+            @Override
+            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new User(rs.getInt("id"), rs.getString("name"));
+            }
+        });
+    }
 }
 ```
 
@@ -48,15 +49,16 @@ MyBatis는 자바 오브젝트와 SQL 사이의 자동 매핑 기능을 지원�
 
 ```java
 public interface UserMapper {
-  User selectUser(Long id);
+    User selectUser(Long id);
 }
 ```
 
 ```xml
 <mapper namespace="org.mybatis.example.UserMapper">
-  <select id="selectUser" resultType="User">
-    select * from user where id = #{id}
-  </select>
+    <select id="selectUser" resultType="User">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+</mapper>
 ```
 
 - SQL 쿼리문은 XML 파일에만 존재하고 자바 코드는 인터페이스에만 존재하여 쿼리문과 자바 코드를 따로 관리할 수 있다는 장점이 있다.
