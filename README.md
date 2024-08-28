@@ -76,6 +76,7 @@
 * [고급 매핑](https://github.com/mistyblue0302/TIL/blob/main/JPA/%EA%B3%A0%EA%B8%89%20%EB%A7%A4%ED%95%91.md)
 * [프록시와 연관관계 관리](https://github.com/mistyblue0302/TIL/blob/main/JPA/%ED%94%84%EB%A1%9D%EC%8B%9C%EC%99%80%20%EC%97%B0%EA%B4%80%EA%B4%80%EA%B3%84%20%EA%B4%80%EB%A6%AC.md)
 * [임베디드 타입](https://github.com/mistyblue0302/TIL/blob/main/JPA/%EA%B0%92%20%ED%83%80%EC%9E%85.md)
+* [객체지향 쿼리 언어(JPQL)](https://github.com/mistyblue0302/TIL/blob/main/JPA/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%BF%BC%EB%A6%AC%20%EC%96%B8%EC%96%B4.md)
 
 ## Network
 * [데이터 통신](https://github.com/dilmah0203/TIL/blob/main/Network/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%86%B5%EC%8B%A0.md)
@@ -84,7 +85,6 @@
 * [JWT(JSON Web Token)란?](https://github.com/dilmah0203/TIL/blob/main/Network/JWT%20Token.md)
 * [쿠키 vs 세션](https://github.com/dilmah0203/TIL/blob/main/Network/%EC%BF%A0%ED%82%A4%EC%99%80%20%EC%84%B8%EC%85%98.md)
 * [쿠키 vs 세션 vs 토큰 vs 캐시](https://github.com/dilmah0203/TIL/blob/main/Network/%EC%BF%A0%ED%82%A4%20vs%20%EC%84%B8%EC%85%98%20vs%20%ED%86%A0%ED%81%B0%20vs%20%EC%BA%90%EC%8B%9C.md)
-
 
 ## HTTP
 * [웹 브라우저 요청 흐름](https://github.com/dilmah0203/TIL/blob/main/HTTP/Web%20Browser.md)
