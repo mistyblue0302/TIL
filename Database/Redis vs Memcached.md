@@ -41,18 +41,19 @@ In-memory DB에는 다양한 DB들이 존재하는데, 세션 저장소로 가�
 
 ## Redis
 
-- Redis는 다양한 데이터 유형을 선택하여 key-value 구조로 데이터를 저장하고 관리하기 위한 비관계형 DB
+- 다양한 데이터 타입(String, Set, Sorted Set, Hash, List) 지원
 - 데이터 영속성을 보장하기 위해 데이터를 디스크에 저장하여 메모리에 로딩하는 방법을 제공
   - snapshotting : 순간적으로 메모리 있는 내용을 스냅샷을 찍어 디스크에 전체를 옮겨 담는 방식
   - AOF(Append On File) : Redis에서 발생한 모든 write/update 등 연산들을 모두 log 파일에 기록
 - 다양한 데이터 구조(String, Set, Sorted Set, Hash, List) 지원
 - 장애가 발생한 경우 Replication을 통한 간편한 서버 복구 기능
+- 싱글쓰레드로 동작
   
 ## Memcached
 
 - 데이터가 메모리에만 저장된다. 데이터는 프로세스가 종료되면 사라진다.
 - 데이터를 문자열로만 저장
-- 멀티쓰레드 아키텍처(더 많은 코어와 메모리를 제공)
+- 멀티쓰레드로 동작
 
 ### 정리
 
