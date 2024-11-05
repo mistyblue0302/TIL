@@ -85,7 +85,6 @@
 * [Forward Proxy vs Reverse Proxy vs Load Balancer](https://github.com/dilmah0203/TIL/blob/main/Network/Forward%20Proxy%20vs%20Reverse%20Proxy%20vs%20Load%20Balancer.md)
 * [JWT(JSON Web Token)란?](https://github.com/dilmah0203/TIL/blob/main/Network/JWT%20Token.md)
 * [쿠키 vs 세션](https://github.com/dilmah0203/TIL/blob/main/Network/%EC%BF%A0%ED%82%A4%EC%99%80%20%EC%84%B8%EC%85%98.md)
-* [쿠키 vs 세션 vs 토큰 vs 캐시](https://github.com/dilmah0203/TIL/blob/main/Network/%EC%BF%A0%ED%82%A4%20vs%20%EC%84%B8%EC%85%98%20vs%20%ED%86%A0%ED%81%B0%20vs%20%EC%BA%90%EC%8B%9C.md)
 
 ## HTTP
 * [웹 브라우저 요청 흐름](https://github.com/dilmah0203/TIL/blob/main/HTTP/Web%20Browser.md)
