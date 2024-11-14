@@ -40,7 +40,7 @@ Stack의 Frame은 다음과 같이 세 개의 부분으로 구성되어 있다.
  
 2. **Operand Stack** : 연산을 위한 작업 공간으로 연산의 중간값을 저장한다.
 
-3. **Constant Pool Reference** : 클래스 내에 사용되는 상수들을 담는 영역으로, index와 type 그리고 매핑된 값으로 되어있다. JVM은 Constant Pool을 통해 해당 메소드나 필드의 실제 메모리 상 주소를 찾아 참조한다.
+3. **Constant Pool Reference** : 상수 풀의 참조를 가진다. index와 type 그리고 매핑된 값으로 되어있다. JVM은 Constant Pool을 통해 해당 메소드나 필드의 실제 메모리 상 주소를 찾아 참조한다.
 
 <br>
 
