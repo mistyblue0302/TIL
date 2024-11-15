@@ -13,7 +13,7 @@ GC는 객체가 가비지인지 판별하기 위해 `reachability`라는 개념�
 
 JVM의 Runtime Data Area의 구조를 보면 다음과 같습니다.
 
-![img](/assets/images/Reference.png)
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference.png)
 
 Runtime Data Area는 쓰레드가 차지하는 영역과 객체를 생성 및 저장하는 Heap, 클래스 정보를 저장하는 Method Area로 나눌 수 있습니다. 위 구조에서 참조는 화살표로 표시되어 있습니다.
 
@@ -26,7 +26,7 @@ Heap에있는 객체들에 대한 참조 방식은 다음 네 가지 종류로 �
 
 이것들 중 Heap 내의 다른 객체에 의한 참조를 제외한 나머지 3개가 `reachability` 여부를 결정하는 기준이 됩니다. 
 
-![img](/assets/images/Reference2.png)
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference2.png)
 
 Root Space로부터 시작한 참조에 속한 객체들은 `reachable` 객체이고, 이 참조 사슬과 무관한 객체들은 `unreachable` 객체로 GC 대상이 됩니다. 만약 오른쪽 아래처럼 `reachable` 객체를 참조하더라도, 다른 `reachable` 객체가 이 객체를 참조하지 않는다면 `unreachable` 객체가 됩니다.
 
@@ -48,17 +48,17 @@ ex = null;
 
 `WeakReference` 객체는 `new Sample()`로 생성된 `Sample` 객체를 캡슐화한 객체입니다. 참조된 `Sample` 객체는 `wr.get()`을 통해 다른 참조를 통해 연결되고 이때 `WeakReference` 객체의 참조와 `ex` 참조, 두 개의 참조가 처음 생성한 `Sample` 객체를 가리킵니다.
 
-![img](/assets/images/Reference3.png)
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference3.png)
 
 코드 마지막 줄에서 `ex = null;`이 실행되면 처음에 생성한 `Sample` 객체는 오직 `WeakReference` 내부에서만 참조되고 이 객체는 `weakly reachable` 객체가 됩니다.
 
-![img](/assets/images/Reference4.png)
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference4.png)
 
 ## java.lang.ref 패키지
 
 원래 GC 대상 여부를 확인할 때는 `reachable`, `unreachable` 인가로만 구분하고 사용자 코드에서는 관여할 수 없었습니다. 하지만 `java.lang.ref` 패키지를 이용하여 `reachable` 객체들을 `strongly reachable`, `softly reachable`, `weakly reachable`, `phantomly reachable`로 더 자세히 구별하여 GC 때의 동작을 다르게 지정할 수 있습니다. 요약하여 GC 대상 여부를 판별할 때 사용자 코드도 관여할 수 있게 되었습니다. 위 그림에서 몇몇 객체들을 `WeakReference`로 바꾸면 아래와 같습니다.
 
-![img](/assets/images/Reference5.png)
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference5.png)
 
 녹색으로 표시된 두 객체는 `WeakReference`로만 참조된 `weakly reachable` 객체이고, 파란색 객체는 `strongly reachable` 객체입니다. GC가 동작하면 `unreachable` 객체뿐만 아니라 `weakly reachable` 객체도 가비지 객체로 간주되어 메모리에서 회수됩니다. Root Space로부터 시작된 참조 사슬에 포함이 되어있는데도 불구하고 GC가 동작할 때 메모리가 회수되기 때문에 참조는 가능하지만 항상 유효할 필요는 없는 LRU 캐시와 같은 임시 객체를 저장하는 구조를 쉽게 만들 수 있습니다. LRU 캐시는 자주 사용한 객체는 계속 보관하고 덜 사용한 객체는 제거하는 방식으로, 약한 참조를 통해 LRU 캐시를 구성하면 더 이상 사용되지 않는 객체는 자동으로 메모리에서 제거되기 때문에 메모리 사용을 최적화할 수 있습니다.
 
@@ -78,7 +78,7 @@ GC가 동작하여 어떤 객체를 `weakly reachable` 객체로 판단하면, G
   phantomly reachable: strongly reachable 객체, softly reachable 객체, weakly reachable 객체 모두 해당되지 않는 객체. 이 객체는 파이널라이즈(finalize)되었지만 아직 메모리가 회수되지 않은 상태
 - unreachable: Root Space에서 시작하는 참조 사슬로 참조되지 않는 객체
 
-![img](/assets/images/Reference6.png)
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference6.png)
 
 위의 경우 객체 B의 `reachability`는 `softly reachable`입니다. Root Space로부터 바로 `SoftReference`를 통해 B를 참조할 수 있기 때문입니다. 만약 SoftReference 참조가 없다면 객체 B는 `phantomly reachable`이 됩니다.
 
@@ -246,7 +246,7 @@ Done
  
 `SoftReference`, `WeakReference`는 `ReferenceQueue`를 사용할 수도 있고 사용하지 않을 수도 있지만 `PhantomReference`는 반드시 `ReferenceQueue`를 사용해야 합니다. `PhantomReference`의 생성자는 단 하나이고 항상 `ReferenceQueue`를 인자로 받습니다.
 
-![img](/assets/images/Reference7.png)
+![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference7.png)
 
 `SoftReference`와 `WeakReference`는 객체가 수거될 때 참조가 null로 설정되면 그 객체를 `ReferenceQueue`에 넣지만 `PhantomReference`는 객체 내부의 참조를 null로 설정하지 않고 참조된 객체를 `phantomly reachable` 객체로 만든 이후에 `ReferenceQueue`에 enqueue 됩니다. 그래서 이후에 애플리케이션은 객체의 finalize() 이후에 필요한 작업들을 처리할 수 있습니다.
 
