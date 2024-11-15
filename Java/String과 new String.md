@@ -9,7 +9,7 @@ String b = "hello";
 String c = "hello";
 ```
 
-new를 통해 String을 생성하면 **Heap영역**에 새 객체가 생성되고, 리터럴(값)을 이용할 경우 **string constant pool**영역에 존재하게 된다. b와 c는 string constant pool에 만들어진 하나의 **동일한 객체**를 참조한다. 
+new를 통해 String을 생성하면 **Heap**영역에 새 객체가 생성되고, 리터럴(값)을 이용할 경우 **string constant pool**영역에 존재하게 된다. b와 c는 string constant pool에 만들어진 하나의 **동일한 객체**를 참조한다. 
 
 ```java
 System.out.println(a.equals(b)); //true
