@@ -64,6 +64,7 @@
 * [Java 7에서 달라진 것](https://github.com/dilmah0203/TIL/blob/main/Java/Java%207%EC%97%90%EC%84%9C%20%EB%8B%AC%EB%9D%BC%EC%A7%84%20%EA%B2%83.md)
 * [Java 8에서 달라진 것](https://github.com/dilmah0203/TIL/blob/main/Java/Java%208%EC%97%90%EC%84%9C%20%EB%8B%AC%EB%9D%BC%EC%A7%84%20%EA%B2%83.md)
   * [stream vs for](https://github.com/dilmah0203/TIL/blob/main/Java/stream%20vs%20for.md)
+* [Java Reference와 GC](https://github.com/mistyblue0302/TIL/blob/main/Java/Java%20Reference.md)
 * [Effective Java](https://github.com/dilmah0203/TIL/blob/main/Java/Effective%20Java.md)
 
 
