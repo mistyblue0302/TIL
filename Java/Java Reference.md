@@ -34,7 +34,7 @@ Root Space로부터 시작한 참조에 속한 객체들은 `reachable` 객체�
 
 ## Soft, Weak, Phantom Reference
 
-`java.lang.ref` 패키지는 `soft reference`, `weak reference`, `phantom reference`를 클래스 형태로 제공하여 `java.lang.ref.WeakReference` 클래스는 객체를 캡슐화한 `WeakReference` 객체를 생성합니다. 이렇게 생성된 객체는 다른 객체와 달리 GC가 특별하게 처리할 수 있게 합니다.
+`java.lang.ref` 패키지는 `soft reference`, `weak reference`, `phantom reference`를 클래스 형태로 제공합니다. 예를들어, `java.lang.ref.WeakReference` 클래스는 객체를 캡슐화한 `WeakReference` 객체를 생성합니다. 이렇게 생성된 객체는 다른 객체와 달리 GC가 특별하게 처리할 수 있게 합니다.
 
 아래는 `WeakReference` 클래스가 객체를 생성하는 예시입니다.
 
