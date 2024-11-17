@@ -75,7 +75,7 @@ GC가 동작하여 어떤 객체를 `weakly reachable` 객체로 판단하면, G
 - strongly reachable: Root Space에서 시작된 참조 사슬 중, 어떤 참조 객체(reference object)도 거치지 않고 직접적으로 참조 가능한 객체. 즉, 객체까지 도달하는 참조 경로 중 soft reference, weak reference, phantom reference가 없는 경로가 하나라도 있는 객체
 - softly reachable: strongly reachable 객체가 아닌 객체 중에서 soft reference를 통해 도달 가능한 객체
 - weakly reachable: strongly reachable 객체도 softly reachable 객체도 아닌 객체 중에서, phantom reference 없이 weak reference만 통과하는 참조 사슬이 하나라도 있는 객체
-  phantomly reachable: strongly reachable 객체, softly reachable 객체, weakly reachable 객체 모두 해당되지 않는 객체. 이 객체는 파이널라이즈(finalize)되었지만 아직 메모리가 회수되지 않은 상태
+- phantomly reachable: strongly reachable 객체, softly reachable 객체, weakly reachable 객체 모두 해당되지 않는 객체. 이 객체는 파이널라이즈(finalize)되었지만 아직 메모리가 회수되지 않은 상태
 - unreachable: Root Space에서 시작하는 참조 사슬로 참조되지 않는 객체
 
 ![img](https://github.com/mistyblue0302/TIL/blob/main/Image/Reference6.png)
