@@ -13,6 +13,9 @@ RAID란 여러 디스크를 마치 하나의 저장 장치처럼 사용하는 �
 
 ![img](https://github.com/mistyblue0302/TIL/blob/main/Image/RAID.png)
 
+- RAID-0 : 스트라이핑 기술을 사용하여
+- RAID-1 : 
+
 ![img](https://github.com/mistyblue0302/TIL/blob/main/Image/RAID2.png)
 
 ![img](https://github.com/mistyblue0302/TIL/blob/main/Image/RAID3.png)
