@@ -36,11 +36,9 @@ Stack 영역은 메소드를 실행에 필요한 정보가 저장되는 영역�
 
 Stack의 Frame은 다음과 같이 세 개의 부분으로 구성되어 있다.
 
-1. **Local Variable Array** : 메소드 내의 로컬 변수들의 값을 배열로 담아놓고 인덱스로 접근이 가능하다. 배열의 첫 인덱스는 현재 인스턴스의 참조 this를 가지고 있다.
- 
-2. **Operand Stack** : 연산을 위한 작업 공간으로 연산의 중간값을 저장한다.
-
-3. **Constant Pool Reference** : 상수 풀의 참조를 가진다. index와 type 그리고 매핑된 값으로 되어있다. JVM은 Constant Pool을 통해 해당 메소드나 필드의 실제 메모리 상 주소를 찾아 참조한다.
+- **Local Variable Array** : 메소드 내의 로컬 변수들의 값을 배열로 담아놓고 인덱스로 접근이 가능하다. 배열의 첫 인덱스는 현재 인스턴스의 참조 this를 가지고 있다.
+- **Operand Stack** : 연산을 위한 작업 공간으로 연산의 중간값을 저장한다.
+- **Constant Pool Reference** : 상수 풀의 참조를 가진다. index와 type 그리고 매핑된 값으로 되어있다. JVM은 Constant Pool을 통해 해당 메소드나 필드의 실제 메모리 상 주소를 찾아 참조한다.
 
 <br>
 
