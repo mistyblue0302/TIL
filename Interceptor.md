@@ -10,4 +10,5 @@
 - 여기서 핸들러가 null이면 다음 요청으로 넘어가지 않기 때문에 핸들러에 대한 null 체크가 필요없음.
 - HandlerExecutionChain 내부에서 인터셉터의 preHandle()이 호출될 때 파라미터로 받는 값인 HttpServletRequest, HttpServletResponse 객체는 이미 서블릿 컨테이너에서 생성된 객체이므로 null이 될 수 없다.
 
-
+[참고]
+https://ttl-blog.tistory.com/1282(https://ttl-blog.tistory.com/1282)
