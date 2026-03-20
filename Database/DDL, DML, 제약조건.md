@@ -99,7 +99,7 @@ VALUES (value1, value2, value3, ...);
 
 ## DML - 수정
 
-`UPDATE` 는 이미 존재하는 데이터의 내용을 수정하는 명령어다.
+`UPDATE`는 이미 존재하는 데이터의 내용을 수정하는 명령어다.
 
 ### UPDATE 문법
 
@@ -114,6 +114,22 @@ WHERE condition;
 - `table_name` : 데이터를 수정할 테이블의 이름이다.
 - `SET column1 = value1, ...` : 수정할 열과 새로운 값이다. 쉼표(,)를 사용해 여러 열을 한 번에 수정할 수 있다.
 - `WHERE condition` : 수정할 행을 식별하는 조건이다. 이 부분을 생략하면 테이블의 모든 행이 수정되므로 주의해야 한다.
+
+## DML - 삭제
+
+DELETE FROM`은 테이블에서 행을 삭제하는 명령어다.
+
+### DELETE 문법
+
+DELETE 문의 기본 문법은 다음과 같다.
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+- `table_name` : 데이터를 삭제할 테이블의 이름이다.
+- `WHERE condition` : 삭제할 행을 식별하는 조건이다. UPDATE와 마찬가지로 이 부분을 생략하면 테이블의 모든 데이터가 삭제되므로 반드시 작성해야 한다.
 
 
 <br>
