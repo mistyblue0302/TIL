@@ -107,6 +107,7 @@
 * [Mutex vs Semaphore](https://github.com/dilmah0203/TIL/blob/main/OS/Mutex%20vs%20Semaphore.md)
 
 ## Database
+* [DDL, DML, 제약조건](https://github.com/mistyblue0302/TIL/blob/main/Database/DDL,%20DML,%20%EC%A0%9C%EC%95%BD%EC%A1%B0%EA%B1%B4.md)
 * [인덱스](https://github.com/dilmah0203/TIL/blob/main/Database/Index.md)
 * [Clustered Index vs NonClustered Index](https://github.com/dilmah0203/TIL/blob/main/Database/Clustered%20Index%20vs%20NonClustered%20Index.md)
 * [Database Lock](https://github.com/dilmah0203/TIL/blob/main/Database/Database%20Lock.md)
